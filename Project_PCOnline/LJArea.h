@@ -10,4 +10,6 @@
 
 @interface LJArea : NSObject
 
+@property (nonatomic, copy) NSString * title;
+
 @end
