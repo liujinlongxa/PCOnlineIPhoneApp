@@ -1,0 +1,708 @@
+{
+  "homeDirectory" : [
+    {
+      "childs" : [
+        {
+          "sid" : "20937",
+          "title" : "手机",
+          "url" : "http://product.pconline.com.cn/mobile/"
+        }
+      ],
+      "hightlight-image" : "20937s.png",
+      "image" : "20937.png",
+      "title" : "手机"
+    },
+    {
+      "childs" : [
+        {
+          "sid" : "20928",
+          "title" : "相机",
+          "url" : "http://product.pconline.com.cn/dc"
+        }
+      ],
+      "hightlight-image" : "20928s.png",
+      "image" : "20928.png",
+      "title" : "相机"
+    },
+    {
+      "childs" : [
+        {
+          "sid" : "20807",
+          "title" : "笔记本",
+          "url" : "http://product.pconline.com.cn/notebook/"
+        }
+      ],
+      "hightlight-image" : "20807s.png",
+      "image" : "20807.png",
+      "title" : "笔记本"
+    },
+    {
+      "childs" : [
+        {
+          "sid" : "20812",
+          "title" : "CPU",
+          "url" : "http://product.pconline.com.cn/cpu/"
+        },
+        {
+          "sid" : "20817",
+          "title" : "显卡",
+          "url" : "http://product.pconline.com.cn/vga/"
+        },
+        {
+          "sid" : "20811",
+          "title" : "主板",
+          "url" : "http://product.pconline.com.cn/mb/"
+        },
+        {
+          "sid" : "20813",
+          "title" : "内存",
+          "url" : "http://product.pconline.com.cn/memory/"
+        },
+        {
+          "sid" : "20814",
+          "title" : "硬盘",
+          "url" : "http://product.pconline.com.cn/harddisk/"
+        },
+        {
+          "sid" : "42997",
+          "title" : "固态硬盘SSD",
+          "url" : "http://product.pconline.com.cn/dianziyingpan/"
+        },
+        {
+          "sid" : "20950",
+          "title" : "显示器",
+          "url" : "http://product.pconline.com.cn/lcd/"
+        },
+        {
+          "sid" : "20874",
+          "title" : "光驱/刻录机",
+          "url" : "http://product.pconline.com.cn/writer/"
+        },
+        {
+          "sid" : "20818",
+          "title" : "声卡",
+          "url" : "http://product.pconline.com.cn/sound/"
+        },
+        {
+          "sid" : "20881",
+          "title" : "PC电源",
+          "url" : "http://product.pconline.com.cn/power/"
+        }
+      ],
+      "hightlight-image" : "11111s.png",
+      "image" : "11111.png",
+      "title" : "DIY硬件"
+    },
+    {
+      "childs" : [
+        {
+          "sid" : "95585",
+          "title" : "超极本",
+          "url" : "http://product.pconline.com.cn/ultrabook/"
+        }
+      ],
+      "hightlight-image" : "95585s.png",
+      "image" : "95585.png",
+      "title" : "超极本"
+    },
+    {
+      "childs" : [
+        {
+          "sid" : "79849",
+          "title" : "平板电脑",
+          "url" : "http://product.pconline.com.cn/tabletpc/"
+        }
+      ],
+      "hightlight-image" : "79849s.png",
+      "image" : "79849.png",
+      "title" : "平板电脑"
+    },
+    {
+      "childs" : [
+        {
+          "sid" : "45038",
+          "title" : "笔记本CPU",
+          "url" : "http://product.pconline.com.cn/notebook_cpu/"
+        },
+        {
+          "sid" : "35618",
+          "title" : "笔记本内存",
+          "url" : "http://product.pconline.com.cn/notebook_ram/"
+        },
+        {
+          "sid" : "58029",
+          "title" : "笔记本电池",
+          "url" : "http://product.pconline.com.cn/nb_battery/"
+        },
+        {
+          "sid" : "35623",
+          "title" : "笔记本硬盘",
+          "url" : "http://product.pconline.com.cn/notebook_hdd/"
+        },
+        {
+          "sid" : "81469",
+          "title" : "散热设备",
+          "url" : "http://product.pconline.com.cn/notebook_cooler/"
+        },
+        {
+          "sid" : "84914",
+          "title" : "笔记本电脑包",
+          "url" : "http://product.pconline.com.cn/nbbag/"
+        },
+        {
+          "sid" : "20932",
+          "title" : "笔记本周边",
+          "url" : "http://product.pconline.com.cn/notebook_zb/"
+        },
+        {
+          "sid" : "20806",
+          "title" : "台式机",
+          "url" : "http://product.pconline.com.cn/pc/"
+        },
+        {
+          "sid" : "41766",
+          "title" : "一体电脑",
+          "url" : "http://product.pconline.com.cn/easy_pc/"
+        },
+        {
+          "sid" : "20809",
+          "title" : "工作站",
+          "url" : "http://product.pconline.com.cn/workstation/"
+        },
+        {
+          "sid" : "24596",
+          "title" : "准系统",
+          "url" : "http://product.pconline.com.cn/barebone/"
+        },
+        {
+          "sid" : "20924",
+          "title" : "工控产品",
+          "url" : "http://product.pconline.com.cn/gongkong/"
+        },
+        {
+          "sid" : "43616",
+          "title" : "瘦客户机",
+          "url" : "http://product.pconline.com.cn/thin_client/"
+        },
+        {
+          "sid" : "35269",
+          "title" : "镜头",
+          "url" : "http://product.pconline.com.cn/lens/"
+        },
+        {
+          "sid" : "46610",
+          "title" : "滤镜",
+          "url" : "http://product.pconline.com.cn/filter/"
+        },
+        {
+          "sid" : "46722",
+          "title" : "闪光灯",
+          "url" : "http://product.pconline.com.cn/flash/"
+        },
+        {
+          "sid" : "20913",
+          "title" : "电池/充电器",
+          "url" : "http://product.pconline.com.cn/battery_charger/"
+        },
+        {
+          "sid" : "39034",
+          "title" : "三脚架",
+          "url" : "http://product.pconline.com.cn/spider_tripod/"
+        },
+        {
+          "sid" : "39035",
+          "title" : "摄影包",
+          "url" : "http://product.pconline.com.cn/photographbag/"
+        },
+        {
+          "sid" : "68849",
+          "title" : "摄影周边设备",
+          "url" : "http://product.pconline.com.cn/photo_zb/"
+        },
+        {
+          "sid" : "29149",
+          "title" : "摄像机磁带",
+          "url" : "http://product.pconline.com.cn/dvtape/"
+        },
+        {
+          "sid" : "79472",
+          "title" : "清洁养护",
+          "url" : "http://product.pconline.com.cn/cleaning/"
+        },
+        {
+          "sid" : "40314",
+          "title" : "手机移动电源",
+          "url" : "http://product.pconline.com.cn/movepower/"
+        },
+        {
+          "sid" : "35615",
+          "title" : "蓝牙耳机",
+          "url" : "http://product.pconline.com.cn/lanyaerji/"
+        },
+        {
+          "sid" : "24537",
+          "title" : "对讲机",
+          "url" : "http://product.pconline.com.cn/talkieandwalkie/"
+        },
+        {
+          "sid" : "26581",
+          "title" : "电话机",
+          "url" : "http://product.pconline.com.cn/telephone/"
+        },
+        {
+          "sid" : "20837",
+          "title" : "集团电话/交换",
+          "url" : "http://product.pconline.com.cn/netphone/"
+        },
+        {
+          "sid" : "38494",
+          "title" : "录音电话",
+          "url" : "http://product.pconline.com.cn/dictaphone/"
+        },
+        {
+          "sid" : "75132",
+          "title" : "楼宇对讲系统",
+          "url" : "http://product.pconline.com.cn/building_speak_system/"
+        },
+        {
+          "sid" : "76272",
+          "title" : "电话管理系统",
+          "url" : "http://product.pconline.com.cn/tel_manage_sys/"
+        },
+        {
+          "sid" : "26992",
+          "title" : "电话录音系统",
+          "url" : "http://product.pconline.com.cn/phonetapesystem/"
+        },
+        {
+          "sid" : "20990",
+          "title" : "耳机",
+          "url" : "http://product.pconline.com.cn/earphone/"
+        },
+        {
+          "sid" : "87949",
+          "title" : "MID",
+          "url" : "http://product.pconline.com.cn/tabletmid/"
+        },
+        {
+          "sid" : "25850",
+          "title" : "MP4",
+          "url" : "http://product.pconline.com.cn/mp4/"
+        },
+        {
+          "sid" : "20947",
+          "title" : "MP3",
+          "url" : "http://product.pconline.com.cn/mp3/"
+        },
+        {
+          "sid" : "20930",
+          "title" : "U盘",
+          "url" : "http://product.pconline.com.cn/flashdisk/"
+        },
+        {
+          "sid" : "43376",
+          "title" : "移动硬盘",
+          "url" : "http://product.pconline.com.cn/mobiledisk/"
+        },
+        {
+          "sid" : "20974",
+          "title" : "存储卡",
+          "url" : "http://product.pconline.com.cn/cardreader/"
+        },
+        {
+          "sid" : "20961",
+          "title" : "电子书",
+          "url" : "http://product.pconline.com.cn/ebook/"
+        },
+        {
+          "sid" : "20945",
+          "title" : "录音笔",
+          "url" : "http://product.pconline.com.cn/record/"
+        },
+        {
+          "sid" : "44176",
+          "title" : "数码相框",
+          "url" : "http://product.pconline.com.cn/photodisplayer/"
+        },
+        {
+          "sid" : "44230",
+          "title" : "游戏机",
+          "url" : "http://product.pconline.com.cn/game/"
+        },
+        {
+          "sid" : "64409",
+          "title" : "麦克风",
+          "url" : "http://product.pconline.com.cn/microphone/"
+        },
+        {
+          "sid" : "20902",
+          "title" : "手写画板",
+          "url" : "http://product.pconline.com.cn/handinput/"
+        },
+        {
+          "sid" : "20974",
+          "title" : "存储卡/读卡器",
+          "url" : "http://product.pconline.com.cn/cardreader/"
+        },
+        {
+          "sid" : "26188",
+          "title" : "数码伴侣",
+          "url" : "http://product.pconline.com.cn/digipartner/"
+        },
+        {
+          "sid" : "20877",
+          "title" : "游戏周边设备",
+          "url" : "http://product.pconline.com.cn/gameside/"
+        },
+        {
+          "sid" : "51453",
+          "title" : "显示设备配件",
+          "url" : "http://product.pconline.com.cn/lcd_accessories/"
+        },
+        {
+          "sid" : "92859",
+          "title" : "眼镜影院",
+          "url" : "http://product.pconline.com.cn/cinemaglasses/"
+        },
+        {
+          "sid" : "92780",
+          "title" : "3D眼镜",
+          "url" : "http://product.pconline.com.cn/3dglasses/"
+        }
+      ],
+      "hightlight-image" : "11112s.png",
+      "image" : "11112.png",
+      "title" : "数码产品"
+    },
+    {
+      "childs" : [
+        {
+          "sid" : "20873",
+          "title" : "键盘",
+          "url" : "http://product.pconline.com.cn/keyboard/"
+        },
+        {
+          "sid" : "20820",
+          "title" : "鼠标",
+          "url" : "http://product.pconline.com.cn/mouse/"
+        },
+        {
+          "sid" : "20848",
+          "title" : "音箱",
+          "url" : "http://product.pconline.com.cn/soundbox/"
+        },
+        {
+          "sid" : "20946",
+          "title" : "摄像头",
+          "url" : "http://product.pconline.com.cn/pccamera/"
+        },
+        {
+          "sid" : "25521",
+          "title" : "鼠标垫",
+          "url" : "http://product.pconline.com.cn/mouse_under/"
+        },
+        {
+          "sid" : "33069",
+          "title" : "硬盘/光驱盒",
+          "url" : "http://product.pconline.com.cn/disk_cdrombox/"
+        },
+        {
+          "sid" : "20864",
+          "title" : "UPS电源",
+          "url" : "http://product.pconline.com.cn/ups_power/"
+        },
+        {
+          "sid" : "35290",
+          "title" : "UPS电池",
+          "url" : "http://product.pconline.com.cn/ups_battery/"
+        },
+        {
+          "sid" : "26511",
+          "title" : "单机多用户/拖",
+          "url" : "http://product.pconline.com.cn/user_system/"
+        },
+        {
+          "sid" : "21004",
+          "title" : "硬盘保护卡",
+          "url" : "http://product.pconline.com.cn/disksavecard/"
+        },
+        {
+          "sid" : "21006",
+          "title" : "拷贝机",
+          "url" : "http://product.pconline.com.cn/copymachine/"
+        }
+      ],
+      "hightlight-image" : "11113s.png",
+      "image" : "11113.png",
+      "title" : "硬件外设"
+    },
+    {
+      "childs" : [
+        {
+          "sid" : "39957",
+          "title" : "液晶电视",
+          "url" : "http://product.pconline.com.cn/lcd_tv/"
+        },
+        {
+          "sid" : "39956",
+          "title" : "等离子电视",
+          "url" : "http://product.pconline.com.cn/plasma/"
+        },
+        {
+          "sid" : "49651",
+          "title" : "冰箱",
+          "url" : "http://product.pconline.com.cn/icebox/"
+        },
+        {
+          "sid" : "49955",
+          "title" : "空调",
+          "url" : "http://product.pconline.com.cn/air_condition/"
+        },
+        {
+          "sid" : "50210",
+          "title" : "洗衣机",
+          "url" : "http://product.pconline.com.cn/washer/"
+        },
+        {
+          "sid" : "88029",
+          "title" : "抽油烟机",
+          "url" : "http://product.pconline.com.cn/hood/"
+        },
+        {
+          "sid" : "59103",
+          "title" : "微波炉",
+          "url" : "http://product.pconline.com.cn/microwave_oven/"
+        },
+        {
+          "sid" : "58142",
+          "title" : "电饭煲",
+          "url" : "http://product.pconline.com.cn/rice_cooker/"
+        },
+        {
+          "sid" : "88034",
+          "title" : "电热水器",
+          "url" : "http://product.pconline.com.cn/water_heater/"
+        },
+        {
+          "sid" : "48229",
+          "title" : "抽湿机",
+          "url" : "http://product.pconline.com.cn/choushiji/"
+        },
+        {
+          "sid" : "88009",
+          "title" : "吸尘器",
+          "url" : "http://product.pconline.com.cn/vacuum_cleaner/"
+        },
+        {
+          "sid" : "58170",
+          "title" : "豆浆机",
+          "url" : "http://product.pconline.com.cn/soybean_milk_extractor/"
+        },
+        {
+          "sid" : "88010",
+          "title" : "电风扇",
+          "url" : "http://product.pconline.com.cn/fan/"
+        },
+        {
+          "sid" : "60550",
+          "title" : "净化清新器",
+          "url" : "http://product.pconline.com.cn/purifier/"
+        },
+        {
+          "sid" : "47897",
+          "title" : "高清播放机",
+          "url" : "http://product.pconline.com.cn/hd_player/"
+        },
+        {
+          "sid" : "40007",
+          "title" : "家庭影院",
+          "url" : "http://product.pconline.com.cn/family_theater/"
+        },
+        {
+          "sid" : "41358",
+          "title" : "音响",
+          "url" : "http://product.pconline.com.cn/hifi/"
+        },
+        {
+          "sid" : "38697",
+          "title" : "DVD影碟机",
+          "url" : "http://product.pconline.com.cn/videodisc/"
+        }
+      ],
+      "hightlight-image" : "11114s.png",
+      "image" : "11114.png",
+      "title" : "数字家电"
+    },
+    {
+      "childs" : [
+        {
+          "sid" : "20912",
+          "title" : "摄像机",
+          "url" : "http://product.pconline.com.cn/dv"
+        }
+      ],
+      "hightlight-image" : "20912s.png",
+      "image" : "20912.png",
+      "title" : "摄像机"
+    },
+    {
+      "childs" : [
+        {
+          "sid" : "39356",
+          "title" : "无线路由器",
+          "url" : "http://product.pconline.com.cn/wireless_router/"
+        },
+        {
+          "sid" : "39357",
+          "title" : "无线网卡",
+          "url" : "http://product.pconline.com.cn/wireless_card/"
+        },
+        {
+          "sid" : "26221",
+          "title" : "无线上网卡",
+          "url" : "http://product.pconline.com.cn/wifi_card/"
+        },
+        {
+          "sid" : "20851",
+          "title" : "路由器",
+          "url" : "http://product.pconline.com.cn/router/"
+        },
+        {
+          "sid" : "20852",
+          "title" : "交换机",
+          "url" : "http://product.pconline.com.cn/switch/"
+        },
+        {
+          "sid" : "20853",
+          "title" : "集线器",
+          "url" : "http://product.pconline.com.cn/hub/"
+        },
+        {
+          "sid" : "20856",
+          "title" : "网卡",
+          "url" : "http://product.pconline.com.cn/netcard/"
+        },
+        {
+          "sid" : "20857",
+          "title" : "布线产品",
+          "url" : "http://product.pconline.com.cn/line/"
+        },
+        {
+          "sid" : "20858",
+          "title" : "光纤设备",
+          "url" : "http://product.pconline.com.cn/optical/"
+        },
+        {
+          "sid" : "20935",
+          "title" : "防火墙",
+          "url" : "http://product.pconline.com.cn/firewall/"
+        },
+        {
+          "sid" : "20808",
+          "title" : "服务器",
+          "url" : "http://product.pconline.com.cn/server/"
+        }
+      ],
+      "hightlight-image" : "11115s.png",
+      "image" : "11115.png",
+      "title" : "网络设备"
+    },
+    {
+      "childs" : [
+        {
+          "sid" : "20970",
+          "title" : "多功能一体机",
+          "url" : "http://product.pconline.com.cn/printer_dgn/"
+        },
+        {
+          "sid" : "20842",
+          "title" : "喷墨打印机",
+          "url" : "http://product.pconline.com.cn/printer_ink/"
+        },
+        {
+          "sid" : "20843",
+          "title" : "激光打印机",
+          "url" : "http://product.pconline.com.cn/printer_laser/"
+        },
+        {
+          "sid" : "83629",
+          "title" : "照片打印机",
+          "url" : "http://product.pconline.com.cn/printer_dye-sublimation/"
+        },
+        {
+          "sid" : "20841",
+          "title" : "针式打印机",
+          "url" : "http://product.pconline.com.cn/printer_zs/"
+        },
+        {
+          "sid" : "20832",
+          "title" : "复印机",
+          "url" : "http://product.pconline.com.cn/copy/"
+        },
+        {
+          "sid" : "20865",
+          "title" : "大幅面打印机",
+          "url" : "http://product.pconline.com.cn/largeformat_printers/"
+        },
+        {
+          "sid" : "20846",
+          "title" : "扫描仪",
+          "url" : "http://product.pconline.com.cn/scanner/"
+        },
+        {
+          "sid" : "20861",
+          "title" : "碳带/色带",
+          "url" : "http://product.pconline.com.cn/ribbon/"
+        },
+        {
+          "sid" : "20863",
+          "title" : "墨盒/墨水",
+          "url" : "http://product.pconline.com.cn/ink_box/"
+        },
+        {
+          "sid" : "9283",
+          "title" : "硒鼓/碳粉",
+          "url" : "http://product.pconline.com.cn/xigutanfen/"
+        },
+        {
+          "sid" : "20870",
+          "title" : "打印介质",
+          "url" : "http://product.pconline.com.cn/stamp_medium/"
+        },
+        {
+          "sid" : "20836",
+          "title" : "打卡机",
+          "url" : "http://product.pconline.com.cn/card_punches/"
+        },
+        {
+          "sid" : "20833",
+          "title" : "碎纸机",
+          "url" : "http://product.pconline.com.cn/shredder/"
+        },
+        {
+          "sid" : "20834",
+          "title" : "投影机",
+          "url" : "http://product.pconline.com.cn/projection/"
+        },
+        {
+          "sid" : "52689",
+          "title" : "投影灯泡",
+          "url" : "http://product.pconline.com.cn/projection_dp/"
+        },
+        {
+          "sid" : "58389",
+          "title" : "投影仪",
+          "url" : "http://product.pconline.com.cn/projector/"
+        },
+        {
+          "sid" : "26191",
+          "title" : "投影配件",
+          "url" : "http://product.pconline.com.cn/projection_pj/"
+        }
+      ],
+      "hightlight-image" : "11116s.png",
+      "image" : "11116.png",
+      "title" : "企业办公"
+    }
+  ]
+}
