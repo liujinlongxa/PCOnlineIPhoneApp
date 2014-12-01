@@ -9,8 +9,9 @@
 #import "LJNewsViewController.h"
 #import "UIImage+MyImage.h"
 #import "LJSubjectView.h"
+#import "LJCommonData.h"
 
-@interface LJNewsViewController ()<UINavigationControllerDelegate>
+@interface LJNewsViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) UITableView * tableView;
 
@@ -27,8 +28,8 @@
     
     //添加栏目条
     LJSubjectView * subjectView = [LJSubjectView subjectView];
-    NSLog(@"%@", NSStringFromCGRect(subjectView.frame));
     [self.view addSubview:subjectView];
+    subjectView.subjects = [LJCommonData shareCommonData].SubjectsData.allValues;
     
     //添加tableview
     CGFloat tableX = 0;
@@ -39,9 +40,20 @@
     [self.view addSubview:tableView];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView = tableView;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
 }
 
+//设置TableView
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
 
 
 @end

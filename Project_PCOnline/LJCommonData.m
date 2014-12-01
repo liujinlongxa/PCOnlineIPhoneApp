@@ -11,9 +11,12 @@
 #import "LJArea.h"
 #import "LJSubject.h"
 
+#define kSubjectAndAreaDataFileName @"pconline_v4_cms_iphone_channel_tree4inch.json"
+
 @interface LJCommonData ()
 
 @property (nonatomic, strong) NSMutableDictionary * channelAndArea;
+@property (nonatomic, strong) NSString * filePath;
 
 @end
 
@@ -24,13 +27,8 @@
     if (!_channelAndArea) {
         _channelAndArea = [NSMutableDictionary dictionary];
         
-        [LJNetWorking GET:kChannelAndAreaUrl parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
-            
-            _channelAndArea = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
-            
-        } failure:^(NSHTTPURLResponse *response, NSError *error) {
-            NSLog(@"%@", error);
-        }];
+        [self loadLocalData];
+//        [self loadRemoteDataAndWrite];//暂时不加载远程的数据
         
     }
     return _channelAndArea;
@@ -45,26 +43,60 @@
     return commonData;
 }
 
+//获取文件路径
+- (NSString *)filePath
+{
+    if (!_filePath) {
+        _filePath = [[NSBundle mainBundle] pathForResource:kSubjectAndAreaDataFileName ofType:nil];
+    }
+    return _filePath;
+}
+
+//加载本地数据
+- (void)loadLocalData
+{
+    NSData * content = [NSData dataWithContentsOfFile:self.filePath];
+    _channelAndArea = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingMutableLeaves error:nil];
+}
+
+//加载远程数据并写入本地
+- (void)loadRemoteDataAndWrite
+{
+    [LJNetWorking GET:kChannelAndAreaUrl parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+        //重新创建文件
+        [[NSFileManager defaultManager] removeItemAtPath:self.filePath error:nil];
+        [[NSFileManager defaultManager] createFileAtPath:self.filePath contents:responseObject attributes:nil];
+        
+    } failure:^(NSHTTPURLResponse *response, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+//频道数据
 - (NSDictionary *)SubjectsData
 {
     if (!_SubjectsData) {
         
-        _SubjectsData = self.channelAndArea[@"news"];
-        NSMutableArray * arr = [NSMutableArray array];
-        for (NSArray * subArr in _AreaData) {
+        NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+        for (NSArray * subArr in self.channelAndArea[@"news"]) {
             LJSubject * subject = [LJSubject subjectWithArray:subArr];
-            [arr addObject:subject];
+            [dict setObject:subject forKey:subject.title];
         }
-        _SubjectsData = [arr copy];
+        _SubjectsData = [dict copy];
     }
     return _SubjectsData;
 }
 
+//地区数据
 - (NSDictionary *)AreaData
 {
     if (!_AreaData) {
-        _AreaData = self.channelAndArea[@"area"];
-        
+        NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+        for (NSArray * subArr in self.channelAndArea[@"area"]) {
+            LJArea * subject = [LJArea subjectWithArray:subArr];
+            [dict setObject:subject forKey:subject.title];
+        }
+        _AreaData = [dict copy];
     }
     return _AreaData;
 }

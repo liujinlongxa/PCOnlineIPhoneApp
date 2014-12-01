@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface LJArea : NSObject
-
+@property (nonatomic, copy) NSString * index;
 @property (nonatomic, copy) NSString * title;
 @property (nonatomic, copy) NSString * ID;
+
++ (instancetype)subjectWithArray:(NSArray *)arr;
+
 @end

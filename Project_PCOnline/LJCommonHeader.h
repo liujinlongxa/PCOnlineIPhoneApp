@@ -22,4 +22,10 @@
 //状态栏高度
 #define kStatusBarH 20
 
+//蓝色文字颜色
+#define BlueTextColor [[UIColor alloc] initWithRed:31 / 255.0 green:137 / 255.0 blue:227 /255.0 alpha:1.0]
+
+//字体
+#define SubjectButtonFont [UIFont systemFontOfSize:20] //频道Button上的字体大小
+
 #endif

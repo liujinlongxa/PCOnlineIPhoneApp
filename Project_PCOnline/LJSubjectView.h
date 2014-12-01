@@ -13,4 +13,7 @@
 
 + (instancetype)subjectView;
 
+//设置显示的频道
+@property (nonatomic, strong) NSArray * subjects;
+
 @end

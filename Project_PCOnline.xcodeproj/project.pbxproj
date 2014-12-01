@@ -72,6 +72,10 @@
 		047D6A921A2C73D300EB3B64 /* LJCommonData.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D6A911A2C73D300EB3B64 /* LJCommonData.m */; };
 		047D6A951A2C837E00EB3B64 /* LJNetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D6A941A2C837E00EB3B64 /* LJNetWorking.m */; };
 		047D6A981A2C933500EB3B64 /* LJArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D6A971A2C933500EB3B64 /* LJArea.m */; };
+		8894F9081A2CD4190058C76A /* LJSubjectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894F9071A2CD4190058C76A /* LJSubjectButton.m */; };
+		8894F90E1A2CDF890058C76A /* NSString+MyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894F90D1A2CDF890058C76A /* NSString+MyString.m */; };
+		8894F9121A2CE77F0058C76A /* LJNewsNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894F9111A2CE77F0058C76A /* LJNewsNormalCell.m */; };
+		8894F9141A2CE7A90058C76A /* LJNewsNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8894F9131A2CE7A90058C76A /* LJNewsNormalCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +214,13 @@
 		047D6A941A2C837E00EB3B64 /* LJNetWorking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJNetWorking.m; sourceTree = "<group>"; };
 		047D6A961A2C933500EB3B64 /* LJArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJArea.h; sourceTree = "<group>"; };
 		047D6A971A2C933500EB3B64 /* LJArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJArea.m; sourceTree = "<group>"; };
+		8894F9061A2CD4190058C76A /* LJSubjectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSubjectButton.h; sourceTree = "<group>"; };
+		8894F9071A2CD4190058C76A /* LJSubjectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSubjectButton.m; sourceTree = "<group>"; };
+		8894F90C1A2CDF890058C76A /* NSString+MyString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MyString.h"; sourceTree = "<group>"; };
+		8894F90D1A2CDF890058C76A /* NSString+MyString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MyString.m"; sourceTree = "<group>"; };
+		8894F9101A2CE77F0058C76A /* LJNewsNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJNewsNormalCell.h; sourceTree = "<group>"; };
+		8894F9111A2CE77F0058C76A /* LJNewsNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJNewsNormalCell.m; sourceTree = "<group>"; };
+		8894F9131A2CE7A90058C76A /* LJNewsNormalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJNewsNormalCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -663,6 +674,8 @@
 			children = (
 				047D6A811A2C548F00EB3B64 /* UIImage+MyImage.h */,
 				047D6A821A2C548F00EB3B64 /* UIImage+MyImage.m */,
+				8894F90C1A2CDF890058C76A /* NSString+MyString.h */,
+				8894F90D1A2CDF890058C76A /* NSString+MyString.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -679,8 +692,11 @@
 		047D6A841A2C654300EB3B64 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8894F90F1A2CE7460058C76A /* NewsCell */,
 				047D6A861A2C66C700EB3B64 /* LJSubjectView.h */,
 				047D6A871A2C66C700EB3B64 /* LJSubjectView.m */,
+				8894F9061A2CD4190058C76A /* LJSubjectButton.h */,
+				8894F9071A2CD4190058C76A /* LJSubjectButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -696,6 +712,16 @@
 				047D6A971A2C933500EB3B64 /* LJArea.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		8894F90F1A2CE7460058C76A /* NewsCell */ = {
+			isa = PBXGroup;
+			children = (
+				8894F9101A2CE77F0058C76A /* LJNewsNormalCell.h */,
+				8894F9111A2CE77F0058C76A /* LJNewsNormalCell.m */,
+				8894F9131A2CE7A90058C76A /* LJNewsNormalCell.xib */,
+			);
+			name = NewsCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -780,6 +806,7 @@
 			files = (
 				046E75D41A2BF700000FE777 /* Main.storyboard in Resources */,
 				046E75D91A2BF700000FE777 /* LaunchScreen.xib in Resources */,
+				8894F9141A2CE7A90058C76A /* LJNewsNormalCell.xib in Resources */,
 				046E769B1A2C25EE000FE777 /* pconline_v4_square_fast_forum.json in Resources */,
 				046E76981A2C25EE000FE777 /* PCOnlineProductDatas4inch.json in Resources */,
 				046E76451A2C08C0000FE777 /* MJRefresh.bundle in Resources */,
@@ -809,6 +836,7 @@
 			files = (
 				046E76481A2C08C0000FE777 /* MJRefreshFooterView.m in Sources */,
 				046E76291A2C08AF000FE777 /* AFURLRequestSerialization.m in Sources */,
+				8894F9081A2CD4190058C76A /* LJSubjectButton.m in Sources */,
 				046E76871A2C1B02000FE777 /* LJProductViewController.m in Sources */,
 				046E76281A2C08AF000FE777 /* AFURLConnectionOperation.m in Sources */,
 				046E76611A2C0A37000FE777 /* FMDatabase.m in Sources */,
@@ -827,7 +855,9 @@
 				046E75CE1A2BF700000FE777 /* AppDelegate.m in Sources */,
 				046E764C1A2C08C0000FE777 /* UIView+MJExtension.m in Sources */,
 				047D6A951A2C837E00EB3B64 /* LJNetWorking.m in Sources */,
+				8894F9121A2CE77F0058C76A /* LJNewsNormalCell.m in Sources */,
 				046E76311A2C08AF000FE777 /* UIProgressView+AFNetworking.m in Sources */,
+				8894F90E1A2CDF890058C76A /* NSString+MyString.m in Sources */,
 				046E76251A2C08AF000FE777 /* AFHTTPSessionManager.m in Sources */,
 				046E76491A2C08C0000FE777 /* MJRefreshHeaderView.m in Sources */,
 				046E76541A2C0A2F000FE777 /* MBProgressHUD.m in Sources */,
