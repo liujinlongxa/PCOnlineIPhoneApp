@@ -13,4 +13,5 @@
 
 @interface LJNewsViewController : LJBaseViewController
 
+
 @end

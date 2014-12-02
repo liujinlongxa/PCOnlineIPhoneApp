@@ -34,6 +34,8 @@
     myTabBar.delegate = self;
     [self.tabBar addSubview:myTabBar];
     
+    self.tabBar.translucent = NO;//设置不透明
+    
 }
 
 - (void)setupControllers

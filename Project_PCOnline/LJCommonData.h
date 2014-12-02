@@ -13,8 +13,8 @@
 
 + (instancetype)shareCommonData;
 
-@property (nonatomic, strong) NSDictionary * SubjectsData;
-@property (nonatomic, strong) NSDictionary * BBSData;
-@property (nonatomic, strong) NSDictionary * AreaData;
+@property (nonatomic, strong) NSArray * SubjectsData;
+@property (nonatomic, strong) NSArray * BBSData;
+@property (nonatomic, strong) NSArray * AreaData;
 
 @end

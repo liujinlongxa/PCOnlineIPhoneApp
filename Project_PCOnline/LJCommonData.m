@@ -73,30 +73,30 @@
 }
 
 //频道数据
-- (NSDictionary *)SubjectsData
+- (NSArray *)SubjectsData
 {
     if (!_SubjectsData) {
         
-        NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+        NSMutableArray * arr = [NSMutableArray array];
         for (NSArray * subArr in self.channelAndArea[@"news"]) {
             LJSubject * subject = [LJSubject subjectWithArray:subArr];
-            [dict setObject:subject forKey:subject.title];
+            [arr addObject:subject];
         }
-        _SubjectsData = [dict copy];
+        _SubjectsData = [arr copy];
     }
     return _SubjectsData;
 }
 
 //地区数据
-- (NSDictionary *)AreaData
+- (NSArray *)AreaData
 {
     if (!_AreaData) {
-        NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+        NSMutableArray * arr = [NSMutableArray array];
         for (NSArray * subArr in self.channelAndArea[@"area"]) {
-            LJArea * subject = [LJArea subjectWithArray:subArr];
-            [dict setObject:subject forKey:subject.title];
+            LJArea * area = [LJArea subjectWithArray:subArr];
+            [arr addObject:area];
         }
-        _AreaData = [dict copy];
+        _AreaData = [arr copy];
     }
     return _AreaData;
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -26,7 +26,7 @@
                         </variation>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iea-D7-CaR">
-                        <rect key="frame" x="126" y="8" width="42" height="40"/>
+                        <rect key="frame" x="126" y="8" width="176" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="ICZ-nZ-tiL"/>
                         </constraints>
@@ -70,7 +70,7 @@
                     <constraint firstItem="4HP-nf-uDx" firstAttribute="leading" secondItem="YiH-cH-WCu" secondAttribute="leadingMargin" constant="10" id="KfU-23-No7"/>
                     <constraint firstItem="7us-Zs-mEu" firstAttribute="leading" secondItem="2ws-1L-oPL" secondAttribute="trailing" constant="1" id="QAm-eW-W5e"/>
                     <constraint firstItem="4HP-nf-uDx" firstAttribute="leading" secondItem="YiH-cH-WCu" secondAttribute="leadingMargin" id="ZXD-vg-Mu7"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="iea-D7-CaR" secondAttribute="trailing" constant="144" id="bdp-NV-w24"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="iea-D7-CaR" secondAttribute="trailing" constant="10" id="bdp-NV-w24"/>
                     <constraint firstItem="TzJ-sz-C1D" firstAttribute="leading" secondItem="7us-Zs-mEu" secondAttribute="trailing" constant="10" id="cNa-3W-jFt"/>
                     <constraint firstItem="iea-D7-CaR" firstAttribute="leading" secondItem="4HP-nf-uDx" secondAttribute="trailing" constant="18" id="d6J-mA-feq"/>
                     <constraint firstAttribute="bottomMargin" secondItem="4HP-nf-uDx" secondAttribute="bottom" id="eqV-ac-bfN"/>
@@ -94,11 +94,11 @@
             <connections>
                 <outlet property="cmtCountLab" destination="7us-Zs-mEu" id="Yzb-8Q-z1E"/>
                 <outlet property="imageIcon" destination="4HP-nf-uDx" id="xrA-7s-SHG"/>
-                <outlet property="pubDate" destination="iea-D7-CaR" id="aed-7L-MKh"/>
+                <outlet property="pubDate" destination="2ws-1L-oPL" id="Q1u-ZE-Q8t"/>
                 <outlet property="titleLab" destination="iea-D7-CaR" id="v7a-M0-fzS"/>
                 <outlet property="typeImage" destination="TzJ-sz-C1D" id="TXf-gs-ePI"/>
             </connections>
-            <point key="canvasLocation" x="366" y="363"/>
+            <point key="canvasLocation" x="326" y="218"/>
         </tableViewCell>
     </objects>
 </document>

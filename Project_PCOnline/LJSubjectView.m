@@ -7,7 +7,6 @@
 //
 
 #import "LJSubjectView.h"
-#import "LJSubject.h"
 #import "LJSubjectButton.h"
 #import "NSString+MyString.h"
 
@@ -38,15 +37,20 @@
 - (void)setupSubjectView
 {
     //滚动区域
-    UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScrW - kBtnWH - 1, kNavBarH)];
+    UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScrW - kBtnWH - 1, kNavBarH - 1)];
     [self addSubview:scrollView];
     self.scrollView = scrollView;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     
     //中间线
     UIView * line = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(scrollView.frame), 0, 1, kNavBarH)];
-    line.backgroundColor = [UIColor grayColor];
+    line.backgroundColor = [UIColor lightGrayColor];
     [self addSubview:line];
+    
+    //底部线
+    UIView * bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(scrollView.frame), CGRectGetWidth(self.frame), 1)];
+    bottomLine.backgroundColor = [UIColor lightGrayColor];
+    [self addSubview:bottomLine];
     
     //moreSubject Button
     UIButton * moreSubjectBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(line.frame), 0, kBtnWH, kBtnWH)];
@@ -65,6 +69,7 @@
         CGFloat btnX = CGRectGetMaxX([[self.scrollView.subviews lastObject] frame]);
         LJSubjectButton * button = [LJSubjectButton subjectButtonWithFrame:CGRectMake(btnX, 0, btnW + 10, btnH) andTitle:subject.title];
         [button addTarget:self action:@selector(changeeSubject:) forControlEvents:UIControlEventTouchDown];
+        button.subject = subject;
         [self.scrollView addSubview:button];
     }
     curSelectButton = self.scrollView.subviews[0];//默认选中第一个头条Button
@@ -80,6 +85,9 @@
     sender.selected = YES;
     curSelectButton = sender;
     //调用回调方法
+    if ([self.delegate respondsToSelector:@selector(subjectView:didSelectSubject:)]) {
+        [self.delegate subjectView:self didSelectSubject:sender.subject];
+    }
 }
 
 @end

@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "LJCommonHeader.h"
+#import "LJSubject.h"
+
+@class LJSubjectView;
+
+@protocol LJSubjectViewDelegate <NSObject>
+
+@optional
+- (void)subjectView:(LJSubjectView *)subjectView didSelectSubject:(LJSubject *)subject;
+
+@end
 
 @interface LJSubjectView : UIView
 
@@ -15,5 +25,7 @@
 
 //设置显示的频道
 @property (nonatomic, strong) NSArray * subjects;
+
+@property (nonatomic, weak) id<LJSubjectViewDelegate> delegate;
 
 @end

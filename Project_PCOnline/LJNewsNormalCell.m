@@ -7,6 +7,7 @@
 //
 
 #import "LJNewsNormalCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface LJNewsNormalCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageIcon;
@@ -21,10 +22,10 @@
 
 - (void)setNews:(LJNews *)news
 {
-    self.imageIcon.image = [UIImage imageNamed:news.image];
+    [self.imageIcon sd_setImageWithURL:[NSURL URLWithString:news.image] placeholderImage:[UIImage imageNamed:@"common_default_60x60"]];
     self.titleLab.text = news.title;
     self.pubDate.text = news.pubDate;
-    self.cmtCountLab.text = [NSString stringWithFormat:@"%d评论", [news.cmtCount integerValue]];
+    self.cmtCountLab.text = (news.cmtCount.integerValue == 0) ? @"抢沙发" : [NSString stringWithFormat:@"%d评论", [news.cmtCount integerValue]];
 }
 
 @end

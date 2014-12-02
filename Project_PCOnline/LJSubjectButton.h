@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "LJCommonHeader.h"
+#import "LJSubject.h"
 
 @interface LJSubjectButton : UIButton
 
 + (instancetype)subjectButtonWithFrame:(CGRect)frame andTitle:(NSString *)title;
-
+@property (nonatomic, strong) LJSubject * subject;
 @end
