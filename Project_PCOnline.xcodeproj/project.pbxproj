@@ -98,6 +98,9 @@
 		04C712101A2DA8B9009705DF /* LJBBSRecentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7120F1A2DA8B9009705DF /* LJBBSRecentViewController.m */; };
 		04C712141A2DB04D009705DF /* LJBBSAds.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C712131A2DB04D009705DF /* LJBBSAds.m */; };
 		04C712171A2DB421009705DF /* LJBaseAds.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C712161A2DB421009705DF /* LJBaseAds.m */; };
+		04C7121A1A2DDD07009705DF /* LJHotTopicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C712191A2DDD07009705DF /* LJHotTopicView.m */; };
+		04C7121C1A2DDD30009705DF /* LJHotTopicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7121B1A2DDD30009705DF /* LJHotTopicView.xib */; };
+		04C7121F1A2DE0F9009705DF /* LJHotTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7121E1A2DE0F9009705DF /* LJHotTopic.m */; };
 		8894F9081A2CD4190058C76A /* LJSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894F9071A2CD4190058C76A /* LJSelectButton.m */; };
 		8894F90E1A2CDF890058C76A /* NSString+MyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894F90D1A2CDF890058C76A /* NSString+MyString.m */; };
 		8894F9121A2CE77F0058C76A /* LJNewsNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894F9111A2CE77F0058C76A /* LJNewsNormalCell.m */; };
@@ -293,6 +296,11 @@
 		04C712131A2DB04D009705DF /* LJBBSAds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBBSAds.m; sourceTree = "<group>"; };
 		04C712151A2DB421009705DF /* LJBaseAds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBaseAds.h; sourceTree = "<group>"; };
 		04C712161A2DB421009705DF /* LJBaseAds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBaseAds.m; sourceTree = "<group>"; };
+		04C712181A2DDD07009705DF /* LJHotTopicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJHotTopicView.h; sourceTree = "<group>"; };
+		04C712191A2DDD07009705DF /* LJHotTopicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJHotTopicView.m; sourceTree = "<group>"; };
+		04C7121B1A2DDD30009705DF /* LJHotTopicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJHotTopicView.xib; sourceTree = "<group>"; };
+		04C7121D1A2DE0F9009705DF /* LJHotTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJHotTopic.h; sourceTree = "<group>"; };
+		04C7121E1A2DE0F9009705DF /* LJHotTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJHotTopic.m; sourceTree = "<group>"; };
 		8894F9061A2CD4190058C76A /* LJSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSelectButton.h; sourceTree = "<group>"; };
 		8894F9071A2CD4190058C76A /* LJSelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSelectButton.m; sourceTree = "<group>"; };
 		8894F90C1A2CDF890058C76A /* NSString+MyString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MyString.h"; sourceTree = "<group>"; };
@@ -852,6 +860,9 @@
 			children = (
 				04C712051A2D984C009705DF /* LJBBSButtonView.h */,
 				04C712061A2D984C009705DF /* LJBBSButtonView.m */,
+				04C712181A2DDD07009705DF /* LJHotTopicView.h */,
+				04C712191A2DDD07009705DF /* LJHotTopicView.m */,
+				04C7121B1A2DDD30009705DF /* LJHotTopicView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -861,6 +872,8 @@
 			children = (
 				04C712121A2DB04D009705DF /* LJBBSAds.h */,
 				04C712131A2DB04D009705DF /* LJBBSAds.m */,
+				04C7121D1A2DE0F9009705DF /* LJHotTopic.h */,
+				04C7121E1A2DE0F9009705DF /* LJHotTopic.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -974,6 +987,7 @@
 				046E769B1A2C25EE000FE777 /* pconline_v4_square_fast_forum.json in Resources */,
 				046E76981A2C25EE000FE777 /* PCOnlineProductDatas4inch.json in Resources */,
 				046E76451A2C08C0000FE777 /* MJRefresh.bundle in Resources */,
+				04C7121C1A2DDD30009705DF /* LJHotTopicView.xib in Resources */,
 				046E75D61A2BF700000FE777 /* Images.xcassets in Resources */,
 				046E76951A2C25EE000FE777 /* pconline_v4_bbs_forum_tree4inch.json in Resources */,
 				046E769C1A2C25EE000FE777 /* PCOnlineProductDatas.json in Resources */,
@@ -1003,6 +1017,7 @@
 				046E76481A2C08C0000FE777 /* MJRefreshFooterView.m in Sources */,
 				04C711EC1A2D56DF009705DF /* SDImageCache.m in Sources */,
 				04C711EF1A2D56DF009705DF /* SDWebImageDownloader.m in Sources */,
+				04C7121A1A2DDD07009705DF /* LJHotTopicView.m in Sources */,
 				046E76291A2C08AF000FE777 /* AFURLRequestSerialization.m in Sources */,
 				04C711F51A2D56DF009705DF /* UIImage+MultiFormat.m in Sources */,
 				8894F9081A2CD4190058C76A /* LJSelectButton.m in Sources */,
@@ -1052,6 +1067,7 @@
 				046E766D1A2C1251000FE777 /* LJTabBar.m in Sources */,
 				046E76301A2C08AF000FE777 /* UIImageView+AFNetworking.m in Sources */,
 				04C712101A2DA8B9009705DF /* LJBBSRecentViewController.m in Sources */,
+				04C7121F1A2DE0F9009705DF /* LJHotTopic.m in Sources */,
 				04C7120A1A2DA877009705DF /* LJBBSSquareViewController.m in Sources */,
 				047D6A981A2C933500EB3B64 /* LJArea.m in Sources */,
 				046E762F1A2C08AF000FE777 /* UIButton+AFNetworking.m in Sources */,

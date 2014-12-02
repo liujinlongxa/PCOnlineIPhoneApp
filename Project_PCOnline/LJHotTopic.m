@@ -1,0 +1,20 @@
+//
+//  LJHotTopic.m
+//  Project_PCOnline
+//
+//  Created by mac on 14-12-2.
+//  Copyright (c) 2014年 com.qianfeng. All rights reserved.
+//
+
+#import "LJHotTopic.h"
+
+@implementation LJHotTopic
+
++ (instancetype)hotTopicWithDict:(NSDictionary *)dict
+{
+    LJHotTopic * topic = [[self alloc] init];
+    [topic setValuesForKeysWithDictionary:dict];
+    return topic;
+}
+
+@end
