@@ -164,7 +164,7 @@
 {
     LJNews * news = self.newsData[indexPath.row];
     LJNewsDetailController * detailVC = [[LJNewsDetailController alloc] init];
-    detailVC.urlStr = news.url;
+    detailVC.ID = news.ID;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

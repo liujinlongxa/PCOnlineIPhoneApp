@@ -1,5 +1,5 @@
 //
-//  LJNewsDetailController.h
+//  LJBBSListViewController.h
 //  Project_PCOnline
 //
 //  Created by mac on 14-12-2.
@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LJUrlHeader.h"
 
-@interface LJNewsDetailController : UIViewController
-
-@property (nonatomic, copy) NSString * ID;
+@interface LJBBSListViewController : UIViewController
 
 @end

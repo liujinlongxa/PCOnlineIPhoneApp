@@ -6,19 +6,19 @@
 //  Copyright (c) 2014年 com.qianfeng. All rights reserved.
 //
 
-#import "LJSubjectButton.h"
+#import "LJSelectButton.h"
 
-@interface LJSubjectButton ()
+@interface LJSelectButton ()
 
 @property (nonatomic, weak) UIView * blueView;
 
 @end
 
-@implementation LJSubjectButton
+@implementation LJSelectButton
 
-+ (instancetype)subjectButtonWithFrame:(CGRect)frame andTitle:(NSString *)title;
++ (instancetype)selectButtonWithFrame:(CGRect)frame andTitle:(NSString *)title;
 {
-    LJSubjectButton * button = [[self alloc] initWithFrame:frame];
+    LJSelectButton * button = [[self alloc] initWithFrame:frame];
     
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleColor:BlueTextColor forState:UIControlStateSelected];

@@ -50,7 +50,8 @@
 {
     [super viewWillAppear:animated];
     //加载网页
-    NSURL * url = [NSURL URLWithString:self.urlStr];
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:kNewsDetailUrl, self.ID]];
+    NSLog(@"%@", url.absoluteString);
     NSURLRequest * req = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:req];
 }

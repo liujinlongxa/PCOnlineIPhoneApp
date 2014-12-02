@@ -7,7 +7,7 @@
 //
 
 #import "LJSubjectView.h"
-#import "LJSubjectButton.h"
+#import "LJSelectButton.h"
 #import "NSString+MyString.h"
 
 #define kBtnWH 44
@@ -67,7 +67,7 @@
         //设置按钮，动态计算文字宽度
         CGFloat btnW = [subject.title sizeOfStringInIOS7WithFont:SubjectButtonFont andMaxSize:CGSizeMake(CGRectGetWidth(self.scrollView.frame) * 0.5, CGRectGetHeight(self.scrollView.frame))].width;
         CGFloat btnX = CGRectGetMaxX([[self.scrollView.subviews lastObject] frame]);
-        LJSubjectButton * button = [LJSubjectButton subjectButtonWithFrame:CGRectMake(btnX, 0, btnW + 10, btnH) andTitle:subject.title];
+        LJSelectButton * button = [LJSelectButton selectButtonWithFrame:CGRectMake(btnX, 0, btnW + 10, btnH) andTitle:subject.title];
         [button addTarget:self action:@selector(changeeSubject:) forControlEvents:UIControlEventTouchDown];
         button.subject = subject;
         [self.scrollView addSubview:button];
@@ -78,7 +78,7 @@
     self.scrollView.contentSize = CGSizeMake(CGRectGetMaxX([[self.scrollView.subviews lastObject] frame]), 0);
 }
 
-- (void)changeeSubject:(LJSubjectButton *)sender
+- (void)changeeSubject:(LJSelectButton *)sender
 {
     //设置选中
     curSelectButton.selected = NO;

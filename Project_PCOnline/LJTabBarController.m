@@ -42,12 +42,12 @@
 {
     //资讯
     LJNewsViewController * newsVC = [[LJNewsViewController alloc] init];
-    newsVC.view.backgroundColor = [UIColor redColor];
+//    newsVC.view.backgroundColor = [UIColor redColor];
     LJNavController * newsNav = [[LJNavController alloc] initWithRootViewController:newsVC];
     
     //论坛
     LJBBSViewController * bbsVC = [[LJBBSViewController alloc] init];
-    bbsVC.view.backgroundColor = [UIColor blueColor];
+    bbsVC.view.backgroundColor = [UIColor whiteColor];
     LJNavController * bbsNav = [[LJNavController alloc] initWithRootViewController:bbsVC];
     
     //产品
