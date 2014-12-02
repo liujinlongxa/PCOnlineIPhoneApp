@@ -51,6 +51,7 @@
     }
     self.scrollView.contentSize = CGSizeMake(self.images.count * CGRectGetWidth(frame), 0);
     self.scrollView.pagingEnabled = YES;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
     
 }
 

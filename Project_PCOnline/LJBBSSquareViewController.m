@@ -10,12 +10,15 @@
 #import "LJAdsGroupView.h"
 #import "LJNetWorking.h"
 #import "LJHotTopicView.h"
+#import "LJHotForumsView.h"
 //模型
 #import "LJBBSAds.h"
 #import "LJHotTopic.h"
+#import "LJHotForum.h"
 
 #define kBBSAdsKey @"focus"
 #define kHotTopicKey @"hot-topics"
+#define kHotForumKey @"forums"
 #define kPadding 10
 
 @interface LJBBSSquareViewController ()
@@ -34,6 +37,8 @@
 //每日热帖
 @property (nonatomic, strong) UIView * hotTopicView;
 @property (nonatomic, strong) UIScrollView * hotTopicScrollView;
+//热门板块
+@property (nonatomic, strong) LJHotForumsView * hotForumView;
 @end
 
 @implementation LJBBSSquareViewController
@@ -54,6 +59,9 @@
     //初始化每日热帖
     [self setupHotTopic];
     
+    //初始化热门板块
+    [self setupHotForums];
+    
     self.scrollView.contentSize = CGSizeMake(0, 1000);
 }
 
@@ -65,7 +73,8 @@
     UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
-    self.scrollView.backgroundColor = [UIColor whiteColor];
+    
+    self.scrollView.backgroundColor = RGBColor(230, 230, 230);
 }
 
 //设置广告
@@ -119,7 +128,7 @@
 //初始化每日热帖
 - (void)setupHotTopic
 {
-    UIView * hotTopciView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.btnView.frame) + kPadding, kScrW, 300)];
+    UIView * hotTopciView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.btnView.frame) + kPadding, kScrW, 250)];
     [self.scrollView addSubview:hotTopciView];
     self.hotTopicView = hotTopciView;
     
@@ -131,6 +140,7 @@
     //热帖
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(kPadding, CGRectGetMaxY(lab.frame) + kPadding, kScrW - 2 * kPadding, CGRectGetHeight(self.hotTopicView.frame) - 3 * kPadding - CGRectGetHeight(lab.frame))];
     [self.hotTopicView addSubview:view];
+    view.backgroundColor = [UIColor whiteColor];
     view.layer.cornerRadius = 5;
     view.clipsToBounds = YES;
     //设置边框
@@ -142,24 +152,34 @@
     moreBtn.frame =CGRectMake(0, CGRectGetHeight(view.frame) - moreBtnH, CGRectGetWidth(view.frame), moreBtnH);
     [moreBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [moreBtn setTitle:@"查看更多热帖" forState:UIControlStateNormal];
-    moreBtn.backgroundColor = [UIColor redColor];
     [view addSubview:moreBtn];
     //分割线
-    UIView * line = [[UIView alloc] initWithFrame:CGRectMake(0, moreBtn.frame.origin.y - 1, CGRectGetWidth(view.frame), 1)];
-    line.backgroundColor = [UIColor greenColor];
+    UIView * line = [[UIView alloc] initWithFrame:CGRectMake(0, moreBtn.frame.origin.y + 1, CGRectGetWidth(view.frame), 1)];
+    line.backgroundColor = [UIColor grayColor];
     [view addSubview:line];
     //scrollview
-    UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(kPadding, kPadding, CGRectGetWidth(view.frame) - 2 * kPadding,  CGRectGetHeight(view.frame) - moreBtnH - 2 * kPadding)];
+    UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(view.frame),  CGRectGetHeight(view.frame) - moreBtnH)];
     [view addSubview:scrollView];
     self.hotTopicScrollView = scrollView;
-    self.hotTopicScrollView.backgroundColor = [UIColor yellowColor];
+    self.hotTopicScrollView.pagingEnabled = YES;
+    self.hotTopicScrollView.showsHorizontalScrollIndicator = NO;
     
     //加载数据
     [self loadHotTopicData];
 }
 
+//初始化热门板块
+- (void)setupHotForums
+{
+    LJHotForumsView * hotForumView = [[LJHotForumsView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.hotTopicView.frame) + kPadding, kScrW, 0)];
+    [self.scrollView addSubview:hotForumView];
+    self.hotForumView = hotForumView;
+    [self loadHotForumsData];
+}
+
 
 #pragma mark - 加载数据
+//广告数据
 - (NSMutableArray *)adsData
 {
     if (!_adsData) {
@@ -192,6 +212,7 @@
     [self.adsView reloadViewWithAds:self.adsData];
 }
 
+//每日热帖数据
 - (NSMutableArray *)hotTopicData
 {
     if (!_hotTopicData) {
@@ -200,7 +221,6 @@
     }
     return _hotTopicData;
 }
-
 
 - (void)loadHotTopicData
 {
@@ -226,12 +246,46 @@
         LJHotTopic * topic = self.hotTopicData[i];
         LJHotTopicView * topicView = [[[UINib nibWithNibName:@"LJHotTopicView" bundle:nil] instantiateWithOwner:nil options:nil] firstObject];
         topicView.topic = topic;
+        CGRect frame = topicView.frame;
+        frame.origin.x = i * CGRectGetWidth(topicView.frame);
+        topicView.frame = frame;
         [self.hotTopicScrollView addSubview:topicView];
     }
     self.hotTopicScrollView.contentSize = CGSizeMake(self.hotTopicData.count * CGRectGetWidth(self.hotTopicScrollView.frame), 0);
 }
 
+//热门板块数据
+- (NSMutableArray *)hotForumsData
+{
+    if (!_hotForumsData) {
+        [self loadHotForumsData];
+    }
+    return _hotForumsData;
+}
 
+- (void)loadHotForumsData
+{
+    NSString * urlStr = kBBSHotForumsUrl;
+    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+        //解析数据
+        NSMutableArray * hotForumArr = [NSMutableArray array];
+        for (NSDictionary * forumDict in dict[kHotForumKey]) {
+            LJHotForum * forum = [LJHotForum hotForumWithDict:forumDict];
+            [hotForumArr addObject:forum];
+        }
+        _hotForumsData = hotForumArr;
+        [self reloadForumData];
+    } failure:^(NSHTTPURLResponse *response, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+- (void)reloadForumData
+{
+    self.hotForumView.forumsData = self.hotForumsData;
+    self.scrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.hotForumView.frame));
+}
 
 
 

@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LJUrlHeader.h"
+#import "LJCommonHeader.h"
 
 @interface LJBBSListViewController : UIViewController
 

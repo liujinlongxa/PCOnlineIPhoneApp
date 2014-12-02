@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -10,12 +10,12 @@
             <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kN4-Ga-llk">
-                    <rect key="frame" x="20" y="8" width="260" height="40"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kN4-Ga-llk">
+                    <rect key="frame" x="20" y="10" width="260" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="VKh-b3-Yhf"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -26,7 +26,7 @@
                         <constraint firstAttribute="height" constant="40" id="a7l-sz-UDz"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                     <variation key="default">
                         <mask key="constraints">
@@ -35,16 +35,16 @@
                     </variation>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8f-dL-4ho">
-                    <rect key="frame" x="20" y="108" width="120" height="21"/>
+                    <rect key="frame" x="20" y="108" width="150" height="18"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="120" id="nLN-1h-d20"/>
+                        <constraint firstAttribute="width" constant="150" id="nLN-1h-d20"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.22579441510942017" green="0.54614300369969515" blue="0.96921467781066895" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyb-f3-Hp1">
-                    <rect key="frame" x="180" y="108" width="100" height="21"/>
+                    <rect key="frame" x="180" y="108" width="100" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="fXD-9y-ZUH"/>
                     </constraints>
@@ -81,7 +81,7 @@
                 <outlet property="titleLab" destination="kN4-Ga-llk" id="EBQ-ae-tOd"/>
                 <outlet property="viewAndReplyLab" destination="qyb-f3-Hp1" id="0Tn-4E-5Kj"/>
             </connections>
-            <point key="canvasLocation" x="870" y="380"/>
+            <point key="canvasLocation" x="488" y="381"/>
         </view>
     </objects>
 </document>

@@ -17,7 +17,7 @@
 @property (nonatomic, copy) NSString * forumUrl;
 @property (nonatomic, copy) NSString * lastPostAt;
 @property (nonatomic, copy) NSString * message;
-@property (nonatomic, strong) NSNumber * replayCount;
+@property (nonatomic, strong) NSNumber * replyCount;
 @property (nonatomic, strong) NSNumber * rewardAmount;
 @property (nonatomic, strong) NSNumber * rewardRemain;
 @property (nonatomic, copy) NSString * title;
@@ -25,7 +25,7 @@
 @property (nonatomic, copy) NSString * topicUrl;
 @property (nonatomic, copy) NSString * type;
 @property (nonatomic, strong) NSNumber * userId;
-@property (nonatomic, copy) NSString * urserName;
+@property (nonatomic, copy) NSString * userName;
 @property (nonatomic, copy) NSString * userUrl;
 @property (nonatomic, strong) NSNumber * viewCount;
 
