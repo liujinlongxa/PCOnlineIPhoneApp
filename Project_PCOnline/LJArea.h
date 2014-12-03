@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+//地区模型
 @interface LJArea : NSObject
 @property (nonatomic, copy) NSString * index;
 @property (nonatomic, copy) NSString * title;

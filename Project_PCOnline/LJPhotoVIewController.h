@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "LJBaseViewController.h"
+#import "LJCommonHeader.h"
+#import "LJUrlHeader.h"
 
 @interface LJPhotoVIewController : LJBaseViewController
 

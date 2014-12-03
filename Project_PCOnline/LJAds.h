@@ -7,20 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LJBaseAds.h"
 
-@interface LJAds : NSObject
+//新闻广告模型
+@interface LJAds : LJBaseAds
 
 @property (nonatomic, copy) NSString * counter;
 @property (nonatomic, copy) NSString * ID;
-@property (nonatomic, copy) NSString * image;
 @property (nonatomic, copy) NSString * pubDate;
-@property (nonatomic, copy) NSString * title;
-@property (nonatomic, copy) NSString * url;
 
 + (instancetype)adsWithDict:(NSDictionary *)dict;
-
-
-
-
 
 @end

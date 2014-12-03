@@ -45,9 +45,9 @@
     return view;
 }
 
-- (void)updateWithImage:(UIImage *)image andTitle:(NSString *)title
+- (void)updateWithImage:(NSString *)imageUrl andTitle:(NSString *)title
 {
-    self.imageView.image = image;
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"common_default_93x62"]];
     self.titleLabel.text = title;
 }
 

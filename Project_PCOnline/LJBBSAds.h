@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LJBaseAds.h"
 
+//论坛广告模型
 @interface LJBBSAds : LJBaseAds
 
 @property (nonatomic, copy) NSString * from;

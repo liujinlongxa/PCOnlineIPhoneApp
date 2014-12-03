@@ -27,4 +27,11 @@
 //3.热门板块
 #define kBBSHotForumsUrl @"http://www.pconline.com.cn/app/nq/1405/intf5401.js"
 
+//找产品
+//1.产品子列表
+#define kProductCategoryNameUrl @"http://mrobot.pconline.com.cn/v3/product/brandNameTopv36"
+
+//图赏
+#define kPhotoUrl @"http://agent1.pconline.com.cn:8941/photolib/iphone_cate_json.jsp?id=%@"
+
 #endif

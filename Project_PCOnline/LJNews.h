@@ -14,6 +14,7 @@ typedef enum : NSUInteger {
     InformateTypePhoto = 3,
 } InformateType;
 
+//新闻模型
 @interface LJNews : NSObject
 
 @property (nonatomic, copy) NSString * bigImage;

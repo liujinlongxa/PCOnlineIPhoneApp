@@ -11,6 +11,7 @@
 #import "LJNetWorking.h"
 #import "LJHotTopicView.h"
 #import "LJHotForumsView.h"
+#import "LJInfiniteScrollView.h"
 //模型
 #import "LJBBSAds.h"
 #import "LJHotTopic.h"
@@ -36,7 +37,7 @@
 @property (nonatomic, strong) UIView * btnView;
 //每日热帖
 @property (nonatomic, strong) UIView * hotTopicView;
-@property (nonatomic, strong) UIScrollView * hotTopicScrollView;
+@property (nonatomic, strong) LJInfiniteScrollView * hotTopicScrollView;
 //热门板块
 @property (nonatomic, strong) LJHotForumsView * hotForumView;
 @end
@@ -46,6 +47,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     //初始化滚动视图
     [self setupScrollView];
@@ -63,6 +65,18 @@
     [self setupHotForums];
     
     self.scrollView.contentSize = CGSizeMake(0, 1000);
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.hotTopicScrollView startInfiniteScrollView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.hotTopicScrollView stopScroll];
 }
 
 #pragma mark - 初始化
@@ -135,6 +149,7 @@
     //标签
     UILabel * lab = [[UILabel alloc] initWithFrame:CGRectMake(kPadding * 2, kPadding, kScrW - 4 * kPadding, 40)];
     lab.text = @"每日热帖";
+    lab.textColor = [UIColor grayColor];
     [self.hotTopicView addSubview:lab];
     
     //热帖
@@ -158,7 +173,7 @@
     line.backgroundColor = [UIColor grayColor];
     [view addSubview:line];
     //scrollview
-    UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(view.frame),  CGRectGetHeight(view.frame) - moreBtnH)];
+    LJInfiniteScrollView * scrollView = [[LJInfiniteScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(view.frame),  CGRectGetHeight(view.frame) - moreBtnH)];
     [view addSubview:scrollView];
     self.hotTopicScrollView = scrollView;
     self.hotTopicScrollView.pagingEnabled = YES;
@@ -252,6 +267,7 @@
         [self.hotTopicScrollView addSubview:topicView];
     }
     self.hotTopicScrollView.contentSize = CGSizeMake(self.hotTopicData.count * CGRectGetWidth(self.hotTopicScrollView.frame), 0);
+    [self.hotTopicScrollView startInfiniteScrollView];
 }
 
 //热门板块数据
@@ -284,7 +300,7 @@
 - (void)reloadForumData
 {
     self.hotForumView.forumsData = self.hotForumsData;
-    self.scrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.hotForumView.frame));
+    self.scrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.hotForumView.frame) + kTabBarH + kNavBarH * 2 + kStatusBarH);
 }
 
 

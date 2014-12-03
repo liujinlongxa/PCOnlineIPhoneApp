@@ -7,7 +7,6 @@
 //
 
 #import "LJSubjectView.h"
-#import "LJSelectButton.h"
 #import "NSString+MyString.h"
 
 #define kBtnWH 44
@@ -17,7 +16,7 @@
 
 @property (nonatomic, weak) UIScrollView * scrollView;
 @property (nonatomic, weak) UIButton * moreSubjectBtn;
-
+//@property (nonatomic, weak) LJSelectButton * curSelecteButton;
 @end
 
 @implementation LJSubjectView
@@ -70,6 +69,7 @@
         LJSelectButton * button = [LJSelectButton selectButtonWithFrame:CGRectMake(btnX, 0, btnW + 10, btnH) andTitle:subject.title];
         [button addTarget:self action:@selector(changeeSubject:) forControlEvents:UIControlEventTouchDown];
         button.subject = subject;
+        button.tag = i;
         [self.scrollView addSubview:button];
     }
     curSelectButton = self.scrollView.subviews[0];//默认选中第一个头条Button
@@ -85,9 +85,33 @@
     sender.selected = YES;
     curSelectButton = sender;
     //调用回调方法
-    if ([self.delegate respondsToSelector:@selector(subjectView:didSelectSubject:)]) {
-        [self.delegate subjectView:self didSelectSubject:sender.subject];
+    if ([self.delegate respondsToSelector:@selector(subjectView:didSelectButton:)]) {
+        [self.delegate subjectView:self didSelectButton:sender];
     }
+}
+
+- (void)setSelectIndex:(NSInteger)selectIndex
+{
+    LJSelectButton * btn = self.scrollView.subviews[selectIndex];
+    curSelectButton.selected = NO;
+    btn.selected = YES;
+    curSelectButton = btn;
+    //计算Button区域，将Button显示出来
+    CGFloat btnOffsetX = btn.frame.origin.x;
+    CGFloat scrollOffsetX = self.scrollView.contentOffset.x;
+    CGFloat scrollW = CGRectGetWidth(self.scrollView.frame);
+    CGFloat offset = scrollOffsetX - btnOffsetX;
+    CGFloat retOffsetX = 0;
+    if (offset > 0) {
+        retOffsetX = btn.frame.origin.x;
+        self.scrollView.contentOffset = CGPointMake(retOffsetX, 0);
+    }
+    else if(offset < -(scrollW - CGRectGetWidth(btn.frame)))
+    {
+        retOffsetX = btn.frame.origin.x - (scrollW - CGRectGetWidth(btn.frame));
+        self.scrollView.contentOffset = CGPointMake(retOffsetX, 0);
+    }
+    
 }
 
 @end

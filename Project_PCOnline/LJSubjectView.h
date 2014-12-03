@@ -9,16 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "LJCommonHeader.h"
 #import "LJSubject.h"
+#import "LJSelectButton.h"
 
 @class LJSubjectView;
 
 @protocol LJSubjectViewDelegate <NSObject>
 
 @optional
-- (void)subjectView:(LJSubjectView *)subjectView didSelectSubject:(LJSubject *)subject;
+- (void)subjectView:(LJSubjectView *)subjectView didSelectButton:(LJSelectButton *)subject;
 
 @end
 
+//频道选择视图
 @interface LJSubjectView : UIView
 
 + (instancetype)subjectView;
@@ -27,5 +29,7 @@
 @property (nonatomic, strong) NSArray * subjects;
 
 @property (nonatomic, weak) id<LJSubjectViewDelegate> delegate;
+
+@property (nonatomic, assign) NSInteger selectIndex;
 
 @end

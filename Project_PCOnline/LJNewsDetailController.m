@@ -34,10 +34,11 @@
     self.webView = webView;
     
     //设置导航栏
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pccommon_navbar_secondary"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pccommon_navbar_secondary_64"] forBarMetrics:UIBarMetricsDefault];
     //设置导航栏
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"btn_common_black_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClick:)];
-    
+    //设置状态栏
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     
 }
 
@@ -51,7 +52,6 @@
     [super viewWillAppear:animated];
     //加载网页
     NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:kNewsDetailUrl, self.ID]];
-    NSLog(@"%@", url.absoluteString);
     NSURLRequest * req = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:req];
 }

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "LJBaseViewController.h"
+#import "LJUrlHeader.h"
+#import "LJCommonHeader.h"
 
 @interface LJProductViewController : LJBaseViewController
 

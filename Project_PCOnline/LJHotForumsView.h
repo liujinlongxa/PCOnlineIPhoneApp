@@ -13,7 +13,5 @@
 
 @property (nonatomic, strong) NSArray * forumsData;
 
-- (instancetype)initHotForumsViewWithFroums:(NSArray *)forumsData;
-
 
 @end

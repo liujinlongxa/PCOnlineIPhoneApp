@@ -20,15 +20,15 @@
 
 @implementation LJHotForumsView
 
-- (instancetype)initHotForumsViewWithFroums:(NSArray *)forumsData
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    if (self = [super init]) {
-        self.forumsData = forumsData;
-        
+    self = [super initWithFrame:frame];
+    if (self) {
         UILabel * lab = [[UILabel alloc] init];
         lab.text = @"热门板块";
+        lab.textColor = [UIColor grayColor];
         [self addSubview:lab];
-        
+        self.titleLab = lab;
     }
     return self;
 }
@@ -36,7 +36,7 @@
 - (void)setForumsData:(NSArray *)forumsData
 {
     _forumsData = forumsData;
-    self.titleLab.frame = CGRectMake(2 * kPadding, kPadding, kScrW - kPadding * 4, 40);
+    self.titleLab.frame = CGRectMake(2 * kPadding, 0, kScrW - kPadding * 4, 40);
     CGFloat btnStartY = CGRectGetMaxY(self.titleLab.frame) + kPadding;
     CGFloat btnW = kScrW - 2 * kPadding;
     CGFloat btnH = 70;
@@ -47,7 +47,7 @@
         [self addSubview:button];
     }
     CGRect viewF = self.frame;
-    viewF.size.height = CGRectGetMaxY([self.subviews.lastObject frame]);
+    viewF.size.height = CGRectGetMaxY([self.subviews.lastObject frame]) + kPadding;
     self.frame = viewF;
 }
 

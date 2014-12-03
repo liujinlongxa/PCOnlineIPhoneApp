@@ -54,13 +54,10 @@
 {
     //论坛列表
     self.listVC = [[LJBBSListViewController alloc] init];
-    self.listVC.view.backgroundColor = [UIColor redColor];
     //最新浏览
     self.recentVC = [[LJBBSRecentViewController alloc] init];
-    self.recentVC.view.backgroundColor = [UIColor greenColor];
     //论坛广场
     self.squareVC = [[LJBBSSquareViewController alloc] init];
-    self.squareVC.view.backgroundColor = [UIColor blueColor];
     
     //默认显示论坛广场
     [self.showView addSubview:self.squareVC.view];

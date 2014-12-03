@@ -98,7 +98,7 @@
                 <outlet property="titleLab" destination="iea-D7-CaR" id="v7a-M0-fzS"/>
                 <outlet property="typeImage" destination="TzJ-sz-C1D" id="TXf-gs-ePI"/>
             </connections>
-            <point key="canvasLocation" x="326" y="218"/>
+            <point key="canvasLocation" x="61" y="93"/>
         </tableViewCell>
     </objects>
 </document>
