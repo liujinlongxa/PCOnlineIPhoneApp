@@ -22,7 +22,7 @@
 #define kHotForumKey @"forums"
 #define kPadding 10
 
-@interface LJBBSSquareViewController ()
+@interface LJBBSSquareViewController ()<UIScrollViewDelegate>
 
 //scrollView
 @property (nonatomic, weak) UIScrollView * scrollView;
@@ -178,6 +178,7 @@
     self.hotTopicScrollView = scrollView;
     self.hotTopicScrollView.pagingEnabled = YES;
     self.hotTopicScrollView.showsHorizontalScrollIndicator = NO;
+    self.hotTopicScrollView.delegate = self;
     
     //加载数据
     [self loadHotTopicData];
@@ -257,8 +258,22 @@
 
 - (void)reloadHotTopciData
 {
-    for (int i = 0; i < self.hotTopicData.count; i++) {
-        LJHotTopic * topic = self.hotTopicData[i];
+    for (int i = 0; i < self.hotTopicData.count + 2; i++) {
+        //设置无限循环的数据
+        LJHotTopic * topic = nil;
+        if (i == 0) {
+            topic = self.hotTopicData[self.hotTopicData.count - 1];
+        }
+        else if(i == self.hotTopicData.count + 1)
+        {
+            topic = self.hotTopicData[0];
+        }
+        else
+        {
+            topic = self.hotTopicData[i - 1];
+        }
+        
+        //创建滚动区域的view
         LJHotTopicView * topicView = [[[UINib nibWithNibName:@"LJHotTopicView" bundle:nil] instantiateWithOwner:nil options:nil] firstObject];
         topicView.topic = topic;
         CGRect frame = topicView.frame;
@@ -266,7 +281,7 @@
         topicView.frame = frame;
         [self.hotTopicScrollView addSubview:topicView];
     }
-    self.hotTopicScrollView.contentSize = CGSizeMake(self.hotTopicData.count * CGRectGetWidth(self.hotTopicScrollView.frame), 0);
+    self.hotTopicScrollView.contentSize = CGSizeMake((self.hotTopicData.count + 2) * CGRectGetWidth(self.hotTopicScrollView.frame), 0);
     [self.hotTopicScrollView startInfiniteScrollView];
 }
 
@@ -279,6 +294,7 @@
     return _hotForumsData;
 }
 
+#pragma mark - 重新加载数据
 - (void)loadHotForumsData
 {
     NSString * urlStr = kBBSHotForumsUrl;
@@ -303,12 +319,12 @@
     self.scrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.hotForumView.frame) + kTabBarH + kNavBarH * 2 + kStatusBarH);
 }
 
-
-
-
-
-
-
-
+#pragma mark - 滚动视图代理
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.x >= scrollView.contentSize.width - CGRectGetWidth(scrollView.frame)) {
+        scrollView.contentOffset = CGPointMake(CGRectGetWidth(scrollView.frame), 0);
+    }
+}
 
 @end

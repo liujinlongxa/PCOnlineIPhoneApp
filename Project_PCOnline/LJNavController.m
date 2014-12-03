@@ -23,6 +23,7 @@
     
     //设置button
     UIBarButtonItem * btn = [UIBarButtonItem appearance];
+    btn.tintColor = [UIColor whiteColor];
     NSMutableDictionary * attrDict = [NSMutableDictionary dictionary];
     [attrDict setObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     [btn setTitleTextAttributes:attrDict forState:UIControlStateNormal];

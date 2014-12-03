@@ -26,7 +26,7 @@
     LJAdView * view = [[LJAdView alloc] initWithFrame:frame];
     //设置图片
     UIImageView * imageView = [[UIImageView alloc] initWithFrame:view.bounds];
-    [imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"common_default_100x76"]];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"common_default_300x165"]];
     [view addSubview:imageView];
     view.imageView = imageView;
     //设置标题

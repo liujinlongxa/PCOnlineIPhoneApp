@@ -12,5 +12,6 @@
 @interface LJProductCategoryCell : UITableViewCell
 
 @property (nonatomic, strong) LJProductCategory * category;
+@property (weak, nonatomic) IBOutlet UILabel *subTitleLab;
 
 @end

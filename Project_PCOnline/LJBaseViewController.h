@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LJBaseViewController : UIViewController
-
+- (void)setupNavButton;
 @end

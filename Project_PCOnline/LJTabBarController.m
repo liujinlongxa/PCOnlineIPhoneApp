@@ -42,27 +42,22 @@
 {
     //资讯
     LJNewsViewController * newsVC = [[LJNewsViewController alloc] init];
-//    newsVC.view.backgroundColor = [UIColor redColor];
     LJNavController * newsNav = [[LJNavController alloc] initWithRootViewController:newsVC];
     
     //论坛
     LJBBSViewController * bbsVC = [[LJBBSViewController alloc] init];
-    bbsVC.view.backgroundColor = [UIColor whiteColor];
     LJNavController * bbsNav = [[LJNavController alloc] initWithRootViewController:bbsVC];
     
     //产品
     LJProductViewController * productVC = [[LJProductViewController alloc] init];
-    productVC.view.backgroundColor = [UIColor greenColor];
     LJNavController * productNav = [[LJNavController alloc] initWithRootViewController:productVC];
     
     //图片
     LJPhotoVIewController * photoVC = [[LJPhotoVIewController alloc] init];
-    photoVC.view.backgroundColor = [UIColor orangeColor];
     LJNavController * photoNav = [[LJNavController alloc] initWithRootViewController:photoVC];
     
     //专栏
     LJSpecialViewController * specialVC = [[LJSpecialViewController alloc] init];
-//    specialVC.view.backgroundColor = [UIColor yellowColor];
     LJNavController * specialNav = [[LJNavController alloc] initWithRootViewController:specialVC];
     
     self.viewControllers = @[newsNav, bbsNav, productNav, photoNav, specialNav];

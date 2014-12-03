@@ -15,11 +15,18 @@
 #define kCategoryDataFileName @"PCOnlineProductDatas4inch.json"
 #define kCategoryCellIdentifier @"CategoryCell"
 
+#define kShowViewW 220 //showview的宽度
+#define kTableViewOffset 90 //tableview偏移距离
+
 @interface LJProductViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) UITableView * tableView;
 @property (nonatomic, strong) NSMutableArray * categoryData;
 @property (nonatomic, strong) NSMutableDictionary * categoryNameData;
+
+@property (nonatomic, weak) UIView * showView;//显示品牌或子分类的区域
+
+@property (nonatomic, assign, getter=isShow) BOOL show;
 
 @end
 
@@ -37,6 +44,9 @@
     //加载数据
     [self loadCategoryNameData];
     
+    //初始化showview
+    [self setupShowView];
+    
 }
 
 #pragma mark - 初始化控件
@@ -51,7 +61,21 @@
     UIEdgeInsets edge = self.tableView.contentInset;
     edge.bottom = kTabBarH + kNavBarH + kStatusBarH;
     self.tableView.contentInset = edge;
+    self.tableView.rowHeight = 80;
     
+}
+
+- (void)setupShowView
+{
+    CGFloat viewW = kShowViewW;
+    CGFloat viewH = CGRectGetHeight(self.view.frame);
+    CGFloat viewX = kScrW;
+    CGFloat viewY = 0;
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(viewX, viewY, viewW, viewH)];
+    [self.view addSubview:view];
+    self.showView = view;
+    self.showView.backgroundColor = [UIColor blueColor];
+    self.tableView.showsHorizontalScrollIndicator = NO;
 }
 
 #pragma mark - 加载数据
@@ -107,4 +131,67 @@
     cell.category = category;
     return cell;
 }
+
+#pragma mark - 选中某一行
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //加载数据
+    
+    //判断是否已经显示
+    if(self.isShow) return;
+    
+    //设置动画
+    [self setupAnimation];
+}
+
+//设置动画
+- (void)setupAnimation
+{
+    //动画
+    CGRect showViewF = self.showView.frame;
+    showViewF.origin.x = kScrW - CGRectGetWidth(showViewF);
+    CGRect tableViewF = self.tableView.frame;
+    tableViewF.origin.x = -kTableViewOffset;
+    NSArray * cells = self.tableView.visibleCells;
+    [UIView animateWithDuration:1.0f animations:^{
+        self.showView.frame = showViewF;
+        self.tableView.frame = tableViewF;
+        [cells enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [[obj subTitleLab] setAlpha:0];
+        }];
+    } completion:^(BOOL finished) {
+        //改变导航栏按钮
+        [self changeNavButton];
+    }];
+}
+
+- (void)changeNavButton
+{
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_common_white_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClick:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"筛选" style:UIBarButtonItemStylePlain target:self action:@selector(filterButtonClick:)];
+}
+
+- (void)backButtonClick:(id)sender
+{
+    //动画
+    CGRect showViewF = self.showView.frame;
+    showViewF.origin.x = kScrW;
+    CGRect tableViewF = self.tableView.frame;
+    tableViewF.origin.x = 0;
+    NSArray * cells = self.tableView.visibleCells;
+    [UIView animateWithDuration:1.0f animations:^{
+        self.showView.frame = showViewF;
+        self.tableView.frame = tableViewF;
+        [cells enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [[obj subTitleLab] setAlpha:1];
+        }];
+    } completion:^(BOOL finished) {
+        [self setupNavButton];
+    }];
+}
+
+- (void)filterButtonClick:(id)sender
+{
+}
+
 @end
