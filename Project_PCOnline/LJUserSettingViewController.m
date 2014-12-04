@@ -30,14 +30,5 @@
     self.revealSideViewController.fakeiOS7StatusBarColor = [UIColor clearColor];
 }
 
-//- (void)viewDidLayoutSubviews
-//{
-//    NSLog(@"%@", NSStringFromCGRect(self.imageView.frame));
-//}
-//
-//- (UIStatusBarStyle)preferredStatusBarStyle
-//{
-//    return UIStatusBarStyleLightContent;
-//}
 
 @end

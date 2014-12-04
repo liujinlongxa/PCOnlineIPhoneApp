@@ -9,7 +9,6 @@
 #import "LJBrandTableVC.h"
 #import "LJNetWorking.h"
 #import "LJBrandGroup.h"
-#import "LJBrand.h"
 #import "UIImageView+WebCache.h"
 #import "LJBrandCell.h"
 
@@ -39,6 +38,7 @@
     self.tableView.contentInset = edge;
     CGRect viewF = self.tableView.frame;
     viewF.origin.y = 0;
+    viewF.size.width = 220;
     self.tableView.frame = viewF;
 }
 
@@ -58,7 +58,7 @@
     [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         
-        [[LJCommonData shareCommonData] saveObjc:dict[@"type"] forKey:ProductTypeKey];//保存type
+        [[LJCommonData shareCommonData] saveObjc:dict[@"type"] forKey:kProductTypeKey];//保存type
         //解析数据
         //推荐品牌
         LJBrandGroup * recommendBrand = [LJBrandGroup brandGroupWithDict:dict[@"partition"][@"recommondBrands"]];
@@ -127,6 +127,28 @@
 {
     LJBrandGroup * group = self.brandData[section];
     return [group.index isEqualToString:@"荐"] ? @"推荐品牌" : group.index;
+}
+
+#pragma mark - 选中一个品牌
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self.delegate respondsToSelector:@selector(brandTableVC:didSelectBrand:)]) {
+        
+        LJBrandGroup * group = self.brandData[indexPath.section];
+        LJBrand * brand = group.brands[indexPath.row];
+        
+        [self.delegate brandTableVC:self didSelectBrand:brand];
+    }
+}
+
+#pragma mark - 设置索引
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    NSMutableArray * arr = [NSMutableArray array];
+    for (LJBrandGroup * group in self.brandData) {
+        [arr addObject:group.index];
+    }
+    return [arr copy];
 }
 
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LJProduct.h"
 
 @interface LJProductListCell : UITableViewCell
+
+@property (nonatomic, strong) LJProduct * product;
 
 @end

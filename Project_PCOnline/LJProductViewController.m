@@ -14,6 +14,7 @@
 //控制器
 #import "LJSubProductCategoryTableVC.h"
 #import "LJBrandTableVC.h"
+#import "LJProductListTableVC.h"
 
 #define kCategoryDataFileName @"PCOnlineProductDatas4inch.json"
 #define kCategoryCellIdentifier @"CategoryCell"
@@ -21,7 +22,7 @@
 #define kShowViewW 220 //showview的宽度
 #define kTableViewOffset 90 //tableview偏移距离
 
-@interface LJProductViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface LJProductViewController ()<UITableViewDelegate, UITableViewDataSource, LJBrandTableVCDelegate>
 
 @property (nonatomic, weak) UITableView * tableView;
 @property (nonatomic, strong) NSMutableArray * categoryData;
@@ -160,6 +161,7 @@
     if (category.childs.count == 1) {//slide中显示具体品牌
         LJBrandTableVC * brandVC = [[LJBrandTableVC alloc] initWithStyle:UITableViewStyleGrouped];
         brandVC.subCategory = category.childs[0];
+        brandVC.delegate = self;
         self.curSlideVC = brandVC;
         [self.showView addSubview:brandVC.view];
     }
@@ -218,6 +220,14 @@
         [self setupNavButton];
         self.show = NO;
     }];
+}
+
+//选中某个品牌代理方法
+- (void)brandTableVC:(LJBrandTableVC *)tableVC didSelectBrand:(LJBrand *)brand
+{
+    LJProductListTableVC * productListVC = [[LJProductListTableVC alloc] initWithStyle:UITableViewStylePlain];
+    productListVC.brand = brand;
+    [self.navigationController pushViewController:productListVC animated:YES];
 }
 
 - (void)filterButtonClick:(id)sender

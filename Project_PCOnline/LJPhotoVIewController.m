@@ -11,6 +11,7 @@
 #import "LJPhotoCell.h"
 #import "LJPhotoGroup.h"
 #import "LJNetWorking.h"
+#import "LJDetailPhotoViewController.h"
 
 #define kPhotoIdentifier @"kPhotoIdentifier"
 #define kPhotoUrlID @"41"
@@ -50,6 +51,13 @@
     self.tableView.showsHorizontalScrollIndicator = NO;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //设置导航栏
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pccommon_navbar_primary_64"] forBarMetrics:UIBarMetricsDefault];
+}
+
 #pragma mark - 加载数据
 - (NSMutableArray *)photoGroupData
 {
@@ -75,6 +83,8 @@
     }];
 }
 
+
+
 #pragma mark - tableview代理方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -87,6 +97,15 @@
     LJPhotoGroup * group = self.photoGroupData[indexPath.row];
     cell.photoGroup = group;
     return cell;
+}
+
+#pragma mark - 选中一行
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    LJPhotoGroup * group = self.photoGroupData[indexPath.row];
+    LJDetailPhotoViewController * detailPhotoVC = [[LJDetailPhotoViewController alloc] init];
+    detailPhotoVC.group = group;
+    [self.navigationController pushViewController:detailPhotoVC animated:YES];
 }
 
 

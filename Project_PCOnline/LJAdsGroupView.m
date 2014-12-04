@@ -26,7 +26,6 @@
 {
     LJAdsGroupView * adView = [[self alloc] initWithFrame:frame];
     adView.viewF = frame;
-    NSLog(@"%@", NSStringFromCGRect(frame));
     [adView setupDataWithAds:ads];
     [adView setupView];
     adView.layer.cornerRadius = 5;

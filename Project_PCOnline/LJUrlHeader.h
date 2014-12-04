@@ -40,6 +40,6 @@
 
 //常量字符串
 //找产品
-extern NSString * const ProductTypeKey = @"ProductType";
+#define kProductTypeKey @"ProductType"
 
 #endif

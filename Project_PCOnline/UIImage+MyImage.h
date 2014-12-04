@@ -12,5 +12,5 @@
 
 //返回没有渲染的图盘
 + (instancetype)imageWithNameNoRender:(NSString *)imageName;
-
++(UIImage *)imageWithColor:(UIColor *)color;
 @end

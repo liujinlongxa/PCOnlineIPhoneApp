@@ -29,6 +29,10 @@
 		044C28FA1A30092C00A48121 /* LJProductListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044C28F81A30092C00A48121 /* LJProductListCell.m */; };
 		044C28FB1A30092C00A48121 /* LJProductListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044C28F91A30092C00A48121 /* LJProductListCell.xib */; };
 		044C28FE1A300C0600A48121 /* LJProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 044C28FD1A300C0600A48121 /* LJProduct.m */; };
+		044C29021A30427400A48121 /* LJDetailPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044C29011A30427400A48121 /* LJDetailPhotoViewController.m */; };
+		044C29041A30436E00A48121 /* LJDetailPhotoTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044C29031A30436D00A48121 /* LJDetailPhotoTabView.xib */; };
+		044C29081A3056EA00A48121 /* LJPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044C29061A3056EA00A48121 /* LJPhotoCollectionViewCell.m */; };
+		044C29091A3056EA00A48121 /* LJPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044C29071A3056EA00A48121 /* LJPhotoCollectionViewCell.xib */; };
 		046E75CB1A2BF700000FE777 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 046E75CA1A2BF700000FE777 /* main.m */; };
 		046E75CE1A2BF700000FE777 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 046E75CD1A2BF700000FE777 /* AppDelegate.m */; };
 		046E75D41A2BF700000FE777 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046E75D21A2BF700000FE777 /* Main.storyboard */; };
@@ -189,6 +193,12 @@
 		044C28F91A30092C00A48121 /* LJProductListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJProductListCell.xib; sourceTree = "<group>"; };
 		044C28FC1A300C0600A48121 /* LJProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJProduct.h; sourceTree = "<group>"; };
 		044C28FD1A300C0600A48121 /* LJProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJProduct.m; sourceTree = "<group>"; };
+		044C29001A30427400A48121 /* LJDetailPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJDetailPhotoViewController.h; sourceTree = "<group>"; };
+		044C29011A30427400A48121 /* LJDetailPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJDetailPhotoViewController.m; sourceTree = "<group>"; };
+		044C29031A30436D00A48121 /* LJDetailPhotoTabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJDetailPhotoTabView.xib; sourceTree = "<group>"; };
+		044C29051A3056EA00A48121 /* LJPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		044C29061A3056EA00A48121 /* LJPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		044C29071A3056EA00A48121 /* LJPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		046E75C51A2BF700000FE777 /* Project_PCOnline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project_PCOnline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046E75C91A2BF700000FE777 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		046E75CA1A2BF700000FE777 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -442,6 +452,10 @@
 				044C28C71A2EB99200A48121 /* LJPhotoCell.h */,
 				044C28C81A2EB99200A48121 /* LJPhotoCell.m */,
 				044C28C91A2EB99200A48121 /* LJPhotoCell.xib */,
+				044C29031A30436D00A48121 /* LJDetailPhotoTabView.xib */,
+				044C29051A3056EA00A48121 /* LJPhotoCollectionViewCell.h */,
+				044C29061A3056EA00A48121 /* LJPhotoCollectionViewCell.m */,
+				044C29071A3056EA00A48121 /* LJPhotoCollectionViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -915,6 +929,8 @@
 			children = (
 				046E76821A2C1AF4000FE777 /* LJPhotoVIewController.h */,
 				046E76831A2C1AF4000FE777 /* LJPhotoVIewController.m */,
+				044C29001A30427400A48121 /* LJDetailPhotoViewController.h */,
+				044C29011A30427400A48121 /* LJDetailPhotoViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1268,6 +1284,8 @@
 				046E76951A2C25EE000FE777 /* pconline_v4_bbs_forum_tree4inch.json in Resources */,
 				044C28F31A30001200A48121 /* LJBrandCell.xib in Resources */,
 				046E769C1A2C25EE000FE777 /* PCOnlineProductDatas.json in Resources */,
+				044C29041A30436E00A48121 /* LJDetailPhotoTabView.xib in Resources */,
+				044C29091A3056EA00A48121 /* LJPhotoCollectionViewCell.xib in Resources */,
 				046E769A1A2C25EE000FE777 /* pconline_v4_cms_iphone_channel_tree.json in Resources */,
 				044C28FB1A30092C00A48121 /* LJProductListCell.xib in Resources */,
 				046E76971A2C25EE000FE777 /* pconline_v4_square_fast_forum4inch.json in Resources */,
@@ -1341,6 +1359,7 @@
 				047D6A951A2C837E00EB3B64 /* LJNetWorking.m in Sources */,
 				8894F9121A2CE77F0058C76A /* LJNewsNormalCell.m in Sources */,
 				046E76311A2C08AF000FE777 /* UIProgressView+AFNetworking.m in Sources */,
+				044C29081A3056EA00A48121 /* LJPhotoCollectionViewCell.m in Sources */,
 				04C711F81A2D56DF009705DF /* UIImageView+WebCache.m in Sources */,
 				8894F90E1A2CDF890058C76A /* NSString+MyString.m in Sources */,
 				046E76251A2C08AF000FE777 /* AFHTTPSessionManager.m in Sources */,
@@ -1365,6 +1384,7 @@
 				046E766D1A2C1251000FE777 /* LJTabBar.m in Sources */,
 				046E76301A2C08AF000FE777 /* UIImageView+AFNetworking.m in Sources */,
 				044C28FE1A300C0600A48121 /* LJProduct.m in Sources */,
+				044C29021A30427400A48121 /* LJDetailPhotoViewController.m in Sources */,
 				04C712101A2DA8B9009705DF /* LJBBSRecentViewController.m in Sources */,
 				04C7121F1A2DE0F9009705DF /* LJHotTopic.m in Sources */,
 				04C7120A1A2DA877009705DF /* LJBBSSquareViewController.m in Sources */,

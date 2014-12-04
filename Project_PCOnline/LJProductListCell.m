@@ -7,6 +7,7 @@
 //
 
 #import "LJProductListCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface LJProductListCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *iconImage;
@@ -18,14 +19,14 @@
 
 @implementation LJProductListCell
 
-- (void)awakeFromNib {
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setProduct:(LJProduct *)product
+{
+    [self.iconImage sd_setImageWithURL:[NSURL URLWithString:product.idxPic] placeholderImage:[UIImage imageNamed:@"common_default_80x60"]];
+    self.nameLab.text = product.shortName;
+    self.priceLab.text = [NSString stringWithFormat:@"￥%d", [product.price integerValue]];
+#warning 此处有bug，每种品牌显示的内容应该不一样
+    NSString * desc = [NSString stringWithFormat:@"%@:%@\n%@:%@", product.items[2], product.items[3], product.items[4], product.items[5]];
+    self.desLab.text = desc;
 }
 
 @end
