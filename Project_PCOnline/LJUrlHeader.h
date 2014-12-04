@@ -28,10 +28,18 @@
 #define kBBSHotForumsUrl @"http://www.pconline.com.cn/app/nq/1405/intf5401.js"
 
 //找产品
-//1.产品子列表
+//1.产品子分类列表
 #define kProductCategoryNameUrl @"http://mrobot.pconline.com.cn/v3/product/brandNameTopv36"
+//2.品牌列表
+#define kBrandListUrl @"http://mrobot.pconline.com.cn/v3/product/brand/%@"
+//3.具体品牌产品列表
+#define kProductListUrl @"http://mrobot.pconline.com.cn/v3/product/types/%@?pageNo=%d&orderId=%d&fmt=json&brandId=%d"
 
 //图赏
 #define kPhotoUrl @"http://agent1.pconline.com.cn:8941/photolib/iphone_cate_json.jsp?id=%@"
+
+//常量字符串
+//找产品
+extern NSString * const ProductTypeKey = @"ProductType";
 
 #endif

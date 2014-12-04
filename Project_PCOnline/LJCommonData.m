@@ -101,4 +101,14 @@
     return _AreaData;
 }
 
+- (void)saveObjc:(id)object forKey:(NSString *)key
+{
+    [[NSUserDefaults standardUserDefaults] setObject:object forKey:key];
+}
+
+- (id)loadObjcForKey:(NSString *)key
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:key];
+}
+
 @end

@@ -11,6 +11,9 @@
 #import "LJProductCategory.h"
 #import "LJNetWorking.h"
 #import "LJProductCategoryCell.h"
+//控制器
+#import "LJSubProductCategoryTableVC.h"
+#import "LJBrandTableVC.h"
 
 #define kCategoryDataFileName @"PCOnlineProductDatas4inch.json"
 #define kCategoryCellIdentifier @"CategoryCell"
@@ -27,6 +30,9 @@
 @property (nonatomic, weak) UIView * showView;//显示品牌或子分类的区域
 
 @property (nonatomic, assign, getter=isShow) BOOL show;
+
+@property (nonatomic, strong) UIViewController * curSlideVC;
+
 
 @end
 
@@ -76,6 +82,8 @@
     self.showView = view;
     self.showView.backgroundColor = [UIColor blueColor];
     self.tableView.showsHorizontalScrollIndicator = NO;
+    self.showView.layer.borderColor = [[UIColor grayColor] CGColor];
+    self.showView.layer.borderWidth = 1;
 }
 
 #pragma mark - 加载数据
@@ -94,7 +102,7 @@
         [self loadCategoryData];
         [self.tableView reloadData];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        
+        NSLog(@"%@", error);
     }];
 }
 
@@ -129,6 +137,7 @@
     LJProductCategoryCell * cell = [tableView dequeueReusableCellWithIdentifier:kCategoryCellIdentifier];
     LJProductCategory * category = self.categoryData[indexPath.row];
     cell.category = category;
+    cell.subTitleLab.alpha = self.isShow ? 0 : 1;
     return cell;
 }
 
@@ -136,12 +145,31 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //加载数据
+    [self loadDataInSlideAtIndexPath:indexPath];
     
     //判断是否已经显示
     if(self.isShow) return;
     
     //设置动画
     [self setupAnimation];
+}
+
+- (void)loadDataInSlideAtIndexPath:(NSIndexPath *)indexPath
+{
+    LJProductCategory * category = self.categoryData[indexPath.row];
+    if (category.childs.count == 1) {//slide中显示具体品牌
+        LJBrandTableVC * brandVC = [[LJBrandTableVC alloc] initWithStyle:UITableViewStyleGrouped];
+        brandVC.subCategory = category.childs[0];
+        self.curSlideVC = brandVC;
+        [self.showView addSubview:brandVC.view];
+    }
+    else //显示子分类
+    {
+        LJSubProductCategoryTableVC * subCategoryVC = [[LJSubProductCategoryTableVC alloc] initWithStyle:UITableViewStylePlain];
+        subCategoryVC.subCategories = category.childs;
+        self.curSlideVC = subCategoryVC;
+        [self.showView addSubview:subCategoryVC.view];
+    }
 }
 
 //设置动画
@@ -162,6 +190,7 @@
     } completion:^(BOOL finished) {
         //改变导航栏按钮
         [self changeNavButton];
+        self.show = YES;
     }];
 }
 
@@ -187,6 +216,7 @@
         }];
     } completion:^(BOOL finished) {
         [self setupNavButton];
+        self.show = NO;
     }];
 }
 

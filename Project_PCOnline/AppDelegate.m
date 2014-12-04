@@ -19,7 +19,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     LJTabBarController * tabVC = [[LJTabBarController alloc] init];
     
     PPRevealSideViewController * revealVC = [[PPRevealSideViewController alloc] initWithRootViewController:tabVC];

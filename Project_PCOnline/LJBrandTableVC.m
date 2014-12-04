@@ -7,8 +7,18 @@
 //
 
 #import "LJBrandTableVC.h"
+#import "LJNetWorking.h"
+#import "LJBrandGroup.h"
+#import "LJBrand.h"
+#import "UIImageView+WebCache.h"
+#import "LJBrandCell.h"
+
+#define kBrandCellIdentifier @"BrandCell"
+#define kBrandImageCellIdentifier @"ImageBrandCell"
 
 @interface LJBrandTableVC ()
+
+@property (nonatomic, strong) NSMutableArray * brandData;
 
 @end
 
@@ -17,84 +27,106 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //注册cell
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kBrandCellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"LJBrandCell" bundle:nil] forCellReuseIdentifier:kBrandImageCellIdentifier];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidLayoutSubviews
+{
+    UIEdgeInsets edge = self.tableView.contentInset;
+    edge.bottom = kNavBarH + kTabBarH;
+    self.tableView.contentInset = edge;
+    CGRect viewF = self.tableView.frame;
+    viewF.origin.y = 0;
+    self.tableView.frame = viewF;
+}
+
+#pragma mark - 加载数据
+- (NSMutableArray *)brandData
+{
+    if (!_brandData) {
+        _brandData = [NSMutableArray array];
+        [self loadBrandData];
+    }
+    return _brandData;
+}
+
+- (void)loadBrandData
+{
+    NSString * urlStr = [NSString stringWithFormat:kBrandListUrl, self.subCategory.sid];
+    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+        
+        [[LJCommonData shareCommonData] saveObjc:dict[@"type"] forKey:ProductTypeKey];//保存type
+        //解析数据
+        //推荐品牌
+        LJBrandGroup * recommendBrand = [LJBrandGroup brandGroupWithDict:dict[@"partition"][@"recommondBrands"]];
+        if (recommendBrand.brands.count > 0) {
+            [self.brandData addObject:recommendBrand];
+        }
+        //其他品牌
+        for (NSDictionary * brandDict in dict[@"partition"][@"totalBrands"][@"sections"]) {
+            LJBrandGroup * group = [LJBrandGroup brandGroupWithDict:brandDict];
+            [self.brandData addObject:group];
+        }
+        [self.tableView reloadData];
+    } failure:^(NSHTTPURLResponse *response, NSError *error) {
+        NSLog(@"%@", error);
+    }];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return self.brandData.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    LJBrandGroup * group = self.brandData[section];
+    return group.brands.count;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    LJBrandGroup * group = self.brandData[indexPath.section];
+    LJBrand * brand = group.brands[indexPath.row];
     
-    // Configure the cell...
-    
-    return cell;
+    if (brand.logo != nil && ![brand.logo isEqualToString:@""]) {
+        LJBrandCell * cell = [tableView dequeueReusableCellWithIdentifier:kBrandImageCellIdentifier];
+        cell.brand = brand;
+        return cell;
+    }
+    else
+    {
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:kBrandCellIdentifier];
+        cell.textLabel.text = brand.name;
+        return cell;
+    }
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    LJBrandGroup * group = self.brandData[indexPath.section];
+    LJBrand * brand = group.brands[indexPath.row];
+    if (brand.logo != nil && ![brand.logo isEqualToString:@""]) {
+        return 60;
+    }
+    return 40;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return 30;
+    }
+    return 10;
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    LJBrandGroup * group = self.brandData[section];
+    return [group.index isEqualToString:@"荐"] ? @"推荐品牌" : group.index;
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

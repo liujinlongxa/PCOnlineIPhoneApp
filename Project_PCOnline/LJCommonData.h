@@ -17,4 +17,7 @@
 @property (nonatomic, strong) NSArray * BBSData;
 @property (nonatomic, strong) NSArray * AreaData;
 
+- (void)saveObjc:(id)object forKey:(NSString *)key;
+- (id)loadObjcForKey:(NSString *)key;
+
 @end

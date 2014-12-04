@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LJCommonHeader.h"
+
 
 @interface LJSubProductCategoryTableVC : UITableViewController
+
+@property (nonatomic, strong) NSArray * subCategories;
 
 @end

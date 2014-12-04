@@ -17,9 +17,10 @@
     category.title = dict[@"title"];
     category.image = dict[@"image"];
     category.hightlight_image = dict[@"hightlight-image"];
+    category.childs = dict[@"childs"];
     NSMutableArray * arr = [NSMutableArray array];
     for (NSDictionary * subCategoryDict in category.childs) {
-        LJProductCategory * subCategory = [LJProductCategory productCategoryWithDict:subCategoryDict];
+        LJProductSubCategory * subCategory = [LJProductSubCategory productSubCategoryWithDict:subCategoryDict];
         [arr addObject:subCategory];
     }
     category.childs = [arr copy];

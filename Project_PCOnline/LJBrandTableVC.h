@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LJProductSubCategory.h"
+#import "LJCommonHeader.h"
+#import "LJUrlHeader.h"
+#import "LJCommonData.h"
 
 @interface LJBrandTableVC : UITableViewController
+
+@property (nonatomic, strong) LJProductSubCategory * subCategory;
 
 @end
