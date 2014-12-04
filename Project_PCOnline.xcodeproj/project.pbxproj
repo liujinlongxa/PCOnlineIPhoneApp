@@ -127,6 +127,11 @@
 		04C7121A1A2DDD07009705DF /* LJHotTopicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C712191A2DDD07009705DF /* LJHotTopicView.m */; };
 		04C7121C1A2DDD30009705DF /* LJHotTopicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7121B1A2DDD30009705DF /* LJHotTopicView.xib */; };
 		04C7121F1A2DE0F9009705DF /* LJHotTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7121E1A2DE0F9009705DF /* LJHotTopic.m */; };
+		880780B61A30B9D3005876A2 /* LJPhotoNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880780B51A30B9D3005876A2 /* LJPhotoNavView.xib */; };
+		880780BB1A30C513005876A2 /* LJBBSListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880780BA1A30C513005876A2 /* LJBBSListCell.xib */; };
+		880780BF1A30C6BC005876A2 /* LJScrollTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 880780BE1A30C6BC005876A2 /* LJScrollTabViewController.m */; };
+		880780C41A30C9C3005876A2 /* LJScrollTabButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 880780C31A30C9C3005876A2 /* LJScrollTabButtonsView.m */; };
+		880780C71A30CA68005876A2 /* LJScrollTabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 880780C61A30CA68005876A2 /* LJScrollTabButton.m */; };
 		882774F41A2F71BF00304E57 /* LJSubProductCategoryTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 882774F31A2F71BF00304E57 /* LJSubProductCategoryTableVC.m */; };
 		882774F71A2F71DC00304E57 /* LJBrandTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 882774F61A2F71DC00304E57 /* LJBrandTableVC.m */; };
 		882774FA1A2F729700304E57 /* LJFullScreenBrandVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 882774F91A2F729700304E57 /* LJFullScreenBrandVC.m */; };
@@ -382,6 +387,14 @@
 		04C7121B1A2DDD30009705DF /* LJHotTopicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJHotTopicView.xib; sourceTree = "<group>"; };
 		04C7121D1A2DE0F9009705DF /* LJHotTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJHotTopic.h; sourceTree = "<group>"; };
 		04C7121E1A2DE0F9009705DF /* LJHotTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJHotTopic.m; sourceTree = "<group>"; };
+		880780B51A30B9D3005876A2 /* LJPhotoNavView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJPhotoNavView.xib; sourceTree = "<group>"; };
+		880780BA1A30C513005876A2 /* LJBBSListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJBBSListCell.xib; sourceTree = "<group>"; };
+		880780BD1A30C6BC005876A2 /* LJScrollTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJScrollTabViewController.h; sourceTree = "<group>"; };
+		880780BE1A30C6BC005876A2 /* LJScrollTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJScrollTabViewController.m; sourceTree = "<group>"; };
+		880780C21A30C9C3005876A2 /* LJScrollTabButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJScrollTabButtonsView.h; sourceTree = "<group>"; };
+		880780C31A30C9C3005876A2 /* LJScrollTabButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJScrollTabButtonsView.m; sourceTree = "<group>"; };
+		880780C51A30CA68005876A2 /* LJScrollTabButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJScrollTabButton.h; sourceTree = "<group>"; };
+		880780C61A30CA68005876A2 /* LJScrollTabButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJScrollTabButton.m; sourceTree = "<group>"; };
 		882774F21A2F71BF00304E57 /* LJSubProductCategoryTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSubProductCategoryTableVC.h; sourceTree = "<group>"; };
 		882774F31A2F71BF00304E57 /* LJSubProductCategoryTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSubProductCategoryTableVC.m; sourceTree = "<group>"; };
 		882774F51A2F71DC00304E57 /* LJBrandTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBrandTableVC.h; sourceTree = "<group>"; };
@@ -456,6 +469,7 @@
 				044C29051A3056EA00A48121 /* LJPhotoCollectionViewCell.h */,
 				044C29061A3056EA00A48121 /* LJPhotoCollectionViewCell.m */,
 				044C29071A3056EA00A48121 /* LJPhotoCollectionViewCell.xib */,
+				880780B51A30B9D3005876A2 /* LJPhotoNavView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -702,6 +716,7 @@
 		046E75F61A2BF799000FE777 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				880780C01A30C958005876A2 /* CustomController */,
 				046E764F1A2C09DA000FE777 /* Controller */,
 				046E764E1A2C09D5000FE777 /* Model */,
 				046E764D1A2C09CF000FE777 /* View */,
@@ -861,6 +876,7 @@
 		046E764F1A2C09DA000FE777 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				880780BC1A30C68A005876A2 /* CustomController */,
 				047D6A7D1A2C4D8B00EB3B64 /* ViewController */,
 				047D6A751A2C2CB500EB3B64 /* TabBarController */,
 				046E769D1A2C26DA000FE777 /* NavController */,
@@ -1133,14 +1149,66 @@
 		04C712111A2DA8C4009705DF /* SubController */ = {
 			isa = PBXGroup;
 			children = (
-				04C712081A2DA877009705DF /* LJBBSSquareViewController.h */,
-				04C712091A2DA877009705DF /* LJBBSSquareViewController.m */,
+				880780B91A30C43C005876A2 /* Recent */,
+				880780B81A30C436005876A2 /* Square */,
+				880780B71A30C431005876A2 /* List */,
+			);
+			name = SubController;
+			sourceTree = "<group>";
+		};
+		880780B71A30C431005876A2 /* List */ = {
+			isa = PBXGroup;
+			children = (
 				04C7120B1A2DA891009705DF /* LJBBSListViewController.h */,
 				04C7120C1A2DA891009705DF /* LJBBSListViewController.m */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
+		880780B81A30C436005876A2 /* Square */ = {
+			isa = PBXGroup;
+			children = (
+				04C712081A2DA877009705DF /* LJBBSSquareViewController.h */,
+				04C712091A2DA877009705DF /* LJBBSSquareViewController.m */,
+			);
+			name = Square;
+			sourceTree = "<group>";
+		};
+		880780B91A30C43C005876A2 /* Recent */ = {
+			isa = PBXGroup;
+			children = (
 				04C7120E1A2DA8B9009705DF /* LJBBSRecentViewController.h */,
 				04C7120F1A2DA8B9009705DF /* LJBBSRecentViewController.m */,
 			);
-			name = SubController;
+			name = Recent;
+			sourceTree = "<group>";
+		};
+		880780BC1A30C68A005876A2 /* CustomController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CustomController;
+			sourceTree = "<group>";
+		};
+		880780C01A30C958005876A2 /* CustomController */ = {
+			isa = PBXGroup;
+			children = (
+				880780C11A30C966005876A2 /* ScrollTabViewController */,
+			);
+			name = CustomController;
+			sourceTree = "<group>";
+		};
+		880780C11A30C966005876A2 /* ScrollTabViewController */ = {
+			isa = PBXGroup;
+			children = (
+				880780BD1A30C6BC005876A2 /* LJScrollTabViewController.h */,
+				880780BE1A30C6BC005876A2 /* LJScrollTabViewController.m */,
+				880780C21A30C9C3005876A2 /* LJScrollTabButtonsView.h */,
+				880780C31A30C9C3005876A2 /* LJScrollTabButtonsView.m */,
+				880780C51A30CA68005876A2 /* LJScrollTabButton.h */,
+				880780C61A30CA68005876A2 /* LJScrollTabButton.m */,
+			);
+			name = ScrollTabViewController;
 			sourceTree = "<group>";
 		};
 		882774F11A2F718100304E57 /* TableViewCell */ = {
@@ -1188,6 +1256,7 @@
 			children = (
 				88CAED261A2E2E4200262896 /* LJBBSListCell.h */,
 				88CAED271A2E2E4200262896 /* LJBBSListCell.m */,
+				880780BA1A30C513005876A2 /* LJBBSListCell.xib */,
 			);
 			name = BBSList;
 			sourceTree = "<group>";
@@ -1275,6 +1344,7 @@
 				044C28CB1A2EB99200A48121 /* LJPhotoCell.xib in Resources */,
 				046E75D41A2BF700000FE777 /* Main.storyboard in Resources */,
 				046E75D91A2BF700000FE777 /* LaunchScreen.xib in Resources */,
+				880780B61A30B9D3005876A2 /* LJPhotoNavView.xib in Resources */,
 				8894F9141A2CE7A90058C76A /* LJNewsNormalCell.xib in Resources */,
 				046E769B1A2C25EE000FE777 /* pconline_v4_square_fast_forum.json in Resources */,
 				046E76981A2C25EE000FE777 /* PCOnlineProductDatas4inch.json in Resources */,
@@ -1282,6 +1352,7 @@
 				04C7121C1A2DDD30009705DF /* LJHotTopicView.xib in Resources */,
 				046E75D61A2BF700000FE777 /* Images.xcassets in Resources */,
 				046E76951A2C25EE000FE777 /* pconline_v4_bbs_forum_tree4inch.json in Resources */,
+				880780BB1A30C513005876A2 /* LJBBSListCell.xib in Resources */,
 				044C28F31A30001200A48121 /* LJBrandCell.xib in Resources */,
 				046E769C1A2C25EE000FE777 /* PCOnlineProductDatas.json in Resources */,
 				044C29041A30436E00A48121 /* LJDetailPhotoTabView.xib in Resources */,
@@ -1344,12 +1415,14 @@
 				04C711F21A2D56DF009705DF /* SDWebImagePrefetcher.m in Sources */,
 				044C28E51A2F358C00A48121 /* LJInfiniteScrollView.m in Sources */,
 				046E76631A2C0A37000FE777 /* FMDatabasePool.m in Sources */,
+				880780C41A30C9C3005876A2 /* LJScrollTabButtonsView.m in Sources */,
 				046E76731A2C131C000FE777 /* LJTabButton.m in Sources */,
 				046E762B1A2C08AF000FE777 /* AFURLSessionManager.m in Sources */,
 				047D6A8C1A2C718000EB3B64 /* LJSubject.m in Sources */,
 				04C711F31A2D56DF009705DF /* UIButton+WebCache.m in Sources */,
 				04C711F91A2D56DF009705DF /* UIView+WebCacheOperation.m in Sources */,
 				88CAED211A2E224D00262896 /* LJHotForumButton.m in Sources */,
+				880780BF1A30C6BC005876A2 /* LJScrollTabViewController.m in Sources */,
 				046E762A1A2C08AF000FE777 /* AFURLResponseSerialization.m in Sources */,
 				046E75CE1A2BF700000FE777 /* AppDelegate.m in Sources */,
 				04C712171A2DB421009705DF /* LJBaseAds.m in Sources */,
@@ -1369,6 +1442,7 @@
 				044C28E11A2EEE9C00A48121 /* LJBaseCustomTableView.m in Sources */,
 				044C28DB1A2EE28000A48121 /* LJPriceTableView.m in Sources */,
 				046E76541A2C0A2F000FE777 /* MBProgressHUD.m in Sources */,
+				880780C71A30CA68005876A2 /* LJScrollTabButton.m in Sources */,
 				044C28D81A2EE25700A48121 /* LJLiveTableView.m in Sources */,
 				047D6A801A2C4DA600EB3B64 /* LJBaseViewController.m in Sources */,
 				047D6A921A2C73D300EB3B64 /* LJCommonData.m in Sources */,

@@ -70,7 +70,6 @@ typedef enum : NSUInteger {
 {
     NSString * productType = [[LJCommonData shareCommonData] loadObjcForKey:kProductTypeKey];
     NSString * urlStr = [NSString stringWithFormat:kProductListUrl, productType, self.curPage, self.curSortType, [self.brand.ID integerValue]];
-    NSLog(@"%@", urlStr);
     [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];

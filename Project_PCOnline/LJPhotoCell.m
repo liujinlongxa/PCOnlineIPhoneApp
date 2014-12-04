@@ -20,7 +20,7 @@
 
 - (void)setPhotoGroup:(LJPhotoGroup *)photoGroup
 {
-    [self.coverImage sd_setImageWithURL:[NSURL URLWithString:photoGroup.cover] placeholderImage:[UIImage imageNamed:@"common_default_100x76"]];
+    [self.coverImage sd_setImageWithURL:[NSURL URLWithString:photoGroup.cover] placeholderImage:[UIImage imageNamed:@"common_default_300x165"]];
     self.nameLab.text = photoGroup.name;
     self.countLab.text = [NSString stringWithFormat:@"%d张", photoGroup.photoCount.integerValue];
 }

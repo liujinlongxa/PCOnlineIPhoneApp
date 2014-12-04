@@ -1,40 +1,46 @@
 //
-//  LJSubjectButton.m
+//  LJScrollTabButton.m
 //  Project_PCOnline
 //
-//  Created by liujinlong on 14/12/2.
+//  Created by liujinlong on 14/12/5.
 //  Copyright (c) 2014年 com.qianfeng. All rights reserved.
 //
 
-#import "LJSelectButton.h"
+#import "LJScrollTabButton.h"
+#define kBlueViewH 3
 
-@interface LJSelectButton ()
+@interface LJScrollTabButton ()
 
 @property (nonatomic, weak) UIView * blueView;
 
 @end
 
-@implementation LJSelectButton
+@implementation LJScrollTabButton
 
-+ (instancetype)selectButtonWithFrame:(CGRect)frame andTitle:(NSString *)title
++ (instancetype)scrollTabButtonWithTitle:(NSString *)title
 {
-    LJSelectButton * button = [[self alloc] initWithFrame:frame];
+    LJScrollTabButton * button = [[self alloc] init];
     
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleColor:BlueTextColor forState:UIControlStateSelected];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     //创建蓝色view
-    CGFloat viewX = 0;
-    CGFloat viewH = 3;
-    CGFloat viewY = CGRectGetHeight(frame) - viewH;
-    CGFloat viewW = CGRectGetWidth(frame);
-    UIView * blueView = [[UIView alloc] initWithFrame:CGRectMake(viewX, viewY, viewW, viewH)];
+    UIView * blueView = [[UIView alloc] init];
     blueView.backgroundColor = BlueTextColor;
     blueView.hidden = YES;
     [button addSubview:blueView];
     button.blueView = blueView;
     
     return button;
+}
+
+- (void)layoutSubviews
+{
+    CGFloat viewX = 0;
+    CGFloat viewH = kBlueViewH;
+    CGFloat viewY = CGRectGetHeight(self.frame) - viewH;
+    CGFloat viewW = CGRectGetWidth(self.frame);
+    self.blueView.frame = CGRectMake(viewX, viewY, viewW, viewH);
 }
 
 - (void)setSelected:(BOOL)selected

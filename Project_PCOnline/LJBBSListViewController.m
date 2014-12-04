@@ -31,8 +31,9 @@
     self.tableView = tableView;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.rowHeight = 60;
     //注册cell
-    [self.tableView registerClass:[LJBBSListCell class] forCellReuseIdentifier:@"BBSListCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"LJBBSListCell" bundle:nil] forCellReuseIdentifier:@"BBSListCell"];
 }
 
 - (void)viewDidLayoutSubviews

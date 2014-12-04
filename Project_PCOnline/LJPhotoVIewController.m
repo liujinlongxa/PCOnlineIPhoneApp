@@ -56,6 +56,8 @@
     [super viewWillAppear:animated];
     //设置导航栏
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pccommon_navbar_primary_64"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController setNavigationBarHidden:NO];
+    [UIApplication sharedApplication].statusBarHidden = NO;
 }
 
 #pragma mark - 加载数据
@@ -102,6 +104,7 @@
 #pragma mark - 选中一行
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];//取消选中
     LJPhotoGroup * group = self.photoGroupData[indexPath.row];
     LJDetailPhotoViewController * detailPhotoVC = [[LJDetailPhotoViewController alloc] init];
     detailPhotoVC.group = group;

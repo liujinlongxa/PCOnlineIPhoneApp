@@ -9,12 +9,20 @@
 #import "LJBBSListCell.h"
 #import "UIImageView+WebCache.h"
 
+@interface LJBBSListCell ()
+@property (weak, nonatomic) IBOutlet UIImageView *iconImage;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+
+
+@end
+
 @implementation LJBBSListCell
 
 - (void)setBbsList:(LJBBSList *)bbsList
 {
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:bbsList.listItem.imageUrl] placeholderImage:[UIImage imageNamed:@"common_default_48x48"]];
-    self.textLabel.text = bbsList.listItem.title;
+    [self.iconImage sd_setImageWithURL:[NSURL URLWithString:bbsList.listItem.imageUrl] placeholderImage:[UIImage imageNamed:@"common_default_48x48"]];
+    self.nameLabel.text = bbsList.listItem.title;
 }
 
 @end
