@@ -28,7 +28,7 @@
 
 + (instancetype)scrollTabButtonsViewWithTitles:(NSArray *)titles
 {
-    LJScrollTabButtonsView * view = [[LJScrollTabButtonsView alloc] initWithFrame:CGRectMake(0, 0, kScrW, kBtnH)];
+    LJScrollTabButtonsView * view = [[self alloc] initWithFrame:CGRectMake(0, 0, kScrW, kBtnH)];
     
     //设置Button
     NSInteger count = titles.count;

@@ -17,4 +17,9 @@
     return topic;
 }
 
+- (BOOL)isShowImage
+{
+    return ((self.image != nil) && ![self.image isEqualToString:@""]);
+}
+
 @end

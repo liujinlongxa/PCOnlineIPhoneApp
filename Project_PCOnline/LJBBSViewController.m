@@ -12,9 +12,12 @@
 #import "LJBBSListViewController.h"
 #import "LJBBSSquareViewController.h"
 #import "LJBBSRecentViewController.h"
-#import "LJScrollTabViewController.h"
+//Detail List
+#import "LJBBSListDetailController.h"
+#import "LJBBSHotTopicTableVC.h"
+#import "LJBBSSubTopicListTableVC.h"
 
-@interface LJBBSViewController ()<LJBBSButtonViewDelegate>
+@interface LJBBSViewController ()<LJBBSButtonViewDelegate, LJBBSListViewControllerDelegate>
 
 @property (nonatomic, assign) LJSelectButton * curSelectedButton;
 
@@ -57,6 +60,7 @@
 {
     //论坛列表
     self.listVC = [[LJBBSListViewController alloc] init];
+    self.listVC.delegate = self;
     //最新浏览
     self.recentVC = [[LJBBSRecentViewController alloc] init];
     //论坛广场
@@ -65,5 +69,25 @@
     [self.showView addSubview:self.scrollTabViewController.view];
 }
 
+#pragma mark - 论坛列表选中一行代理方法
+- (void)BBSListViewController:(LJBBSListViewController *)controller didSelectedBBS:(LJBBSList *)bbsList
+{
+    if ([bbsList.listItem.title isEqualToString:@"家电论坛"]) {
+        
+    }
+    else
+    {
+        LJBBSHotTopicTableVC * hotPostsTCV = [[LJBBSHotTopicTableVC alloc] init];
+        LJBBSSubTopicListTableVC * subTopciTVC = [[LJBBSSubTopicListTableVC alloc] init];
+        subTopciTVC.view.backgroundColor = [UIColor blueColor];
+        //创建scrollTabVC
+        LJBBSListDetailController * detailVC = [LJBBSListDetailController BBSListDetailControllerWithControllers:@[hotPostsTCV, subTopciTVC] andTitles:@[@"热门帖子", @"板块列表"]];
+        detailVC.bbsList = bbsList;
+        //设置代理
+        hotPostsTCV.delegate = detailVC;
+        [self.navigationController pushViewController:detailVC animated:YES];
+
+    }
+}
 
 @end

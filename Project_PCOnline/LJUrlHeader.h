@@ -26,6 +26,17 @@
 #define kBBSHotTopicUrl @"http://itbbs.pconline.com.cn/mobile/topics.ajax?type=hot_day&forums=8,2,240024,41,240022&singleForum=false&noForums=762423,2312647&ie=utf-8&count=1&showImage=false"
 //3.热门板块
 #define kBBSHotForumsUrl @"http://www.pconline.com.cn/app/nq/1405/intf5401.js"
+//4.论坛列表详情
+//4.1 最新数码论坛
+#define kNewestBBSDetailUrl @"http://piebbs.pconline.com.cn/mobile/topics.ajax?type=hot_week&forums=2&singleForum=false&noForums=22&ie=utf-8&count=100&showImage=true"
+//4.2 其他论坛
+#define kBBSDetailUrl @"http://itbbs.pconline.com.cn/mobile/topics.ajax?type=hot_week&forums=%d&singleForum=false&noForums=&ie=utf-8&count=100&showImage=true"
+//4.3 家电论坛
+#define kAppliancesBBSDetailUrl @"http://mrobot.pconline.com.cn/v3/itbbs/newForums/%d?orderby=replyat&pageNo=1&pageSize=20"
+//5.1 帖子详情
+#define kBBSTopicDetailUrl @"http://mrobot.pconline.com.cn/v2/itbbs/topics/%d?pageNo=1&picRule=2&authorId=0&topicTemplate=3.6.0&app=pconlinebrowser&appVersion=3.10.0&size=18"
+//5.2 最数码论坛帖子详情
+#define kZuiBBSTopicDetailUrl @"http://mrobot.pconline.com.cn/v2/piebbs/topics/%d?pageNo=1&picRule=2&authorId=0&topicTemplate=3.6.0&app=pconlinebrowser&appVersion=3.10.0&size=18"
 
 //找产品
 //1.产品子分类列表

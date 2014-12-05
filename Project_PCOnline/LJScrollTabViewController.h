@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface LJScrollTabViewController : UIViewController
-
+@property (nonatomic, strong, readonly) NSArray * lj_viewControllers;
+@property (nonatomic, strong, readonly) NSArray * lj_tabTitles;
 + (instancetype)scrollTabViewControllerWithController:(NSArray *)controllers andTitles:(NSArray *)titles;
 
 @end

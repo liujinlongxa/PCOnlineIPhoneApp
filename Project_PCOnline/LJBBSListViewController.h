@@ -9,7 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "LJUrlHeader.h"
 #import "LJCommonHeader.h"
+#import "LJBBSList.h"
+
+@class LJBBSListViewController;
+
+@protocol LJBBSListViewControllerDelegate <NSObject>
+
+@optional
+- (void)BBSListViewController:(LJBBSListViewController *)controller didSelectedBBS:(LJBBSList *)bbsList;
+
+@end
 
 @interface LJBBSListViewController : UIViewController
+
+@property (nonatomic, weak) id<LJBBSListViewControllerDelegate> delegate;
 
 @end

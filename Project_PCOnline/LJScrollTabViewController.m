@@ -13,6 +13,7 @@
 
 @property (nonatomic, weak) UIScrollView * scrollView;
 @property (nonatomic, weak) LJScrollTabButtonsView * buttonsView;
+//同名属性，取消readonly
 @property (nonatomic, strong) NSArray * lj_viewControllers;
 @property (nonatomic, strong) NSArray * lj_tabTitles;
 @end
@@ -21,7 +22,7 @@
 
 + (instancetype)scrollTabViewControllerWithController:(NSArray *)controllers andTitles:(NSArray *)titles
 {
-    LJScrollTabViewController * scrollTabVC = [[LJScrollTabViewController alloc] init];
+    LJScrollTabViewController * scrollTabVC = [[self alloc] init];
     scrollTabVC.lj_viewControllers = controllers;
     scrollTabVC.lj_tabTitles = titles;
     [scrollTabVC setupTabBarView];
@@ -60,6 +61,7 @@
         UIViewController * vc = self.lj_viewControllers[i];
         CGRect viewF = vc.view.frame;
         viewF.origin.x = i * CGRectGetWidth(self.scrollView.frame);
+        viewF.origin.y = 0;
         vc.view.frame = viewF;
         [self.scrollView addSubview:vc.view];
     }

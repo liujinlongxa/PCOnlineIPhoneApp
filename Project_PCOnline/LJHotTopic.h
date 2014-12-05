@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSNumber * forumId;
 @property (nonatomic, copy) NSString * forumName;
 @property (nonatomic, copy) NSString * forumUrl;
+@property (nonatomic, copy) NSString * image;
 @property (nonatomic, copy) NSString * lastPostAt;
 @property (nonatomic, copy) NSString * message;
 @property (nonatomic, strong) NSNumber * replyCount;
@@ -28,6 +29,8 @@
 @property (nonatomic, copy) NSString * userName;
 @property (nonatomic, copy) NSString * userUrl;
 @property (nonatomic, strong) NSNumber * viewCount;
+
+@property (nonatomic, assign, readonly, getter=isShowImage) BOOL showImage;
 
 + (instancetype)hotTopicWithDict:(NSDictionary *)dict;
 

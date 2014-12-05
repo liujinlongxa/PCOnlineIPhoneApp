@@ -9,7 +9,6 @@
 #import "LJBBSListViewController.h"
 #import "LJNetWorking.h"
 #import "LJBBSListItem.h"
-#import "LJBBSList.h"
 #import "LJBBSListCell.h"
 
 @interface LJBBSListViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -84,7 +83,14 @@
     return cell;
 }
 
-
+#pragma mark - 选中一行
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self.delegate respondsToSelector:@selector(BBSListViewController:didSelectedBBS:)]) {
+        LJBBSList * list = self.bbsListData[indexPath.row];
+        [self.delegate BBSListViewController:self didSelectedBBS:list];
+    }
+}
 
 
 @end
