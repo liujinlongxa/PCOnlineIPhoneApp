@@ -11,6 +11,8 @@
 
 @interface LJBBSTopicDetailWebVC ()
 
+@property (nonatomic, copy) NSString * urlStr;
+
 @property (nonatomic, weak) UIWebView * webView;
 
 @end
@@ -22,6 +24,15 @@
     self = [super init];
     if (self) {
         self.hidesBottomBarWhenPushed = YES;
+    }
+    return self;
+}
+
+- (instancetype)initBBSTopicDetailWebVCWithUrlStr:(NSString *)urlStr
+{
+    if (self = [super init]) {
+        self.hidesBottomBarWhenPushed = YES;
+        self.urlStr = urlStr;
     }
     return self;
 }
@@ -38,15 +49,16 @@
     [self.view addSubview:webView];
     self.webView = webView;
     
-    NSString * urlStr = nil;
-    if ([self.bbsList.listItem.title isEqualToString:@"最数码论坛"]) {
-        urlStr = [NSString stringWithFormat:kZuiBBSTopicDetailUrl, self.topic.topicId.integerValue];
+    NSString * urlStr = self.urlStr;
+    if (self.urlStr == nil) {
+        if ([self.bbsList.listItem.title isEqualToString:@"最数码论坛"]) {
+            urlStr = [NSString stringWithFormat:kZuiBBSTopicDetailUrl, self.topic.topicId.integerValue];
+        }
+        else
+        {
+            urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.topic.topicId.integerValue];
+        }
     }
-    else
-    {
-        urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.topic.topicId.integerValue];
-    }
-    NSLog(@"web:%@", urlStr);
     NSURL * url = [NSURL URLWithString:urlStr];
     NSURLRequest * req = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:req];

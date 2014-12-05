@@ -15,4 +15,7 @@
 
 @property (nonatomic, strong) LJHotTopic * topic;
 @property (nonatomic, strong) LJBBSList * bbsList;
+
+- (instancetype)initBBSTopicDetailWebVCWithUrlStr:(NSString *)urlStr;
+
 @end

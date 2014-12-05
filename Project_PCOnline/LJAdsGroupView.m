@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) NSArray * titles;
 @property (nonatomic, strong) NSArray * images;
+@property (nonatomic, strong) NSArray * ads;
 
 @property (nonatomic, weak) LJInfiniteScrollView * scrollView;
 @property (nonatomic, assign) CGRect viewF;
@@ -57,24 +58,29 @@
     for (int i = 0; i < self.images.count + 2; i++) {
         NSString * image = nil;
         NSString * title = nil;
+        LJBaseAds * ad = nil;
         if (i == 0) {
             image = self.images[self.images.count - 1];
             title = self.titles[self.titles.count - 1];
+            ad = self.ads[self.ads.count - 1];
         }
         else if(i == self.images.count + 1)
         {
             image = self.images[0];
             title = self.titles[0];
+            ad = self.ads[0];
         }
         else{
             image = self.images[i - 1];
-            title = (i >= self.titles.count) ? nil : self.titles[i - 1];
+            title = (i > self.titles.count) ? nil : self.titles[i - 1];
+            ad = self.ads[i - 1];
         }
         //改变frame
         CGRect adFrame = self.viewF;
         adFrame.origin.x = i * adFrame.size.width;
         adFrame.origin.y = 0;
         LJAdView * adView = [LJAdView adViewWithFrame:adFrame andImage:image andTitle:title];
+        adView.ad = ad;//添加广告模型
         [self.scrollView addSubview:adView];
     }
     self.scrollView.contentSize = CGSizeMake((self.images.count + 2) * CGRectGetWidth(self.viewF), 0);
@@ -92,6 +98,7 @@
     
     self.titles = [titles copy];
     self.images = [images copy];
+    self.ads = ads;
 }
 
 #pragma mark - 重新加载

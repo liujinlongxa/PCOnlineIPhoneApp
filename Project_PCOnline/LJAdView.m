@@ -45,6 +45,21 @@
     return view;
 }
 
+- (void)setAd:(LJBaseAds *)ad
+{
+    _ad = ad;
+    //设置手势
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(adViewTap:)];
+    [self addGestureRecognizer:tap];
+}
+
+- (void)adViewTap:(UITapGestureRecognizer *)tap
+{
+    NSMutableDictionary * info = [NSMutableDictionary dictionary];
+    [info setObject:self.ad forKey:LJAdsViewTapNotifyAdsKey];
+    [[NSNotificationCenter defaultCenter] postNotificationName:LJAdsViewTapNotify object:self userInfo:info];
+}
+
 - (void)updateWithImage:(NSString *)imageUrl andTitle:(NSString *)title
 {
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"common_default_93x62"]];

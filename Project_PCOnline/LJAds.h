@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "LJBaseAds.h"
+#import "LJCommonHeader.h"
+#import "LJUrlHeader.h"
 
 //新闻广告模型
 @interface LJAds : LJBaseAds

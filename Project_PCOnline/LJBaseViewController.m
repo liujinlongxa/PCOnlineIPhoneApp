@@ -27,6 +27,13 @@
     [self.revealSideViewController pushViewController:settingVC onDirection:PPRevealSideDirectionRight animated:YES];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pccommon_navbar_primary_64"] forBarMetrics:UIBarMetricsDefault];
+    [self setupNavButton];
+}
+
 - (void)setupNavButton
 {
     //设置导航栏

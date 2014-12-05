@@ -952,8 +952,6 @@
 		046E76761A2C1A68000FE777 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				04B30DB31A318DAC007AF4B9 /* TopicDetail */,
-				04B30DA71A314D52007AF4B9 /* BBSListDetail */,
 				04C712111A2DA8C4009705DF /* SubController */,
 				046E767E1A2C1ADF000FE777 /* LJBBSViewController.h */,
 				046E767F1A2C1ADF000FE777 /* LJBBSViewController.m */,
@@ -1214,6 +1212,8 @@
 		880780B71A30C431005876A2 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				04B30DB31A318DAC007AF4B9 /* TopicDetail */,
+				04B30DA71A314D52007AF4B9 /* BBSListDetail */,
 				04C7120B1A2DA891009705DF /* LJBBSListViewController.h */,
 				04C7120C1A2DA891009705DF /* LJBBSListViewController.m */,
 			);

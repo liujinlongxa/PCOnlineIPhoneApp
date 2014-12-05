@@ -12,10 +12,12 @@
 #import "LJBBSListViewController.h"
 #import "LJBBSSquareViewController.h"
 #import "LJBBSRecentViewController.h"
+#import "LJBBSAds.h"
 //Detail List
 #import "LJBBSListDetailController.h"
 #import "LJBBSHotTopicTableVC.h"
 #import "LJBBSSubTopicListTableVC.h"
+#import "LJBBSTopicDetailWebVC.h"
 
 @interface LJBBSViewController ()<LJBBSButtonViewDelegate, LJBBSListViewControllerDelegate>
 
@@ -39,21 +41,22 @@
     [super viewDidLoad];
     self.navigationItem.title = @"论坛";
     
-    //设置按钮
-//    NSArray * btnTitleArr = @[@"论坛广场", @"论坛列表", @"最近浏览"];
-//    LJBBSButtonView * btnView = [LJBBSButtonView bbsButtonViewWithFrame:CGRectMake(0, 0, kScrW, kNavBarH) andTitles:btnTitleArr];
-//    btnView.delegate = self;
-//    self.curSelectedButton = [btnView.subviews firstObject];
-//    self.curSelectedButton.selected = YES;
-//    [self.view addSubview:btnView];
-//    
-//    //设置显示区域
+  //设置显示区域
     UIView * showView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScrW, kScrH - kNavBarH - kTabBarH - kStatusBarH)];
     [self.view addSubview:showView];
     self.showView = showView;
     
     //设置控制器
     [self setupControllers];
+    
+    //注册广告接收通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(adsClick:) name:LJAdsViewTapNotify object:nil];
+}
+
+- (void)dealloc
+{
+    //删除通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setupControllers
@@ -87,6 +90,16 @@
         hotPostsTCV.delegate = detailVC;
         [self.navigationController pushViewController:detailVC animated:YES];
 
+    }
+}
+
+#pragma mark - 广告点击
+- (void)adsClick:(NSNotification *)notify
+{
+    id ads = notify.userInfo[LJAdsViewTapNotifyAdsKey];
+    if ([ads isKindOfClass:[LJBBSAds class]]) {
+        LJBBSTopicDetailWebVC * topicDetailWeb = [[LJBBSTopicDetailWebVC alloc] initBBSTopicDetailWebVCWithUrlStr:((LJBBSAds *)ads).url];
+        [self.navigationController pushViewController:topicDetailWeb animated:YES];
     }
 }
 

@@ -66,6 +66,14 @@
     //默认选中头条
     LJBaseCustomTableView * table = self.scrollView.subviews[0];
     [table beginRefresh];
+    
+    //注册广告点击通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(adsClikc:) name:LJAdsViewTapNotify object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 //初始化滚动视图
@@ -149,6 +157,18 @@
     LJBaseCustomTableView * table = self.scrollView.subviews[index];
     [table beginRefresh];
     self.subjectView.selectIndex = index;
+}
+
+#pragma mark - 广告点击
+- (void)adsClikc:(NSNotification *)notify
+{
+    id ad = notify.userInfo[LJAdsViewTapNotifyAdsKey];
+    if ([ad isKindOfClass:[LJAds class]]) {
+        LJAds * newsAd = (LJAds *)ad;
+        LJNewsDetailController * detailVC = [[LJNewsDetailController alloc] init];
+        detailVC.ID = newsAd.ID;
+        [self.navigationController pushViewController:detailVC animated:YES];
+    }
 }
 
 @end

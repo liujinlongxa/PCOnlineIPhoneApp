@@ -21,7 +21,9 @@
 - (NSString *)url
 {
     if (!_url) {
-        
+        if ([self.from isEqualToString:@"itbbs"]) {
+            _url = [NSString stringWithFormat:kBBSTopicDetailUrl, self.topicId.integerValue];
+        }
     }
     return _url;
 }
