@@ -11,7 +11,7 @@
 
 @interface LJScrollTabButton : UIButton
 
-+ (instancetype)scrollTabButtonWithTitle:(NSString *)title;
++ (instancetype)scrollTabButtonWithFrame:(CGRect)frame andTitle:(NSString *)title;
 //@property (nonatomic, strong) LJSubject * subject;
 
 @end

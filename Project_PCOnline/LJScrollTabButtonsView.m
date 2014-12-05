@@ -18,6 +18,14 @@
 
 @implementation LJScrollTabButtonsView
 
+- (NSMutableArray *)buttons
+{
+    if (!_buttons) {
+        _buttons = [NSMutableArray array];
+    }
+    return _buttons;
+}
+
 + (instancetype)scrollTabButtonsViewWithTitles:(NSArray *)titles
 {
     LJScrollTabButtonsView * view = [[LJScrollTabButtonsView alloc] initWithFrame:CGRectMake(0, 0, kScrW, kBtnH)];
@@ -28,10 +36,7 @@
     CGFloat padding = (kScrW - btnW * count) / (count + 1);
     CGFloat btnH = CGRectGetHeight(view.frame);
     for (int i = 0; i < count; i++) {
-        LJScrollTabButton * btn = [LJScrollTabButton scrollTabButtonWithTitle:titles[i]];
-        btn.frame = CGRectMake(i * (btnW + padding) + padding, 0, btnW, btnH);
-        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [btn setTitle:@"haha" forState:UIControlStateNormal];
+        LJScrollTabButton * btn = [LJScrollTabButton scrollTabButtonWithFrame:CGRectMake(i * (btnW + padding) + padding, 0, btnW, btnH) andTitle:titles[i]];
         btn.tag = i;
         [btn addTarget:view action:@selector(btnClick:) forControlEvents:UIControlEventTouchDown];
         [view addSubview:btn];
@@ -42,18 +47,17 @@
     line.backgroundColor = [UIColor lightGrayColor];
     [view addSubview:line];
     //设置默认选中
-    view.curSelectIndex = 0;
+    view.curSelectIndex = -1;
     [view selectButtonAtIndex:0];
     return view;
 }
+
 //点击事件
 - (void)btnClick:(LJScrollTabButton *)sender
 {
-    NSLog(@"haha");
-    if (self) {
-        if ([self.delegate respondsToSelector:@selector(scrollTabButtonsView:didSelectIndex:)]) {
-            [self.delegate scrollTabButtonsView:self didSelectIndex:sender.tag];
-        }
+    if ([self.delegate respondsToSelector:@selector(scrollTabButtonsView:didSelectIndex:)]) {
+        [self.delegate scrollTabButtonsView:self didSelectIndex:sender.tag];
+        [self selectButtonAtIndex:sender.tag];
     }
 }
 
@@ -61,7 +65,9 @@
 {
     if(index == self.curSelectIndex) return;
     [self.buttons[index] setSelected:YES];
-    [self.buttons[self.curSelectIndex] setSelected:NO];
+    if (self.curSelectIndex >= 0) {
+        [self.buttons[self.curSelectIndex] setSelected:NO];
+    }
     self.curSelectIndex = index;
 }
 

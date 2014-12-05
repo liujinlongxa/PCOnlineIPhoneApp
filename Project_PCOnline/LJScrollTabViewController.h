@@ -10,15 +10,6 @@
 
 @interface LJScrollTabViewController : UIViewController
 
-
-
 + (instancetype)scrollTabViewControllerWithController:(NSArray *)controllers andTitles:(NSArray *)titles;
 
 @end
-
-//@interface UIViewController (ScrollTabViewController)
-//
-//@property (nonatomic, copy) NSString * scrollTabTitle;
-//@property (nonatomic, strong) LJScrollTabViewController * scrollTabController;
-//
-//@end

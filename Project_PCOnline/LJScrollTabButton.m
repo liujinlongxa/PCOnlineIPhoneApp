@@ -17,30 +17,26 @@
 
 @implementation LJScrollTabButton
 
-+ (instancetype)scrollTabButtonWithTitle:(NSString *)title
++ (instancetype)scrollTabButtonWithFrame:(CGRect)frame andTitle:(NSString *)title
 {
-    LJScrollTabButton * button = [[self alloc] init];
+    LJScrollTabButton * button = [[self alloc] initWithFrame:frame];
     
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleColor:BlueTextColor forState:UIControlStateSelected];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     //创建蓝色view
     UIView * blueView = [[UIView alloc] init];
+    CGFloat viewX = 0;
+    CGFloat viewH = kBlueViewH;
+    CGFloat viewY = CGRectGetHeight(button.frame) - viewH;
+    CGFloat viewW = CGRectGetWidth(button.frame);
+    blueView.frame = CGRectMake(viewX, viewY, viewW, viewH);
     blueView.backgroundColor = BlueTextColor;
     blueView.hidden = YES;
     [button addSubview:blueView];
     button.blueView = blueView;
     
     return button;
-}
-
-- (void)layoutSubviews
-{
-    CGFloat viewX = 0;
-    CGFloat viewH = kBlueViewH;
-    CGFloat viewY = CGRectGetHeight(self.frame) - viewH;
-    CGFloat viewW = CGRectGetWidth(self.frame);
-    self.blueView.frame = CGRectMake(viewX, viewY, viewW, viewH);
 }
 
 - (void)setSelected:(BOOL)selected

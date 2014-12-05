@@ -42,7 +42,6 @@
     self.buttonsView = buttonsView;
     self.buttonsView.delegate = self;
     self.buttonsView.backgroundColor = [UIColor whiteColor];
-    NSLog(@"%@", self.buttonsView.subviews);
 }
 
 - (void)setupScrollView
@@ -52,6 +51,7 @@
     self.scrollView = scrollView;
     self.scrollView.pagingEnabled = YES;
     self.scrollView.delegate = self;
+    self.scrollView.bounces = NO;
 }
 
 - (void)setupControllers

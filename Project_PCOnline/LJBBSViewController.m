@@ -48,7 +48,6 @@
     UIView * showView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScrW, kScrH - kNavBarH - kTabBarH - kStatusBarH)];
     [self.view addSubview:showView];
     self.showView = showView;
-    self.showView.backgroundColor = [UIColor yellowColor];
     
     //设置控制器
     [self setupControllers];
@@ -63,35 +62,8 @@
     //论坛广场
     self.squareVC = [[LJBBSSquareViewController alloc] init];
     self.scrollTabViewController = [LJScrollTabViewController scrollTabViewControllerWithController:@[self.squareVC, self.listVC, self.recentVC] andTitles:@[@"论坛广场", @"论坛列表", @"最近浏览"]];
-//    //默认显示论坛广场
-//    [self.showView addSubview:self.squareVC.view];
     [self.showView addSubview:self.scrollTabViewController.view];
 }
 
-- (void)viewDidLayoutSubviews
-{
-    NSLog(@"%@", self.showView.subviews);
-}
-
-- (void)BBSButtonView:(LJBBSButtonView *)view didClickButton:(LJSelectButton *)button
-{
-//    self.curSelectedButton.selected = NO;
-//    button.selected = YES;
-//    self.curSelectedButton = button;
-//    
-//    [self.showView.subviews[0] removeFromSuperview];
-//    if (button.tag == 0) {
-//        [self.showView addSubview:self.squareVC.view];
-//    }
-//    else if(button.tag == 1)
-//    {
-//        [self.showView addSubview:self.listVC.view];
-//    }
-//    else
-//    {
-//        [self.showView addSubview:self.recentVC.view];
-//    }
-    
-}
 
 @end
