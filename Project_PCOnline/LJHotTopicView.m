@@ -22,6 +22,7 @@
 
 - (void)setTopic:(LJHotTopic *)topic
 {
+    _topic = topic;
     self.titleLab.text = topic.title;
     self.messageLab.text = topic.message;
     self.forumNameLab.text = topic.forumName;

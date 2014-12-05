@@ -12,10 +12,14 @@
 #import "LJHotTopicView.h"
 #import "LJHotForumsView.h"
 #import "LJInfiniteScrollView.h"
+//View
+#import "LJFastForumButton.h"
+#import "LJFastSubForumButton.h"
 //模型
 #import "LJBBSAds.h"
-#import "LJHotTopic.h"
-#import "LJHotForum.h"
+#import "LJBBSListItem.h"
+
+#define kFastForumDataFileName @"pconline_v4_square_fast_forum4inch.json"
 
 #define kBBSAdsKey @"focus"
 #define kHotTopicKey @"hot-topics"
@@ -31,6 +35,7 @@
 @property (nonatomic, strong) NSMutableArray * adsData;
 @property (nonatomic, strong) NSMutableArray * hotTopicData;
 @property (nonatomic, strong) NSMutableArray * hotForumsData;
+@property (nonatomic, strong) NSMutableArray * fastForumsData;
 //广告栏
 @property (nonatomic, strong) LJAdsGroupView * adsView;
 //按钮
@@ -56,7 +61,7 @@
     [self setupAdsView];
     
     //设置Buttons
-    [self setupButtons];
+    [self setupFastForumView];
     
     //初始化每日热帖
     [self setupHotTopic];
@@ -105,38 +110,33 @@
 }
 
 //初始化Buttons
-- (void)setupButtons
+- (void)setupFastForumView
 {
     UIView * btnView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.adsView.frame), kScrW, 150)];
     [self.scrollView addSubview:btnView];
     self.btnView = btnView;
     
-    //设置button
-    [self setupButtonWithImage:@"fast_forum_shouji"];
-    [self setupButtonWithImage:@"fast_forum_diy"];
-    [self setupButtonWithImage:@"fast_forum_bijiben"];
-    [self setupButtonWithImage:@"fast_forum_zuishuma"];
-    [self setupButtonWithImage:@"fast_forum_ershou"];
-    [self setupButtonWithImage:@"fast_forum_sheying"];
-    
     CGFloat btnW = (CGRectGetWidth(btnView.frame) - 4 * kPadding) / 3;
     CGFloat btnH = (CGRectGetHeight(btnView.frame) - 3 * kPadding) / 2;
     for (int i = 0; i < 2; i++) {
         for (int j = 0; j < 3; j++) {
+            
+            LJBBSList * bbsList = self.fastForumsData[i * 2 + j];
+            
+            //创建Button
+            NSString * imageName = bbsList.listItem.imageUrl;
+            imageName = [imageName substringFromIndex:[imageName rangeOfString:@"/"].location + 1];
+            NSLog(@"%@", imageName);
+            LJFastForumButton * btn = [LJFastForumButton fastForumButtonWithImage:imageName];
+            btn.fastForumList = self.fastForumsData[i * 2 + j];
+            [btn addTarget:self action:@selector(fastForumBtnClick:) forControlEvents:UIControlEventTouchUpInside];
             CGFloat btnX = j * (btnW + kPadding) + kPadding;
             CGFloat btnY = i * (btnH + kPadding) + kPadding;
-            [self.btnView.subviews[i * 3 + j] setFrame:CGRectMake(btnX, btnY, btnW, btnH)];
+            btn.frame = CGRectMake(btnX, btnY, btnW, btnH);
+            [self.btnView addSubview:btn];
         }
     }
     
-}
-
-- (UIButton *)setupButtonWithImage:(NSString *)imageName
-{
-    UIButton * btn = [[UIButton alloc] init];
-    [btn setBackgroundImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-    [self.btnView addSubview:btn];
-    return btn;
 }
 
 //初始化每日热帖
@@ -195,6 +195,30 @@
 
 
 #pragma mark - 加载数据
+//fast forum数据
+- (NSMutableArray *)fastForumsData
+{
+    if (!_fastForumsData) {
+        _fastForumsData = [NSMutableArray array];
+        [self loadFastForumData];
+    }
+    return _fastForumsData;
+}
+
+- (void)loadFastForumData
+{
+    NSString * path = [[NSBundle mainBundle] pathForResource:kFastForumDataFileName ofType:nil];
+    NSData * jsonData = [NSData dataWithContentsOfFile:path];
+    NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
+    
+    NSMutableArray * arr = [NSMutableArray array];
+    for (NSDictionary * bbsListDict in dict[@"children"]) {
+        LJBBSList * bbsList = [LJBBSList bbsListWithDict:bbsListDict];
+        [arr addObject:bbsList];
+    }
+    self.fastForumsData = arr;
+}
+
 //广告数据
 - (NSMutableArray *)adsData
 {
@@ -280,6 +304,10 @@
         frame.origin.x = i * CGRectGetWidth(topicView.frame);
         topicView.frame = frame;
         [self.hotTopicScrollView addSubview:topicView];
+        //添加手势
+        topicView.userInteractionEnabled = YES;
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hotTopciViewClick:)];
+        [topicView addGestureRecognizer:tap];
     }
     self.hotTopicScrollView.contentSize = CGSizeMake((self.hotTopicData.count + 2) * CGRectGetWidth(self.hotTopicScrollView.frame), 0);
     [self.hotTopicScrollView startInfiniteScrollView];
@@ -328,5 +356,22 @@
 }
 
 #pragma mark - 点击加载新界面
+//点击每日热帖
+- (void)hotTopciViewClick:(UITapGestureRecognizer *)sender
+{
+    LJHotTopicView * view = (LJHotTopicView *)sender.view;
+    if ([self.delegate respondsToSelector:@selector(BBSSquareViewController:didSelectHotTopic:)]) {
+        [self.delegate BBSSquareViewController:self didSelectHotTopic:view.topic];
+    }
+    
+}
+
+//fast forum点击
+- (void)fastForumBtnClick:(LJFastForumButton *)sender
+{
+    if ([self.delegate respondsToSelector:@selector(BBSSquareViewController:didSelectFastForum:)]) {
+        [self.delegate BBSSquareViewController:self didSelectFastForum:sender.fastForumList];
+    }
+}
 
 @end

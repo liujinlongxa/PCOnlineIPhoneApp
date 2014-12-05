@@ -9,7 +9,23 @@
 #import <UIKit/UIKit.h>
 #import "LJUrlHeader.h"
 #import "LJCommonHeader.h"
+#import "LJHotTopic.h"
+#import "LJHotForum.h"
+#import "LJBBSList.h"
+
+@class LJBBSSquareViewController;
+
+@protocol  LJBBSSquareViewControllerDelegate <NSObject>
+
+@optional
+- (void)BBSSquareViewController:(LJBBSSquareViewController *)controller didSelectHotTopic:(LJHotTopic *)topic;
+
+- (void)BBSSquareViewController:(LJBBSSquareViewController *)controller didSelectFastForum:(LJBBSList *)bbsList;
+
+@end
 
 @interface LJBBSSquareViewController : UIViewController
+
+@property (nonatomic, weak) id<LJBBSSquareViewControllerDelegate> delegate;
 
 @end

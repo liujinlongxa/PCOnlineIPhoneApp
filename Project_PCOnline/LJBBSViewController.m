@@ -18,8 +18,9 @@
 #import "LJBBSHotTopicTableVC.h"
 #import "LJBBSSubTopicListTableVC.h"
 #import "LJBBSTopicDetailWebVC.h"
+#import "LJBBSFastForumTVC.h"
 
-@interface LJBBSViewController ()<LJBBSButtonViewDelegate, LJBBSListViewControllerDelegate>
+@interface LJBBSViewController ()<LJBBSButtonViewDelegate, LJBBSListViewControllerDelegate, LJBBSSquareViewControllerDelegate>
 
 @property (nonatomic, assign) LJSelectButton * curSelectedButton;
 
@@ -68,6 +69,7 @@
     self.recentVC = [[LJBBSRecentViewController alloc] init];
     //论坛广场
     self.squareVC = [[LJBBSSquareViewController alloc] init];
+    self.squareVC.delegate = self;
     self.scrollTabViewController = [LJScrollTabViewController scrollTabViewControllerWithController:@[self.squareVC, self.listVC, self.recentVC] andTitles:@[@"论坛广场", @"论坛列表", @"最近浏览"]];
     [self.showView addSubview:self.scrollTabViewController.view];
 }
@@ -101,6 +103,25 @@
         LJBBSTopicDetailWebVC * topicDetailWeb = [[LJBBSTopicDetailWebVC alloc] initBBSTopicDetailWebVCWithUrlStr:((LJBBSAds *)ads).url];
         [self.navigationController pushViewController:topicDetailWeb animated:YES];
     }
+}
+
+#pragma mark - 点击热帖
+- (void)BBSSquareViewController:(LJBBSSquareViewController *)controller didSelectHotTopic:(LJHotTopic *)topic
+{
+    NSString * urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, topic.topicId.integerValue];
+    LJBBSTopicDetailWebVC * webVC = [[LJBBSTopicDetailWebVC alloc] initBBSTopicDetailWebVCWithUrlStr:urlStr];
+    [self.navigationController pushViewController:webVC animated:YES];
+}
+
+#pragma mark - 点击热门板块
+
+
+#pragma mark - 点击fast forum
+- (void)BBSSquareViewController:(LJBBSSquareViewController *)controller didSelectFastForum:(LJBBSList *)bbsList
+{
+    LJBBSFastForumTVC * fastForumTVC = [[LJBBSFastForumTVC alloc] initWithStyle:UITableViewStylePlain];
+    fastForumTVC.fastForumList = bbsList;
+    [self.navigationController pushViewController:fastForumTVC animated:YES];
 }
 
 @end

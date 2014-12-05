@@ -44,6 +44,7 @@
     for (int i = 0; i < forumsData.count; i++) {
         LJHotForumButton * button = [[LJHotForumButton alloc] initWithFrame:CGRectMake(btnX, btnStartY + i * (btnH + kPadding), btnW, btnH)];
         button.hotForum = forumsData[i];
+        [button addTarget:self action:@selector(forumsButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
     }
     CGRect viewF = self.frame;
@@ -51,5 +52,10 @@
     self.frame = viewF;
 }
 
+#pragma mark - 按钮点击
+- (void)forumsButtonClick:(LJHotForumButton *)sender
+{
+    
+}
 
 @end

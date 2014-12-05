@@ -81,7 +81,7 @@
                 <outlet property="titleLab" destination="kN4-Ga-llk" id="EBQ-ae-tOd"/>
                 <outlet property="viewAndReplyLab" destination="qyb-f3-Hp1" id="0Tn-4E-5Kj"/>
             </connections>
-            <point key="canvasLocation" x="488" y="381"/>
+            <point key="canvasLocation" x="272" y="123"/>
         </view>
     </objects>
 </document>

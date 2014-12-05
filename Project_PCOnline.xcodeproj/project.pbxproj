@@ -105,6 +105,9 @@
 		04B30DAD1A315A07007AF4B9 /* LJHotTopicImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B30DAC1A315A07007AF4B9 /* LJHotTopicImageCell.xib */; };
 		04B30DAF1A315A2F007AF4B9 /* LJHotTopicNoImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B30DAE1A315A2F007AF4B9 /* LJHotTopicNoImageCell.xib */; };
 		04B30DB21A3186B1007AF4B9 /* LJBBSTopicDetailWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B30DB11A3186B1007AF4B9 /* LJBBSTopicDetailWebVC.m */; };
+		04B30DB91A31D822007AF4B9 /* LJFastForumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B30DB81A31D822007AF4B9 /* LJFastForumButton.m */; };
+		04B30DBC1A31D833007AF4B9 /* LJFastSubForumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B30DBB1A31D833007AF4B9 /* LJFastSubForumButton.m */; };
+		04B30DC01A31DFAE007AF4B9 /* LJBBSFastForumTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B30DBF1A31DFAE007AF4B9 /* LJBBSFastForumTVC.m */; };
 		04C711C71A2D5304009705DF /* LJAds.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C711C61A2D5304009705DF /* LJAds.m */; };
 		04C711EA1A2D56DF009705DF /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C711CA1A2D56DF009705DF /* MKAnnotationView+WebCache.m */; };
 		04C711EB1A2D56DF009705DF /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C711CC1A2D56DF009705DF /* NSData+ImageContentType.m */; };
@@ -348,6 +351,12 @@
 		04B30DAE1A315A2F007AF4B9 /* LJHotTopicNoImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJHotTopicNoImageCell.xib; sourceTree = "<group>"; };
 		04B30DB01A3186B1007AF4B9 /* LJBBSTopicDetailWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBBSTopicDetailWebVC.h; sourceTree = "<group>"; };
 		04B30DB11A3186B1007AF4B9 /* LJBBSTopicDetailWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBBSTopicDetailWebVC.m; sourceTree = "<group>"; };
+		04B30DB71A31D822007AF4B9 /* LJFastForumButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJFastForumButton.h; sourceTree = "<group>"; };
+		04B30DB81A31D822007AF4B9 /* LJFastForumButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJFastForumButton.m; sourceTree = "<group>"; };
+		04B30DBA1A31D833007AF4B9 /* LJFastSubForumButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJFastSubForumButton.h; sourceTree = "<group>"; };
+		04B30DBB1A31D833007AF4B9 /* LJFastSubForumButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJFastSubForumButton.m; sourceTree = "<group>"; };
+		04B30DBE1A31DFAE007AF4B9 /* LJBBSFastForumTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBBSFastForumTVC.h; sourceTree = "<group>"; };
+		04B30DBF1A31DFAE007AF4B9 /* LJBBSFastForumTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBBSFastForumTVC.m; sourceTree = "<group>"; };
 		04C711C51A2D5304009705DF /* LJAds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJAds.h; sourceTree = "<group>"; };
 		04C711C61A2D5304009705DF /* LJAds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJAds.m; sourceTree = "<group>"; };
 		04C711C91A2D56DF009705DF /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -1130,6 +1139,38 @@
 			name = TopicDetail;
 			sourceTree = "<group>";
 		};
+		04B30DB41A31D605007AF4B9 /* HotTopic */ = {
+			isa = PBXGroup;
+			children = (
+				04C712181A2DDD07009705DF /* LJHotTopicView.h */,
+				04C712191A2DDD07009705DF /* LJHotTopicView.m */,
+				04C7121B1A2DDD30009705DF /* LJHotTopicView.xib */,
+			);
+			name = HotTopic;
+			sourceTree = "<group>";
+		};
+		04B30DB51A31D61F007AF4B9 /* HotForum */ = {
+			isa = PBXGroup;
+			children = (
+				88CAED191A2E1DFF00262896 /* LJHotForumsView.h */,
+				88CAED1A1A2E1DFF00262896 /* LJHotForumsView.m */,
+				88CAED1F1A2E224D00262896 /* LJHotForumButton.h */,
+				88CAED201A2E224D00262896 /* LJHotForumButton.m */,
+			);
+			name = HotForum;
+			sourceTree = "<group>";
+		};
+		04B30DB61A31D6AA007AF4B9 /* FastForum */ = {
+			isa = PBXGroup;
+			children = (
+				04B30DB71A31D822007AF4B9 /* LJFastForumButton.h */,
+				04B30DB81A31D822007AF4B9 /* LJFastForumButton.m */,
+				04B30DBA1A31D833007AF4B9 /* LJFastSubForumButton.h */,
+				04B30DBB1A31D833007AF4B9 /* LJFastSubForumButton.m */,
+			);
+			name = FastForum;
+			sourceTree = "<group>";
+		};
 		04C711C81A2D56DF009705DF /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1225,6 +1266,8 @@
 			children = (
 				04C712081A2DA877009705DF /* LJBBSSquareViewController.h */,
 				04C712091A2DA877009705DF /* LJBBSSquareViewController.m */,
+				04B30DBE1A31DFAE007AF4B9 /* LJBBSFastForumTVC.h */,
+				04B30DBF1A31DFAE007AF4B9 /* LJBBSFastForumTVC.m */,
 			);
 			name = Square;
 			sourceTree = "<group>";
@@ -1295,13 +1338,9 @@
 		88CAED241A2E2D4700262896 /* BBSSquare */ = {
 			isa = PBXGroup;
 			children = (
-				04C712181A2DDD07009705DF /* LJHotTopicView.h */,
-				04C712191A2DDD07009705DF /* LJHotTopicView.m */,
-				04C7121B1A2DDD30009705DF /* LJHotTopicView.xib */,
-				88CAED191A2E1DFF00262896 /* LJHotForumsView.h */,
-				88CAED1A1A2E1DFF00262896 /* LJHotForumsView.m */,
-				88CAED1F1A2E224D00262896 /* LJHotForumButton.h */,
-				88CAED201A2E224D00262896 /* LJHotForumButton.m */,
+				04B30DB61A31D6AA007AF4B9 /* FastForum */,
+				04B30DB51A31D61F007AF4B9 /* HotForum */,
+				04B30DB41A31D605007AF4B9 /* HotTopic */,
 			);
 			name = BBSSquare;
 			sourceTree = "<group>";
@@ -1438,6 +1477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B30DA01A314BBA007AF4B9 /* LJBBSListDetailController.m in Sources */,
+				04B30DC01A31DFAE007AF4B9 /* LJBBSFastForumTVC.m in Sources */,
 				04C711F71A2D56DF009705DF /* UIImageView+HighlightedWebCache.m in Sources */,
 				04C711F41A2D56DF009705DF /* UIImage+GIF.m in Sources */,
 				044C28CE1A2EBB0500A48121 /* LJPhotoGroup.m in Sources */,
@@ -1494,12 +1534,14 @@
 				046E76311A2C08AF000FE777 /* UIProgressView+AFNetworking.m in Sources */,
 				04B30DA31A314CE7007AF4B9 /* LJBBSSubTopicListTableVC.m in Sources */,
 				044C29081A3056EA00A48121 /* LJPhotoCollectionViewCell.m in Sources */,
+				04B30DBC1A31D833007AF4B9 /* LJFastSubForumButton.m in Sources */,
 				04C711F81A2D56DF009705DF /* UIImageView+WebCache.m in Sources */,
 				8894F90E1A2CDF890058C76A /* NSString+MyString.m in Sources */,
 				046E76251A2C08AF000FE777 /* AFHTTPSessionManager.m in Sources */,
 				04C711ED1A2D56DF009705DF /* SDWebImageCompat.m in Sources */,
 				04C711EA1A2D56DF009705DF /* MKAnnotationView+WebCache.m in Sources */,
 				04B30DAB1A3159EA007AF4B9 /* LJHotTopicCell.m in Sources */,
+				04B30DB91A31D822007AF4B9 /* LJFastForumButton.m in Sources */,
 				046E76491A2C08C0000FE777 /* MJRefreshHeaderView.m in Sources */,
 				044C28E11A2EEE9C00A48121 /* LJBaseCustomTableView.m in Sources */,
 				044C28DB1A2EE28000A48121 /* LJPriceTableView.m in Sources */,
