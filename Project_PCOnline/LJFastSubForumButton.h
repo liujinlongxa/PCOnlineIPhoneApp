@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "LJBBSList.h"
 
+#define kBtnW 55
+#define kBtnH 70
+
 @interface LJFastSubForumButton : UIButton
 
 @property (nonatomic, strong) LJBBSListItem * bbsListItem;
+
++ (instancetype)fastSubForumButtonWithItem:(LJBBSListItem *)item;
 
 @end

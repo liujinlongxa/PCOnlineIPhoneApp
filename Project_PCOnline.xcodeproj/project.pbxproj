@@ -102,8 +102,6 @@
 		04B30DA31A314CE7007AF4B9 /* LJBBSSubTopicListTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B30DA21A314CE7007AF4B9 /* LJBBSSubTopicListTableVC.m */; };
 		04B30DA61A314D46007AF4B9 /* LJBBSHotTopicTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B30DA51A314D46007AF4B9 /* LJBBSHotTopicTableVC.m */; };
 		04B30DAB1A3159EA007AF4B9 /* LJHotTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B30DAA1A3159EA007AF4B9 /* LJHotTopicCell.m */; };
-		04B30DAD1A315A07007AF4B9 /* LJHotTopicImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B30DAC1A315A07007AF4B9 /* LJHotTopicImageCell.xib */; };
-		04B30DAF1A315A2F007AF4B9 /* LJHotTopicNoImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B30DAE1A315A2F007AF4B9 /* LJHotTopicNoImageCell.xib */; };
 		04B30DB21A3186B1007AF4B9 /* LJBBSTopicDetailWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B30DB11A3186B1007AF4B9 /* LJBBSTopicDetailWebVC.m */; };
 		04B30DB91A31D822007AF4B9 /* LJFastForumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B30DB81A31D822007AF4B9 /* LJFastForumButton.m */; };
 		04B30DBC1A31D833007AF4B9 /* LJFastSubForumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B30DBB1A31D833007AF4B9 /* LJFastSubForumButton.m */; };
@@ -145,6 +143,7 @@
 		882774F41A2F71BF00304E57 /* LJSubProductCategoryTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 882774F31A2F71BF00304E57 /* LJSubProductCategoryTableVC.m */; };
 		882774F71A2F71DC00304E57 /* LJBrandTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 882774F61A2F71DC00304E57 /* LJBrandTableVC.m */; };
 		882774FA1A2F729700304E57 /* LJFullScreenBrandVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 882774F91A2F729700304E57 /* LJFullScreenBrandVC.m */; };
+		8857A32D1A329CF8008265FC /* LJHotTopicFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8857A32C1A329CF8008265FC /* LJHotTopicFrame.m */; };
 		8894F9081A2CD4190058C76A /* LJSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894F9071A2CD4190058C76A /* LJSelectButton.m */; };
 		8894F90E1A2CDF890058C76A /* NSString+MyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894F90D1A2CDF890058C76A /* NSString+MyString.m */; };
 		8894F9121A2CE77F0058C76A /* LJNewsNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894F9111A2CE77F0058C76A /* LJNewsNormalCell.m */; };
@@ -155,6 +154,8 @@
 		88CAED281A2E2E4200262896 /* LJBBSListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CAED271A2E2E4200262896 /* LJBBSListCell.m */; };
 		88CAED2B1A2E317200262896 /* LJBBSList.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CAED2A1A2E317200262896 /* LJBBSList.m */; };
 		88CAED2E1A2E31AA00262896 /* LJBBSListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CAED2D1A2E31AA00262896 /* LJBBSListItem.m */; };
+		88CC0B7C1A3288F9001169ED /* LJFastForumHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CC0B7B1A3288F9001169ED /* LJFastForumHeaderView.m */; };
+		88CC0B7F1A3292D3001169ED /* LJContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CC0B7E1A3292D3001169ED /* LJContentView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -347,8 +348,6 @@
 		04B30DA51A314D46007AF4B9 /* LJBBSHotTopicTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBBSHotTopicTableVC.m; sourceTree = "<group>"; };
 		04B30DA91A3159EA007AF4B9 /* LJHotTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJHotTopicCell.h; sourceTree = "<group>"; };
 		04B30DAA1A3159EA007AF4B9 /* LJHotTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJHotTopicCell.m; sourceTree = "<group>"; };
-		04B30DAC1A315A07007AF4B9 /* LJHotTopicImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJHotTopicImageCell.xib; sourceTree = "<group>"; };
-		04B30DAE1A315A2F007AF4B9 /* LJHotTopicNoImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJHotTopicNoImageCell.xib; sourceTree = "<group>"; };
 		04B30DB01A3186B1007AF4B9 /* LJBBSTopicDetailWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBBSTopicDetailWebVC.h; sourceTree = "<group>"; };
 		04B30DB11A3186B1007AF4B9 /* LJBBSTopicDetailWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBBSTopicDetailWebVC.m; sourceTree = "<group>"; };
 		04B30DB71A31D822007AF4B9 /* LJFastForumButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJFastForumButton.h; sourceTree = "<group>"; };
@@ -429,6 +428,8 @@
 		882774F61A2F71DC00304E57 /* LJBrandTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBrandTableVC.m; sourceTree = "<group>"; };
 		882774F81A2F729700304E57 /* LJFullScreenBrandVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJFullScreenBrandVC.h; sourceTree = "<group>"; };
 		882774F91A2F729700304E57 /* LJFullScreenBrandVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJFullScreenBrandVC.m; sourceTree = "<group>"; };
+		8857A32B1A329CF8008265FC /* LJHotTopicFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJHotTopicFrame.h; sourceTree = "<group>"; };
+		8857A32C1A329CF8008265FC /* LJHotTopicFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJHotTopicFrame.m; sourceTree = "<group>"; };
 		8894F9061A2CD4190058C76A /* LJSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSelectButton.h; sourceTree = "<group>"; };
 		8894F9071A2CD4190058C76A /* LJSelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSelectButton.m; sourceTree = "<group>"; };
 		8894F90C1A2CDF890058C76A /* NSString+MyString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MyString.h"; sourceTree = "<group>"; };
@@ -448,6 +449,10 @@
 		88CAED2A1A2E317200262896 /* LJBBSList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBBSList.m; sourceTree = "<group>"; };
 		88CAED2C1A2E31AA00262896 /* LJBBSListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBBSListItem.h; sourceTree = "<group>"; };
 		88CAED2D1A2E31AA00262896 /* LJBBSListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBBSListItem.m; sourceTree = "<group>"; };
+		88CC0B7A1A3288F9001169ED /* LJFastForumHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJFastForumHeaderView.h; sourceTree = "<group>"; };
+		88CC0B7B1A3288F9001169ED /* LJFastForumHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJFastForumHeaderView.m; sourceTree = "<group>"; };
+		88CC0B7D1A3292D3001169ED /* LJContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJContentView.h; sourceTree = "<group>"; };
+		88CC0B7E1A3292D3001169ED /* LJContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJContentView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -888,6 +893,8 @@
 				044C28D11A2EDCD500A48121 /* Bar */,
 				044C28D01A2EDCBA00A48121 /* ScrollView */,
 				044C28CF1A2EDCAA00A48121 /* Button */,
+				88CC0B7D1A3292D3001169ED /* LJContentView.h */,
+				88CC0B7E1A3292D3001169ED /* LJContentView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1119,15 +1126,13 @@
 			name = BBSListDetail;
 			sourceTree = "<group>";
 		};
-		04B30DA81A31594C007AF4B9 /* BBSPost */ = {
+		04B30DA81A31594C007AF4B9 /* BBSTopic */ = {
 			isa = PBXGroup;
 			children = (
 				04B30DA91A3159EA007AF4B9 /* LJHotTopicCell.h */,
 				04B30DAA1A3159EA007AF4B9 /* LJHotTopicCell.m */,
-				04B30DAC1A315A07007AF4B9 /* LJHotTopicImageCell.xib */,
-				04B30DAE1A315A2F007AF4B9 /* LJHotTopicNoImageCell.xib */,
 			);
-			name = BBSPost;
+			name = BBSTopic;
 			sourceTree = "<group>";
 		};
 		04B30DB31A318DAC007AF4B9 /* TopicDetail */ = {
@@ -1167,6 +1172,8 @@
 				04B30DB81A31D822007AF4B9 /* LJFastForumButton.m */,
 				04B30DBA1A31D833007AF4B9 /* LJFastSubForumButton.h */,
 				04B30DBB1A31D833007AF4B9 /* LJFastSubForumButton.m */,
+				88CC0B7A1A3288F9001169ED /* LJFastForumHeaderView.h */,
+				88CC0B7B1A3288F9001169ED /* LJFastForumHeaderView.m */,
 			);
 			name = FastForum;
 			sourceTree = "<group>";
@@ -1214,7 +1221,7 @@
 		04C711FD1A2D90BE009705DF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				04B30DA81A31594C007AF4B9 /* BBSPost */,
+				04B30DA81A31594C007AF4B9 /* BBSTopic */,
 				88CAED251A2E2E1900262896 /* BBSList */,
 				88CAED241A2E2D4700262896 /* BBSSquare */,
 				04C712051A2D984C009705DF /* LJBBSButtonView.h */,
@@ -1226,16 +1233,10 @@
 		04C711FE1A2D90C3009705DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				04C712121A2DB04D009705DF /* LJBBSAds.h */,
-				04C712131A2DB04D009705DF /* LJBBSAds.m */,
-				04C7121D1A2DE0F9009705DF /* LJHotTopic.h */,
-				04C7121E1A2DE0F9009705DF /* LJHotTopic.m */,
-				88CAED1C1A2E1E6200262896 /* LJHotForum.h */,
-				88CAED1D1A2E1E6200262896 /* LJHotForum.m */,
-				88CAED291A2E317200262896 /* LJBBSList.h */,
-				88CAED2A1A2E317200262896 /* LJBBSList.m */,
-				88CAED2C1A2E31AA00262896 /* LJBBSListItem.h */,
-				88CAED2D1A2E31AA00262896 /* LJBBSListItem.m */,
+				8857A32A1A329CC5008265FC /* List */,
+				8857A3291A329CBF008265FC /* Forum */,
+				8857A3281A329CB6008265FC /* Topic */,
+				8857A3271A329CAB008265FC /* Ads */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1323,6 +1324,46 @@
 				044C28F91A30092C00A48121 /* LJProductListCell.xib */,
 			);
 			name = TableViewCell;
+			sourceTree = "<group>";
+		};
+		8857A3271A329CAB008265FC /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				04C712121A2DB04D009705DF /* LJBBSAds.h */,
+				04C712131A2DB04D009705DF /* LJBBSAds.m */,
+			);
+			name = Ads;
+			sourceTree = "<group>";
+		};
+		8857A3281A329CB6008265FC /* Topic */ = {
+			isa = PBXGroup;
+			children = (
+				04C7121D1A2DE0F9009705DF /* LJHotTopic.h */,
+				04C7121E1A2DE0F9009705DF /* LJHotTopic.m */,
+				8857A32B1A329CF8008265FC /* LJHotTopicFrame.h */,
+				8857A32C1A329CF8008265FC /* LJHotTopicFrame.m */,
+			);
+			name = Topic;
+			sourceTree = "<group>";
+		};
+		8857A3291A329CBF008265FC /* Forum */ = {
+			isa = PBXGroup;
+			children = (
+				88CAED1C1A2E1E6200262896 /* LJHotForum.h */,
+				88CAED1D1A2E1E6200262896 /* LJHotForum.m */,
+			);
+			name = Forum;
+			sourceTree = "<group>";
+		};
+		8857A32A1A329CC5008265FC /* List */ = {
+			isa = PBXGroup;
+			children = (
+				88CAED291A2E317200262896 /* LJBBSList.h */,
+				88CAED2A1A2E317200262896 /* LJBBSList.m */,
+				88CAED2C1A2E31AA00262896 /* LJBBSListItem.h */,
+				88CAED2D1A2E31AA00262896 /* LJBBSListItem.m */,
+			);
+			name = List;
 			sourceTree = "<group>";
 		};
 		8894F90F1A2CE7460058C76A /* NewsCell */ = {
@@ -1443,7 +1484,6 @@
 				046E769B1A2C25EE000FE777 /* pconline_v4_square_fast_forum.json in Resources */,
 				046E76981A2C25EE000FE777 /* PCOnlineProductDatas4inch.json in Resources */,
 				046E76451A2C08C0000FE777 /* MJRefresh.bundle in Resources */,
-				04B30DAF1A315A2F007AF4B9 /* LJHotTopicNoImageCell.xib in Resources */,
 				04C7121C1A2DDD30009705DF /* LJHotTopicView.xib in Resources */,
 				046E75D61A2BF700000FE777 /* Images.xcassets in Resources */,
 				046E76951A2C25EE000FE777 /* pconline_v4_bbs_forum_tree4inch.json in Resources */,
@@ -1458,7 +1498,6 @@
 				046E76961A2C25EE000FE777 /* pconline_v4_cms_iphone_channel_tree4inch.json in Resources */,
 				044C28C11A2EAFE100A48121 /* LJProductCategoryCell.xib in Resources */,
 				046E76991A2C25EE000FE777 /* pconline_v4_bbs_forum_tree.json in Resources */,
-				04B30DAD1A315A07007AF4B9 /* LJHotTopicImageCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1501,6 +1540,7 @@
 				046E76281A2C08AF000FE777 /* AFURLConnectionOperation.m in Sources */,
 				046E76611A2C0A37000FE777 /* FMDatabase.m in Sources */,
 				046E762E1A2C08AF000FE777 /* UIAlertView+AFNetworking.m in Sources */,
+				8857A32D1A329CF8008265FC /* LJHotTopicFrame.m in Sources */,
 				047D6A8F1A2C71A500EB3B64 /* LJNews.m in Sources */,
 				047D6A831A2C548F00EB3B64 /* UIImage+MyImage.m in Sources */,
 				046E76271A2C08AF000FE777 /* AFSecurityPolicy.m in Sources */,
@@ -1566,12 +1606,14 @@
 				04C712101A2DA8B9009705DF /* LJBBSRecentViewController.m in Sources */,
 				04C7121F1A2DE0F9009705DF /* LJHotTopic.m in Sources */,
 				04C7120A1A2DA877009705DF /* LJBBSSquareViewController.m in Sources */,
+				88CC0B7F1A3292D3001169ED /* LJContentView.m in Sources */,
 				047D6A981A2C933500EB3B64 /* LJArea.m in Sources */,
 				046E762F1A2C08AF000FE777 /* UIButton+AFNetworking.m in Sources */,
 				044C28F21A30001200A48121 /* LJBrandCell.m in Sources */,
 				046E76621A2C0A37000FE777 /* FMDatabaseAdditions.m in Sources */,
 				046E76321A2C08AF000FE777 /* UIRefreshControl+AFNetworking.m in Sources */,
 				047D6A701A2C291000EB3B64 /* LJNavController.m in Sources */,
+				88CC0B7C1A3288F9001169ED /* LJFastForumHeaderView.m in Sources */,
 				04C712011A2D9108009705DF /* LJAdsGroupView.m in Sources */,
 				88CAED2E1A2E31AA00262896 /* LJBBSListItem.m in Sources */,
 				047D6A881A2C66C700EB3B64 /* LJSubjectView.m in Sources */,

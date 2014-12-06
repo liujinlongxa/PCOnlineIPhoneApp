@@ -126,7 +126,6 @@
             //创建Button
             NSString * imageName = bbsList.listItem.imageUrl;
             imageName = [imageName substringFromIndex:[imageName rangeOfString:@"/"].location + 1];
-            NSLog(@"%@", imageName);
             LJFastForumButton * btn = [LJFastForumButton fastForumButtonWithImage:imageName];
             btn.fastForumList = self.fastForumsData[i * 2 + j];
             [btn addTarget:self action:@selector(fastForumBtnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -282,6 +281,7 @@
 
 - (void)reloadHotTopciData
 {
+    if (self.hotTopicData.count <= 0) return;
     for (int i = 0; i < self.hotTopicData.count + 2; i++) {
         //设置无限循环的数据
         LJHotTopic * topic = nil;

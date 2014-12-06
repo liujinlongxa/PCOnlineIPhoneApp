@@ -8,6 +8,7 @@
 
 #import "LJBBSFastForumTVC.h"
 #import "UIImage+MyImage.h"
+#import "LJFastForumHeaderView.h"
 
 @interface LJBBSFastForumTVC ()
 
@@ -26,8 +27,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor redColor];
+    self.tableView.backgroundColor = LightGrayBGColor;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
+- (void)setFastForumList:(LJBBSList *)fastForumList
+{
+    _fastForumList = fastForumList;
+    //设置headerview
+    LJFastForumHeaderView * header = [LJFastForumHeaderView fastForumHeaderViewWithBBSList:self.fastForumList];
+    self.tableView.tableHeaderView = header;
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -12,21 +12,18 @@
 #import "LJBBSTopicDetailWebVC.h"
 
 #define kHotTopicKey @"hot-topics"
-#define kHotTopicImageCellIdentifier @"HotTopicImageCell"
-#define kHotTopicNoImageCellIdentifier @"HotTopicNoImageCell"
+#define kTopicCellIdentifier @"TopicCell"
 @interface LJBBSHotTopicTableVC ()
 
 @property (nonatomic, strong) NSMutableArray * hotTopicsData;
-
 @end
 
 @implementation LJBBSHotTopicTableVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.tableView registerNib:[UINib nibWithNibName:@"LJHotTopicImageCell" bundle:nil] forCellReuseIdentifier:kHotTopicImageCellIdentifier];
-    [self.tableView registerNib:[UINib nibWithNibName:@"LJHotTopicNoImageCell" bundle:nil] forCellReuseIdentifier:kHotTopicNoImageCellIdentifier];
-    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView registerClass:[LJHotTopicCell class] forCellReuseIdentifier:kTopicCellIdentifier];
 }
 
 #pragma mark - 加载数据
@@ -54,7 +51,8 @@
         NSMutableArray * hotTopicArr = [NSMutableArray array];
         for (NSDictionary * topicDict in dict[kHotTopicKey]) {
             LJHotTopic * topic = [LJHotTopic hotTopicWithDict:topicDict];
-            [hotTopicArr addObject:topic];
+            LJHotTopicFrame * topicFrame = [LJHotTopicFrame topicFrameWithTopic:topic];
+            [hotTopicArr addObject:topicFrame];
         }
         self.hotTopicsData = hotTopicArr;
         [self.tableView reloadData];
@@ -84,38 +82,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LJHotTopic * topic = self.hotTopicsData[indexPath.row];
-    LJHotTopicCell * cell = nil;
-    if (topic.isShowImage) {
-        cell = [tableView dequeueReusableCellWithIdentifier:kHotTopicImageCellIdentifier];
-    }
-    else
-    {
-        cell = [tableView dequeueReusableCellWithIdentifier:kHotTopicNoImageCellIdentifier];
-    }
-    cell.hotTopic = topic;
+    LJHotTopicFrame * topicFrame = self.hotTopicsData[indexPath.row];
+    LJHotTopicCell * cell = [tableView dequeueReusableCellWithIdentifier:kTopicCellIdentifier];
+    cell.topicFrame = topicFrame;
     return cell;
 }
+
 
 #pragma mark - tableView代理方法
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LJHotTopic * topic = self.hotTopicsData[indexPath.row];
-    if (topic.isShowImage) {
-        return 210;
-    }
-    else
-    {
-        return 150;
-    }
+    LJHotTopicFrame * topicFrame = self.hotTopicsData[indexPath.row];
+    return topicFrame.cellHeigh;
 }
 
 #pragma mark - 选中一个帖子
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self.delegate respondsToSelector:@selector(BBSTopicTableVC:didSelectTopic:inBBSList:)]) {
-        LJHotTopic * topic = self.hotTopicsData[indexPath.row];
-        [self.delegate BBSTopicTableVC:self didSelectTopic:topic inBBSList:self.bbsList];
+        LJHotTopicFrame * topicFrame = self.hotTopicsData[indexPath.row];
+        [self.delegate BBSTopicTableVC:self didSelectTopic:topicFrame.topic inBBSList:self.bbsList];
     }
 }
 
