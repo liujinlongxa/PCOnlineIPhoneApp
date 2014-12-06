@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LJHotTopicFrame.h"
+#import "LJBaseTopicFrame.h"
 
 @interface LJHotTopicCell : UITableViewCell
 
-@property (nonatomic, strong) LJHotTopicFrame * topicFrame;
+@property (nonatomic, strong) LJBaseTopicFrame * topicFrame;
 
 @end

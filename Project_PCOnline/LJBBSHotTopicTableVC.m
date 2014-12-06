@@ -10,6 +10,8 @@
 #import "LJHotTopicCell.h"
 #import "LJNetWorking.h"
 #import "LJBBSTopicDetailWebVC.h"
+//模型
+#import "LJHotTopicFrame.h"
 
 #define kHotTopicKey @"hot-topics"
 @interface LJBBSHotTopicTableVC ()

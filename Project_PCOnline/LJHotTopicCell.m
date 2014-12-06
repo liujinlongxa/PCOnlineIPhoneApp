@@ -10,6 +10,12 @@
 #import "UIImageView+WebCache.h"
 #import "LJContentView.h"
 
+//模型
+#import "LJHotTopic.h"
+#import "LJHotTopicFrame.h"
+#import "LJTopic.h"
+#import "LJTopicFrame.h"
+
 @interface LJHotTopicCell ()
 @property (weak, nonatomic) UILabel *titleLab;
 @property (weak, nonatomic) UIImageView *image;
@@ -17,6 +23,7 @@
 @property (weak, nonatomic) UILabel *forumLab;
 @property (weak, nonatomic) UILabel *floorCountLab;
 @property (weak, nonatomic) LJContentView * myContentView;
+@property (weak, nonatomic) UILabel * iconLab;
 @end
 
 @implementation LJHotTopicCell
@@ -69,11 +76,22 @@
         self.floorCountLab = floorCountLab;
         self.floorCountLab.font = TopicFloorCountFont;
         self.floorCountLab.textColor = [UIColor lightGrayColor];
+        
+        //icon image (热门帖子没有)
+        UILabel * iconLab = [[UILabel alloc] init];
+        [self.myContentView addSubview:iconLab];
+        self.iconLab = iconLab;
+        self.iconLab.text = @"精华";
+        self.iconLab.backgroundColor = [UIColor redColor];
+        self.iconLab.textColor = [UIColor whiteColor];
+        self.iconLab.font = TopicFloorCountFont;
+        self.iconLab.hidden = YES;
+        
     }
     return self;
 }
 
-- (void)setTopicFrame:(LJHotTopicFrame *)topicFrame
+- (void)setTopicFrame:(LJBaseTopicFrame *)topicFrame
 {
     _topicFrame = topicFrame;
     [self setupData];
@@ -82,14 +100,23 @@
 
 - (void)setupData
 {
+    //共通
     self.titleLab.text = self.topicFrame.topic.title;
     self.messageLab.text = self.topicFrame.topic.message;
-    self.forumLab.text = self.topicFrame.topic.forumName;
-    self.floorCountLab.text = [NSString stringWithFormat:@"%d楼/%d阅", self.topicFrame.topic.replyCount.integerValue, self.topicFrame.topic.viewCount.integerValue];
     if (self.topicFrame.topic.isShowImage)
     {
         [self.image sd_setImageWithURL:[NSURL URLWithString:self.topicFrame.topic.image] placeholderImage:[UIImage imageNamed:@"common_default_320x165"]];
     }
+    
+    LJBaseTopic * topic = self.topicFrame.topic;
+    //热门帖子
+    if ([topic isKindOfClass:[LJHotTopic class]])
+    {
+        LJHotTopic * hotTopic = (LJHotTopic *)topic;
+        self.forumLab.text = hotTopic.forumName;
+        self.floorCountLab.text = [NSString stringWithFormat:@"%d楼/%d阅", hotTopic.replyCount.integerValue, hotTopic.viewCount.integerValue];
+    }
+    
 }
 
 - (void)setupFrame
@@ -99,7 +126,7 @@
     self.messageLab.frame = self.topicFrame.messageFrame;
     self.image.frame = self.topicFrame.imageFrame;
     self.floorCountLab.frame = self.topicFrame.floorCountFrame;
-    self.forumLab.frame = self.topicFrame.forumFrame;
+    self.forumLab.frame = self.topicFrame.forumOrTimeFrame;
 }
 
 @end

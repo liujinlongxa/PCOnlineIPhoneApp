@@ -119,7 +119,8 @@
 {
     LJHotTopicFrame * topicFrame = self.topicsData[indexPath.row];
     LJBBSTopicDetailWebVC * detailVC = [[LJBBSTopicDetailWebVC alloc] init];
-    detailVC.topic = topicFrame.topic;
+    assert([topicFrame.topic isKindOfClass:[LJHotTopic class]]);
+    detailVC.topic = (LJHotTopic *)topicFrame.topic;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

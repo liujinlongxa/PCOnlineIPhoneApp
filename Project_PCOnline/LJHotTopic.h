@@ -7,22 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LJBaseTopic.h"
 
-@interface LJHotTopic : NSObject
+@interface LJHotTopic : LJBaseTopic
 
-@property (nonatomic, copy) NSString * createAt;
-@property (nonatomic, strong) NSNumber * floor;
 @property (nonatomic, strong) NSNumber * forumId;
 @property (nonatomic, copy) NSString * forumName;
 @property (nonatomic, copy) NSString * forumUrl;
-@property (nonatomic, copy) NSString * image;
 @property (nonatomic, copy) NSString * lastPostAt;
-@property (nonatomic, copy) NSString * message;
-@property (nonatomic, strong) NSNumber * replyCount;
 @property (nonatomic, strong) NSNumber * rewardAmount;
 @property (nonatomic, strong) NSNumber * rewardRemain;
-@property (nonatomic, copy) NSString * title;
-@property (nonatomic, strong) NSNumber * topicId;
 @property (nonatomic, copy) NSString * topicUrl;
 @property (nonatomic, copy) NSString * type;
 @property (nonatomic, strong) NSNumber * userId;
@@ -30,10 +24,6 @@
 @property (nonatomic, copy) NSString * userUrl;
 @property (nonatomic, strong) NSNumber * viewCount;
 
-@property (nonatomic, assign, readonly, getter=isShowImage) BOOL showImage;
-
 + (instancetype)hotTopicWithDict:(NSDictionary *)dict;
-
-
 
 @end
