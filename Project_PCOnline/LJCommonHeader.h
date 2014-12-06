@@ -9,6 +9,14 @@
 #ifndef Project_PCOnline_LJCommonHeader_h
 #define Project_PCOnline_LJCommonHeader_h
 
+//调试
+#ifdef DEBUG
+#define LJLog(...) NSLog(__VA_ARGS__)
+#define LJMethodLog NSLog(@"%s", __func__)
+#else
+#define LJLog
+#endif
+
 //屏幕尺寸
 #define kScrW [UIScreen mainScreen].bounds.size.width
 #define kScrH [UIScreen mainScreen].bounds.size.height
@@ -28,7 +36,7 @@
 //灰色背景颜色
 #define LightGrayBGColor [[UIColor alloc] initWithRed:230 / 255.0 green:230 / 255.0 blue:230 /255.0 alpha:1.0]
 //cell选中背景颜色
-#define CellSelectBGColor [[UIColor alloc] initWithRed:217 / 255.0 green:217 / 255.0 blue:217 /255.0 alpha:1.0]
+#define CellSelectBGColor [[UIColor alloc] initWithRed:200 / 255.0 green:200 / 255.0 blue:200 /255.0 alpha:1.0]
 
 //字体
 #define SubjectButtonFont [UIFont systemFontOfSize:20] //频道Button上的字体大小
@@ -39,5 +47,9 @@
 //通知
 #define LJAdsViewTapNotify @"AdsViewTapNotify" //广告点击通知
 #define LJAdsViewTapNotifyAdsKey @"AdsViewTapNotifyAdsKey" //取得广告模型的键
+
+//通用cell重用id
+//帖子cell
+#define LJTopicCellIdentifier @"TopicCellIdentifier"
 
 #endif

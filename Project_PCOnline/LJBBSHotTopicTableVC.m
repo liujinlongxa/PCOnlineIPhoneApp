@@ -12,7 +12,6 @@
 #import "LJBBSTopicDetailWebVC.h"
 
 #define kHotTopicKey @"hot-topics"
-#define kTopicCellIdentifier @"TopicCell"
 @interface LJBBSHotTopicTableVC ()
 
 @property (nonatomic, strong) NSMutableArray * hotTopicsData;
@@ -23,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerClass:[LJHotTopicCell class] forCellReuseIdentifier:kTopicCellIdentifier];
+    [self.tableView registerClass:[LJHotTopicCell class] forCellReuseIdentifier:LJTopicCellIdentifier];
 }
 
 #pragma mark - 加载数据
@@ -83,7 +82,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LJHotTopicFrame * topicFrame = self.hotTopicsData[indexPath.row];
-    LJHotTopicCell * cell = [tableView dequeueReusableCellWithIdentifier:kTopicCellIdentifier];
+    LJHotTopicCell * cell = [tableView dequeueReusableCellWithIdentifier:LJTopicCellIdentifier];
     cell.topicFrame = topicFrame;
     return cell;
 }

@@ -37,6 +37,10 @@
 #define kBBSTopicDetailUrl @"http://mrobot.pconline.com.cn/v2/itbbs/topics/%d?pageNo=1&picRule=2&authorId=0&topicTemplate=3.6.0&app=pconlinebrowser&appVersion=3.10.0&size=18"
 //5.2 最数码论坛帖子详情
 #define kZuiBBSTopicDetailUrl @"http://mrobot.pconline.com.cn/v2/piebbs/topics/%d?pageNo=1&picRule=2&authorId=0&topicTemplate=3.6.0&app=pconlinebrowser&appVersion=3.10.0&size=18"
+//6 快速论坛
+//6.1 快速论坛列表
+#define kFastForumDetailUrl @"http://itbbs.pconline.com.cn/mobile/topics.ajax?type=hot_week&forums=%@&singleForum=false&noForums=&ie=utf-8&count=20&showImage=true"
+
 
 //找产品
 //1.产品子分类列表

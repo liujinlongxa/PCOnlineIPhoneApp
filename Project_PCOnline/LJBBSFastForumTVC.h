@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LJBBSList.h"
+#import "LJUrlHeader.h"
 
 @interface LJBBSFastForumTVC : UITableViewController
 

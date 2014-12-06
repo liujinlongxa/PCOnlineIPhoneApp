@@ -27,4 +27,17 @@
     return list;
 }
 
+- (NSString *)subItemIDStr
+{
+    if (!_subItemIDStr)
+    {
+        NSMutableArray * strArr = [NSMutableArray array];
+        for (LJBBSList * list in self.children) {
+            [strArr addObject:[NSString stringWithFormat:@"%d", list.listItem.ID.integerValue]];
+        }
+        _subItemIDStr = [strArr componentsJoinedByString:@","];
+    }
+    return _subItemIDStr;
+}
+
 @end

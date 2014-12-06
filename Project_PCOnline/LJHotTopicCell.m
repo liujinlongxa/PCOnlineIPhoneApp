@@ -27,7 +27,7 @@
     if (self) {
         //设置cell属性
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-//        self.backgroundColor = LightGrayBGColor;
+        self.backgroundColor = LightGrayBGColor;
         
         //content view
         LJContentView * content = [[LJContentView alloc] init];

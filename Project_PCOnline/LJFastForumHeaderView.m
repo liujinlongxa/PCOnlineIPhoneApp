@@ -16,10 +16,10 @@
 + (instancetype)fastForumHeaderViewWithBBSList:(LJBBSList *)bbsList
 {
     
-    LJFastForumHeaderView * headerView = [[self alloc] initWithFrame:CGRectMake(0, 0, kScrW, 120)];
+    LJFastForumHeaderView * headerView = [[self alloc] initWithFrame:CGRectMake(0, 0, kScrW, 110)];
     CGFloat padding = 10;
     //设置背景view
-    LJContentView * contentView = [[LJContentView alloc] initWithFrame:CGRectMake(padding, padding, CGRectGetWidth(headerView.frame) - 2 * padding, CGRectGetHeight(headerView.frame) - 2 * padding)];
+    LJContentView * contentView = [[LJContentView alloc] initWithFrame:CGRectMake(padding, padding, CGRectGetWidth(headerView.frame) - 2 * padding, CGRectGetHeight(headerView.frame) - padding)];
     [headerView addSubview:contentView];
     
     //添加button

@@ -135,7 +135,6 @@
             [self.btnView addSubview:btn];
         }
     }
-    
 }
 
 //初始化每日热帖
