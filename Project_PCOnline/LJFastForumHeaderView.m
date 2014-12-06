@@ -33,9 +33,18 @@
         CGRect btnF = btn.frame;
         btnF.origin = CGPointMake(btnX, btnY);
         btn.frame = btnF;
+        [btn addTarget:headerView action:@selector(fastForumHeaderBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [contentView addSubview:btn];
     }
     return headerView;
+}
+
+- (void)fastForumHeaderBtnClick:(LJFastSubForumButton *)sender
+{
+    if ([self.delegate respondsToSelector:@selector(fastForumHeaderView:didSelectForumItem:)])
+    {
+        [self.delegate fastForumHeaderView:self didSelectForumItem:sender.bbsListItem];
+    }
 }
 
 @end

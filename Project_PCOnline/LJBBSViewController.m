@@ -106,7 +106,7 @@
 }
 
 #pragma mark - 点击热帖
-- (void)BBSSquareViewController:(LJBBSSquareViewController *)controller didSelectHotTopic:(LJHotTopic *)topic
+- (void)BBSSquareViewController:(LJBBSSquareViewController *)controller didSelectHotTopic:(LJBaseTopic *)topic
 {
     NSString * urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, topic.topicId.integerValue];
     LJBBSTopicDetailWebVC * webVC = [[LJBBSTopicDetailWebVC alloc] initBBSTopicDetailWebVCWithUrlStr:urlStr];

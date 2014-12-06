@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "NSDate+MyDate.h"
 
 @interface Project_PCOnlineTests : XCTestCase
 
@@ -35,6 +36,12 @@
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
     }];
+}
+
+- (void)testDate
+{
+    NSDate * date = [NSDate dateWithTimeIntervalSinceReferenceDate:1417668781958];
+    [date dateStringToNow];
 }
 
 @end

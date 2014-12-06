@@ -82,10 +82,11 @@
         [self.myContentView addSubview:iconLab];
         self.iconLab = iconLab;
         self.iconLab.text = @"精华";
-        self.iconLab.backgroundColor = [UIColor redColor];
+        self.iconLab.backgroundColor = RGBColor(203, 40, 48);
         self.iconLab.textColor = [UIColor whiteColor];
         self.iconLab.font = TopicFloorCountFont;
         self.iconLab.hidden = YES;
+        self.iconLab.textAlignment = NSTextAlignmentCenter;
         
     }
     return self;
@@ -109,12 +110,20 @@
     }
     
     LJBaseTopic * topic = self.topicFrame.topic;
+    assert([topic isKindOfClass:[LJHotTopic class]] || [topic isKindOfClass:[LJTopic class]]);
     //热门帖子
     if ([topic isKindOfClass:[LJHotTopic class]])
     {
         LJHotTopic * hotTopic = (LJHotTopic *)topic;
         self.forumLab.text = hotTopic.forumName;
         self.floorCountLab.text = [NSString stringWithFormat:@"%d楼/%d阅", hotTopic.replyCount.integerValue, hotTopic.viewCount.integerValue];
+    }
+    else //普通帖子
+    {
+        LJTopic * normalTopic = (LJTopic *)topic;
+        self.forumLab.text = normalTopic.createAtStr;
+        self.floorCountLab.text = [NSString stringWithFormat:@"%d楼/%d阅", normalTopic.replyCount.integerValue, normalTopic.view.integerValue];
+        self.iconLab.hidden = !normalTopic.isEssence;
     }
     
 }
@@ -127,6 +136,11 @@
     self.image.frame = self.topicFrame.imageFrame;
     self.floorCountLab.frame = self.topicFrame.floorCountFrame;
     self.forumLab.frame = self.topicFrame.forumOrTimeFrame;
+    if ([self.topicFrame isKindOfClass:[LJTopicFrame class]])
+    {
+        LJTopicFrame * normalTopicFrame = (LJTopicFrame *)self.topicFrame;
+        self.iconLab.frame = normalTopicFrame.essenceFrame;
+    }
 }
 
 @end

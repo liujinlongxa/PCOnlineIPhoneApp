@@ -10,4 +10,11 @@
 
 @implementation LJUser
 
++ (instancetype)userWithDict:(NSDictionary *)dict
+{
+    LJUser * user = [[self alloc] init];
+    [user setValuesForKeysWithDictionary:dict];
+    return user;
+}
+
 @end

@@ -10,4 +10,13 @@
 
 @interface LJUser : NSObject
 
+@property (nonatomic, copy) NSString * name;
+@property (nonatomic, copy) NSString * nickname;
+@property (nonatomic, strong) NSNumber * userId;
+//最数码
+@property (nonatomic, copy) NSString * userFace;
+@property (nonatomic, copy) NSString * lastPostAt;
+
++ (instancetype)userWithDict:(NSDictionary *)dict;
+
 @end

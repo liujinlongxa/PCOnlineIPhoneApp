@@ -150,6 +150,7 @@
 		8857A33E1A3321E8008265FC /* LJBaseTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8857A33D1A3321E8008265FC /* LJBaseTopic.m */; };
 		8857A3421A3321FB008265FC /* LJBaseTopicFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8857A3411A3321FB008265FC /* LJBaseTopicFrame.m */; };
 		8857A3451A332EBB008265FC /* LJUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8857A3441A332EBB008265FC /* LJUser.m */; };
+		8857A3481A333BCC008265FC /* NSDate+MyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8857A3471A333BCC008265FC /* NSDate+MyDate.m */; };
 		8894F9081A2CD4190058C76A /* LJSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894F9071A2CD4190058C76A /* LJSelectButton.m */; };
 		8894F90E1A2CDF890058C76A /* NSString+MyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894F90D1A2CDF890058C76A /* NSString+MyString.m */; };
 		8894F9121A2CE77F0058C76A /* LJNewsNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894F9111A2CE77F0058C76A /* LJNewsNormalCell.m */; };
@@ -448,6 +449,8 @@
 		8857A3411A3321FB008265FC /* LJBaseTopicFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBaseTopicFrame.m; sourceTree = "<group>"; };
 		8857A3431A332EBB008265FC /* LJUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJUser.h; sourceTree = "<group>"; };
 		8857A3441A332EBB008265FC /* LJUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJUser.m; sourceTree = "<group>"; };
+		8857A3461A333BCC008265FC /* NSDate+MyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+MyDate.h"; sourceTree = "<group>"; };
+		8857A3471A333BCC008265FC /* NSDate+MyDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MyDate.m"; sourceTree = "<group>"; };
 		8894F9061A2CD4190058C76A /* LJSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSelectButton.h; sourceTree = "<group>"; };
 		8894F9071A2CD4190058C76A /* LJSelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSelectButton.m; sourceTree = "<group>"; };
 		8894F90C1A2CDF890058C76A /* NSString+MyString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MyString.h"; sourceTree = "<group>"; };
@@ -1092,6 +1095,8 @@
 				047D6A821A2C548F00EB3B64 /* UIImage+MyImage.m */,
 				8894F90C1A2CDF890058C76A /* NSString+MyString.h */,
 				8894F90D1A2CDF890058C76A /* NSString+MyString.m */,
+				8857A3461A333BCC008265FC /* NSDate+MyDate.h */,
+				8857A3471A333BCC008265FC /* NSDate+MyDate.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -1689,6 +1694,7 @@
 				046E76261A2C08AF000FE777 /* AFNetworkReachabilityManager.m in Sources */,
 				047D6A741A2C2B6A00EB3B64 /* PPRevealSideViewController.m in Sources */,
 				044C28FA1A30092C00A48121 /* LJProductListCell.m in Sources */,
+				8857A3481A333BCC008265FC /* NSDate+MyDate.m in Sources */,
 				046E76471A2C08C0000FE777 /* MJRefreshConst.m in Sources */,
 				046E76801A2C1ADF000FE777 /* LJBBSViewController.m in Sources */,
 				04C711EE1A2D56DF009705DF /* SDWebImageDecoder.m in Sources */,

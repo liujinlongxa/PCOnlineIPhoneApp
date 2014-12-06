@@ -97,8 +97,6 @@
 - (void)setupNavBar
 {
     //设置导航栏的颜色
-    UIColor * blackColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-    UIImage * image = [UIImage imageWithColor:blackColor];
     [self.navigationController setNavigationBarHidden:YES];
     UIView * navView = [[[UINib nibWithNibName:@"LJPhotoNavView" bundle:nil] instantiateWithOwner:self options:nil]firstObject];
     CGRect navViewF = navView.frame;

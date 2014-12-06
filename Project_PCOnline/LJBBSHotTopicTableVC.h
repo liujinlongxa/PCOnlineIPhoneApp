@@ -10,14 +10,14 @@
 #import "LJBBSList.h"
 #import "LJCommonHeader.h"
 #import "LJUrlHeader.h"
-#import "LJHotTopic.h"
+#import "LJBaseTopic.h"
 
 @class LJBBSHotTopicTableVC;
 
 @protocol LJBBSHotTopicTableVCDelegate <NSObject>
 
 @optional
-- (void)BBSTopicTableVC:(LJBBSHotTopicTableVC *)vc didSelectTopic:(LJHotTopic *)topic inBBSList:(LJBBSList *)bbsList;
+- (void)BBSTopicTableVC:(LJBBSHotTopicTableVC *)vc didSelectTopic:(LJBaseTopic *)topic inBBSList:(LJBBSList *)bbsList;
 
 @end
 

@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LJHotTopic.h"
+#import "LJBaseTopic.h"
 #import "LJUrlHeader.h"
-#import "LJBBSList.h"
+#import "LJBBSListItem.h"
 
 @interface LJBBSTopicDetailWebVC : UIViewController
 
-@property (nonatomic, strong) LJHotTopic * topic;
-@property (nonatomic, strong) LJBBSList * bbsList;
+@property (nonatomic, strong) LJBaseTopic * topic;
+@property (nonatomic, strong) LJBBSListItem * bbsItem;
 
 - (instancetype)initBBSTopicDetailWebVCWithUrlStr:(NSString *)urlStr;
 

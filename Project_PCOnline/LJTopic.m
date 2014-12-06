@@ -7,7 +7,37 @@
 //
 
 #import "LJTopic.h"
+#import "LJUser.h"
+#import "NSDate+MyDate.h"
+#import "LJCommonHeader.h"
 
 @implementation LJTopic
+
++ (instancetype)topciWithDict:(NSDictionary *)dict
+{
+    LJTopic * topic = [[self alloc] init];
+    [topic setValuesForKeysWithDictionary:dict];
+    
+    LJUser * author = [LJUser userWithDict:(NSDictionary *)topic.author];
+    topic.author = author;
+    LJUser * lastPoster = [LJUser userWithDict:(NSDictionary *)topic.lastPoster];
+    topic.lastPoster = lastPoster;
+    return topic;
+}
+
+- (NSString *)createAtStr
+{
+    NSDate * dateCreateAt = [NSDate dateWithTimeIntervalSince1970:self.createAt.longLongValue];
+    return [dateCreateAt dateStringToNow];
+}
+
+- (BOOL)isEssence
+{
+    if ([self.flag isEqualToString:@"精"])
+    {
+        return YES;
+    }
+    return NO;
+}
 
 @end

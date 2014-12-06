@@ -52,7 +52,7 @@
         NSMutableArray * hotTopicArr = [NSMutableArray array];
         for (NSDictionary * topicDict in dict[kHotTopicKey]) {
             LJHotTopic * topic = [LJHotTopic hotTopicWithDict:topicDict];
-            LJHotTopicFrame * topicFrame = [LJHotTopicFrame topicFrameWithTopic:topic];
+            LJHotTopicFrame * topicFrame = [LJHotTopicFrame hotTopicFrameWithTopic:topic];
             [hotTopicArr addObject:topicFrame];
         }
         self.hotTopicsData = hotTopicArr;

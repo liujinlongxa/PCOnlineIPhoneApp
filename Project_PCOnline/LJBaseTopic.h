@@ -10,7 +10,6 @@
 
 @interface LJBaseTopic : NSObject
 
-@property (nonatomic, copy) NSString * createAt;
 @property (nonatomic, strong) NSNumber * floor;
 @property (nonatomic, copy) NSString * image;
 @property (nonatomic, copy) NSString * message;

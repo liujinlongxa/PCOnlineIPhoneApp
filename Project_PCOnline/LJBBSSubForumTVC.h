@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LJBBSListItem.h"
+
+
 
 @interface LJBBSSubForumTVC : UIViewController
+
+@property (nonatomic, strong) LJBBSListItem * bbsItem;
 
 @end

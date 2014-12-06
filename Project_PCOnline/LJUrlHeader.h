@@ -40,6 +40,13 @@
 //6 快速论坛
 //6.1 快速论坛列表
 #define kFastForumDetailUrl @"http://itbbs.pconline.com.cn/mobile/topics.ajax?type=hot_week&forums=%@&singleForum=false&noForums=&ie=utf-8&count=20&showImage=true"
+//6.2 最数码论坛列表
+#define kZuiFastForumDetaiUrl @"http://piebbs.pconline.com.cn/mobile/topics.ajax?singleForum=false&ie=utf-8&count=20&showImage=true&type=hot_week&forums=%@&noForums=22"
+//7 论坛子版块
+//7.1 获取子版块帖子列表
+#define kSubForumTopicListUrl @"http://mrobot.pconline.com.cn/v3/itbbs/newForums/%d?&pageNo=1&pageSize=20&orderby=%@"
+//7.2 最数码子版块帖子列表
+#define kZuiSunForumTopicListUrl @"http://mrobot.pconline.com.cn/v2/piebbs/forums/%d?&pageNo=1&pageSize=20&orderby=%@"
 
 
 //找产品

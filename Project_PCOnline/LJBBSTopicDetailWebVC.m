@@ -8,6 +8,7 @@
 
 #import "LJBBSTopicDetailWebVC.h"
 #import "UIImage+MyImage.h"
+#import "LJCommonHeader.h"
 
 @interface LJBBSTopicDetailWebVC ()
 
@@ -51,7 +52,7 @@
     
     NSString * urlStr = self.urlStr;
     if (self.urlStr == nil) {
-        if ([self.bbsList.listItem.title isEqualToString:@"最数码论坛"]) {
+        if (self.bbsItem.ID.integerValue < 0) {
             urlStr = [NSString stringWithFormat:kZuiBBSTopicDetailUrl, self.topic.topicId.integerValue];
         }
         else
@@ -59,6 +60,7 @@
             urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.topic.topicId.integerValue];
         }
     }
+    LJLog(@"web:%@", urlStr);
     NSURL * url = [NSURL URLWithString:urlStr];
     NSURLRequest * req = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:req];

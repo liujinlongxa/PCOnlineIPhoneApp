@@ -16,6 +16,6 @@
 
 @interface LJHotTopicFrame : LJBaseTopicFrame
 
-+ (instancetype)topicFrameWithTopic:(LJHotTopic *)topic;
++ (instancetype)hotTopicFrameWithTopic:(LJHotTopic *)topic;
 
 @end

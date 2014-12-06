@@ -10,9 +10,19 @@
 #import "LJBBSList.h"
 #import "LJCommonHeader.h"
 
+@class LJFastForumHeaderView;
+
+@protocol LJFastForumHeaderViewDelegate <NSObject>
+
+@optional
+- (void)fastForumHeaderView:(LJFastForumHeaderView *)header didSelectForumItem:(LJBBSListItem *)item;
+
+@end
+
 @interface LJFastForumHeaderView : UIView
 
 @property (nonatomic, strong) LJBBSList * bbsList;
+@property (nonatomic, weak) id<LJFastForumHeaderViewDelegate> delegate;
 
 + (instancetype)fastForumHeaderViewWithBBSList:(LJBBSList *)bbsList;
 

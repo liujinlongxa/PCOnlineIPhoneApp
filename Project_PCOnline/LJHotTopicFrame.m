@@ -11,7 +11,7 @@
 
 @implementation LJHotTopicFrame
 
-+ (instancetype)topicFrameWithTopic:(LJBaseTopic *)topic
++ (instancetype)hotTopicFrameWithTopic:(LJBaseTopic *)topic
 {
     LJHotTopicFrame * topicFrame = [[self alloc] init];
     topicFrame.topic = topic;

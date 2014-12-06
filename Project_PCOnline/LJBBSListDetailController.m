@@ -53,11 +53,11 @@
 }
 
 #pragma mark - HotTopicTableVC代理方法，选中某个帖子
-- (void)BBSTopicTableVC:(LJBBSHotTopicTableVC *)vc didSelectTopic:(LJHotTopic *)topic inBBSList:(LJBBSList *)bbsList
+- (void)BBSTopicTableVC:(LJBBSHotTopicTableVC *)vc didSelectTopic:(LJBaseTopic *)topic inBBSList:(LJBBSList *)bbsList
 {
     LJBBSTopicDetailWebVC * topicWebVC = [[LJBBSTopicDetailWebVC alloc] init];
     topicWebVC.topic = topic;
-    topicWebVC.bbsList = bbsList;
+    topicWebVC.bbsItem = bbsList.listItem;
     [self.navigationController pushViewController:topicWebVC animated:YES];
 }
 

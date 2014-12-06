@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LJTopic.h"
+#import "LJBaseTopicFrame.h"
 
-@interface LJTopicFrame : NSObject
+@interface LJTopicFrame : LJBaseTopicFrame
+
++ (instancetype)topicFrameWithTopic:(LJBaseTopic *)topic;
+
+@property (nonatomic, assign) CGRect essenceFrame;
 
 @end

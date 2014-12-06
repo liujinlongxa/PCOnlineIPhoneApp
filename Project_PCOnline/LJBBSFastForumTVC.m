@@ -14,8 +14,9 @@
 #import "LJHotTopicFrame.h"
 #import "LJHotTopicCell.h"
 #import "LJBBSTopicDetailWebVC.h"
+#import "LJBBSSubForumTVC.h"
 
-@interface LJBBSFastForumTVC ()
+@interface LJBBSFastForumTVC ()<LJFastForumHeaderViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray * topicsData;
 
@@ -46,6 +47,7 @@
     //设置headerview
     LJFastForumHeaderView * header = [LJFastForumHeaderView fastForumHeaderViewWithBBSList:self.fastForumList];
     self.tableView.tableHeaderView = header;
+    header.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -55,6 +57,8 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pccommon_navbar_secondary_64"] forBarMetrics:UIBarMetricsDefault];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"btn_common_black_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClick:)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor], NSFontAttributeName:[UIFont systemFontOfSize:23]}];
+    
+    
 }
 
 - (void)backButtonClick:(id)sender
@@ -88,16 +92,30 @@
     return _topicsData;
 }
 
+- (NSString *)setupUrlStr
+{
+    NSString * urlStr = nil;
+    if (self.fastForumList.listItem.ID.integerValue < 0)
+    {
+        urlStr = [NSString stringWithFormat:kZuiFastForumDetaiUrl, self.fastForumList.subItemIDStr];
+    }
+    else
+    {
+        urlStr = [NSString stringWithFormat:kFastForumDetailUrl, self.fastForumList.subItemIDStr];
+    }
+    return urlStr;
+}
+
 - (void)loadTopicsData
 {
-    NSString * urlStr = [NSString stringWithFormat:kFastForumDetailUrl, self.fastForumList.subItemIDStr];
+    NSString * urlStr = [self setupUrlStr];
     LJLog(@"url:%@", urlStr);
     [LJNetWorking GET:urlStr parameters:self success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         NSMutableArray * topicArr = [NSMutableArray array];
         for (NSDictionary * topicDict in dict[@"hot-topics"]) {
             LJHotTopic * topic = [LJHotTopic hotTopicWithDict:topicDict];
-            LJHotTopicFrame * topicFrame = [LJHotTopicFrame topicFrameWithTopic:topic];
+            LJHotTopicFrame * topicFrame = [LJHotTopicFrame hotTopicFrameWithTopic:topic];
             [topicArr addObject:topicFrame];
         }
         self.topicsData = topicArr;
@@ -121,7 +139,16 @@
     LJBBSTopicDetailWebVC * detailVC = [[LJBBSTopicDetailWebVC alloc] init];
     assert([topicFrame.topic isKindOfClass:[LJHotTopic class]]);
     detailVC.topic = (LJHotTopic *)topicFrame.topic;
+    detailVC.bbsItem = self.fastForumList.listItem;
     [self.navigationController pushViewController:detailVC animated:YES];
+}
+
+#pragma mark - 选中header 上的button，headerview的代理方法
+- (void)fastForumHeaderView:(LJFastForumHeaderView *)header didSelectForumItem:(LJBBSListItem *)item
+{
+    LJBBSSubForumTVC * subForumTVC = [[LJBBSSubForumTVC alloc] init];
+    subForumTVC.bbsItem = item;
+    [self.navigationController pushViewController:subForumTVC animated:YES];
 }
 
 @end

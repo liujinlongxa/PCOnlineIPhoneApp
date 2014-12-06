@@ -11,6 +11,7 @@
 
 @interface LJHotTopic : LJBaseTopic
 
+@property (nonatomic, copy) NSString * createAt;
 @property (nonatomic, strong) NSNumber * forumId;
 @property (nonatomic, copy) NSString * forumName;
 @property (nonatomic, copy) NSString * forumUrl;
