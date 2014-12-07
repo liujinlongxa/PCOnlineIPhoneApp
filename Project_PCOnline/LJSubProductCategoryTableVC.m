@@ -9,6 +9,7 @@
 #import "LJSubProductCategoryTableVC.h"
 #import "LJProductCategory.h"
 #import "LJProductSubCategory.h"
+#import "LJFullScreenBrandVC.h"
 
 #define kSubProductCategoryCellIdentifier @"SubProductCategoryCell"
 
@@ -38,7 +39,6 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
     return self.subCategories.count;
 }
 
@@ -50,5 +50,11 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self.delegate respondsToSelector:@selector(SubProductCategoryTVC:didSelectSubCategory:)]) {
+        [self.delegate SubProductCategoryTVC:self didSelectSubCategory:self.subCategories[indexPath.row]];
+    }
+}
 
 @end

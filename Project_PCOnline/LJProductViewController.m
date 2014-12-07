@@ -15,6 +15,7 @@
 #import "LJSubProductCategoryTableVC.h"
 #import "LJBrandTableVC.h"
 #import "LJProductListTableVC.h"
+#import "LJFullScreenBrandVC.h"
 
 #define kCategoryDataFileName @"PCOnlineProductDatas4inch.json"
 #define kCategoryCellIdentifier @"CategoryCell"
@@ -22,7 +23,7 @@
 #define kShowViewW 220 //showview的宽度
 #define kTableViewOffset 90 //tableview偏移距离
 
-@interface LJProductViewController ()<UITableViewDelegate, UITableViewDataSource, LJBrandTableVCDelegate>
+@interface LJProductViewController ()<UITableViewDelegate, UITableViewDataSource, LJBrandTableVCDelegate, LJSubProductCategoryTableVCDelegate>
 
 @property (nonatomic, weak) UITableView * tableView;
 @property (nonatomic, strong) NSMutableArray * categoryData;
@@ -169,6 +170,7 @@
     {
         LJSubProductCategoryTableVC * subCategoryVC = [[LJSubProductCategoryTableVC alloc] initWithStyle:UITableViewStylePlain];
         subCategoryVC.subCategories = category.childs;
+        subCategoryVC.delegate = self;
         self.curSlideVC = subCategoryVC;
         [self.showView addSubview:subCategoryVC.view];
     }
@@ -183,7 +185,7 @@
     CGRect tableViewF = self.tableView.frame;
     tableViewF.origin.x = -kTableViewOffset;
     NSArray * cells = self.tableView.visibleCells;
-    [UIView animateWithDuration:1.0f animations:^{
+    [UIView animateWithDuration:0.5f animations:^{
         self.showView.frame = showViewF;
         self.tableView.frame = tableViewF;
         [cells enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -219,7 +221,7 @@
     CGRect tableViewF = self.tableView.frame;
     tableViewF.origin.x = 0;
     NSArray * cells = self.tableView.visibleCells;
-    [UIView animateWithDuration:1.0f animations:^{
+    [UIView animateWithDuration:0.5f animations:^{
         self.showView.frame = showViewF;
         self.tableView.frame = tableViewF;
         [cells enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -231,12 +233,20 @@
     }];
 }
 
-//选中某个品牌代理方法
+#pragma mark - 选择某品牌的代理方法
 - (void)brandTableVC:(LJBrandTableVC *)tableVC didSelectBrand:(LJBrand *)brand
 {
     LJProductListTableVC * productListVC = [[LJProductListTableVC alloc] initWithStyle:UITableViewStylePlain];
     productListVC.brand = brand;
     [self.navigationController pushViewController:productListVC animated:YES];
+}
+
+#pragma mark - 选择某子品牌的代理方法
+-(void)SubProductCategoryTVC:(LJSubProductCategoryTableVC *)controller didSelectSubCategory:(LJProductSubCategory *)subCategory
+{
+    LJFullScreenBrandVC * brandVC = [[LJFullScreenBrandVC alloc] init];
+    brandVC.subCategory = subCategory;
+    [self.navigationController pushViewController:brandVC animated:YES];
 }
 
 - (void)filterButtonClick:(id)sender

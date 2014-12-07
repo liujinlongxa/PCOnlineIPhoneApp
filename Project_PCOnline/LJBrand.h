@@ -13,6 +13,8 @@
 @property (nonatomic, strong) NSNumber * ID;
 @property (nonatomic, copy) NSString * logo;
 @property (nonatomic, copy) NSString * name;
+@property (nonatomic, strong) NSNumber * type;
+@property (nonatomic, copy) NSString * index;
 
 + (instancetype)brandWithDict:(NSDictionary *)dict;
 

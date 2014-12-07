@@ -14,6 +14,8 @@
 @property (nonatomic, copy) NSString * title;
 @property (nonatomic, copy) NSString * url;
 
+@property (nonatomic, strong) NSNumber * type;
+
 + (instancetype)productSubCategoryWithDict:(NSDictionary *)dict;
 
 

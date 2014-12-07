@@ -58,16 +58,17 @@
     [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         
-        [[LJCommonData shareCommonData] saveObjc:dict[@"type"] forKey:kProductTypeKey];//保存type
         //解析数据
         //推荐品牌
         LJBrandGroup * recommendBrand = [LJBrandGroup brandGroupWithDict:dict[@"partition"][@"recommondBrands"]];
+        recommendBrand.type = dict[@"type"];
         if (recommendBrand.brands.count > 0) {
             [self.brandData addObject:recommendBrand];
         }
         //其他品牌
         for (NSDictionary * brandDict in dict[@"partition"][@"totalBrands"][@"sections"]) {
             LJBrandGroup * group = [LJBrandGroup brandGroupWithDict:brandDict];
+            group.type = dict[@"type"];
             [self.brandData addObject:group];
         }
         [self.tableView reloadData];

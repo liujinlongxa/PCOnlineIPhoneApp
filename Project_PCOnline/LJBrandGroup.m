@@ -19,10 +19,19 @@
     NSMutableArray * arr = [NSMutableArray array];
     for (NSDictionary * brandDict in group.brands) {
         LJBrand * brand = [LJBrand brandWithDict:brandDict];
+        brand.index = group.index;
         [arr addObject:brand];
     }
     group.brands = [arr copy];
     return group;
+}
+
+- (void)setType:(NSNumber *)type
+{
+    for (LJBrand * brand in self.brands) {
+        brand.type = type;
+    }
+    _type = type;
 }
 
 @end

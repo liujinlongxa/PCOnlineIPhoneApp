@@ -25,7 +25,7 @@
     self.nameLab.text = product.shortName;
     self.priceLab.text = [NSString stringWithFormat:@"￥%d", [product.price integerValue]];
 #warning 此处有bug，每种品牌显示的内容应该不一样
-    NSString * desc = [NSString stringWithFormat:@"%@:%@\n%@:%@", product.items[2], product.items[3], product.items[4], product.items[5]];
+    NSString * desc = [NSString stringWithFormat:@"%@:%@\n%@:%@", product.items[0], product.items[1], product.items[2], product.items[3]];
     self.desLab.text = desc;
 }
 

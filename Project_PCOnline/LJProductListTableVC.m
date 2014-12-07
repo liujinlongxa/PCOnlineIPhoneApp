@@ -68,7 +68,7 @@ typedef enum : NSUInteger {
 
 - (void)loadProductListData
 {
-    NSString * productType = [[LJCommonData shareCommonData] loadObjcForKey:kProductTypeKey];
+    NSString * productType = [NSString stringWithFormat:@"%d", self.brand.type.integerValue];
     NSString * urlStr = [NSString stringWithFormat:kProductListUrl, productType, self.curPage, self.curSortType, [self.brand.ID integerValue]];
     [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         

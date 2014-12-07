@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LJProductSubCategory.h"
 
 @interface LJFullScreenBrandVC : UIViewController
+
+@property (nonatomic, strong) LJProductSubCategory * subCategory;
 
 @end

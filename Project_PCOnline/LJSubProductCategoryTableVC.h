@@ -8,10 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "LJCommonHeader.h"
+#import "LJProductSubCategory.h"
 
+@class LJSubProductCategoryTableVC;
+
+@protocol LJSubProductCategoryTableVCDelegate <NSObject>
+
+@optional
+- (void)SubProductCategoryTVC:(LJSubProductCategoryTableVC *)controller didSelectSubCategory:(LJProductSubCategory *)subCategory;
+
+@end
 
 @interface LJSubProductCategoryTableVC : UITableViewController
 
 @property (nonatomic, strong) NSArray * subCategories;
+@property (nonatomic, weak) id<LJSubProductCategoryTableVCDelegate> delegate;
 
 @end

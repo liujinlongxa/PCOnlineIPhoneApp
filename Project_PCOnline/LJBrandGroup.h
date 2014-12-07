@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSArray * brands;
 @property (nonatomic, copy) NSString * index;
 @property (nonatomic, strong) NSNumber * rowNum;
+@property (nonatomic, strong) NSNumber * type;
 
 + (instancetype)brandGroupWithDict:(NSDictionary *)dict;
 

@@ -156,6 +156,8 @@
 		8894F90E1A2CDF890058C76A /* NSString+MyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894F90D1A2CDF890058C76A /* NSString+MyString.m */; };
 		8894F9121A2CE77F0058C76A /* LJNewsNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894F9111A2CE77F0058C76A /* LJNewsNormalCell.m */; };
 		8894F9141A2CE7A90058C76A /* LJNewsNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8894F9131A2CE7A90058C76A /* LJNewsNormalCell.xib */; };
+		88B7FC2A1A347B9C00F31E9C /* LJFullScreenBrandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B7FC291A347B9C00F31E9C /* LJFullScreenBrandCell.m */; };
+		88B7FC2D1A347BF400F31E9C /* LJBrandButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B7FC2C1A347BF400F31E9C /* LJBrandButton.m */; };
 		88CAED1B1A2E1DFF00262896 /* LJHotForumsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CAED1A1A2E1DFF00262896 /* LJHotForumsView.m */; };
 		88CAED1E1A2E1E6200262896 /* LJHotForum.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CAED1D1A2E1E6200262896 /* LJHotForum.m */; };
 		88CAED211A2E224D00262896 /* LJHotForumButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CAED201A2E224D00262896 /* LJHotForumButton.m */; };
@@ -461,6 +463,10 @@
 		8894F9101A2CE77F0058C76A /* LJNewsNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJNewsNormalCell.h; sourceTree = "<group>"; };
 		8894F9111A2CE77F0058C76A /* LJNewsNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJNewsNormalCell.m; sourceTree = "<group>"; };
 		8894F9131A2CE7A90058C76A /* LJNewsNormalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJNewsNormalCell.xib; sourceTree = "<group>"; };
+		88B7FC281A347B9C00F31E9C /* LJFullScreenBrandCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJFullScreenBrandCell.h; sourceTree = "<group>"; };
+		88B7FC291A347B9C00F31E9C /* LJFullScreenBrandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJFullScreenBrandCell.m; sourceTree = "<group>"; };
+		88B7FC2B1A347BF400F31E9C /* LJBrandButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBrandButton.h; sourceTree = "<group>"; };
+		88B7FC2C1A347BF400F31E9C /* LJBrandButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBrandButton.m; sourceTree = "<group>"; };
 		88CAED191A2E1DFF00262896 /* LJHotForumsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJHotForumsView.h; sourceTree = "<group>"; };
 		88CAED1A1A2E1DFF00262896 /* LJHotForumsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJHotForumsView.m; sourceTree = "<group>"; };
 		88CAED1C1A2E1E6200262896 /* LJHotForum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJHotForum.h; sourceTree = "<group>"; };
@@ -607,6 +613,8 @@
 				882774F31A2F71BF00304E57 /* LJSubProductCategoryTableVC.m */,
 				882774F51A2F71DC00304E57 /* LJBrandTableVC.h */,
 				882774F61A2F71DC00304E57 /* LJBrandTableVC.m */,
+				882774F81A2F729700304E57 /* LJFullScreenBrandVC.h */,
+				882774F91A2F729700304E57 /* LJFullScreenBrandVC.m */,
 			);
 			name = SlideController;
 			sourceTree = "<group>";
@@ -1016,8 +1024,6 @@
 				044C28E61A2FEAAC00A48121 /* SlideController */,
 				046E76851A2C1B02000FE777 /* LJProductViewController.h */,
 				046E76861A2C1B02000FE777 /* LJProductViewController.m */,
-				882774F81A2F729700304E57 /* LJFullScreenBrandVC.h */,
-				882774F91A2F729700304E57 /* LJFullScreenBrandVC.m */,
 				044C28F41A30090900A48121 /* LJProductListTableVC.h */,
 				044C28F51A30090900A48121 /* LJProductListTableVC.m */,
 			);
@@ -1340,15 +1346,8 @@
 		882774F11A2F718100304E57 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				044C28BD1A2EAFE100A48121 /* LJProductCategoryCell.h */,
-				044C28BE1A2EAFE100A48121 /* LJProductCategoryCell.m */,
-				044C28BF1A2EAFE100A48121 /* LJProductCategoryCell.xib */,
-				044C28EF1A30001200A48121 /* LJBrandCell.h */,
-				044C28F01A30001200A48121 /* LJBrandCell.m */,
-				044C28F11A30001200A48121 /* LJBrandCell.xib */,
-				044C28F71A30092C00A48121 /* LJProductListCell.h */,
-				044C28F81A30092C00A48121 /* LJProductListCell.m */,
-				044C28F91A30092C00A48121 /* LJProductListCell.xib */,
+				88B7FC271A347B7600F31E9C /* BrandAndCategory */,
+				88B7FC261A347B6600F31E9C /* Product */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -1444,6 +1443,33 @@
 				8894F9131A2CE7A90058C76A /* LJNewsNormalCell.xib */,
 			);
 			name = NewsCell;
+			sourceTree = "<group>";
+		};
+		88B7FC261A347B6600F31E9C /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				044C28F71A30092C00A48121 /* LJProductListCell.h */,
+				044C28F81A30092C00A48121 /* LJProductListCell.m */,
+				044C28F91A30092C00A48121 /* LJProductListCell.xib */,
+			);
+			name = Product;
+			sourceTree = "<group>";
+		};
+		88B7FC271A347B7600F31E9C /* BrandAndCategory */ = {
+			isa = PBXGroup;
+			children = (
+				044C28BD1A2EAFE100A48121 /* LJProductCategoryCell.h */,
+				044C28BE1A2EAFE100A48121 /* LJProductCategoryCell.m */,
+				044C28BF1A2EAFE100A48121 /* LJProductCategoryCell.xib */,
+				044C28EF1A30001200A48121 /* LJBrandCell.h */,
+				044C28F01A30001200A48121 /* LJBrandCell.m */,
+				044C28F11A30001200A48121 /* LJBrandCell.xib */,
+				88B7FC281A347B9C00F31E9C /* LJFullScreenBrandCell.h */,
+				88B7FC291A347B9C00F31E9C /* LJFullScreenBrandCell.m */,
+				88B7FC2B1A347BF400F31E9C /* LJBrandButton.h */,
+				88B7FC2C1A347BF400F31E9C /* LJBrandButton.m */,
+			);
+			name = BrandAndCategory;
 			sourceTree = "<group>";
 		};
 		88CAED241A2E2D4700262896 /* BBSSquare */ = {
@@ -1605,6 +1631,7 @@
 				044C28EE1A2FF6DC00A48121 /* LJBrandGroup.m in Sources */,
 				04C711F51A2D56DF009705DF /* UIImage+MultiFormat.m in Sources */,
 				044C28BC1A2EA4FC00A48121 /* LJProductSubCategory.m in Sources */,
+				88B7FC2A1A347B9C00F31E9C /* LJFullScreenBrandCell.m in Sources */,
 				8857A3311A331ED8008265FC /* LJBBSSubForumTVC.m in Sources */,
 				8894F9081A2CD4190058C76A /* LJSelectButton.m in Sources */,
 				044C28F61A30090900A48121 /* LJProductListTableVC.m in Sources */,
@@ -1615,6 +1642,7 @@
 				046E762E1A2C08AF000FE777 /* UIAlertView+AFNetworking.m in Sources */,
 				8857A32D1A329CF8008265FC /* LJHotTopicFrame.m in Sources */,
 				047D6A8F1A2C71A500EB3B64 /* LJNews.m in Sources */,
+				88B7FC2D1A347BF400F31E9C /* LJBrandButton.m in Sources */,
 				047D6A831A2C548F00EB3B64 /* UIImage+MyImage.m in Sources */,
 				046E76271A2C08AF000FE777 /* AFSecurityPolicy.m in Sources */,
 				046E76651A2C0A37000FE777 /* FMResultSet.m in Sources */,
