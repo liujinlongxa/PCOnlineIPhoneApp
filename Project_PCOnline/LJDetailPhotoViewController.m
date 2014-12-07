@@ -12,6 +12,7 @@
 #import "LJPhotoCollectionViewCell.h"
 #import "UIImage+MyImage.h"
 #import "UIImageView+WebCache.h"
+#import "LJPhotoThumbShowView.h"
 
 #define kLJPhotoCollectionViewCellIndeifier @"LJPhotoCollectionViewCell"
 
@@ -29,9 +30,11 @@
 @property (nonatomic, weak) UIView * tabView;
 @property (nonatomic, weak) UIView * navView;
 @property (nonatomic, weak) UICollectionView * collectionView;
+@property (nonatomic, strong) LJPhotoThumbShowView * photoThumbView;
 
 @property (nonatomic, strong) NSMutableArray * photosData;
 @property (nonatomic, assign, getter=isShow) BOOL show;//导航栏隐藏
+@property (nonatomic, assign, getter=isThumbShow) BOOL tuumbShow;
 @end
 
 @implementation LJDetailPhotoViewController
@@ -111,6 +114,20 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (LJPhotoThumbShowView *)photoThumbView
+{
+    if (!_photoThumbView) {
+        _photoThumbView = [[LJPhotoThumbShowView alloc] initWithPhotos:[self.photosData copy] andSelectActionBlock:^(NSInteger index) {
+            [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+            self.pageLab.text = [NSString stringWithFormat:@"%d/%d", index + 1, self.photosData.count];
+            LJPhotoCollectionViewCell * cell = [self.collectionView.visibleCells firstObject];
+            self.descLab.text = cell.photo.name;
+        }];
+        [self.view insertSubview:_photoThumbView belowSubview:self.tabView];
+    }
+    return _photoThumbView;
+}
+
 #pragma mark - 加载数据
 -(NSMutableArray *)photosData
 {
@@ -168,12 +185,19 @@
     CGFloat tabViewH = CGRectGetHeight(self.tabView.frame);
     __block CGRect tabViewF = self.tabView.frame;
     __block CGRect navViewF = self.navView.frame;
+    __block CGRect thumbViewF = self.photoThumbView.frame;
     if (self.isShow) {
         tabViewF.origin.y = kScrH;
         navViewF.origin.y = -CGRectGetHeight(self.navView.frame);
+        if (self.isThumbShow) {//设置thumb view
+            thumbViewF.origin.x = kScrW;
+            self.tuumbShow = !self.isThumbShow;
+            self.showBtn.selected = !self.showBtn.isSelected;
+        }
         [UIView animateWithDuration:1.0 animations:^{
             self.tabView.frame = tabViewF;
             self.navView.frame = navViewF;
+            self.photoThumbView.frame = thumbViewF;
         }];
         self.show = NO;
     }
@@ -189,10 +213,28 @@
     }
 }
 
+#pragma mark - button点击
 - (IBAction)downLoadClick:(id)sender {
 }
 
 - (IBAction)showBtnClick:(id)sender {
+    
+    CGRect viewF = self.photoThumbView.frame;
+    self.showBtn.selected = !self.showBtn.selected;
+    if (self.isThumbShow) {
+        viewF.origin.x = kScrW;
+    }
+    else
+    {
+        viewF.origin.x = kScrW - CGRectGetWidth(viewF);
+    }
+    
+    
+    [UIView animateWithDuration:1.0f animations:^{
+        self.photoThumbView.frame = viewF;
+    } completion:^(BOOL finished) {
+        self.tuumbShow = !self.isThumbShow;
+    }];
 }
 
 - (IBAction)shareBtnClick:(id)sender {
