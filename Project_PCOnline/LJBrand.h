@@ -13,7 +13,7 @@
 @property (nonatomic, strong) NSNumber * ID;
 @property (nonatomic, copy) NSString * logo;
 @property (nonatomic, copy) NSString * name;
-@property (nonatomic, strong) NSNumber * type;
+@property (nonatomic, strong) NSNumber * type;//type，请求具体品牌产品列表时要用到
 @property (nonatomic, copy) NSString * index;
 
 + (instancetype)brandWithDict:(NSDictionary *)dict;

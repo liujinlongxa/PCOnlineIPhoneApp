@@ -55,6 +55,9 @@
     //初始化showview
     [self setupShowView];
     
+    //设置手势
+    [self setupGesture];
+    
 }
 
 #pragma mark - 初始化控件
@@ -252,5 +255,109 @@
 - (void)filterButtonClick:(id)sender
 {
 }
+
+#pragma mark - 设置showview 的手势滑动
+- (void)setupGesture
+{
+    UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(showViewPanGesture:)];
+    [self.showView addGestureRecognizer:pan];
+}
+
+- (void)setProductLabAlpha:(CGFloat)alpha
+{
+    [self.tableView.visibleCells enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [[obj subTitleLab] setAlpha:alpha];
+    }];
+}
+
+- (CGFloat)curSubLabAlpah
+{
+    return self.isShow ? 0 : 1;
+}
+
+- (void)showViewPanGesture:(UIPanGestureRecognizer *)pan
+{
+    static CGPoint startPoint;
+    static CGFloat startAlpah;
+    CGPoint endPoint = CGPointZero;
+    CGFloat endAlpah = 0; //sublabel 的透明度
+    CGRect showViewFrame = self.showView.frame;
+    CGRect tableViewFrame = self.tableView.frame;
+    //根据手势的不同过程设置view的frame
+    if (pan.state == UIGestureRecognizerStateBegan) {
+        //记录手势开始点和开始的透明度
+        startPoint = [pan translationInView:self.view];
+        startAlpah = [self curSubLabAlpah];
+    }
+    else if(pan.state == UIGestureRecognizerStateChanged)
+    {
+        endPoint = [pan translationInView:self.view];
+        CGFloat offset = endPoint.x - startPoint.x;
+        
+        if (showViewFrame.origin.x + offset > kScrW) { //到达右边界
+            showViewFrame.origin.x = kScrW;
+            tableViewFrame.origin.x = 0;
+            endAlpah = 0;
+        }
+        else if(showViewFrame.origin.x + offset < kScrW - kShowViewW) //到达左边界
+        {
+            showViewFrame.origin.x = kScrW - kShowViewW;
+            tableViewFrame.origin.x = -kTableViewOffset;
+            endAlpah = 1;
+        }
+        else
+        {
+            CGFloat rate = offset / kShowViewW;
+            showViewFrame.origin.x = showViewFrame.origin.x + offset;
+            tableViewFrame.origin.x = tableViewFrame.origin.x + rate * kTableViewOffset;
+            endAlpah = startAlpah + rate;
+        }
+        
+        [self setProductLabAlpha:endAlpah];
+        self.showView.frame = showViewFrame;
+        self.tableView.frame = tableViewFrame;
+        startPoint = endPoint;
+        startAlpah = endAlpah;
+    }
+    else
+    {
+        //手势结束后，showView会自动回到最近的一侧
+        CGFloat offset;
+        CGFloat leftOffset = showViewFrame.origin.x - kScrW + kShowViewW;
+        CGFloat rightOffset = kScrW - showViewFrame.origin.x;
+        if (leftOffset > rightOffset) { //靠近右侧
+            offset = rightOffset;
+            showViewFrame.origin.x = kScrW;
+            tableViewFrame.origin.x = 0;
+            endAlpah = 1;
+        }
+        else //靠近左侧
+        {
+            offset = leftOffset;
+            showViewFrame.origin.x = kScrW - kShowViewW;
+            tableViewFrame.origin.x = -kTableViewOffset;
+            endAlpah = 0;
+        }
+        NSTimeInterval animateDur = offset / (kScrW - kTableViewOffset) * 2.0f; //计算相对时间
+        [UIView animateWithDuration:animateDur animations:^{
+            self.showView.frame = showViewFrame;
+            self.tableView.frame = tableViewFrame;
+            [self setProductLabAlpha:endAlpah];
+        } completion:^(BOOL finished) {
+            //设置导航栏
+            if (leftOffset > rightOffset) {
+                [self setupNavButton];
+                self.show = NO;
+            }
+            else
+            {
+                [self changeNavButton];
+                self.show = YES;
+            }
+        }];
+    }
+}
+    
+    
 
 @end
