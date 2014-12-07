@@ -19,8 +19,10 @@
 
 @optional
 - (void)BBSSquareViewController:(LJBBSSquareViewController *)controller didSelectHotTopic:(LJHotTopic *)topic;
-
 - (void)BBSSquareViewController:(LJBBSSquareViewController *)controller didSelectFastForum:(LJBBSList *)bbsList;
+- (void)BBSSquareViewController:(LJBBSSquareViewController *)controller didSelectHotForum:(LJHotForum *)hotForum;
+- (void)BBSSquareViewController:(LJBBSSquareViewController *)controller didSelectMoreHotTopic:(NSString *)urlStr;
+
 
 @end
 

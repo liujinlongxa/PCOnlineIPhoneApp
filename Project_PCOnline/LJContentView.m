@@ -31,7 +31,6 @@
     return self;
 }
 
-#warning 存在bug，可会会造成选中状态无法消失
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     self.backgroundColor = [UIColor whiteColor];

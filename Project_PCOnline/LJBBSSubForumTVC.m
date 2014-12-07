@@ -55,11 +55,23 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.navigationItem.title = self.bbsItem.title;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"btn_common_black_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClick:)];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pccommon_navbar_secondary_64"] forBarMetrics:UIBarMetricsDefault];
+    //间距
+    UIBarButtonItem * space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    space.width = -20;
+    
+    //left items
+    UIBarButtonItem * backItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"btn_common_black_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClick:)];
+    UILabel * backLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
+    backLab.text = self.bbsItem.title;
+    backLab.font = NavBarTitleFont;
+    UIBarButtonItem * backLabItem = [[UIBarButtonItem alloc] initWithCustomView:backLab];
+    self.navigationItem.leftBarButtonItems = @[space, backItem, space, space, backLabItem];
+    
+    //right items
     UIBarButtonItem * collectItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"btn_common_toolbar_collect"] style:UIBarButtonItemStylePlain target:self action:@selector(collectBtnClick:)];
     UIBarButtonItem * sendItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"btn_topic_list_send_topic"] style:UIBarButtonItemStylePlain target:self action:@selector(sendBtnClick:)];
-    self.navigationItem.rightBarButtonItems = @[sendItem, collectItem];
+    self.navigationItem.rightBarButtonItems = @[sendItem, space, collectItem];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
@@ -91,14 +103,16 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
 - (NSString *)setupUrlStr
 {
     NSString * urlStr = nil;
-    if (self.bbsItem.ID.integerValue < 0)
+    NSInteger forumID = self.bbsItem.ID.integerValue;
+    if (forumID < 0)
     {
-        urlStr = [NSString stringWithFormat:kZuiSunForumTopicListUrl, -self.bbsItem.ID.integerValue, self.curOrderBy];
+        urlStr = [NSString stringWithFormat:kZuiSunForumTopicListUrl, -forumID, self.curOrderBy];
     }
     else
     {
-        urlStr = [NSString stringWithFormat:kSubForumTopicListUrl, self.bbsItem.ID.integerValue, self.curOrderBy];
+        urlStr = [NSString stringWithFormat:kSubForumTopicListUrl, forumID, self.curOrderBy];
     }
+
     return urlStr;
 }
 

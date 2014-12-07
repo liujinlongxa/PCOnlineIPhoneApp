@@ -12,6 +12,7 @@
 #import "LJHotTopicView.h"
 #import "LJHotForumsView.h"
 #import "LJInfiniteScrollView.h"
+#import "LJBBSHotTopicTableVC.h"
 //View
 #import "LJFastForumButton.h"
 #import "LJFastSubForumButton.h"
@@ -26,7 +27,7 @@
 #define kHotForumKey @"forums"
 #define kPadding 10
 
-@interface LJBBSSquareViewController ()<UIScrollViewDelegate>
+@interface LJBBSSquareViewController ()<UIScrollViewDelegate, LJHotForumsViewDelegate>
 
 //scrollView
 @property (nonatomic, weak) UIScrollView * scrollView;
@@ -165,6 +166,7 @@
     moreBtn.frame =CGRectMake(0, CGRectGetHeight(view.frame) - moreBtnH, CGRectGetWidth(view.frame), moreBtnH);
     [moreBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [moreBtn setTitle:@"查看更多热帖" forState:UIControlStateNormal];
+    [moreBtn addTarget:self action:@selector(moreHotTopicBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:moreBtn];
     //分割线
     UIView * line = [[UIView alloc] initWithFrame:CGRectMake(0, moreBtn.frame.origin.y + 1, CGRectGetWidth(view.frame), 1)];
@@ -188,6 +190,7 @@
     LJHotForumsView * hotForumView = [[LJHotForumsView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.hotTopicView.frame) + kPadding, kScrW, 0)];
     [self.scrollView addSubview:hotForumView];
     self.hotForumView = hotForumView;
+    self.hotForumView.delegate = self;
     [self loadHotForumsData];
 }
 
@@ -262,7 +265,7 @@
 
 - (void)loadHotTopicData
 {
-    NSString * urlStr = kBBSHotTopicUrl;
+    NSString * urlStr = [NSString stringWithFormat:kBBSHotTopicUrl, 1];//数量一个
     [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         //解析数据
@@ -362,7 +365,15 @@
     if ([self.delegate respondsToSelector:@selector(BBSSquareViewController:didSelectHotTopic:)]) {
         [self.delegate BBSSquareViewController:self didSelectHotTopic:view.topic];
     }
-    
+}
+
+//点击热门板块
+- (void)hotForumView:(LJHotForumsView *)view didSelectHotForum:(LJHotForum *)hotForum
+{
+    if ([self.delegate respondsToSelector:@selector(BBSSquareViewController:didSelectHotForum:)])
+    {
+        [self.delegate BBSSquareViewController:self didSelectHotForum:hotForum];
+    }
 }
 
 //fast forum点击
@@ -370,6 +381,15 @@
 {
     if ([self.delegate respondsToSelector:@selector(BBSSquareViewController:didSelectFastForum:)]) {
         [self.delegate BBSSquareViewController:self didSelectFastForum:sender.fastForumList];
+    }
+}
+
+//更多热帖button点击
+- (void)moreHotTopicBtnClick:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(BBSSquareViewController:didSelectMoreHotTopic:)])
+    {
+        [self.delegate BBSSquareViewController:self didSelectMoreHotTopic:[NSString stringWithFormat:kBBSHotTopicUrl, 20]];
     }
 }
 

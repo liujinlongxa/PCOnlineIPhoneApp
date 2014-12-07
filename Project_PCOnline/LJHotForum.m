@@ -17,4 +17,18 @@
     return hotForum;
 }
 
+//NSNumber * ID;
+//@property (nonatomic, copy) NSString * title;
+//@property (nonatomic, copy) NSString * imageUrl;
+
+- (LJBBSListItem *)bbsItem
+{
+    if (!_bbsItem)
+    {
+        NSArray * arr = @[[NSNumber numberWithInteger:self.forumId.integerValue], self.forumName];
+        _bbsItem = [LJBBSListItem bbsListItemWithArr:arr];
+    }
+    return _bbsItem;
+}
+
 @end

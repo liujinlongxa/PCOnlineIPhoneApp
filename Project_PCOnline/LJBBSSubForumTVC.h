@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "LJBBSListItem.h"
-
+#import "LJHotForum.h"
 
 
 @interface LJBBSSubForumTVC : UIViewController
 
 @property (nonatomic, strong) LJBBSListItem * bbsItem;
-
 @end

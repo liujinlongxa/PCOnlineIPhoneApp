@@ -55,7 +55,10 @@
 #pragma mark - 按钮点击
 - (void)forumsButtonClick:(LJHotForumButton *)sender
 {
-    
+    if ([self.delegate respondsToSelector:@selector(hotForumView:didSelectHotForum:)])
+    {
+        [self.delegate hotForumView:self didSelectHotForum:sender.hotForum];
+    }
 }
 
 @end

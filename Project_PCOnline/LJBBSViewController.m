@@ -19,6 +19,7 @@
 #import "LJBBSSubTopicListTableVC.h"
 #import "LJBBSTopicDetailWebVC.h"
 #import "LJBBSFastForumTVC.h"
+#import "LJBBSSubForumTVC.h"
 
 @interface LJBBSViewController ()<LJBBSButtonViewDelegate, LJBBSListViewControllerDelegate, LJBBSSquareViewControllerDelegate>
 
@@ -114,7 +115,12 @@
 }
 
 #pragma mark - 点击热门板块
-
+- (void)BBSSquareViewController:(LJBBSSquareViewController *)controller didSelectHotForum:(LJHotForum *)hotForum
+{
+    LJBBSSubForumTVC * subForumTVC = [[LJBBSSubForumTVC alloc] init];
+    subForumTVC.bbsItem = hotForum.bbsItem;
+    [self.navigationController pushViewController:subForumTVC animated:YES];
+}
 
 #pragma mark - 点击fast forum
 - (void)BBSSquareViewController:(LJBBSSquareViewController *)controller didSelectFastForum:(LJBBSList *)bbsList
@@ -122,6 +128,14 @@
     LJBBSFastForumTVC * fastForumTVC = [[LJBBSFastForumTVC alloc] initWithStyle:UITableViewStylePlain];
     fastForumTVC.fastForumList = bbsList;
     [self.navigationController pushViewController:fastForumTVC animated:YES];
+}
+
+#pragma 点击更多热帖Button
+- (void)BBSSquareViewController:(LJBBSSquareViewController *)controller didSelectMoreHotTopic:(NSString *)urlStr
+{
+    LJBBSHotTopicTableVC * hotTopicTVC = [[LJBBSHotTopicTableVC alloc] init];
+    hotTopicTVC.urlStr = urlStr;//加载更多
+    [self.navigationController pushViewController:hotTopicTVC animated:YES];
 }
 
 @end

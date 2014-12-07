@@ -8,10 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "LJCommonHeader.h"
+#import "LJHotForum.h"
+
+@class LJHotForumsView;
+
+@protocol LJHotForumsViewDelegate <NSObject>
+
+- (void)hotForumView:(LJHotForumsView *)view didSelectHotForum:(LJHotForum *)hotForum;
+
+@end
 
 @interface LJHotForumsView : UIView
 
 @property (nonatomic, strong) NSArray * forumsData;
-
+@property (nonatomic, weak) id<LJHotForumsViewDelegate> delegate;
 
 @end

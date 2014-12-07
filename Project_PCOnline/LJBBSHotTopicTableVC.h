@@ -24,6 +24,7 @@
 @interface LJBBSHotTopicTableVC : UITableViewController
 
 @property (nonatomic, strong) LJBBSList * bbsList;
+@property (nonatomic, copy) NSString * urlStr;
 @property (nonatomic, weak) id<LJBBSHotTopicTableVCDelegate> delegate;
 
 @end

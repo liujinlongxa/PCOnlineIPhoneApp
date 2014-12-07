@@ -40,6 +40,7 @@
 
 //字体
 #define SubjectButtonFont [UIFont systemFontOfSize:20] //频道Button上的字体大小
+#define NavBarTitleFont [UIFont systemFontOfSize:20] //导航栏上的标题字体
 
 //颜色
 #define RGBColor(r,g,b) ([[UIColor alloc] initWithRed:(r) / 255.0 green:(g) / 255.0 blue:(b) / 255.0 alpha:1.0])

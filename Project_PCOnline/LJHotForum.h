@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LJBBSListItem.h"
 
 @interface LJHotForum : NSObject
 
@@ -16,5 +17,7 @@
 @property (nonatomic, copy) NSString * topics;
 
 + (instancetype)hotForumWithDict:(NSDictionary *)dict;
+
+@property (nonatomic, strong) LJBBSListItem * bbsItem;
 
 @end
