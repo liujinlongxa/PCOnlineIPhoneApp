@@ -7,7 +7,7 @@
 //
 
 #import "LJPhotoThumbShowView.h"
-#import "UIImageView+AFNetworking.h"
+#import "UIImageView+WebCache.h"
 #import "LJCommonHeader.h"
 #import "LJPhoto.h"
 #define viewW 120
@@ -51,7 +51,7 @@
 {
     LJPhoto * photo = self.photos[indexPath.item];
     UIImageView * photoView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 80, 60)];
-    [photoView setImageWithURL:[NSURL URLWithString:photo.tumbUrl] placeholderImage:[UIImage imageNamed:@"common_default_88x66"]];
+    [photoView sd_setImageWithURL:[NSURL URLWithString:photo.tumbUrl] placeholderImage:[UIImage imageNamed:@"common_default_88x66"]];
     UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoThumbCellIdentifier forIndexPath:indexPath];
     cell.opaque = NO;
     [cell.contentView addSubview:photoView];
