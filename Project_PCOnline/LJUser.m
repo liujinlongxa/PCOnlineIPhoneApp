@@ -7,7 +7,7 @@
 //
 
 #import "LJUser.h"
-
+#import "LJCommonHeader.h"
 @implementation LJUser
 
 + (instancetype)userWithDict:(NSDictionary *)dict

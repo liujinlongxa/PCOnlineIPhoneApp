@@ -28,6 +28,10 @@
 - (NSString *)createAtStr
 {
     NSDate * dateCreateAt = [NSDate dateWithTimeIntervalSince1970:self.createAt.longLongValue];
+    if (self.lastPoster.lastPostAt != nil)
+    {
+        return self.lastPoster.lastPostAt;
+    }
     return [dateCreateAt dateStringToNow];
 }
 

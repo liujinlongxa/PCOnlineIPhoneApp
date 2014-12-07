@@ -8,6 +8,7 @@
 
 #import "LJBBSListDetailController.h"
 #import "LJBBSTopicDetailWebVC.h"
+#import "LJBBSSubForumTVC.h"
 
 @interface LJBBSListDetailController ()
 
@@ -18,6 +19,7 @@
 + (instancetype)BBSListDetailControllerWithControllers:(NSArray *)controllers andTitles:(NSArray *)titles
 {
     LJBBSListDetailController * controller = [LJBBSListDetailController scrollTabViewControllerWithController:controllers andTitles:titles];
+    controller.hidesBottomBarWhenPushed = YES;
     return controller;
 }
 
@@ -36,6 +38,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self setupNavBar];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 - (void)backBtnClick:(id)sender
@@ -59,6 +62,14 @@
     topicWebVC.topic = topic;
     topicWebVC.bbsItem = bbsList.listItem;
     [self.navigationController pushViewController:topicWebVC animated:YES];
+}
+
+#pragma mark - 选中子板块代理方法
+- (void)BBSSubForumListTVC:(LJBBSSubForumListTVC *)controller didSelecteBBSItem:(LJBBSListItem *)bbsItem
+{
+    LJBBSSubForumTVC * subForumTVC = [[LJBBSSubForumTVC alloc] init];
+    subForumTVC.bbsItem = bbsItem;
+    [self.navigationController pushViewController:subForumTVC animated:YES];
 }
 
 @end

@@ -29,6 +29,15 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
 
 @implementation LJBBSSubForumTVC
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.hidesBottomBarWhenPushed = YES;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

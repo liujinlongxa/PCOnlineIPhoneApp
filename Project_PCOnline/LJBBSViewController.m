@@ -16,7 +16,7 @@
 //Detail List
 #import "LJBBSListDetailController.h"
 #import "LJBBSHotTopicTableVC.h"
-#import "LJBBSSubTopicListTableVC.h"
+#import "LJBBSSubForumListTVC.h"
 #import "LJBBSTopicDetailWebVC.h"
 #import "LJBBSFastForumTVC.h"
 #import "LJBBSSubForumTVC.h"
@@ -79,18 +79,20 @@
 - (void)BBSListViewController:(LJBBSListViewController *)controller didSelectedBBS:(LJBBSList *)bbsList
 {
     if ([bbsList.listItem.title isEqualToString:@"家电论坛"]) {
-        
+        LJBBSSubForumTVC * subForumTVC = [[LJBBSSubForumTVC alloc] init];
+        subForumTVC.bbsItem = bbsList.listItem;
+        [self.navigationController pushViewController:subForumTVC animated:YES];
     }
     else
     {
         LJBBSHotTopicTableVC * hotPostsTCV = [[LJBBSHotTopicTableVC alloc] init];
-        LJBBSSubTopicListTableVC * subTopciTVC = [[LJBBSSubTopicListTableVC alloc] init];
-        subTopciTVC.view.backgroundColor = [UIColor blueColor];
+        LJBBSSubForumListTVC * subForumTVC = [[LJBBSSubForumListTVC alloc] init];
         //创建scrollTabVC
-        LJBBSListDetailController * detailVC = [LJBBSListDetailController BBSListDetailControllerWithControllers:@[hotPostsTCV, subTopciTVC] andTitles:@[@"热门帖子", @"板块列表"]];
+        LJBBSListDetailController * detailVC = [LJBBSListDetailController BBSListDetailControllerWithControllers:@[hotPostsTCV, subForumTVC] andTitles:@[@"热门帖子", @"板块列表"]];
         detailVC.bbsList = bbsList;
         //设置代理
         hotPostsTCV.delegate = detailVC;
+        subForumTVC.delegate = detailVC;
         [self.navigationController pushViewController:detailVC animated:YES];
 
     }

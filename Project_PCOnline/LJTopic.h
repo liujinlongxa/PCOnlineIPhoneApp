@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSArray * imgUrls;
 @property (nonatomic, assign) BOOL isContainImage;
 @property (nonatomic, assign) BOOL isPick;
+@property (nonatomic, assign) BOOL isForumTop;
 
 + (instancetype)topciWithDict:(NSDictionary *)dict;
 

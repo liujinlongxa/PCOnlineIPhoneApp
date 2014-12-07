@@ -35,11 +35,11 @@
     //time frame
     CGFloat timeX = self.titleFrame.origin.x;
     CGFloat timeY = CGRectGetMaxY(self.messageFrame) + padding;
-    CGSize timeSize = [normalTopic.createAtStr sizeOfStringInIOS7WithFont:TopicForumFont andMaxSize:CGSizeMake(130, 20)];
+    CGSize timeSize = [normalTopic.createAtStr sizeOfStringInIOS7WithFont:TopicForumFont andMaxSize:CGSizeMake(110, 20)];
     self.forumOrTimeFrame = CGRectMake(timeX, timeY, timeSize.width, timeSize.height);
     
     //floorCount frame
-    CGFloat floorCountX = 130 + padding;
+    CGFloat floorCountX = 110 + padding;
     CGFloat floorCountY = timeY;
     NSString * floorCountStr = [NSString stringWithFormat:@"%d楼/%d阅", normalTopic.replyCount.integerValue, normalTopic.view.integerValue];
     CGSize floorCountSize = [floorCountStr sizeOfStringInIOS7WithFont:TopicFloorCountFont andMaxSize:CGSizeMake(150, 20)];

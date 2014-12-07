@@ -17,7 +17,7 @@
 
 @optional
 - (void)BBSListViewController:(LJBBSListViewController *)controller didSelectedBBS:(LJBBSList *)bbsList;
-
+- (void)BBSListViewController:(LJBBSListViewController *)controller didSelectedSubForum:(LJBBSListItem *)bbsItem;
 @end
 
 @interface LJBBSListViewController : UIViewController

@@ -46,7 +46,7 @@
 
 - (void)setupWebView
 {
-    UIWebView * webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    UIWebView * webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScrW, kScrH - kNavBarH - kStatusBarH)];
     [self.view addSubview:webView];
     self.webView = webView;
     

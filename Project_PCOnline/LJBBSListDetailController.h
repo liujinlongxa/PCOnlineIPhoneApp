@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "LJScrollTabViewController.h"
 #import "LJBBSHotTopicTableVC.h"
-#import "LJBBSSubTopicListTableVC.h"
+#import "LJBBSSubForumListTVC.h"
 #import "LJBBSList.h"
 
-@interface LJBBSListDetailController : LJScrollTabViewController<LJBBSHotTopicTableVCDelegate>
+@interface LJBBSListDetailController : LJScrollTabViewController<LJBBSHotTopicTableVCDelegate, LJBBSSubForumListTVCDelegate>
 
 @property (nonatomic, strong) LJBBSList * bbsList;
 + (instancetype)BBSListDetailControllerWithControllers:(NSArray *)controllers andTitles:(NSArray *)titles;
