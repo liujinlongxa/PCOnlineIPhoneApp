@@ -28,10 +28,10 @@
         [self setTitleColor:BlueTextColor forState:UIControlStateHighlighted];
         //背景颜色
         self.backgroundColor = LightGrayBGColor;
-        //分割先
+        //分割线
         UIView * line = [[UIView alloc] initWithFrame:CGRectMake(10, CGRectGetHeight(frame) - 1, CGRectGetWidth(frame) - 10, 1)];
         [self addSubview:line];
-        line.backgroundColor = [UIColor darkGrayColor];
+        line.backgroundColor = [UIColor lightGrayColor];
     }
     return self;
 }
@@ -63,7 +63,7 @@
 - (void)setHighlighted:(BOOL)highlighted
 {
     [super setHighlighted:highlighted];
-    if (highlighted) {
+    if (highlighted || self.isSelected) {
         self.backgroundColor = [UIColor whiteColor];
     }
     else

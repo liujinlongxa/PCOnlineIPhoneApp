@@ -52,20 +52,6 @@
     self.compareResult = resultWebView;
 }
 
-//- (void)setLeftProduct:(LJProduct *)leftProduct
-//{
-//    _leftProduct = leftProduct;
-//    self.leftItemView.product = leftProduct;
-//    [[LJProductCompareManager manager] addCompareProduct:leftProduct atPosition:LJProductComparePositionLeft];
-//}
-
-//- (void)setRightProduct:(LJProduct *)rightProduct
-//{
-//    _rightProduct = rightProduct;
-//    self.rightItemView.product = rightProduct;
-//    [[LJProductCompareManager manager] addCompareProduct:rightProduct atPosition:LJProductComparePositionRight];
-//}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [self loadResultWeb];

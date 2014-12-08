@@ -240,7 +240,7 @@
 #pragma mark - 选择某品牌的代理方法
 - (void)brandTableVC:(LJBrandTableVC *)tableVC didSelectBrand:(LJBrand *)brand
 {
-    LJProductListTableVC * productListVC = [[LJProductListTableVC alloc] initWithStyle:UITableViewStylePlain];
+    LJProductListTableVC * productListVC = [[LJProductListTableVC alloc] init];
     productListVC.brand = brand;
     [self.navigationController pushViewController:productListVC animated:YES];
 }

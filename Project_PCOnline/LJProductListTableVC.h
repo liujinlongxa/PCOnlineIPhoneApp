@@ -11,7 +11,7 @@
 #import "LJUrlHeader.h"
 #import "LJCommonData.h"
 
-@interface LJProductListTableVC : UITableViewController
+@interface LJProductListTableVC : UIViewController
 
 @property (nonatomic, strong) LJBrand * brand;
 

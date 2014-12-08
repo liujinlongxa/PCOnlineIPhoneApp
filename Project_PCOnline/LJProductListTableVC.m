@@ -28,11 +28,12 @@ typedef enum : NSUInteger {
     LJProductSortByDate
 } LJProductSort;
 
-@interface LJProductListTableVC ()
+@interface LJProductListTableVC ()<UITableViewDelegate, UITableViewDataSource, LJProductSortViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray * productListData;
 @property (nonatomic, assign) NSInteger curPage;
 @property (nonatomic, assign) LJProductSort curSortType;
+@property (nonatomic, weak) UITableView * tableView;
 
 //排序
 @property (nonatomic, weak) LJProductSortView * sortView;
@@ -42,9 +43,10 @@ typedef enum : NSUInteger {
 
 @implementation LJProductListTableVC
 
-- (instancetype)initWithStyle:(UITableViewStyle)style
+- (instancetype)init
 {
-    if (self = [super initWithStyle:style]) {
+    self = [super init];
+    if (self) {
         self.hidesBottomBarWhenPushed = YES;
     }
     return self;
@@ -60,11 +62,35 @@ typedef enum : NSUInteger {
     [self changeNavButton];
 }
 
+- (UITableView *)tableView
+{
+    if (!_tableView) {
+        UITableView * tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScrW, kScrH - kStatusBarH - kNavBarH) style:UITableViewStylePlain];
+        [self.view addSubview:tableView];
+        _tableView = tableView;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+    }
+    return _tableView;
+}
+
 - (void)changeNavButton
 {
     self.navigationItem.title = @"产品列表";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_common_white_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClick:)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"按热度" style:UIBarButtonItemStylePlain target:self action:@selector(filterButtonClick:)];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pccommon_navbar_primary_64"] forBarMetrics:UIBarMetricsDefault];
+    //设置导航栏
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    //button
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
+    //title
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:NavBarTitleFont}];
+    [self changeNavButton];
 }
 
 #pragma mark - 返回Button
@@ -80,7 +106,8 @@ typedef enum : NSUInteger {
         CGFloat viewH = 140;
         _sortView = [LJProductSortView productScoTViewWithFrame:CGRectMake(0, -viewH, kScrW, viewH) andButTitles:@[@"按热度", @"按价高", @"按价低", @"按日期"]];
         _sortView.hidden = YES;
-        [self.bigContentView addSubview:_sortView];
+        _sortView.delegate = self;
+        [self.view addSubview:_sortView];
     }
     return _sortView;
 }
@@ -89,28 +116,16 @@ typedef enum : NSUInteger {
 {
     if (!_shadowView) {
         //阴影
-        UIView * shadowView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.sortView.frame), kScrW, kScrH - CGRectGetHeight(self.sortView.frame))];
+        UIView * shadowView = [[UIView alloc] initWithFrame:CGRectMake(0, kStatusBarH + kNavBarH, kScrW, kScrH)];
         NSLog(@"%@", NSStringFromCGRect(shadowView.frame));
         shadowView.backgroundColor = [UIColor blackColor];
         shadowView.hidden = YES;
         shadowView.alpha = 0;
-        [self.bigContentView addSubview:shadowView];
+        [self.view insertSubview:shadowView belowSubview:self.sortView];
         self.shadowView = shadowView;
         [shadowView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideSortView:)]];
     }
     return _shadowView;
-}
-
-- (UIView *)bigContentView
-{
-    if (!_bigContentView) {
-        UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, kNavBarH + kStatusBarH, kScrW, kScrH)];
-        view.opaque = YES;
-        [self.view.window insertSubview:view belowSubview:self.navigationController.navigationBar];
-        NSLog(@"%@", self.view.window.subviews);
-        _bigContentView = view;
-    }
-    return _bigContentView;
 }
 
 - (void)showSortView
@@ -156,6 +171,34 @@ static BOOL isShowSortView = NO;
 
 - (void)hideSortView:(id)sender
 {
+    [self hideSortView];
+}
+
+//排序代理方法
+- (void)productSortView:(LJProductSortView *)view didSelectIndex:(NSInteger)index
+{
+    LJProductSort type;
+    switch (index)
+    {
+        case 0:
+            type = LJProductSortByHot;
+            break;
+        case 1:
+            type = LJProductSortByPriceHigh;
+            break;
+        case 2:
+            type = LJProductSortByPriceLow;
+            break;
+        case 3:
+            type = LJProductSortByDate;
+            break;
+        default:
+            break;
+    }
+    if (self.curSortType != type) {
+        self.curSortType = type;
+        [self loadProductListData];
+    }
     [self hideSortView];
 }
 

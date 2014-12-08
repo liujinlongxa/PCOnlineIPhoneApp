@@ -149,7 +149,7 @@
     cell.leftBrand = leftBrand;
     cell.rightBrand = rightBrand;
     [cell setSelectBrandBlock:^(LJBrand *brand) {
-        LJProductListTableVC * productTVC = [[LJProductListTableVC alloc] initWithStyle:UITableViewStylePlain];
+        LJProductListTableVC * productTVC = [[LJProductListTableVC alloc] init];
         productTVC.brand = brand;
         [self.navigationController pushViewController:productTVC animated:YES];
     }];
