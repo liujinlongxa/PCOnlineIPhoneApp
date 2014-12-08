@@ -168,6 +168,8 @@
 		88CAED2E1A2E31AA00262896 /* LJBBSListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CAED2D1A2E31AA00262896 /* LJBBSListItem.m */; };
 		88CC0B7C1A3288F9001169ED /* LJFastForumHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CC0B7B1A3288F9001169ED /* LJFastForumHeaderView.m */; };
 		88CC0B7F1A3292D3001169ED /* LJContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CC0B7E1A3292D3001169ED /* LJContentView.m */; };
+		88E1EC951A36053B004BEB4C /* LJPullingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1EC941A36053B004BEB4C /* LJPullingBar.m */; };
+		88E1EC981A360DD9004BEB4C /* LJPullBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E1EC971A360DD9004BEB4C /* LJPullBarButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -488,6 +490,10 @@
 		88CC0B7B1A3288F9001169ED /* LJFastForumHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJFastForumHeaderView.m; sourceTree = "<group>"; };
 		88CC0B7D1A3292D3001169ED /* LJContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJContentView.h; sourceTree = "<group>"; };
 		88CC0B7E1A3292D3001169ED /* LJContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJContentView.m; sourceTree = "<group>"; };
+		88E1EC931A36053B004BEB4C /* LJPullingBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJPullingBar.h; sourceTree = "<group>"; };
+		88E1EC941A36053B004BEB4C /* LJPullingBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJPullingBar.m; sourceTree = "<group>"; };
+		88E1EC961A360DD9004BEB4C /* LJPullBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJPullBarButton.h; sourceTree = "<group>"; };
+		88E1EC971A360DD9004BEB4C /* LJPullBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJPullBarButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1161,6 +1167,10 @@
 				88CAED241A2E2D4700262896 /* BBSSquare */,
 				04C712051A2D984C009705DF /* LJBBSButtonView.h */,
 				04C712061A2D984C009705DF /* LJBBSButtonView.m */,
+				88E1EC931A36053B004BEB4C /* LJPullingBar.h */,
+				88E1EC941A36053B004BEB4C /* LJPullingBar.m */,
+				88E1EC961A360DD9004BEB4C /* LJPullBarButton.h */,
+				88E1EC971A360DD9004BEB4C /* LJPullBarButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1734,6 +1744,7 @@
 				047D6A701A2C291000EB3B64 /* LJNavController.m in Sources */,
 				88CC0B7C1A3288F9001169ED /* LJFastForumHeaderView.m in Sources */,
 				04C712011A2D9108009705DF /* LJAdsGroupView.m in Sources */,
+				88E1EC951A36053B004BEB4C /* LJPullingBar.m in Sources */,
 				88CAED2E1A2E31AA00262896 /* LJBBSListItem.m in Sources */,
 				8895523B1A34CF6700E7D864 /* AFHTTPSessionManager.m in Sources */,
 				047D6A881A2C66C700EB3B64 /* LJSubjectView.m in Sources */,
@@ -1762,6 +1773,7 @@
 				04C7120D1A2DA891009705DF /* LJBBSListViewController.m in Sources */,
 				041E14D11A35C56C008BB770 /* LJProductSelectButton.m in Sources */,
 				046E76461A2C08C0000FE777 /* MJRefreshBaseView.m in Sources */,
+				88E1EC981A360DD9004BEB4C /* LJPullBarButton.m in Sources */,
 				88B7FC5D1A34CA4A00F31E9C /* UIImage+GIF.m in Sources */,
 				8857A3451A332EBB008265FC /* LJUser.m in Sources */,
 				88B7FC561A34CA4A00F31E9C /* SDWebImageCompat.m in Sources */,

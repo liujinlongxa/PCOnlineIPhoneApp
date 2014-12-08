@@ -90,7 +90,6 @@ typedef enum : NSUInteger {
     [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
     //title
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:NavBarTitleFont}];
-    [self changeNavButton];
 }
 
 #pragma mark - 返回Button
@@ -182,15 +181,19 @@ static BOOL isShowSortView = NO;
     {
         case 0:
             type = LJProductSortByHot;
+            [self.navigationItem.rightBarButtonItem setTitle:@"按热度"];
             break;
         case 1:
             type = LJProductSortByPriceHigh;
+            [self.navigationItem.rightBarButtonItem setTitle:@"按价高"];
             break;
         case 2:
             type = LJProductSortByPriceLow;
+            [self.navigationItem.rightBarButtonItem setTitle:@"按价低"];
             break;
         case 3:
             type = LJProductSortByDate;
+            [self.navigationItem.rightBarButtonItem setTitle:@"按日期"];
             break;
         default:
             break;

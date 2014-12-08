@@ -15,6 +15,7 @@
 #import "LJNetWorking.h"
 #import "UIImage+MyImage.h"
 #import "LJBBSTopicDetailWebVC.h"
+#import "LJPullingBar.h"
 
 static NSString * const LJTopicOrderByLastReply = @"replyat";
 static NSString * const LJTopicOrderByPostTime = @"postat";
@@ -25,6 +26,7 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
 @property (nonatomic, strong) NSMutableArray * topicFramesData;
 @property (nonatomic, copy) NSString * curOrderBy;
 
+@property (nonatomic, weak) LJPullingBar * pullBar;
 @end
 
 @implementation LJBBSSubForumTVC
@@ -45,7 +47,14 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
     [self setupTableView];
     
     self.curOrderBy = LJTopicOrderByLastReply;
+    [self setupPullingBar];
+}
 
+- (void)setupPullingBar
+{
+    LJPullingBar * pullBar = [[LJPullingBar alloc] initPullingBarWithFrame:CGRectMake(0, 0, kScrW, 30) andTitles:@[@"最新回复", @"最近发表", @"精华帖"]];
+    [self.view addSubview:pullBar];
+    self.pullBar = pullBar;
 }
 
 #pragma mark - 初始化UI
