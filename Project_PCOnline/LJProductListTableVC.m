@@ -10,10 +10,14 @@
 #import "LJProduct.h"
 #import "LJNetWorking.h"
 #import "LJProductListCell.h"
+#import "LJProductSortView.h"
+#import "LJCommonHeader.h"
 //控制器
 #import "LJProductDetailScrollTabVC.h"
 #import "LJProductDetailWebVC.h"
 #import "LJProductInformationTVC.h"
+
+#import "LJProductSortView.h"
 
 #define kProductListCellIdentifier @"ProductListCell"
 
@@ -29,6 +33,11 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSMutableArray * productListData;
 @property (nonatomic, assign) NSInteger curPage;
 @property (nonatomic, assign) LJProductSort curSortType;
+
+//排序
+@property (nonatomic, weak) LJProductSortView * sortView;
+@property (nonatomic, weak) UIView * shadowView;
+@property (nonatomic, weak) UIView * bigContentView;
 @end
 
 @implementation LJProductListTableVC
@@ -65,9 +74,89 @@ typedef enum : NSUInteger {
 }
 
 #pragma mark - 排序
+- (LJProductSortView *)sortView
+{
+    if (!_sortView) {
+        CGFloat viewH = 140;
+        _sortView = [LJProductSortView productScoTViewWithFrame:CGRectMake(0, -viewH, kScrW, viewH) andButTitles:@[@"按热度", @"按价高", @"按价低", @"按日期"]];
+        _sortView.hidden = YES;
+        [self.bigContentView addSubview:_sortView];
+    }
+    return _sortView;
+}
+
+- (UIView *)shadowView
+{
+    if (!_shadowView) {
+        //阴影
+        UIView * shadowView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.sortView.frame), kScrW, kScrH - CGRectGetHeight(self.sortView.frame))];
+        NSLog(@"%@", NSStringFromCGRect(shadowView.frame));
+        shadowView.backgroundColor = [UIColor blackColor];
+        shadowView.hidden = YES;
+        shadowView.alpha = 0;
+        [self.bigContentView addSubview:shadowView];
+        self.shadowView = shadowView;
+        [shadowView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideSortView:)]];
+    }
+    return _shadowView;
+}
+
+- (UIView *)bigContentView
+{
+    if (!_bigContentView) {
+        UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, kNavBarH + kStatusBarH, kScrW, kScrH)];
+        view.opaque = YES;
+        [self.view.window insertSubview:view belowSubview:self.navigationController.navigationBar];
+        NSLog(@"%@", self.view.window.subviews);
+        _bigContentView = view;
+    }
+    return _bigContentView;
+}
+
+- (void)showSortView
+{
+    CGRect sortViewF = self.sortView.frame;
+    sortViewF.origin.y = 0;
+    self.sortView.hidden = NO;
+    self.shadowView.hidden = NO;
+    [UIView animateWithDuration:0.3f animations:^{
+        self.sortView.frame = sortViewF;
+        self.shadowView.alpha = 0.5;
+    } completion:^(BOOL finished) {
+        isShowSortView = YES;
+    }];
+    
+}
+
+- (void)hideSortView
+{
+    CGRect sortViewF = self.sortView.frame;
+    sortViewF.origin.y = -CGRectGetHeight(sortViewF);
+    [UIView animateWithDuration:0.3f animations:^{
+        self.sortView.frame = sortViewF;
+        self.shadowView.alpha = 0;
+    } completion:^(BOOL finished) {
+        self.sortView.hidden = YES;
+        self.shadowView.hidden = YES;
+        isShowSortView = NO;
+    }];
+}
+static BOOL isShowSortView = NO;
 - (void)filterButtonClick:(id)sender
 {
     
+    if (isShowSortView) {
+        [self hideSortView];
+    }
+    else
+    {
+        [self showSortView];
+    }
+}
+
+- (void)hideSortView:(id)sender
+{
+    [self hideSortView];
 }
 
 #pragma mark - 加载数据

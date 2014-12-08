@@ -8,6 +8,7 @@
 
 #import "LJScrollTabViewController.h"
 #import "LJProductInformationTVC.h"
+#import "LJProductInformation.h"
 #import "LJProduct.h"
 
 @interface LJProductDetailScrollTabVC : LJScrollTabViewController

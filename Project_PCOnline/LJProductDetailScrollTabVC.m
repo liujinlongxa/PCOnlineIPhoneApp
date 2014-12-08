@@ -11,7 +11,7 @@
 #import "UIImage+MyImage.h"
 #import "LJProductCompareVC.h"
 #import "LJProductCompareManager.h"
-#import "LJProductInformation.h"
+
 
 @interface LJProductDetailScrollTabVC ()<LJProductInformationTVCDelegate>
 

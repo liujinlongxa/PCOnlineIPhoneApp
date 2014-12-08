@@ -11,6 +11,7 @@
 #import "LJProductCategory.h"
 #import "LJNetWorking.h"
 #import "LJProductCategoryCell.h"
+#import "LJProductSortView.h"
 //控制器
 #import "LJSubProductCategoryTableVC.h"
 #import "LJBrandTableVC.h"
@@ -254,6 +255,8 @@
 
 - (void)filterButtonClick:(id)sender
 {
+    
+    
 }
 
 #pragma mark - 设置showview 的手势滑动
