@@ -12,5 +12,6 @@
 @interface LJFullScreenBrandVC : UIViewController
 
 @property (nonatomic, strong) LJProductSubCategory * subCategory;
+@property (nonatomic, strong) NSString * cotegoryTypeID;
 
 @end

@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class LJScrollTabViewController;
+
+@protocol LJScrollTabViewControllerDelegate <NSObject>
+
+- (void)LJScrollTabViewController:(LJScrollTabViewController *)controller didSelectController:(UIViewController *)selectController;
+
+@end
+
 @interface LJScrollTabViewController : UIViewController
 @property (nonatomic, strong, readonly) NSArray * lj_viewControllers;
 @property (nonatomic, strong, readonly) NSArray * lj_tabTitles;

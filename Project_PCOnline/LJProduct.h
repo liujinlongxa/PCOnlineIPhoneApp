@@ -20,6 +20,8 @@
 @property (nonatomic, copy) NSString * shortName;
 @property (nonatomic, copy) NSString * url;
 
+@property (nonatomic, strong) NSNumber * type;
+
 + (instancetype)productWithDict:(NSDictionary *)dict;
 
 @end

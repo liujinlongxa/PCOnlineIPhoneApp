@@ -8,12 +8,13 @@
 
 #import "LJBrandButton.h"
 #import "LJCommonHeader.h"
-
+#import "UIImageView+WebCache.h"
 
 @interface LJBrandButton ()
 
 @property (nonatomic, weak) UILabel * indexLab;
 @property (nonatomic, weak) UILabel * titleLab;
+@property (nonatomic, weak) UIImageView * brandLogo;
 
 @end
 
@@ -32,10 +33,16 @@
         self.indexLab = indexLab;
         self.indexLab.textAlignment = NSTextAlignmentCenter;
         
+        UIImageView * brandLogo = [[UIImageView alloc] init];
+        [self addSubview:brandLogo];
+        self.brandLogo = brandLogo;
+        self.brandLogo.hidden = YES;
+        
         //title
         UILabel * titleLab = [[UILabel alloc] initWithFrame:CGRectMake(indexW + padding, 0, CGRectGetWidth(frame) - indexW - padding, CGRectGetHeight(frame))];
         [self addSubview:titleLab];
         self.titleLab = titleLab;
+        self.titleLab.font = [UIFont systemFontOfSize:15];
         self.titleLab.textAlignment = NSTextAlignmentLeft;
         
     }
@@ -45,8 +52,27 @@
 - (void)setBrand:(LJBrand *)brand
 {
     _brand = brand;
-    self.indexLab.text = self.brand.index;
-    self.titleLab.text = self.brand.name;
+    CGFloat padding = 5;
+    CGFloat logoW = 50;
+    CGFloat indexW = 30;
+    if ([brand.index isEqualToString:@"荐"]) {
+        //logos
+        self.brandLogo.frame = CGRectMake(padding * 2, padding, logoW, CGRectGetHeight(self.frame) - 2 * padding);
+        [self.brandLogo sd_setImageWithURL:[NSURL URLWithString:brand.logo] placeholderImage:[UIImage imageNamed:@"common_default_80x60"]];
+        self.brandLogo.hidden = NO;
+        self.indexLab.hidden = YES;
+        //lab
+        self.titleLab.text = self.brand.name;
+        self.titleLab.frame = CGRectMake(CGRectGetMaxX(self.brandLogo.frame) + padding, 0, CGRectGetWidth(self.frame) - logoW - padding, CGRectGetHeight(self.frame));
+    }
+    else
+    {
+        self.brandLogo.hidden = YES;
+        self.indexLab.hidden = NO;
+        self.indexLab.text = self.brand.index;
+        self.titleLab.text = self.brand.name;
+        self.titleLab.frame = CGRectMake(indexW + padding, 0, CGRectGetWidth(self.frame) - indexW - padding, CGRectGetHeight(self.frame));
+    }
 }
 
 

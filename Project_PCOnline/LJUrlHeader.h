@@ -56,6 +56,19 @@
 #define kBrandListUrl @"http://mrobot.pconline.com.cn/v3/product/brand/%@"
 //3.具体品牌产品列表
 #define kProductListUrl @"http://mrobot.pconline.com.cn/v3/product/types/%@?pageNo=%d&orderId=%d&fmt=json&brandId=%d"
+//4.具体产品详情
+//4.1参数Tab
+#define kProductDetailDetailUrl @"http://mrobot.pconline.com.cn/v3/product/detail/%d"
+//4.2概述Tab
+#define kProductDetailSummaryUrl @"http://mrobot.pconline.com.cn/v3/product/summary/%d"
+//4.3报价Tab
+#define kProductDetailPriceUrl @"http://mrobot.pconline.com.cn/v3/product/comparePrice/%d"
+//4.4资讯Tab
+#define kProductDetailInformationUrl @"http://mrobot.pconline.com.cn/v3/product/information/%d?pageSize=20&pageNo=1"
+//4.5点评Tab
+#define kProductDetailCommentUrl @"http://mrobot.pconline.com.cn/v3/product/comments/%d"
+//5产品对比
+#define kProductDetailCompareUrl @"http://mrobot.pconline.com.cn/v3/product/detailComparev33?id1=%d&id2=%d"
 
 //图赏
 #define kPhotoUrl @"http://agent1.pconline.com.cn:8941/photolib/iphone_cate_json.jsp?id=%@"

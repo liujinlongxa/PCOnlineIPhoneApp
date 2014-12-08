@@ -14,6 +14,7 @@
 #import "LJUrlHeader.h"
 #import "LJFullScreenBrandCell.h"
 #import "LJProductListTableVC.h"
+#import "LJProductCompareManager.h"
 #define kFullScreenBrandCellIdentifier @"FullScreenBrandCell"
 
 @interface LJFullScreenBrandVC ()<UITableViewDelegate, UITableViewDataSource>
@@ -91,11 +92,26 @@
     return _brandData;
 }
 
+- (void)setSubCategory:(LJProductSubCategory *)subCategory
+{
+    _subCategory = subCategory;
+    self.cotegoryTypeID = subCategory.sid;
+}
+
 - (void)loadBrandData
 {
-    NSString * urlStr = [NSString stringWithFormat:kBrandListUrl, self.subCategory.sid];
+    NSString * urlStr = [NSString stringWithFormat:kBrandListUrl, self.cotegoryTypeID];
     [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+        
+        //正在进行产品比较，需要加载推荐品牌
+        if ([LJProductCompareManager manager].isComparing) {
+            LJBrandGroup * recommendBrand = [LJBrandGroup brandGroupWithDict:dict[@"partition"][@"recommondBrands"]];
+            recommendBrand.type = dict[@"type"];
+            if (recommendBrand.brands.count > 0) {
+                [self.brandData addObject:recommendBrand];
+            }
+        }
         
         //解析数据
         for (NSDictionary * brandDict in dict[@"partition"][@"totalBrands"][@"sections"]) {
