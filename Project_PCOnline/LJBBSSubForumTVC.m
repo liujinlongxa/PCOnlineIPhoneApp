@@ -124,13 +124,27 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
 {
     NSString * urlStr = nil;
     NSInteger forumID = self.bbsItem.ID.integerValue;
-    if (forumID < 0)
-    {
-        urlStr = [NSString stringWithFormat:kZuiSunForumTopicListUrl, -forumID, self.curOrderBy];
+    //精华帖
+    if (self.curOrderBy == nil) {
+        if (forumID < 0)
+        {
+            urlStr = [NSString stringWithFormat:kZuiEssenceTopicListUrl, -forumID];
+        }
+        else
+        {
+            urlStr = [NSString stringWithFormat:kEssenceTopicListUrl, forumID];
+        }
     }
     else
     {
-        urlStr = [NSString stringWithFormat:kSubForumTopicListUrl, forumID, self.curOrderBy];
+        if (forumID < 0)
+        {
+            urlStr = [NSString stringWithFormat:kZuiSunForumTopicListUrl, -forumID, self.curOrderBy];
+        }
+        else
+        {
+            urlStr = [NSString stringWithFormat:kSubForumTopicListUrl, forumID, self.curOrderBy];
+        }
     }
 
     return urlStr;
@@ -191,7 +205,20 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
 #pragma mark - pulling bar 代理方法
 - (void)pullingBar:(LJPullingBar *)bar didSelectBtnAtIndex:(NSInteger)index
 {
-    
+    switch (index) {
+        case 0:
+            self.curOrderBy = LJTopicOrderByLastReply;
+            break;
+        case 1:
+            self.curOrderBy = LJTopicOrderByPostTime;
+            break;
+        case 2:
+            self.curOrderBy = nil;
+            break;
+        default:
+            break;
+    }
+    [self loadTopicFrameData];
 }
 
 @end
