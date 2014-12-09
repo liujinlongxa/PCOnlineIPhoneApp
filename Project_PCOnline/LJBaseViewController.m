@@ -10,6 +10,7 @@
 #import "UIImage+MyImage.h"
 #import "LJUserSettingViewController.h"
 #import "PPRevealSideViewController.h"
+#import "LJSearchViewController.h"
 
 @implementation LJBaseViewController
 
@@ -40,8 +41,15 @@
 {
     //设置导航栏
     //设置左右Button
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"btn_search"] style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"btn_search"] style:UIBarButtonItemStylePlain target:self action:@selector(searchBtnClick:)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"btn_to_user_center"] style:UIBarButtonItemStylePlain target:self action:@selector(userCenterClick)];
+}
+
+#pragma mark - 搜索
+- (void)searchBtnClick:(id)sender
+{
+    LJSearchViewController * searchVC = [[LJSearchViewController alloc] init];
+    [self.navigationController pushViewController:searchVC animated:YES];
 }
 
 @end

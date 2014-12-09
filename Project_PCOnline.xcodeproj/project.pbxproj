@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041515731A3714B800F91833 /* LJSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 041515721A3714B800F91833 /* LJSearchBar.m */; };
+		041515761A37154800F91833 /* LJSearchBarChannelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 041515751A37154800F91833 /* LJSearchBarChannelButton.m */; };
+		0415157A1A3722CF00F91833 /* LJSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041515791A3722CF00F91833 /* LJSearchViewController.m */; };
 		041E14CE1A35C47F008BB770 /* LJProductSortView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E14CD1A35C47F008BB770 /* LJProductSortView.m */; };
 		041E14D11A35C56C008BB770 /* LJProductSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E14D01A35C56C008BB770 /* LJProductSelectButton.m */; };
 		044C28B91A2EA41200A48121 /* LJProductCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 044C28B81A2EA41200A48121 /* LJProductCategory.m */; };
@@ -190,6 +193,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041515711A3714B800F91833 /* LJSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSearchBar.h; sourceTree = "<group>"; };
+		041515721A3714B800F91833 /* LJSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSearchBar.m; sourceTree = "<group>"; };
+		041515741A37154800F91833 /* LJSearchBarChannelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSearchBarChannelButton.h; sourceTree = "<group>"; };
+		041515751A37154800F91833 /* LJSearchBarChannelButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSearchBarChannelButton.m; sourceTree = "<group>"; };
+		041515781A3722CF00F91833 /* LJSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSearchViewController.h; sourceTree = "<group>"; };
+		041515791A3722CF00F91833 /* LJSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSearchViewController.m; sourceTree = "<group>"; };
 		041E14CC1A35C47F008BB770 /* LJProductSortView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJProductSortView.h; sourceTree = "<group>"; };
 		041E14CD1A35C47F008BB770 /* LJProductSortView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJProductSortView.m; sourceTree = "<group>"; };
 		041E14CF1A35C56C008BB770 /* LJProductSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJProductSelectButton.h; sourceTree = "<group>"; };
@@ -536,6 +545,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0415156F1A37148D00F91833 /* Search(搜索) */ = {
+			isa = PBXGroup;
+			children = (
+				041515771A3722A900F91833 /* Controler */,
+				041515701A37149F00F91833 /* View */,
+			);
+			name = "Search(搜索)";
+			sourceTree = "<group>";
+		};
+		041515701A37149F00F91833 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				041515711A3714B800F91833 /* LJSearchBar.h */,
+				041515721A3714B800F91833 /* LJSearchBar.m */,
+				041515741A37154800F91833 /* LJSearchBarChannelButton.h */,
+				041515751A37154800F91833 /* LJSearchBarChannelButton.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		041515771A3722A900F91833 /* Controler */ = {
+			isa = PBXGroup;
+			children = (
+				041515781A3722CF00F91833 /* LJSearchViewController.h */,
+				041515791A3722CF00F91833 /* LJSearchViewController.m */,
+			);
+			name = Controler;
+			sourceTree = "<group>";
+		};
 		044C28B51A2EA38900A48121 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -746,6 +784,7 @@
 		046E75EF1A2BF71D000FE777 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0415156F1A37148D00F91833 /* Search(搜索) */,
 				046E76501A2C09E0000FE777 /* User(用户设置) */,
 				046E75FB1A2BF7DD000FE777 /* Special(专栏） */,
 				046E75FA1A2BF7D2000FE777 /* Product(找产品) */,
@@ -1748,6 +1787,7 @@
 				046E76631A2C0A37000FE777 /* FMDatabasePool.m in Sources */,
 				88B7FC571A34CA4A00F31E9C /* SDWebImageDecoder.m in Sources */,
 				8857A33A1A33215A008265FC /* LJTopicFrame.m in Sources */,
+				0415157A1A3722CF00F91833 /* LJSearchViewController.m in Sources */,
 				880780C41A30C9C3005876A2 /* LJScrollTabButtonsView.m in Sources */,
 				046E76731A2C131C000FE777 /* LJTabButton.m in Sources */,
 				047D6A8C1A2C718000EB3B64 /* LJSubject.m in Sources */,
@@ -1773,6 +1813,7 @@
 				044C28E11A2EEE9C00A48121 /* LJBaseCustomTableView.m in Sources */,
 				8857A3421A3321FB008265FC /* LJBaseTopicFrame.m in Sources */,
 				04E161BC1A353B9800D5F4F4 /* LJProductInformationTVC.m in Sources */,
+				041515761A37154800F91833 /* LJSearchBarChannelButton.m in Sources */,
 				04E161C61A35795900D5F4F4 /* LJProductCompareItemView.m in Sources */,
 				88B7FC5F1A34CA4A00F31E9C /* UIImage+WebP.m in Sources */,
 				88B7FC621A34CA4A00F31E9C /* UIView+WebCacheOperation.m in Sources */,
@@ -1811,6 +1852,7 @@
 				88CC0B7F1A3292D3001169ED /* LJContentView.m in Sources */,
 				04D0CD241A369BFE0060CD9D /* LJProductFilterItem.m in Sources */,
 				047D6A981A2C933500EB3B64 /* LJArea.m in Sources */,
+				041515731A3714B800F91833 /* LJSearchBar.m in Sources */,
 				044C28F21A30001200A48121 /* LJBrandCell.m in Sources */,
 				046E76621A2C0A37000FE777 /* FMDatabaseAdditions.m in Sources */,
 				047D6A701A2C291000EB3B64 /* LJNavController.m in Sources */,
