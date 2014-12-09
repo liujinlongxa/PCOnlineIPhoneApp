@@ -215,13 +215,24 @@ static BOOL isShowSortView = NO;
     return _productListData;
 }
 
+- (NSString *)setupUrlStr
+{
+    NSString * urlStr = nil;
+    if (self.brand == nil) {
+        NSString * queryJsonEncodeStr = [self.subCategory.queryJson stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        urlStr = [NSString stringWithFormat:kProductFilterGetResultDetailUrl, self.subCategory.sid.integerValue, queryJsonEncodeStr, self.curPage, self.curSortType];
+    }
+    else
+    {
+        NSString * productType = [NSString stringWithFormat:@"%d", self.brand.type.integerValue];
+        urlStr = [NSString stringWithFormat:kProductListUrl, productType, self.curPage, self.curSortType, [self.brand.ID integerValue]];
+    }
+    return urlStr;
+}
+
 - (void)loadProductListData
 {
-    NSString * productType = [NSString stringWithFormat:@"%d", self.brand.type.integerValue];
-    NSString * urlStr = [NSString stringWithFormat:kProductListUrl, productType, self.curPage, self.curSortType, [self.brand.ID integerValue]];
-    NSLog(@"prolist:%@", urlStr);
-    NSLog(@"brand id:%@", self.brand.type);
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorking GET:[self setupUrlStr] parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         NSMutableArray * arr = [NSMutableArray array];

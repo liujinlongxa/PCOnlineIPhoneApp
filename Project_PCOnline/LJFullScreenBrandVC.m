@@ -15,6 +15,7 @@
 #import "LJFullScreenBrandCell.h"
 #import "LJProductListTableVC.h"
 #import "LJProductCompareManager.h"
+#import "LJProductFilterListTVC.h"
 #define kFullScreenBrandCellIdentifier @"FullScreenBrandCell"
 
 @interface LJFullScreenBrandVC ()<UITableViewDelegate, UITableViewDataSource>
@@ -79,7 +80,9 @@
 
 - (void)filterButtonClick:(id)sender
 {
-    
+    LJProductFilterListTVC * filterTVC = [[LJProductFilterListTVC alloc] initWithStyle:UITableViewStylePlain];
+    filterTVC.subCategory = self.subCategory;
+    [self.navigationController pushViewController:filterTVC animated:YES];
 }
 
 #pragma mark - 加载数据

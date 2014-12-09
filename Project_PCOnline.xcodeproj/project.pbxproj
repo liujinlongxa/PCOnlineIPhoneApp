@@ -104,6 +104,13 @@
 		04C7121A1A2DDD07009705DF /* LJHotTopicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C712191A2DDD07009705DF /* LJHotTopicView.m */; };
 		04C7121C1A2DDD30009705DF /* LJHotTopicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7121B1A2DDD30009705DF /* LJHotTopicView.xib */; };
 		04C7121F1A2DE0F9009705DF /* LJHotTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7121E1A2DE0F9009705DF /* LJHotTopic.m */; };
+		04D0CD1E1A36987E0060CD9D /* LJProductFilterListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D0CD1D1A36987E0060CD9D /* LJProductFilterListTVC.m */; };
+		04D0CD211A3698D80060CD9D /* LJProductFilterSelectItemListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D0CD201A3698D80060CD9D /* LJProductFilterSelectItemListTVC.m */; };
+		04D0CD241A369BFE0060CD9D /* LJProductFilterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D0CD231A369BFE0060CD9D /* LJProductFilterItem.m */; };
+		04D0CD281A369C200060CD9D /* LJProductFilterItemGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D0CD271A369C200060CD9D /* LJProductFilterItemGroup.m */; };
+		04D0CD2D1A36A1720060CD9D /* LJProductFilterGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D0CD2C1A36A1720060CD9D /* LJProductFilterGroupCell.m */; };
+		04D0CD301A36A1910060CD9D /* LJProductFilterItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D0CD2F1A36A1910060CD9D /* LJProductFilterItemCell.m */; };
+		04D0CD331A36ED7A0060CD9D /* LJQueryJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D0CD321A36ED7A0060CD9D /* LJQueryJson.m */; };
 		04E161B31A35398A00D5F4F4 /* LJProductDetailScrollTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E161B21A35398A00D5F4F4 /* LJProductDetailScrollTabVC.m */; };
 		04E161B61A3539C600D5F4F4 /* LJProductDetailWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E161B51A3539C600D5F4F4 /* LJProductDetailWebVC.m */; };
 		04E161BC1A353B9800D5F4F4 /* LJProductInformationTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E161BB1A353B9800D5F4F4 /* LJProductInformationTVC.m */; };
@@ -363,6 +370,20 @@
 		04C7121B1A2DDD30009705DF /* LJHotTopicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJHotTopicView.xib; sourceTree = "<group>"; };
 		04C7121D1A2DE0F9009705DF /* LJHotTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJHotTopic.h; sourceTree = "<group>"; };
 		04C7121E1A2DE0F9009705DF /* LJHotTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJHotTopic.m; sourceTree = "<group>"; };
+		04D0CD1C1A36987E0060CD9D /* LJProductFilterListTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJProductFilterListTVC.h; sourceTree = "<group>"; };
+		04D0CD1D1A36987E0060CD9D /* LJProductFilterListTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJProductFilterListTVC.m; sourceTree = "<group>"; };
+		04D0CD1F1A3698D80060CD9D /* LJProductFilterSelectItemListTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJProductFilterSelectItemListTVC.h; sourceTree = "<group>"; };
+		04D0CD201A3698D80060CD9D /* LJProductFilterSelectItemListTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJProductFilterSelectItemListTVC.m; sourceTree = "<group>"; };
+		04D0CD221A369BFE0060CD9D /* LJProductFilterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJProductFilterItem.h; sourceTree = "<group>"; };
+		04D0CD231A369BFE0060CD9D /* LJProductFilterItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJProductFilterItem.m; sourceTree = "<group>"; };
+		04D0CD261A369C200060CD9D /* LJProductFilterItemGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJProductFilterItemGroup.h; sourceTree = "<group>"; };
+		04D0CD271A369C200060CD9D /* LJProductFilterItemGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJProductFilterItemGroup.m; sourceTree = "<group>"; };
+		04D0CD2B1A36A1720060CD9D /* LJProductFilterGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJProductFilterGroupCell.h; sourceTree = "<group>"; };
+		04D0CD2C1A36A1720060CD9D /* LJProductFilterGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJProductFilterGroupCell.m; sourceTree = "<group>"; };
+		04D0CD2E1A36A1910060CD9D /* LJProductFilterItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJProductFilterItemCell.h; sourceTree = "<group>"; };
+		04D0CD2F1A36A1910060CD9D /* LJProductFilterItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJProductFilterItemCell.m; sourceTree = "<group>"; };
+		04D0CD311A36ED7A0060CD9D /* LJQueryJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJQueryJson.h; sourceTree = "<group>"; };
+		04D0CD321A36ED7A0060CD9D /* LJQueryJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJQueryJson.m; sourceTree = "<group>"; };
 		04E161B11A35398A00D5F4F4 /* LJProductDetailScrollTabVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJProductDetailScrollTabVC.h; sourceTree = "<group>"; };
 		04E161B21A35398A00D5F4F4 /* LJProductDetailScrollTabVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJProductDetailScrollTabVC.m; sourceTree = "<group>"; };
 		04E161B41A3539C600D5F4F4 /* LJProductDetailWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJProductDetailWebVC.h; sourceTree = "<group>"; };
@@ -518,13 +539,8 @@
 		044C28B51A2EA38900A48121 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04D0CD2A1A36A13A0060CD9D /* CustomView */,
 				882774F11A2F718100304E57 /* TableViewCell */,
-				04E161C41A35795900D5F4F4 /* LJProductCompareItemView.h */,
-				04E161C51A35795900D5F4F4 /* LJProductCompareItemView.m */,
-				041E14CC1A35C47F008BB770 /* LJProductSortView.h */,
-				041E14CD1A35C47F008BB770 /* LJProductSortView.m */,
-				041E14CF1A35C56C008BB770 /* LJProductSelectButton.h */,
-				041E14D01A35C56C008BB770 /* LJProductSelectButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -532,6 +548,7 @@
 		044C28B61A2EA38C00A48121 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04D0CD251A369C070060CD9D /* ProductFilter */,
 				04E161C71A35939100D5F4F4 /* ProductCompare */,
 				044C28FF1A300C0A00A48121 /* Product */,
 				044C28EB1A2FF6C900A48121 /* Brand */,
@@ -783,6 +800,8 @@
 				047D6A911A2C73D300EB3B64 /* LJCommonData.m */,
 				047D6A931A2C837E00EB3B64 /* LJNetWorking.h */,
 				047D6A941A2C837E00EB3B64 /* LJNetWorking.m */,
+				04D0CD311A36ED7A0060CD9D /* LJQueryJson.h */,
+				04D0CD321A36ED7A0060CD9D /* LJQueryJson.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -971,6 +990,7 @@
 		046E76781A2C1A72000FE777 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04D0CD1B1A3698310060CD9D /* Filer */,
 				04E161B01A35390300D5F4F4 /* Product */,
 				04E161AE1A3538C000D5F4F4 /* CategoryAndBrand */,
 				046E76851A2C1B02000FE777 /* LJProductViewController.h */,
@@ -1197,6 +1217,52 @@
 			name = SubController;
 			sourceTree = "<group>";
 		};
+		04D0CD1B1A3698310060CD9D /* Filer */ = {
+			isa = PBXGroup;
+			children = (
+				04D0CD1C1A36987E0060CD9D /* LJProductFilterListTVC.h */,
+				04D0CD1D1A36987E0060CD9D /* LJProductFilterListTVC.m */,
+				04D0CD1F1A3698D80060CD9D /* LJProductFilterSelectItemListTVC.h */,
+				04D0CD201A3698D80060CD9D /* LJProductFilterSelectItemListTVC.m */,
+			);
+			name = Filer;
+			sourceTree = "<group>";
+		};
+		04D0CD251A369C070060CD9D /* ProductFilter */ = {
+			isa = PBXGroup;
+			children = (
+				04D0CD221A369BFE0060CD9D /* LJProductFilterItem.h */,
+				04D0CD231A369BFE0060CD9D /* LJProductFilterItem.m */,
+				04D0CD261A369C200060CD9D /* LJProductFilterItemGroup.h */,
+				04D0CD271A369C200060CD9D /* LJProductFilterItemGroup.m */,
+			);
+			name = ProductFilter;
+			sourceTree = "<group>";
+		};
+		04D0CD291A36A12B0060CD9D /* ProductFilter */ = {
+			isa = PBXGroup;
+			children = (
+				04D0CD2B1A36A1720060CD9D /* LJProductFilterGroupCell.h */,
+				04D0CD2C1A36A1720060CD9D /* LJProductFilterGroupCell.m */,
+				04D0CD2E1A36A1910060CD9D /* LJProductFilterItemCell.h */,
+				04D0CD2F1A36A1910060CD9D /* LJProductFilterItemCell.m */,
+			);
+			name = ProductFilter;
+			sourceTree = "<group>";
+		};
+		04D0CD2A1A36A13A0060CD9D /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				04E161C41A35795900D5F4F4 /* LJProductCompareItemView.h */,
+				04E161C51A35795900D5F4F4 /* LJProductCompareItemView.m */,
+				041E14CC1A35C47F008BB770 /* LJProductSortView.h */,
+				041E14CD1A35C47F008BB770 /* LJProductSortView.m */,
+				041E14CF1A35C56C008BB770 /* LJProductSelectButton.h */,
+				041E14D01A35C56C008BB770 /* LJProductSelectButton.m */,
+			);
+			name = CustomView;
+			sourceTree = "<group>";
+		};
 		04E161AE1A3538C000D5F4F4 /* CategoryAndBrand */ = {
 			isa = PBXGroup;
 			children = (
@@ -1306,6 +1372,7 @@
 		882774F11A2F718100304E57 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				04D0CD291A36A12B0060CD9D /* ProductFilter */,
 				88B7FC271A347B7600F31E9C /* BrandAndCategory */,
 				88B7FC261A347B6600F31E9C /* Product */,
 			);
@@ -1655,6 +1722,7 @@
 				044C28EE1A2FF6DC00A48121 /* LJBrandGroup.m in Sources */,
 				04E161BF1A354B1A00D5F4F4 /* LJProductInformation.m in Sources */,
 				88B7FC531A34CA4A00F31E9C /* MKAnnotationView+WebCache.m in Sources */,
+				04D0CD301A36A1910060CD9D /* LJProductFilterItemCell.m in Sources */,
 				044C28BC1A2EA4FC00A48121 /* LJProductSubCategory.m in Sources */,
 				88B7FC2A1A347B9C00F31E9C /* LJFullScreenBrandCell.m in Sources */,
 				8857A3311A331ED8008265FC /* LJBBSSubForumTVC.m in Sources */,
@@ -1688,6 +1756,7 @@
 				880780BF1A30C6BC005876A2 /* LJScrollTabViewController.m in Sources */,
 				046E75CE1A2BF700000FE777 /* AppDelegate.m in Sources */,
 				041E14CE1A35C47F008BB770 /* LJProductSortView.m in Sources */,
+				04D0CD331A36ED7A0060CD9D /* LJQueryJson.m in Sources */,
 				04C712171A2DB421009705DF /* LJBaseAds.m in Sources */,
 				04C711FC1A2D646D009705DF /* LJNewsDetailController.m in Sources */,
 				882774F41A2F71BF00304E57 /* LJSubProductCategoryTableVC.m in Sources */,
@@ -1708,6 +1777,7 @@
 				88B7FC5F1A34CA4A00F31E9C /* UIImage+WebP.m in Sources */,
 				88B7FC621A34CA4A00F31E9C /* UIView+WebCacheOperation.m in Sources */,
 				044C28DB1A2EE28000A48121 /* LJPriceTableView.m in Sources */,
+				04D0CD1E1A36987E0060CD9D /* LJProductFilterListTVC.m in Sources */,
 				046E76541A2C0A2F000FE777 /* MBProgressHUD.m in Sources */,
 				880780C71A30CA68005876A2 /* LJScrollTabButton.m in Sources */,
 				044C28D81A2EE25700A48121 /* LJLiveTableView.m in Sources */,
@@ -1717,6 +1787,7 @@
 				882774F71A2F71DC00304E57 /* LJBrandTableVC.m in Sources */,
 				046E764B1A2C08C0000FE777 /* UIScrollView+MJRefresh.m in Sources */,
 				88B7FC611A34CA4A00F31E9C /* UIImageView+WebCache.m in Sources */,
+				04D0CD2D1A36A1720060CD9D /* LJProductFilterGroupCell.m in Sources */,
 				88B7FC5E1A34CA4A00F31E9C /* UIImage+MultiFormat.m in Sources */,
 				889552411A34CF6700E7D864 /* AFURLSessionManager.m in Sources */,
 				047D6A781A2C2F2500EB3B64 /* LJUserSettingViewController.m in Sources */,
@@ -1738,6 +1809,7 @@
 				04E161C31A3578B200D5F4F4 /* LJProductCompareVC.m in Sources */,
 				04C7120A1A2DA877009705DF /* LJBBSSquareViewController.m in Sources */,
 				88CC0B7F1A3292D3001169ED /* LJContentView.m in Sources */,
+				04D0CD241A369BFE0060CD9D /* LJProductFilterItem.m in Sources */,
 				047D6A981A2C933500EB3B64 /* LJArea.m in Sources */,
 				044C28F21A30001200A48121 /* LJBrandCell.m in Sources */,
 				046E76621A2C0A37000FE777 /* FMDatabaseAdditions.m in Sources */,
@@ -1759,6 +1831,7 @@
 				046E76801A2C1ADF000FE777 /* LJBBSViewController.m in Sources */,
 				8895523A1A34CF6700E7D864 /* AFHTTPRequestOperationManager.m in Sources */,
 				88CAED1E1A2E1E6200262896 /* LJHotForum.m in Sources */,
+				04D0CD281A369C200060CD9D /* LJProductFilterItemGroup.m in Sources */,
 				046E76641A2C0A37000FE777 /* FMDatabaseQueue.m in Sources */,
 				04C712071A2D984C009705DF /* LJBBSButtonView.m in Sources */,
 				046E766A1A2C121E000FE777 /* LJTabBarController.m in Sources */,
@@ -1776,6 +1849,7 @@
 				88E1EC981A360DD9004BEB4C /* LJPullBarButton.m in Sources */,
 				88B7FC5D1A34CA4A00F31E9C /* UIImage+GIF.m in Sources */,
 				8857A3451A332EBB008265FC /* LJUser.m in Sources */,
+				04D0CD211A3698D80060CD9D /* LJProductFilterSelectItemListTVC.m in Sources */,
 				88B7FC561A34CA4A00F31E9C /* SDWebImageCompat.m in Sources */,
 				88CAED2B1A2E317200262896 /* LJBBSList.m in Sources */,
 			);

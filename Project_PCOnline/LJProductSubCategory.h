@@ -14,7 +14,9 @@
 @property (nonatomic, copy) NSString * title;
 @property (nonatomic, copy) NSString * url;
 
-@property (nonatomic, strong) NSNumber * type;
+//用于查询
+@property (nonatomic, strong) NSArray * filterGroups;
+@property (nonatomic, strong) NSString * queryJson;
 
 + (instancetype)productSubCategoryWithDict:(NSDictionary *)dict;
 

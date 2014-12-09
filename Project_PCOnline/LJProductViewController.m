@@ -17,6 +17,7 @@
 #import "LJBrandTableVC.h"
 #import "LJProductListTableVC.h"
 #import "LJFullScreenBrandVC.h"
+#import "LJProductFilterListTVC.h"
 
 #define kCategoryDataFileName @"PCOnlineProductDatas4inch.json"
 #define kCategoryCellIdentifier @"CategoryCell"
@@ -36,7 +37,7 @@
 
 @property (nonatomic, strong) UIViewController * curSlideVC;
 
-
+@property (nonatomic, assign, getter=isSubCategory) BOOL subCategory;
 @end
 
 @implementation LJProductViewController
@@ -90,6 +91,18 @@
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.showView.layer.borderColor = [[UIColor grayColor] CGColor];
     self.showView.layer.borderWidth = 1;
+}
+
+- (void)setSubCategory:(BOOL)subCategory
+{
+    _subCategory = subCategory;
+    if (subCategory) {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+    else
+    {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"筛选" style:UIBarButtonItemStylePlain target:self action:@selector(filterButtonClick:)];
+    }
 }
 
 #pragma mark - 加载数据
@@ -169,6 +182,8 @@
         brandVC.delegate = self;
         self.curSlideVC = brandVC;
         [self.showView addSubview:brandVC.view];
+        //重新显示导航栏右侧按钮
+        self.subCategory = NO;
     }
     else //显示子分类
     {
@@ -177,6 +192,9 @@
         subCategoryVC.delegate = self;
         self.curSlideVC = subCategoryVC;
         [self.showView addSubview:subCategoryVC.view];
+        //隐藏导航栏右按钮
+//        self.navigationItem.rightBarButtonItem = nil;
+        self.subCategory = YES;
     }
 }
 
@@ -214,7 +232,14 @@
 - (void)changeNavButton
 {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_common_white_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClick:)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"筛选" style:UIBarButtonItemStylePlain target:self action:@selector(filterButtonClick:)];
+    
+    if (!self.isSubCategory) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"筛选" style:UIBarButtonItemStylePlain target:self action:@selector(filterButtonClick:)];
+    }
+    else
+    {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
 }
 
 - (void)backButtonClick:(id)sender
@@ -253,10 +278,13 @@
     [self.navigationController pushViewController:brandVC animated:YES];
 }
 
+#pragma mark - 筛选btn
 - (void)filterButtonClick:(id)sender
 {
-    
-    
+    LJProductFilterListTVC * filterTVC = [[LJProductFilterListTVC alloc] initWithStyle:UITableViewStylePlain];
+    LJProductCategoryCell * cell = (LJProductCategoryCell *)[self.tableView cellForRowAtIndexPath:self.tableView.indexPathForSelectedRow];
+    filterTVC.subCategory = [cell.category.childs firstObject];
+    [self.navigationController pushViewController:filterTVC animated:YES];
 }
 
 #pragma mark - 设置showview 的手势滑动

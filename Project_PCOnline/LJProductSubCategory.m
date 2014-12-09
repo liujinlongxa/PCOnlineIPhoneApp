@@ -7,6 +7,7 @@
 //
 
 #import "LJProductSubCategory.h"
+#import "LJQueryJson.h"
 
 @implementation LJProductSubCategory
 
@@ -15,6 +16,12 @@
     LJProductSubCategory * subCategory = [[self alloc] init];
     [subCategory setValuesForKeysWithDictionary:dict];
     return subCategory;
+}
+
+- (NSString *)queryJson
+{
+    assert(self.filterGroups != nil);
+    return [LJQueryJson jsonWithFilterItemGroup:self.filterGroups];
 }
 
 

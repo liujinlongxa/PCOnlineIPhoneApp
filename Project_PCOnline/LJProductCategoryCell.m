@@ -20,6 +20,7 @@
 
 - (void)setCategory:(LJProductCategory *)category
 {
+    _category = category;
     self.iconImage.image = [UIImage imageNamed:category.image];
     self.titleLab.text = category.title;
     self.subTitleLab.text = [category.subCategoryName componentsJoinedByString:@"  "];

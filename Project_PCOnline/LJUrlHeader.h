@@ -73,6 +73,13 @@
 #define kProductDetailCommentUrl @"http://mrobot.pconline.com.cn/v3/product/comments/%d"
 //5产品对比
 #define kProductDetailCompareUrl @"http://mrobot.pconline.com.cn/v3/product/detailComparev33?id1=%d&id2=%d"
+//6.产品查询
+//6.1 获取查询项目列表
+#define kProductFilterItemListUrl @"http://mrobot.pconline.com.cn/v2/product/models/criterion/%d"
+//6.2 获取查询结果个数
+#define kProductFilterGetResultCountUrl @"http://mrobot.pconline.com.cn/v2/product/models/search/%d?queryJson=%@&pageNo=1&orderId=1&fmt=total"
+//6.3 获取具体查询结果
+#define kProductFilterGetResultDetailUrl @"http://mrobot.pconline.com.cn/v3/product/models/search/%d?queryJson=%@&pageNo=%d&orderId=%d"
 
 //图赏
 #define kPhotoUrl @"http://agent1.pconline.com.cn:8941/photolib/iphone_cate_json.jsp?id=%@"
