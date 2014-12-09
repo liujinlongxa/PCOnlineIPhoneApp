@@ -20,7 +20,7 @@
 static NSString * const LJTopicOrderByLastReply = @"replyat";
 static NSString * const LJTopicOrderByPostTime = @"postat";
 
-@interface LJBBSSubForumTVC ()<UITableViewDataSource, UITableViewDelegate>
+@interface LJBBSSubForumTVC ()<UITableViewDataSource, UITableViewDelegate, LJPullingBarDelegate>
 
 @property (nonatomic, weak) UITableView * tableView;
 @property (nonatomic, strong) NSMutableArray * topicFramesData;
@@ -55,13 +55,15 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
     LJPullingBar * pullBar = [[LJPullingBar alloc] initPullingBarWithFrame:CGRectMake(0, 0, kScrW, 30) andTitles:@[@"最新回复", @"最近发表", @"精华帖"]];
     [self.view addSubview:pullBar];
     self.pullBar = pullBar;
+    self.pullBar.delegate = self;
 }
 
 #pragma mark - 初始化UI
 //初始化tableView
 - (void)setupTableView
 {
-    UITableView * tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    CGFloat offset = 10;
+    UITableView * tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 10, kScrW, kScrH - offset) style:UITableViewStylePlain];
     [self.view addSubview:tableView];
     self.tableView = tableView;
     self.tableView.dataSource = self;
@@ -184,6 +186,12 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
     webVC.topic = topicFrame.topic;
     webVC.bbsItem = self.bbsItem;
     [self.navigationController pushViewController:webVC animated:YES];
+}
+
+#pragma mark - pulling bar 代理方法
+- (void)pullingBar:(LJPullingBar *)bar didSelectBtnAtIndex:(NSInteger)index
+{
+    
 }
 
 @end

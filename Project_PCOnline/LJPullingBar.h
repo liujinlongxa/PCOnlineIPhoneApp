@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class LJPullingBar;
+
+@protocol LJPullingBarDelegate <NSObject>
+
+- (void)pullingBar:(LJPullingBar *)bar didSelectBtnAtIndex:(NSInteger)index;
+
+@end
+
 @interface LJPullingBar : UIView
+
+@property (nonatomic, weak) id<LJPullingBarDelegate> delegate;
 
 - (instancetype)initPullingBarWithFrame:(CGRect)frame andTitles:(NSArray *)titles;
 

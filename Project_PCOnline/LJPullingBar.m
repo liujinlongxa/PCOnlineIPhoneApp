@@ -79,6 +79,10 @@
 - (void)pullBtnClick:(LJPullBarButton *)sender
 {
     
+    if ([self.delegate respondsToSelector:@selector(pullingBar:didSelectBtnAtIndex:)]) {
+        [self.delegate pullingBar:self didSelectBtnAtIndex:sender.tag];
+    }
+    
     if(sender == self.curSelectBtn) return;
     sender.selected = YES;
     self.curSelectBtn.selected = NO;

@@ -47,6 +47,8 @@
 #define kSubForumTopicListUrl @"http://mrobot.pconline.com.cn/v3/itbbs/newForums/%d?&pageNo=1&pageSize=20&orderby=%@"
 //7.2 最数码子版块帖子列表
 #define kZuiSunForumTopicListUrl @"http://mrobot.pconline.com.cn/v2/piebbs/forums/%d?&pageNo=1&pageSize=20&orderby=%@"
+//7.3 精华帖子列表
+#define kEssenceTopicListUrl @"http://mrobot.pconline.com.cn/v3/itbbs/newForums/768253?filter=pick&pageNo=1&pageSize=20"
 
 
 //找产品
