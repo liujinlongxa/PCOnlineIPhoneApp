@@ -56,7 +56,7 @@
         text.backgroundColor = [UIColor whiteColor];
         [self.inputView addSubview:text];
         self.textField = text;
-        self.textField.text = @"iPhone";
+        self.textField.text = @"苹果";
         
         //button
         UIButton * selectBtn = [[UIButton alloc] init];

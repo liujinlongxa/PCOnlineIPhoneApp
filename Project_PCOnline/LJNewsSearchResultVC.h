@@ -10,4 +10,6 @@
 
 @interface LJNewsSearchResultVC : UIViewController
 
+@property (nonatomic, copy) NSString * keyWord;
+
 @end

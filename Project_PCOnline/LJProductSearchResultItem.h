@@ -16,6 +16,7 @@
 @property (nonatomic, copy) NSString * title;
 @property (nonatomic, strong) NSNumber * price;
 
+
 + (instancetype)productSearchResultItemWithDict:(NSDictionary *)dict;
 
 @end

@@ -141,6 +141,9 @@
 		8852FF1F1A38429700DD4625 /* LJTopicSearchResultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8852FF1E1A38429700DD4625 /* LJTopicSearchResultItem.m */; };
 		8852FF221A38448900DD4625 /* LJTopicSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8852FF211A38448900DD4625 /* LJTopicSearchResultCell.m */; };
 		8852FF241A3844A400DD4625 /* LJTopicSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8852FF231A3844A400DD4625 /* LJTopicSearchResultCell.xib */; };
+		8852FF281A3861E700DD4625 /* LJNewsSearchItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8852FF271A3861E700DD4625 /* LJNewsSearchItemView.m */; };
+		8852FF2B1A38620100DD4625 /* LJNewsSearchGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8852FF2A1A38620100DD4625 /* LJNewsSearchGroupView.m */; };
+		8852FF2E1A38623800DD4625 /* LJNewsSearchResultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8852FF2D1A38623800DD4625 /* LJNewsSearchResultItem.m */; };
 		8857A32D1A329CF8008265FC /* LJHotTopicFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8857A32C1A329CF8008265FC /* LJHotTopicFrame.m */; };
 		8857A3311A331ED8008265FC /* LJBBSSubForumTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8857A3301A331ED8008265FC /* LJBBSSubForumTVC.m */; };
 		8857A3371A332149008265FC /* LJTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8857A3361A332149008265FC /* LJTopic.m */; };
@@ -454,6 +457,12 @@
 		8852FF201A38448900DD4625 /* LJTopicSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJTopicSearchResultCell.h; sourceTree = "<group>"; };
 		8852FF211A38448900DD4625 /* LJTopicSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJTopicSearchResultCell.m; sourceTree = "<group>"; };
 		8852FF231A3844A400DD4625 /* LJTopicSearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJTopicSearchResultCell.xib; sourceTree = "<group>"; };
+		8852FF261A3861E700DD4625 /* LJNewsSearchItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJNewsSearchItemView.h; sourceTree = "<group>"; };
+		8852FF271A3861E700DD4625 /* LJNewsSearchItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJNewsSearchItemView.m; sourceTree = "<group>"; };
+		8852FF291A38620100DD4625 /* LJNewsSearchGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJNewsSearchGroupView.h; sourceTree = "<group>"; };
+		8852FF2A1A38620100DD4625 /* LJNewsSearchGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJNewsSearchGroupView.m; sourceTree = "<group>"; };
+		8852FF2C1A38623800DD4625 /* LJNewsSearchResultItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJNewsSearchResultItem.h; sourceTree = "<group>"; };
+		8852FF2D1A38623800DD4625 /* LJNewsSearchResultItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJNewsSearchResultItem.m; sourceTree = "<group>"; };
 		8857A32B1A329CF8008265FC /* LJHotTopicFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJHotTopicFrame.h; sourceTree = "<group>"; };
 		8857A32C1A329CF8008265FC /* LJHotTopicFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJHotTopicFrame.m; sourceTree = "<group>"; };
 		8857A32F1A331ED8008265FC /* LJBBSSubForumTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBBSSubForumTVC.h; sourceTree = "<group>"; };
@@ -589,6 +598,7 @@
 		041515701A37149F00F91833 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8852FF251A38617500DD4625 /* News */,
 				8852FF111A381F4F00DD4625 /* TableviewCell */,
 				041515711A3714B800F91833 /* LJSearchBar.h */,
 				041515721A3714B800F91833 /* LJSearchBar.m */,
@@ -1197,6 +1207,8 @@
 				8852FF161A382E5100DD4625 /* LJProductSearchResultItem.m */,
 				8852FF1D1A38429700DD4625 /* LJTopicSearchResultItem.h */,
 				8852FF1E1A38429700DD4625 /* LJTopicSearchResultItem.m */,
+				8852FF2C1A38623800DD4625 /* LJNewsSearchResultItem.h */,
+				8852FF2D1A38623800DD4625 /* LJNewsSearchResultItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1515,6 +1527,17 @@
 				8852FF231A3844A400DD4625 /* LJTopicSearchResultCell.xib */,
 			);
 			name = TableviewCell;
+			sourceTree = "<group>";
+		};
+		8852FF251A38617500DD4625 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				8852FF261A3861E700DD4625 /* LJNewsSearchItemView.h */,
+				8852FF271A3861E700DD4625 /* LJNewsSearchItemView.m */,
+				8852FF291A38620100DD4625 /* LJNewsSearchGroupView.h */,
+				8852FF2A1A38620100DD4625 /* LJNewsSearchGroupView.m */,
+			);
+			name = News;
 			sourceTree = "<group>";
 		};
 		8857A3271A329CAB008265FC /* Ads */ = {
@@ -1849,6 +1872,7 @@
 				04B30DA01A314BBA007AF4B9 /* LJBBSListDetailController.m in Sources */,
 				88B7FC5A1A34CA4A00F31E9C /* SDWebImageManager.m in Sources */,
 				04B30DC01A31DFAE007AF4B9 /* LJBBSFastForumTVC.m in Sources */,
+				8852FF2B1A38620100DD4625 /* LJNewsSearchGroupView.m in Sources */,
 				044C28CE1A2EBB0500A48121 /* LJPhotoGroup.m in Sources */,
 				04B30DB21A3186B1007AF4B9 /* LJBBSTopicDetailWebVC.m in Sources */,
 				88B7FC541A34CA4A00F31E9C /* NSData+ImageContentType.m in Sources */,
@@ -1872,6 +1896,7 @@
 				046E76871A2C1B02000FE777 /* LJProductViewController.m in Sources */,
 				04C712041A2D9318009705DF /* LJAdView.m in Sources */,
 				046E76611A2C0A37000FE777 /* FMDatabase.m in Sources */,
+				8852FF281A3861E700DD4625 /* LJNewsSearchItemView.m in Sources */,
 				8857A32D1A329CF8008265FC /* LJHotTopicFrame.m in Sources */,
 				047D6A8F1A2C71A500EB3B64 /* LJNews.m in Sources */,
 				88B7FC2D1A347BF400F31E9C /* LJBrandButton.m in Sources */,
@@ -1998,6 +2023,7 @@
 				04C7120D1A2DA891009705DF /* LJBBSListViewController.m in Sources */,
 				041E14D11A35C56C008BB770 /* LJProductSelectButton.m in Sources */,
 				046E76461A2C08C0000FE777 /* MJRefreshBaseView.m in Sources */,
+				8852FF2E1A38623800DD4625 /* LJNewsSearchResultItem.m in Sources */,
 				88E1EC981A360DD9004BEB4C /* LJPullBarButton.m in Sources */,
 				88B7FC5D1A34CA4A00F31E9C /* UIImage+GIF.m in Sources */,
 				8857A3451A332EBB008265FC /* LJUser.m in Sources */,

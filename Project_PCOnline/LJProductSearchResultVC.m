@@ -63,7 +63,7 @@
 
 - (void)setKeyWord:(NSString *)keyWord
 {
-    _keyWord = keyWord;
+    _keyWord = [keyWord stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self search];
 }
 

@@ -123,6 +123,7 @@
             [[self.showResultView.subviews firstObject] removeFromSuperview];
             [self.showResultView addSubview:resultVC.view];
             self.curShowController = resultVC;
+            resultVC.keyWord = self.searchBar.textField.text;
             break;
         }
         case 1:
