@@ -11,6 +11,7 @@
 #import "LJCommonHeader.h"
 #import "LJSearchBarSelectButtonsView.h"
 #import "LJBBSListItem.h"
+#import "LJTopicSearchResultItem.h"
 
 //控制器
 #import "LJProductSearchResultVC.h"
@@ -19,6 +20,7 @@
 #import "LJNewsSearchResultVC.h"
 #import "LJBBSSubForumTVC.h"
 #import "LJProductDetailScrollTabVC.h"
+#import "LJBBSTopicDetailWebVC.h"
 
 @interface LJSearchViewController ()<LJSearchBarDelegate>
 
@@ -138,10 +140,15 @@
         }
         case 2:
         {
-            LJTopicSearchResultVC * resultVC = [[LJTopicSearchResultVC alloc] init];
+            LJTopicSearchResultVC * resultVC = [[LJTopicSearchResultVC alloc] initWithSelectActionBlock:^(LJTopicSearchResultItem *item) {
+                LJBBSTopicDetailWebVC * topicWebVC = [[LJBBSTopicDetailWebVC alloc] init];
+                topicWebVC.searchResutItem = item;
+                [self.navigationController pushViewController:topicWebVC animated:YES];
+            }];
             [[self.showResultView.subviews firstObject] removeFromSuperview];
             [self.showResultView addSubview:resultVC.view];
             self.curShowController = resultVC;
+            resultVC.keyWord = self.searchBar.textField.text;
             break;
         }
         case 3:

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class LJTopicSearchResultItem;
 
 @interface LJTopicSearchResultVC : UIViewController
 
+@property (nonatomic, copy) NSString * keyWord;
+- (instancetype)initWithSelectActionBlock:(void (^)(LJTopicSearchResultItem * item))actionBlock;
 @end

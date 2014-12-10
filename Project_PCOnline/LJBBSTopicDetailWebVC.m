@@ -9,6 +9,7 @@
 #import "LJBBSTopicDetailWebVC.h"
 #import "UIImage+MyImage.h"
 #import "LJCommonHeader.h"
+#import "LJTopicSearchResultItem.h"
 
 @interface LJBBSTopicDetailWebVC ()
 
@@ -50,8 +51,13 @@
     [self.view addSubview:webView];
     self.webView = webView;
     
-    NSString * urlStr = self.urlStr;
-    if (self.urlStr == nil) {
+    NSString * urlStr = nil;
+    
+    if (self.urlStr != nil) {
+        urlStr = self.urlStr;
+    }
+    else if(self.bbsItem != nil && self.topic != nil)
+    {
         if (self.bbsItem.ID.integerValue < 0) {
             urlStr = [NSString stringWithFormat:kZuiBBSTopicDetailUrl, self.topic.topicId.integerValue];
         }
@@ -60,6 +66,18 @@
             urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.topic.topicId.integerValue];
         }
     }
+    else
+    {
+        if (self.searchResutItem.forumId.integerValue < 0) {
+            urlStr = [NSString stringWithFormat:kZuiBBSTopicDetailUrl, self.searchResutItem.topicId.integerValue];
+        }
+        else
+        {
+            urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.searchResutItem.topicId.integerValue];
+        }
+    }
+    
+    assert(urlStr != nil);
     LJLog(@"web:%@", urlStr);
     NSURL * url = [NSURL URLWithString:urlStr];
     NSURLRequest * req = [NSURLRequest requestWithURL:url];
