@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		041515731A3714B800F91833 /* LJSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 041515721A3714B800F91833 /* LJSearchBar.m */; };
-		041515761A37154800F91833 /* LJSearchBarChannelButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 041515751A37154800F91833 /* LJSearchBarChannelButton.m */; };
+		041515761A37154800F91833 /* LJSearchBarSelectButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041515751A37154800F91833 /* LJSearchBarSelectButtonsView.m */; };
 		0415157A1A3722CF00F91833 /* LJSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041515791A3722CF00F91833 /* LJSearchViewController.m */; };
 		041E14CE1A35C47F008BB770 /* LJProductSortView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E14CD1A35C47F008BB770 /* LJProductSortView.m */; };
 		041E14D11A35C56C008BB770 /* LJProductSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 041E14D01A35C56C008BB770 /* LJProductSelectButton.m */; };
@@ -195,8 +195,8 @@
 /* Begin PBXFileReference section */
 		041515711A3714B800F91833 /* LJSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSearchBar.h; sourceTree = "<group>"; };
 		041515721A3714B800F91833 /* LJSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSearchBar.m; sourceTree = "<group>"; };
-		041515741A37154800F91833 /* LJSearchBarChannelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSearchBarChannelButton.h; sourceTree = "<group>"; };
-		041515751A37154800F91833 /* LJSearchBarChannelButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSearchBarChannelButton.m; sourceTree = "<group>"; };
+		041515741A37154800F91833 /* LJSearchBarSelectButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSearchBarSelectButtonsView.h; sourceTree = "<group>"; };
+		041515751A37154800F91833 /* LJSearchBarSelectButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSearchBarSelectButtonsView.m; sourceTree = "<group>"; };
 		041515781A3722CF00F91833 /* LJSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSearchViewController.h; sourceTree = "<group>"; };
 		041515791A3722CF00F91833 /* LJSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSearchViewController.m; sourceTree = "<group>"; };
 		041E14CC1A35C47F008BB770 /* LJProductSortView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJProductSortView.h; sourceTree = "<group>"; };
@@ -559,8 +559,8 @@
 			children = (
 				041515711A3714B800F91833 /* LJSearchBar.h */,
 				041515721A3714B800F91833 /* LJSearchBar.m */,
-				041515741A37154800F91833 /* LJSearchBarChannelButton.h */,
-				041515751A37154800F91833 /* LJSearchBarChannelButton.m */,
+				041515741A37154800F91833 /* LJSearchBarSelectButtonsView.h */,
+				041515751A37154800F91833 /* LJSearchBarSelectButtonsView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1813,7 +1813,7 @@
 				044C28E11A2EEE9C00A48121 /* LJBaseCustomTableView.m in Sources */,
 				8857A3421A3321FB008265FC /* LJBaseTopicFrame.m in Sources */,
 				04E161BC1A353B9800D5F4F4 /* LJProductInformationTVC.m in Sources */,
-				041515761A37154800F91833 /* LJSearchBarChannelButton.m in Sources */,
+				041515761A37154800F91833 /* LJSearchBarSelectButtonsView.m in Sources */,
 				04E161C61A35795900D5F4F4 /* LJProductCompareItemView.m in Sources */,
 				88B7FC5F1A34CA4A00F31E9C /* UIImage+WebP.m in Sources */,
 				88B7FC621A34CA4A00F31E9C /* UIView+WebCacheOperation.m in Sources */,

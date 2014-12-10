@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 com.qianfeng. All rights reserved.
 //
 
-#import "LJSearchBarChannelButton.h"
+#import "LJSearchBarSelectButtonsView.h"
 
-@interface LJSearchBarChannelButton ()
+@interface LJSearchBarSelectButtonsView ()
 
 @property (nonatomic, copy) void (^actionBlock)(NSInteger index);
 @property (nonatomic, strong) NSArray * titles;
@@ -20,7 +20,7 @@
 @property (nonatomic, weak) UIView * smallView;
 @end
 
-@implementation LJSearchBarChannelButton
+@implementation LJSearchBarSelectButtonsView
 
 - (NSMutableArray *)buttons
 {
@@ -32,6 +32,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame andTitiles:(NSArray *)titles andActionBlock:(void (^)(NSInteger))actionBlock
 {
+    
     if (self = [super initWithFrame:frame]) {
         
         self.actionBlock = actionBlock;
@@ -43,16 +44,13 @@
             [btn setTitle:titles[i] forState:UIControlStateNormal];
             [btn setBackgroundColor:[UIColor whiteColor]];
             btn.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-            btn.layer.borderWidth = 0.5;
+            btn.layer.borderWidth = 1;
             [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [self addSubview:btn];
             [self.buttons addObject:btn];
             btn.tag = i;
-            btn.hidden = YES;
             [btn addTarget:self action:@selector(btnSelect:) forControlEvents:UIControlEventTouchUpInside];
         }
-        [[self.buttons firstObject] setHidden:NO];
-        self.curSelectIndex = 0;
     }
     return self;
 }
@@ -60,7 +58,7 @@
 - (void)layoutSubviews
 {
     CGFloat btnW = CGRectGetWidth(self.frame);
-    CGFloat btnH = CGRectGetHeight(self.frame);
+    CGFloat btnH = CGRectGetHeight(self.frame) / self.titles.count;
     for (int i = 0; i < self.buttons.count; i++) {
         [self.buttons[i] setFrame:CGRectMake(0, i * btnH, btnW, btnH)];
     }
@@ -68,39 +66,7 @@
 
 - (void)btnSelect:(UIButton *)sender
 {
-    //点击第一个button，显示下拉菜单
-    if (sender.tag == 0 && !self.isShow) {
-        
-        CGRect viewF = self.frame;
-        viewF.size.height = self.titles.count * CGRectGetHeight(viewF);
-        self.frame = viewF;
-        
-        [self.buttons enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            [obj setHidden:NO];
-        }];
-        sender.backgroundColor = [UIColor lightGrayColor];
-        [sender setTitle:self.titles[0] forState:UIControlStateNormal];
-        self.show = YES;
-    }
-    else//点击下拉菜单上的按钮，隐藏下拉菜单
-    {
-        CGRect viewF = self.frame;
-        viewF.size.height = CGRectGetHeight(viewF) / self.titles.count;
-        self.frame = viewF;
-        
-        [[self.buttons firstObject] setTitle:sender.currentTitle forState:UIControlStateNormal];
-        [self.buttons enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            if (idx != 0) {
-                [obj setHidden:YES];
-            }
-        }];
-        self.show = NO;
-        self.curSelectIndex = sender.tag;
-        if (self.actionBlock) {
-            self.actionBlock(sender.tag);
-        }
-        
-    }
+    self.actionBlock(sender.tag);
 }
 
 @end

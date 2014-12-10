@@ -7,42 +7,62 @@
 //
 
 #import "LJSearchBar.h"
-#import "LJSearchBarChannelButton.h"
+#import "LJSearchBarSelectButtonsView.h"
 #import "LJCommonHeader.h"
 
 @interface LJSearchBar ()
 
-@property (nonatomic, weak) LJSearchBarChannelButton * selectButton;
+@property (nonatomic, weak) LJSearchBarSelectButtonsView * selectButtonView;
+
+@property (nonatomic, weak) UIView * inputView;
+@property (nonatomic, weak) UIButton * selectButton;
 @property (nonatomic, weak) UITextField * textField;
+
+@property (nonatomic, weak) UIView * line;
 @property (nonatomic, weak) UIButton * searchButton;
-@property (nonatomic, copy) void (^actionBlock)(NSInteger index) ;
+
+@property (nonatomic, copy) void (^actionBlock)(NSInteger index);
+
 @end
 
 @implementation LJSearchBar
 
-- (instancetype)initWithFrame:(CGRect)frame andTitles:(NSArray *)titles andActionBlock:(void (^)(NSInteger index))actionBlock
+- (instancetype)initWithFrame:(CGRect)frame andTitles:(NSArray *)titles
 {
     CGFloat barY = frame.origin.y;
     CGFloat barH = 60;
+    self.backgroundColor = [UIColor redColor];
     if (self = [super initWithFrame:CGRectMake(0, barY, kScrW, barH)]) {
         
-        self.actionBlock = actionBlock;
+        //inputView
+        UIView * inputView = [[UIView alloc] init];
+        [self addSubview:inputView];
+        self.inputView = inputView;
+        self.inputView.layer.borderWidth = 1;
+        self.inputView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+        self.inputView.layer.cornerRadius = 5;
+        self.inputView.clipsToBounds = YES;
         
-        //button
-        LJSearchBarChannelButton * btn = [[LJSearchBarChannelButton alloc] initWithFrame:CGRectMake(0, 0, 100, barH - 20) andTitiles:titles andActionBlock:nil];
-        [self addSubview:btn];
-        self.selectButton = btn;
+        //line
+        UIView * line = [[UIView alloc] init];
+        line.backgroundColor = [UIColor lightGrayColor];
+        [self.inputView addSubview:line];
+        self.line = line;
         
         //text field
         UITextField * text = [[UITextField alloc] init];
-        text.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-        text.layer.borderWidth = 1;
         text.backgroundColor = [UIColor whiteColor];
-        text.layer.cornerRadius = 5;
-        text.leftView = btn;
-        text.leftViewMode = UITextFieldViewModeAlways;
-        [self addSubview:text];
+        [self.inputView addSubview:text];
         self.textField = text;
+        
+        //button
+        UIButton * selectBtn = [[UIButton alloc] init];
+        [selectBtn setTitle:titles[0] forState:UIControlStateNormal];
+        [selectBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        selectBtn.backgroundColor = [UIColor whiteColor];
+        [self.inputView addSubview:selectBtn];
+        self.selectButton = selectBtn;
+        [self.selectButton addTarget:self action:@selector(selectButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
         //search button
         UIButton * searchBtn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -52,10 +72,7 @@
         [searchBtn addTarget:self action:@selector(searchButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         self.searchButton = searchBtn;
         
-        //line
-        UIView * line = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(frame) - 1, kScrW, 1)];
-        line.backgroundColor = [UIColor lightGrayColor];
-        [self addSubview:line];
+        
     }
     return self;
 }
@@ -63,16 +80,53 @@
 - (void)layoutSubviews
 {
     CGFloat padding = 10;
+    CGFloat searchBtnW = 40;
+    CGFloat viewW = CGRectGetWidth(self.frame);
+    CGFloat viewH = CGRectGetHeight(self.frame);
     
-    CGFloat searchBtnW = 50;
+    //input view
+    CGFloat inputX = padding * 2;
+    CGFloat inputY = padding;
+    CGFloat inputW = viewW - searchBtnW - 5 * padding;
+    CGFloat inputH = viewH - 2 * padding;
+    self.inputView.frame = CGRectMake(inputX, inputY, inputW, inputH);
     
-    self.textField.frame = CGRectMake(padding * 2, padding, CGRectGetWidth(self.frame) - searchBtnW - 5 * padding, CGRectGetHeight(self.frame) - 2 * padding);
-    self.searchButton.frame = CGRectMake(CGRectGetMaxX(self.textField.frame) + padding, padding, searchBtnW, CGRectGetHeight(self.frame) - 2 * padding);
+    //search btn
+    CGFloat searchBtnX = CGRectGetMaxX(self.inputView.frame) + padding;
+    CGFloat searchBtnY = padding;
+    CGFloat searchBtnH = viewH - 2 * padding;
+    self.searchButton.frame = CGRectMake(searchBtnX, searchBtnY, searchBtnW, searchBtnH);
+    
+    //select btn
+    CGFloat selectBtnX = 0;
+    CGFloat selectBtnY = 0;
+    CGFloat selectBtnW = 100;
+    CGFloat selectBtnH = CGRectGetHeight(self.inputView.frame);
+    self.selectButton.frame = CGRectMake(selectBtnX, selectBtnY, selectBtnW, selectBtnH);
+    
+    //line
+    CGFloat lineX = CGRectGetMaxX(self.selectButton.frame);
+    self.line.frame = CGRectMake(lineX, 0, 1, CGRectGetHeight(self.inputView.frame));
+    
+    //text filed
+    CGFloat textX = CGRectGetMaxX(self.line.frame);
+    CGFloat textW = CGRectGetWidth(self.inputView.frame) - CGRectGetWidth(self.selectButton.frame) - 1;
+    self.textField.frame = CGRectMake(textX, 0, textW, CGRectGetHeight(self.inputView.frame));
+    
 }
 
-- (void)searchButtonClick:(id)sender
+- (void)selectButtonClick:(UIButton *)sender
 {
-    self.actionBlock(self.selectButton.curSelectIndex);
+    if ([self.delegate respondsToSelector:@selector(searchBar:didClickSelectBtn:)]) {
+        [self.delegate searchBar:self didClickSelectBtn:sender];
+    }
+}
+
+- (void)searchButtonClick:(UIButton *)sender
+{
+    if ([self.delegate respondsToSelector:@selector(searchBar:didClickSearchBtn:)]) {
+        [self.delegate searchBar:self didClickSearchBtn:sender];
+    }
 }
 
 @end

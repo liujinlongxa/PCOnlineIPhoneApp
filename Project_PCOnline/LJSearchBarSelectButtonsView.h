@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LJSearchBarChannelButton : UIView
-@property (nonatomic, assign) NSInteger curSelectIndex;
+@interface LJSearchBarSelectButtonsView : UIView
+
 - (instancetype)initWithFrame:(CGRect)frame andTitiles:(NSArray *)titles andActionBlock:(void (^)(NSInteger index))actionBlock;
 
 @end

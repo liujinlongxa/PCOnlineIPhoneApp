@@ -9,31 +9,60 @@
 #import "LJSearchViewController.h"
 #import "LJSearchBar.h"
 #import "LJCommonHeader.h"
+#import "LJSearchBarSelectButtonsView.h"
 
-@interface LJSearchViewController ()
 
+
+@interface LJSearchViewController ()<LJSearchBarDelegate>
+
+@property (nonatomic, weak) LJSearchBar * searchBar;
+@property (nonatomic, weak) LJSearchBarSelectButtonsView * btnView;
+@property (nonatomic, assign) NSInteger curSelectIndex;
+
+@property (nonatomic, strong) NSArray * titlesArr;
 @end
+
+
 
 @implementation LJSearchViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.titlesArr = @[@"资讯", @"论坛", @"帖子", @"产品"];
     self.view.backgroundColor = LightGrayBGColor;
-    LJSearchBar * bar = [[LJSearchBar alloc] initWithFrame:CGRectMake(0, 0, 0, 0) andTitles:@[@"资讯", @"论坛", @"帖子", @"产品"] andActionBlock:^(NSInteger index) {
-        LJLog(@"select index:%d", index);
-    }];
+    //search bar
+    LJSearchBar * bar = [[LJSearchBar alloc] initWithFrame:CGRectMake(0, 0, 0, 0) andTitles:self.titlesArr];
     [self.view addSubview:bar];
+    bar.delegate = self;
+    self.searchBar = bar;
+    
+    //btn view
+    LJSearchBarSelectButtonsView * btnView = [[LJSearchBarSelectButtonsView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) andTitiles:self.titlesArr andActionBlock:^(NSInteger index) {
+        [self.searchBar.selectButton setTitle:self.titlesArr[index] forState:UIControlStateNormal];
+        self.curSelectIndex = index;
+        self.btnView.hidden = YES;
+    }];
+    btnView.hidden = YES;
+    [self.view addSubview:btnView];
+    self.btnView = btnView;
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)viewWillLayoutSubviews
+{
+    CGFloat padding = 10;
+    self.btnView.frame = CGRectMake(2 * padding + self.searchBar.frame.origin.x, padding + self.searchBar.frame.origin.y, CGRectGetWidth(self.searchBar.selectButton.frame), CGRectGetHeight(self.searchBar.selectButton.frame) * self.titlesArr.count);
 }
-*/
+
+#pragma mark - search bar 代理方法
+- (void)searchBar:(LJSearchBar *)bar didClickSearchBtn:(UIButton *)button
+{
+    NSLog(@"%d", self.curSelectIndex);
+}
+
+- (void)searchBar:(LJSearchBar *)bar didClickSelectBtn:(UIButton *)button
+{
+    self.btnView.hidden = NO;
+}
 
 @end
