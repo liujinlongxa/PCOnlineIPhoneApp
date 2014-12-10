@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class LJBBSListItem;
+
 @interface LJBBSSearchResultVC : UIViewController
 
+@property (nonatomic, copy) NSString * keyWord;
+- (instancetype)initWithSelectActionBlock:(void (^)(LJBBSListItem * item))actionBlock;
 @end

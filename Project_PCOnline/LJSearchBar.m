@@ -16,7 +16,7 @@
 
 @property (nonatomic, weak) UIView * inputView;
 @property (nonatomic, weak) UIButton * selectButton;
-@property (nonatomic, weak) UITextField * textField;
+
 
 @property (nonatomic, weak) UIView * line;
 @property (nonatomic, weak) UIButton * searchButton;
@@ -56,6 +56,7 @@
         text.backgroundColor = [UIColor whiteColor];
         [self.inputView addSubview:text];
         self.textField = text;
+        self.textField.text = @"论坛";
         
         //button
         UIButton * selectBtn = [[UIButton alloc] init];

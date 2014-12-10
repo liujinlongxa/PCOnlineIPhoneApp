@@ -14,7 +14,7 @@
 + (instancetype)shareCommonData;
 
 @property (nonatomic, strong) NSArray * SubjectsData;
-@property (nonatomic, strong) NSArray * BBSData;
+@property (nonatomic, strong) NSArray * BBSListData;
 @property (nonatomic, strong) NSArray * AreaData;
 
 - (void)saveObjc:(id)object forKey:(NSString *)key;

@@ -10,12 +10,14 @@
 #import "LJSearchBar.h"
 #import "LJCommonHeader.h"
 #import "LJSearchBarSelectButtonsView.h"
+#import "LJBBSListItem.h"
+
 //控制器
 #import "LJProductSearchResultVC.h"
 #import "LJTopicSearchResultVC.h"
 #import "LJBBSSearchResultVC.h"
 #import "LJNewsSearchResultVC.h"
-
+#import "LJBBSSubForumTVC.h"
 
 @interface LJSearchViewController ()<LJSearchBarDelegate>
 
@@ -62,6 +64,7 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pccommon_navbar_primary_64"] forBarMetrics:UIBarMetricsDefault];
     self.navigationItem.title = @"搜索";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:NavBarTitleFont}];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 - (void)backBtnClick:(id)sender
@@ -97,7 +100,6 @@
     UIView * view = [[UIView alloc] init];
     [self.view addSubview:view];
     self.showResultView  = view;
-    self.showResultView.backgroundColor = [UIColor redColor];
 }
 
 - (void)viewWillLayoutSubviews
@@ -122,10 +124,15 @@
         }
         case 1:
         {
-            LJBBSSearchResultVC * resultVC = [[LJBBSSearchResultVC alloc] init];
+            LJBBSSearchResultVC * resultVC = [[LJBBSSearchResultVC alloc] initWithSelectActionBlock:^(LJBBSListItem *item) {
+                LJBBSSubForumTVC * subFormTVC = [[LJBBSSubForumTVC alloc] init];
+                subFormTVC.bbsItem = item;
+                [self.navigationController pushViewController:subFormTVC animated:YES];
+            }];
             [[self.showResultView.subviews firstObject] removeFromSuperview];
             [self.showResultView addSubview:resultVC.view];
             self.curShowController = resultVC;
+            resultVC.keyWord = self.searchBar.textField.text;
             break;
         }
         case 2:

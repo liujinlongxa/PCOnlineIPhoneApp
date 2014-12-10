@@ -24,4 +24,6 @@
 @property (nonatomic, assign, readonly) NSInteger selectIndex;
 @property (nonatomic, weak) id<LJSearchBarDelegate> delegate;
 @property (nonatomic, weak, readonly) UIButton * selectButton;
+@property (nonatomic, weak) UITextField * textField;
+
 @end
