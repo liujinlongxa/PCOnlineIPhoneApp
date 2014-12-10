@@ -86,6 +86,10 @@
 		047D6A921A2C73D300EB3B64 /* LJCommonData.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D6A911A2C73D300EB3B64 /* LJCommonData.m */; };
 		047D6A951A2C837E00EB3B64 /* LJNetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D6A941A2C837E00EB3B64 /* LJNetWorking.m */; };
 		047D6A981A2C933500EB3B64 /* LJArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D6A971A2C933500EB3B64 /* LJArea.m */; };
+		04B0C5211A37F3CD00B3B9B4 /* LJProductSearchResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B0C5201A37F3CD00B3B9B4 /* LJProductSearchResultVC.m */; };
+		04B0C5241A37F3DF00B3B9B4 /* LJTopicSearchResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B0C5231A37F3DF00B3B9B4 /* LJTopicSearchResultVC.m */; };
+		04B0C5271A37F3F000B3B9B4 /* LJBBSSearchResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B0C5261A37F3F000B3B9B4 /* LJBBSSearchResultVC.m */; };
+		04B0C52A1A37F40300B3B9B4 /* LJNewsSearchResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B0C5291A37F40300B3B9B4 /* LJNewsSearchResultVC.m */; };
 		04B30DA01A314BBA007AF4B9 /* LJBBSListDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B30D9F1A314BBA007AF4B9 /* LJBBSListDetailController.m */; };
 		04B30DA31A314CE7007AF4B9 /* LJBBSSubForumListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B30DA21A314CE7007AF4B9 /* LJBBSSubForumListTVC.m */; };
 		04B30DA61A314D46007AF4B9 /* LJBBSHotTopicTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B30DA51A314D46007AF4B9 /* LJBBSHotTopicTableVC.m */; };
@@ -338,6 +342,14 @@
 		047D6A941A2C837E00EB3B64 /* LJNetWorking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJNetWorking.m; sourceTree = "<group>"; };
 		047D6A961A2C933500EB3B64 /* LJArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJArea.h; sourceTree = "<group>"; };
 		047D6A971A2C933500EB3B64 /* LJArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJArea.m; sourceTree = "<group>"; };
+		04B0C51F1A37F3CD00B3B9B4 /* LJProductSearchResultVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJProductSearchResultVC.h; sourceTree = "<group>"; };
+		04B0C5201A37F3CD00B3B9B4 /* LJProductSearchResultVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJProductSearchResultVC.m; sourceTree = "<group>"; };
+		04B0C5221A37F3DF00B3B9B4 /* LJTopicSearchResultVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJTopicSearchResultVC.h; sourceTree = "<group>"; };
+		04B0C5231A37F3DF00B3B9B4 /* LJTopicSearchResultVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJTopicSearchResultVC.m; sourceTree = "<group>"; };
+		04B0C5251A37F3F000B3B9B4 /* LJBBSSearchResultVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBBSSearchResultVC.h; sourceTree = "<group>"; };
+		04B0C5261A37F3F000B3B9B4 /* LJBBSSearchResultVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBBSSearchResultVC.m; sourceTree = "<group>"; };
+		04B0C5281A37F40300B3B9B4 /* LJNewsSearchResultVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJNewsSearchResultVC.h; sourceTree = "<group>"; };
+		04B0C5291A37F40300B3B9B4 /* LJNewsSearchResultVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJNewsSearchResultVC.m; sourceTree = "<group>"; };
 		04B30D9E1A314BBA007AF4B9 /* LJBBSListDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBBSListDetailController.h; sourceTree = "<group>"; };
 		04B30D9F1A314BBA007AF4B9 /* LJBBSListDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBBSListDetailController.m; sourceTree = "<group>"; };
 		04B30DA11A314CE7007AF4B9 /* LJBBSSubForumListTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBBSSubForumListTVC.h; sourceTree = "<group>"; };
@@ -548,6 +560,7 @@
 		0415156F1A37148D00F91833 /* Search(搜索) */ = {
 			isa = PBXGroup;
 			children = (
+				04B0C51A1A37EFB400B3B9B4 /* Model */,
 				041515771A3722A900F91833 /* Controler */,
 				041515701A37149F00F91833 /* View */,
 			);
@@ -568,6 +581,10 @@
 		041515771A3722A900F91833 /* Controler */ = {
 			isa = PBXGroup;
 			children = (
+				04B0C51E1A37EFDD00B3B9B4 /* ProductSearch */,
+				04B0C51D1A37EFD400B3B9B4 /* TopicSearch */,
+				04B0C51C1A37EFCB00B3B9B4 /* BBSSearch */,
+				04B0C51B1A37EFC400B3B9B4 /* NewsSearch */,
 				041515781A3722CF00F91833 /* LJSearchViewController.h */,
 				041515791A3722CF00F91833 /* LJSearchViewController.m */,
 			);
@@ -1151,6 +1168,49 @@
 				04C711C61A2D5304009705DF /* LJAds.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		04B0C51A1A37EFB400B3B9B4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		04B0C51B1A37EFC400B3B9B4 /* NewsSearch */ = {
+			isa = PBXGroup;
+			children = (
+				04B0C5281A37F40300B3B9B4 /* LJNewsSearchResultVC.h */,
+				04B0C5291A37F40300B3B9B4 /* LJNewsSearchResultVC.m */,
+			);
+			name = NewsSearch;
+			sourceTree = "<group>";
+		};
+		04B0C51C1A37EFCB00B3B9B4 /* BBSSearch */ = {
+			isa = PBXGroup;
+			children = (
+				04B0C5251A37F3F000B3B9B4 /* LJBBSSearchResultVC.h */,
+				04B0C5261A37F3F000B3B9B4 /* LJBBSSearchResultVC.m */,
+			);
+			name = BBSSearch;
+			sourceTree = "<group>";
+		};
+		04B0C51D1A37EFD400B3B9B4 /* TopicSearch */ = {
+			isa = PBXGroup;
+			children = (
+				04B0C5221A37F3DF00B3B9B4 /* LJTopicSearchResultVC.h */,
+				04B0C5231A37F3DF00B3B9B4 /* LJTopicSearchResultVC.m */,
+			);
+			name = TopicSearch;
+			sourceTree = "<group>";
+		};
+		04B0C51E1A37EFDD00B3B9B4 /* ProductSearch */ = {
+			isa = PBXGroup;
+			children = (
+				04B0C51F1A37F3CD00B3B9B4 /* LJProductSearchResultVC.h */,
+				04B0C5201A37F3CD00B3B9B4 /* LJProductSearchResultVC.m */,
+			);
+			name = ProductSearch;
 			sourceTree = "<group>";
 		};
 		04B30DA71A314D52007AF4B9 /* BBSListDetail */ = {
@@ -1780,6 +1840,7 @@
 				88CAED1B1A2E1DFF00262896 /* LJHotForumsView.m in Sources */,
 				88B7FC5B1A34CA4A00F31E9C /* SDWebImagePrefetcher.m in Sources */,
 				04C712141A2DB04D009705DF /* LJBBSAds.m in Sources */,
+				04B0C5241A37F3DF00B3B9B4 /* LJTopicSearchResultVC.m in Sources */,
 				04B30DA61A314D46007AF4B9 /* LJBBSHotTopicTableVC.m in Sources */,
 				046E767D1A2C1AC6000FE777 /* LJNewsViewController.m in Sources */,
 				889552401A34CF6700E7D864 /* AFURLResponseSerialization.m in Sources */,
@@ -1798,6 +1859,7 @@
 				041E14CE1A35C47F008BB770 /* LJProductSortView.m in Sources */,
 				04D0CD331A36ED7A0060CD9D /* LJQueryJson.m in Sources */,
 				04C712171A2DB421009705DF /* LJBaseAds.m in Sources */,
+				04B0C5211A37F3CD00B3B9B4 /* LJProductSearchResultVC.m in Sources */,
 				04C711FC1A2D646D009705DF /* LJNewsDetailController.m in Sources */,
 				882774F41A2F71BF00304E57 /* LJSubProductCategoryTableVC.m in Sources */,
 				046E764C1A2C08C0000FE777 /* UIView+MJExtension.m in Sources */,
@@ -1821,6 +1883,7 @@
 				04D0CD1E1A36987E0060CD9D /* LJProductFilterListTVC.m in Sources */,
 				046E76541A2C0A2F000FE777 /* MBProgressHUD.m in Sources */,
 				880780C71A30CA68005876A2 /* LJScrollTabButton.m in Sources */,
+				04B0C52A1A37F40300B3B9B4 /* LJNewsSearchResultVC.m in Sources */,
 				044C28D81A2EE25700A48121 /* LJLiveTableView.m in Sources */,
 				047D6A801A2C4DA600EB3B64 /* LJBaseViewController.m in Sources */,
 				047D6A921A2C73D300EB3B64 /* LJCommonData.m in Sources */,
@@ -1882,6 +1945,7 @@
 				046E75CB1A2BF700000FE777 /* main.m in Sources */,
 				882774FA1A2F729700304E57 /* LJFullScreenBrandVC.m in Sources */,
 				044C28CA1A2EB99200A48121 /* LJPhotoCell.m in Sources */,
+				04B0C5271A37F3F000B3B9B4 /* LJBBSSearchResultVC.m in Sources */,
 				8895523F1A34CF6700E7D864 /* AFURLRequestSerialization.m in Sources */,
 				8895523C1A34CF6700E7D864 /* AFNetworkReachabilityManager.m in Sources */,
 				04C711C71A2D5304009705DF /* LJAds.m in Sources */,

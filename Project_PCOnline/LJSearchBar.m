@@ -21,6 +21,8 @@
 @property (nonatomic, weak) UIView * line;
 @property (nonatomic, weak) UIButton * searchButton;
 
+@property (nonatomic, weak) UIView * bottomLine;
+
 @property (nonatomic, copy) void (^actionBlock)(NSInteger index);
 
 @end
@@ -30,7 +32,7 @@
 - (instancetype)initWithFrame:(CGRect)frame andTitles:(NSArray *)titles
 {
     CGFloat barY = frame.origin.y;
-    CGFloat barH = 60;
+    CGFloat barH = 50;
     self.backgroundColor = [UIColor redColor];
     if (self = [super initWithFrame:CGRectMake(0, barY, kScrW, barH)]) {
         
@@ -72,6 +74,12 @@
         [searchBtn addTarget:self action:@selector(searchButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         self.searchButton = searchBtn;
         
+        //bottom line
+        UIView * bottomLine =[[UIView alloc] init];
+        bottomLine.backgroundColor = [UIColor lightGrayColor];
+        [self addSubview:bottomLine];
+        self.bottomLine = bottomLine;
+        
         
     }
     return self;
@@ -87,7 +95,7 @@
     //input view
     CGFloat inputX = padding * 2;
     CGFloat inputY = padding;
-    CGFloat inputW = viewW - searchBtnW - 5 * padding;
+    CGFloat inputW = viewW - searchBtnW - 4 * padding;
     CGFloat inputH = viewH - 2 * padding;
     self.inputView.frame = CGRectMake(inputX, inputY, inputW, inputH);
     
@@ -100,7 +108,7 @@
     //select btn
     CGFloat selectBtnX = 0;
     CGFloat selectBtnY = 0;
-    CGFloat selectBtnW = 100;
+    CGFloat selectBtnW = 80;
     CGFloat selectBtnH = CGRectGetHeight(self.inputView.frame);
     self.selectButton.frame = CGRectMake(selectBtnX, selectBtnY, selectBtnW, selectBtnH);
     
@@ -112,6 +120,9 @@
     CGFloat textX = CGRectGetMaxX(self.line.frame);
     CGFloat textW = CGRectGetWidth(self.inputView.frame) - CGRectGetWidth(self.selectButton.frame) - 1;
     self.textField.frame = CGRectMake(textX, 0, textW, CGRectGetHeight(self.inputView.frame));
+    
+    //bottom
+    self.bottomLine.frame = CGRectMake(0, viewH - 1, viewW, 1);
     
 }
 

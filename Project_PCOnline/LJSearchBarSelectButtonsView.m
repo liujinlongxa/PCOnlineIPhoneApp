@@ -14,10 +14,8 @@
 @property (nonatomic, strong) NSArray * titles;
 @property (nonatomic, strong) NSMutableArray * buttons;
 
-@property (nonatomic, assign, getter=isShow) BOOL show;
+@property (nonatomic, weak) UIButton * curSelectBtn;
 
-@property (nonatomic, weak) UIView * bigView;
-@property (nonatomic, weak) UIView * smallView;
 @end
 
 @implementation LJSearchBarSelectButtonsView
@@ -51,6 +49,8 @@
             btn.tag = i;
             [btn addTarget:self action:@selector(btnSelect:) forControlEvents:UIControlEventTouchUpInside];
         }
+        [[self.buttons firstObject] setBackgroundColor:[UIColor lightGrayColor]];
+        self.curSelectBtn = [self.buttons firstObject];
     }
     return self;
 }
@@ -66,6 +66,9 @@
 
 - (void)btnSelect:(UIButton *)sender
 {
+    sender.backgroundColor = [UIColor lightGrayColor];
+    self.curSelectBtn.backgroundColor = [UIColor whiteColor];
+    self.curSelectBtn = sender;
     self.actionBlock(sender.tag);
 }
 
