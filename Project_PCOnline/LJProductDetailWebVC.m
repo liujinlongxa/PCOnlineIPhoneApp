@@ -45,27 +45,36 @@
 - (void)setProduct:(LJProduct *)product
 {
     _product = product;
-    NSString * urlStr = [self getUrlStrWithProduct:product];
+    NSString * urlStr = [self getUrlStrWithProduct:product.ID.integerValue];
     NSURL * url = [NSURL URLWithString:urlStr];
     NSURLRequest * req = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:req];
 }
 
-- (NSString *)getUrlStrWithProduct:(LJProduct *)product
+- (void)setProductID:(NSString *)productID
+{
+    _productID = productID;
+    NSString * urlStr = [self getUrlStrWithProduct:productID.integerValue];
+    NSURL * url = [NSURL URLWithString:urlStr];
+    NSURLRequest * req = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:req];
+}
+
+- (NSString *)getUrlStrWithProduct:(NSInteger)productID
 {
     NSString * urlStr = nil;
     switch (self.type) {
         case LJProductWebVCTypeSummary:
-            urlStr = [NSString stringWithFormat:kProductDetailSummaryUrl, product.ID.integerValue];
+            urlStr = [NSString stringWithFormat:kProductDetailSummaryUrl, productID];
             break;
         case LJProductWebVCTypeDetail:
-            urlStr = [NSString stringWithFormat:kProductDetailDetailUrl, product.ID.integerValue];
+            urlStr = [NSString stringWithFormat:kProductDetailDetailUrl, productID];
             break;
         case LJProductWebVCTypePrice:
-            urlStr = [NSString stringWithFormat:kProductDetailPriceUrl, product.ID.integerValue];
+            urlStr = [NSString stringWithFormat:kProductDetailPriceUrl, productID];
             break;
         case LJProductWebVCTypeComment:
-            urlStr = [NSString stringWithFormat:kProductDetailCommentUrl, product.ID.integerValue];
+            urlStr = [NSString stringWithFormat:kProductDetailCommentUrl, productID];
             break;
             
         default:

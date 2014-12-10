@@ -52,11 +52,23 @@
     return _informationData;
 }
 
+- (NSString *)setupUrlStr
+{
+    NSString * urlStr = nil;
+    if (self.product == nil) {
+        urlStr = [NSString stringWithFormat:kProductDetailInformationUrl, self.productID.integerValue];
+    }
+    else
+    {
+        urlStr = [NSString stringWithFormat:kProductDetailInformationUrl, self.product.ID.integerValue];
+    }
+    assert(urlStr != nil);
+    return urlStr;
+}
+
 - (void)loadInformationData
 {
-    NSString * urlStr = [NSString stringWithFormat:kProductDetailInformationUrl, self.product.ID.integerValue];
-    LJLog(@"%@", urlStr);
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorking GET:[self setupUrlStr] parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         NSMutableArray * arr = [NSMutableArray array];

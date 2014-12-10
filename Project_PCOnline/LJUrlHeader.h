@@ -84,6 +84,14 @@
 //图赏
 #define kPhotoUrl @"http://agent1.pconline.com.cn:8941/photolib/iphone_cate_json.jsp?id=%@"
 
+//搜索
+//1.资讯搜索
+#define kNewsSearchUrl @"http://mrobot.pconline.com.cn/v2/cms/search?q=%@&clusterQuery=cluster_channel:%@"
+//2.产品搜索
+#define kProductSearchUrl @"http://mrobot.pconline.com.cn/v3/product/select?kw=%@&pageNo=1&pageSize=20"
+//3.论坛帖子搜索
+#define kTopciSearchUrl @"http://mrobot.pconline.com.cn/v3/itbbs/search?q=%@&pageNo=1&pageSize=20"
+
 //常量字符串
 //找产品
 #define kProductTypeKey @"ProductType"

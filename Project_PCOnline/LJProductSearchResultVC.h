@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class LJProductSearchResultItem;
 @interface LJProductSearchResultVC : UIViewController
 
+@property (nonatomic, copy) NSString * keyWord;
+- (instancetype)initWithSelectActionBlock:(void (^)(LJProductSearchResultItem * item))actionBlock;
 @end

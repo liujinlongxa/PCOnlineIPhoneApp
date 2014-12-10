@@ -19,6 +19,7 @@ typedef enum : NSUInteger {
 @interface LJProductDetailWebVC : UIViewController
 
 @property (nonatomic, strong) LJProduct * product;
+@property (nonatomic, copy) NSString * productID;
 - (instancetype)initWithType:(LJProductWebVCType)type;
 
 @end

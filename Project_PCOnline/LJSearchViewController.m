@@ -18,6 +18,7 @@
 #import "LJBBSSearchResultVC.h"
 #import "LJNewsSearchResultVC.h"
 #import "LJBBSSubForumTVC.h"
+#import "LJProductDetailScrollTabVC.h"
 
 @interface LJSearchViewController ()<LJSearchBarDelegate>
 
@@ -145,10 +146,15 @@
         }
         case 3:
         {
-            LJProductSearchResultVC * resultVC = [[LJProductSearchResultVC alloc] init];
+            LJProductSearchResultVC * resultVC = [[LJProductSearchResultVC alloc] initWithSelectActionBlock:^(LJProductSearchResultItem *item) {
+                LJProductDetailScrollTabVC * productDetailSTVC = [LJProductDetailScrollTabVC productDetailScrollTabVCWithDefautControllers];
+                productDetailSTVC.item = item;
+                [self.navigationController pushViewController:productDetailSTVC animated:YES];
+            }];
             [[self.showResultView.subviews firstObject] removeFromSuperview];
             [self.showResultView addSubview:resultVC.view];
             self.curShowController = resultVC;
+            resultVC.keyWord = self.searchBar.textField.text;
             break;
         }
         default:

@@ -11,7 +11,9 @@
 #import "UIImage+MyImage.h"
 #import "LJProductCompareVC.h"
 #import "LJProductCompareManager.h"
-
+#import "LJProductSearchResultItem.h"
+//标准子控制器
+#import "LJProductDetailWebVC.h"
 
 @interface LJProductDetailScrollTabVC ()<LJProductInformationTVCDelegate>
 
@@ -19,6 +21,18 @@
 
 @implementation LJProductDetailScrollTabVC
 
++ (instancetype)productDetailScrollTabVCWithDefautControllers
+{
+    LJProductDetailWebVC * productSummaryVC = [[LJProductDetailWebVC alloc] initWithType:LJProductWebVCTypeSummary];
+    LJProductDetailWebVC * productDetailVC = [[LJProductDetailWebVC alloc] initWithType:LJProductWebVCTypeDetail];
+    LJProductDetailWebVC * productPriceVC = [[LJProductDetailWebVC alloc] initWithType:LJProductWebVCTypePrice];
+    LJProductInformationTVC * productInformationTVC = [[LJProductInformationTVC alloc] init];
+    LJProductDetailWebVC * productCommentVC = [[LJProductDetailWebVC alloc] initWithType:LJProductWebVCTypeComment];
+    
+    LJProductDetailScrollTabVC * scrollTVC = [[super class] scrollTabViewControllerWithController:@[productSummaryVC, productDetailVC, productPriceVC, productInformationTVC, productCommentVC] andTitles:@[@"概述", @"详情", @"报价", @"资讯", @"点评"]];
+    productInformationTVC.delegate = scrollTVC;
+    return scrollTVC;
+}
 
 + (instancetype)productDetailScrollTabVCWithControllers:(NSArray *)controllers andTitles:(NSArray *)titles
 {
@@ -36,8 +50,10 @@
     self.navigationItem.title = @"产品详情";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor], NSFontAttributeName:NavBarTitleFont}];
     //right button
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:BlueTextColor} forState:UIControlStateNormal];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"对比" style:UIBarButtonItemStylePlain target:self action:@selector(productCompare:)];
+    if (self.product != nil) {
+        [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:BlueTextColor} forState:UIControlStateNormal];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"对比" style:UIBarButtonItemStylePlain target:self action:@selector(productCompare:)];
+    }
 }
 
 - (void)setProduct:(LJProduct *)product
@@ -46,6 +62,14 @@
     [self.lj_viewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         UIViewController * controller = (UIViewController *)obj;
         [controller setValue:product forKey:@"product"];
+    }];
+}
+
+- (void)setItem:(LJProductSearchResultItem *)item
+{
+    _item = item;
+    [self.lj_viewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [obj setProductID:item.ID];
     }];
 }
 

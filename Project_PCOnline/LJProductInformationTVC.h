@@ -22,6 +22,8 @@
 @interface LJProductInformationTVC : UITableViewController
 
 @property (nonatomic, strong) LJProduct * product;
+@property (nonatomic, copy) NSString * productID;
+
 @property (nonatomic, weak) id<LJProductInformationTVCDelegate> delegate;
 
 @end

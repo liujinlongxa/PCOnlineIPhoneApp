@@ -10,11 +10,13 @@
 #import "LJProductInformationTVC.h"
 #import "LJProductInformation.h"
 #import "LJProduct.h"
+@class LJProductSearchResultItem;
 
 @interface LJProductDetailScrollTabVC : LJScrollTabViewController
 
 @property (nonatomic, strong) LJProduct * product;
+@property (nonatomic, strong) LJProductSearchResultItem * item;
 
 + (instancetype)productDetailScrollTabVCWithControllers:(NSArray *)controllers andTitles:(NSArray *)titles;
-
++ (instancetype)productDetailScrollTabVCWithDefautControllers;
 @end
