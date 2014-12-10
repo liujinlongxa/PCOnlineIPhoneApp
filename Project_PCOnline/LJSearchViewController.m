@@ -12,6 +12,7 @@
 #import "LJSearchBarSelectButtonsView.h"
 #import "LJBBSListItem.h"
 #import "LJTopicSearchResultItem.h"
+#import "LJNewsSearchResultItem.h"
 
 //控制器
 #import "LJProductSearchResultVC.h"
@@ -21,8 +22,10 @@
 #import "LJBBSSubForumTVC.h"
 #import "LJProductDetailScrollTabVC.h"
 #import "LJBBSTopicDetailWebVC.h"
+#import "LJNewsDetailController.h"
+#import "LJMoreNewsSearchResultTVC.h"
 
-@interface LJSearchViewController ()<LJSearchBarDelegate>
+@interface LJSearchViewController ()<LJSearchBarDelegate, LJNewsSearchResultVCDelegate>
 
 @property (nonatomic, weak) LJSearchBar * searchBar;
 @property (nonatomic, weak) LJSearchBarSelectButtonsView * btnView;
@@ -124,6 +127,7 @@
             [self.showResultView addSubview:resultVC.view];
             self.curShowController = resultVC;
             resultVC.keyWord = self.searchBar.textField.text;
+            resultVC.delegate = self;
             break;
         }
         case 1:
@@ -173,6 +177,24 @@
 - (void)searchBar:(LJSearchBar *)bar didClickSelectBtn:(UIButton *)button
 {
     self.btnView.hidden = NO;
+}
+
+#pragma mark - newsSearch 代理方法
+- (void)newsSearchResultVC:(LJNewsSearchResultVC *)controller didSelectWithObject:(id)obj
+{
+    if ([obj isKindOfClass:[NSArray class]])
+    {
+        LJMoreNewsSearchResultTVC * moreResultTVC = [[LJMoreNewsSearchResultTVC alloc] init];
+        moreResultTVC.searchResultData = obj;
+        [self.navigationController pushViewController:moreResultTVC animated:YES];
+    }
+    else
+    {
+        LJNewsSearchResultItem * item = (LJNewsSearchResultItem *)obj;
+        LJNewsDetailController * detailVC = [[LJNewsDetailController alloc] init];
+        detailVC.ID = item.ID;
+        [self.navigationController pushViewController:detailVC animated:YES];
+    }
 }
 
 @end

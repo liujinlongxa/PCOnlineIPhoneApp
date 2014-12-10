@@ -20,7 +20,6 @@
     item.title = dict[@"title"];
     
     return item;
-    
 }
 
 @end

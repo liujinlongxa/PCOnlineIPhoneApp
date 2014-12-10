@@ -13,6 +13,8 @@
 #import "LJUrlHeader.h"
 #import "LJCommonHeader.h"
 
+#define kBtnViewItemCount 3
+
 static NSString * const NewsArticle = @"新闻文章";
 static NSString * const CepingArticle = @"评测文章";
 static NSString * const DaogouArticle = @"导购文章";
@@ -36,9 +38,6 @@ static NSString * const YingyongArticle = @"应用文章";
 
     //初始化滚动视图
     [self setupScrollView];
-    
-    //加载数据
-    
 }
 
 #pragma mark - init UI
@@ -62,33 +61,69 @@ static NSString * const YingyongArticle = @"应用文章";
     CGFloat groupViewH = 290;
     //新闻
     LJNewsSearchGroupView * newsGroup = [[LJNewsSearchGroupView alloc] initWithFrame:CGRectMake(padding, padding, kScrW - 2 * padding, groupViewH) andClickActionBlock:^(NSInteger clickIndex) {
-        
+        if (clickIndex == kBtnViewItemCount)
+        {
+            [self setupDelegateWithObject:self.newsArticleData];
+        }
+        else
+        {
+            [self setupDelegateWithObject:self.newsArticleData[clickIndex]];
+        }
     }];
     newsGroup.newsItems = self.newsArticleData;
     [self.scrollView addSubview:newsGroup];
     //测评
     LJNewsSearchGroupView * cepingGroup = [[LJNewsSearchGroupView alloc] initWithFrame:CGRectMake(padding, padding + (padding * 2 + groupViewH), kScrW - 2 * padding, groupViewH) andClickActionBlock:^(NSInteger clickIndex) {
-        
+        if (clickIndex == kBtnViewItemCount)
+        {
+            [self setupDelegateWithObject:self.pingceArticleData];
+        }
+        else
+        {
+            [self setupDelegateWithObject:self.pingceArticleData[clickIndex]];
+        }
     }];
     cepingGroup.newsItems = self.pingceArticleData;
     [self.scrollView addSubview:cepingGroup];
     
     //导购
     LJNewsSearchGroupView * daogouGroup = [[LJNewsSearchGroupView alloc] initWithFrame:CGRectMake(padding, padding +(padding * 2 + groupViewH) * 2, kScrW - 2 * padding, groupViewH) andClickActionBlock:^(NSInteger clickIndex) {
-        
+        if (clickIndex == kBtnViewItemCount)
+        {
+            [self setupDelegateWithObject:self.daogouArticleData];
+        }
+        else
+        {
+            [self setupDelegateWithObject:self.daogouArticleData[clickIndex]];
+        }
     }];
     daogouGroup.newsItems = self.daogouArticleData;
     [self.scrollView addSubview:daogouGroup];
     
     //应用
     LJNewsSearchGroupView * yingyongGroup = [[LJNewsSearchGroupView alloc] initWithFrame:CGRectMake(padding, padding +(padding * 2 + groupViewH) * 3, kScrW - 2 * padding, groupViewH) andClickActionBlock:^(NSInteger clickIndex) {
-        
+        if (clickIndex == kBtnViewItemCount)
+        {
+            [self setupDelegateWithObject:self.yingyongArticleData];
+        }
+        else
+        {
+            [self setupDelegateWithObject:self.yingyongArticleData[clickIndex]];
+        }
     }];
     yingyongGroup.newsItems = self.yingyongArticleData;
     [self.scrollView addSubview:yingyongGroup];
     
     self.scrollView.contentSize = CGSizeMake(0,CGRectGetMaxY(yingyongGroup.frame) + padding);
     
+}
+
+- (void)setupDelegateWithObject:(id)obj
+{
+    if ([self.delegate respondsToSelector:@selector(newsSearchResultVC:didSelectWithObject:)])
+    {
+        [self.delegate newsSearchResultVC:self didSelectWithObject:obj];
+    }
 }
 
 #pragma mark - load data

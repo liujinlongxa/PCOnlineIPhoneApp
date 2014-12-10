@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class LJNewsSearchResultVC;
+
+@protocol LJNewsSearchResultVCDelegate <NSObject>
+
+- (void)newsSearchResultVC:(LJNewsSearchResultVC *)controller didSelectWithObject:(id)obj;
+
+@end
+
 @interface LJNewsSearchResultVC : UIViewController
 
 @property (nonatomic, copy) NSString * keyWord;
+@property (nonatomic, weak) id<LJNewsSearchResultVCDelegate> delegate;
 
 @end

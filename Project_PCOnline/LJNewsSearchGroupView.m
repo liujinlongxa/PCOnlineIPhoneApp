@@ -35,6 +35,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         
+        self.clickActionBlock = actionBlock;
+        
         //border
         self.layer.cornerRadius = 5;
         self.layer.borderColor = [[UIColor lightGrayColor] CGColor];
@@ -46,6 +48,7 @@
             LJNewsSearchItemView * btn = [[LJNewsSearchItemView alloc] initWithFrame:CGRectZero andActionBlock:nil];
             [self addSubview:btn];
             [self.newsBtns addObject:btn];
+            [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
             btn.tag = i;
         }
         
@@ -58,9 +61,18 @@
         [moreBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self addSubview:moreBtn];
         self.moreBtn = moreBtn;
+        [moreBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         
     }
     return self;
+}
+
+- (void)btnClick:(UIControl *)sender
+{
+    if (self.clickActionBlock)
+    {
+        self.clickActionBlock(sender.tag);
+    }
 }
 
 - (void)setNewsItems:(NSArray *)newsItems
