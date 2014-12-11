@@ -49,6 +49,7 @@
     
     [[showChannelBtns firstObject] setEnabled:NO];
     LJChannelItemBtnsView * showBtnsView = [[LJChannelItemBtnsView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) andButttons:showChannelBtns andTitles:nil];
+    showBtnsView.canDragToMove = YES;
     [self.view addSubview:showBtnsView];
     self.showChannelView = showBtnsView;
 }
@@ -137,8 +138,17 @@
 //数据保存
 - (void)saveChannelList
 {
-    [LJCommonData shareCommonData].curShowSubjectsData = [self.showChannelSubjects copy];
-    [LJCommonData shareCommonData].curHideSubjectsData = [self.hideChannelSubjects copy];
+    NSMutableArray * showSubjectArr = [NSMutableArray array];
+    for (LJChannelItemBtn * btn in self.showChannelView.buttons) {
+        [showSubjectArr addObject:btn.subject];
+    }
+    
+    NSMutableArray * hideSubjectArr = [NSMutableArray array];
+    for (LJChannelItemBtn * btn in self.hideChannelView.buttons) {
+        [hideSubjectArr addObject:btn.subject];
+    }
+    [LJCommonData shareCommonData].curShowSubjectsData = [showSubjectArr copy];
+    [LJCommonData shareCommonData].curHideSubjectsData = [hideSubjectArr copy];
 }
 
 @end

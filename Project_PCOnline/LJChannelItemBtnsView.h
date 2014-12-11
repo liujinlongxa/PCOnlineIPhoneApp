@@ -15,7 +15,9 @@
 - (instancetype)initWithFrame:(CGRect)frame andButttons:(NSArray *)buttons andTitles:(NSString *)title;
 - (void)removeButton:(LJChannelItemBtn *)button;
 - (void)addButton:(LJChannelItemBtn *)button;
+
 @property (nonatomic, strong) NSMutableArray * buttons;
 @property (nonatomic, weak) UILabel * titleLabel;
+@property (nonatomic, assign, getter=isCanDragToMove) BOOL canDragToMove;
 
 @end

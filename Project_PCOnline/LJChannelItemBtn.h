@@ -15,4 +15,6 @@
 
 @property (nonatomic, assign, getter=isShow) BOOL show;
 @property (nonatomic, strong) LJSubject * subject;
+@property (nonatomic, strong) UIGestureRecognizer * dragGesture;
+
 @end

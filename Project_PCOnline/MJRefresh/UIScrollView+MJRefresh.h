@@ -6,10 +6,6 @@
 //  Copyright (c) 2014年 itcast. All rights reserved.
 //
 
-// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com
-
 #import <UIKit/UIKit.h>
 
 @interface UIScrollView (MJRefresh)
@@ -24,10 +20,27 @@
 /**
  *  添加一个下拉刷新头部控件
  *
+ *  @param callback 回调
+ *  @param dateKey 刷新时间保存的key值
+ */
+- (void)addHeaderWithCallback:(void (^)())callback dateKey:(NSString*)dateKey;
+
+/**
+ *  添加一个下拉刷新头部控件
+ *
  *  @param target 目标
  *  @param action 回调方法
  */
 - (void)addHeaderWithTarget:(id)target action:(SEL)action;
+
+/**
+ *  添加一个下拉刷新头部控件
+ *
+ *  @param target 目标
+ *  @param action 回调方法
+ *  @param dateKey 刷新时间保存的key值
+ */
+- (void)addHeaderWithTarget:(id)target action:(SEL)action dateKey:(NSString*)dateKey;
 
 /**
  *  移除下拉刷新头部控件

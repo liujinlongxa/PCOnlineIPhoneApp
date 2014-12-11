@@ -6,10 +6,6 @@
 //  Copyright (c) 2013年 itcast. All rights reserved.
 //  下拉刷新
 
-// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com
-
 #import "MJRefreshConst.h"
 #import "MJRefreshHeaderView.h"
 #import "UIView+MJExtension.h"
@@ -39,7 +35,11 @@
         [self addSubview:_lastUpdateTimeLabel = lastUpdateTimeLabel];
         
         // 2.加载时间
-        self.lastUpdateTime = [[NSUserDefaults standardUserDefaults] objectForKey:MJRefreshHeaderTimeKey];
+        if(self.dateKey){
+            self.lastUpdateTime = [[NSUserDefaults standardUserDefaults] objectForKey:self.dateKey];
+        } else {
+            self.lastUpdateTime = [[NSUserDefaults standardUserDefaults] objectForKey:MJRefreshHeaderTimeKey];
+        }
     }
     return _lastUpdateTimeLabel;
 }
@@ -93,7 +93,11 @@
     _lastUpdateTime = lastUpdateTime;
     
     // 1.归档
-    [[NSUserDefaults standardUserDefaults] setObject:lastUpdateTime forKey:MJRefreshHeaderTimeKey];
+    if(self.dateKey){
+        [[NSUserDefaults standardUserDefaults] setObject:lastUpdateTime forKey:self.dateKey];
+    }   else{
+        [[NSUserDefaults standardUserDefaults] setObject:lastUpdateTime forKey:MJRefreshHeaderTimeKey];
+    }
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     // 2.更新时间
@@ -107,7 +111,7 @@
     
     // 1.获得年月日
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSUInteger unitFlags = NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit |NSMinuteCalendarUnit;
+    NSUInteger unitFlags = NSCalendarUnitYear| NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour |NSCalendarUnitMinute;
     NSDateComponents *cmp1 = [calendar components:unitFlags fromDate:_lastUpdateTime];
     NSDateComponents *cmp2 = [calendar components:unitFlags fromDate:[NSDate date]];
     
@@ -133,7 +137,7 @@
     if (!self.userInteractionEnabled || self.alpha <= 0.01 || self.hidden) return;
 
     // 如果正在刷新，直接返回
-    if (self.state == MJRefreshStateRefreshing) return;
+    if (self.state == MJRefreshStateRefreshing || self.endingRefresh) return;
 
     if ([MJRefreshContentOffset isEqualToString:keyPath]) {
         [self adjustStateWithContentOffset];
@@ -194,8 +198,13 @@
                 
                 [UIView animateWithDuration:MJRefreshSlowAnimationDuration animations:^{
 #warning 这句代码修复了，top值不断累加的bug
-//                    self.scrollView.mj_contentInsetTop -= self.mj_height;
-                    self.scrollView.mj_contentInsetTop = 0;
+                    if (self.scrollViewOriginalInset.top == 0) {
+                        self.scrollView.mj_contentInsetTop = 0;
+                    } else if (self.scrollViewOriginalInset.top == self.scrollView.mj_contentInsetTop) {
+                        self.scrollView.mj_contentInsetTop -= self.mj_height;
+                    } else {
+                        self.scrollView.mj_contentInsetTop = self.scrollViewOriginalInset.top;
+                    }
                 }];
             } else {
                 // 执行动画

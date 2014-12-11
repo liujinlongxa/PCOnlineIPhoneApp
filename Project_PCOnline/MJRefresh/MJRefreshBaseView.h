@@ -5,10 +5,6 @@
 //  Created by mj on 13-3-4.
 //  Copyright (c) 2013年 itcast. All rights reserved.
 
-// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com
-
 #import <UIKit/UIKit.h>
 
 @class MJRefreshBaseView;
@@ -70,6 +66,8 @@ typedef enum {
 
 #pragma mark - 交给子类去实现 和 调用
 @property (assign, nonatomic) MJRefreshState state;
+/** 处于刷新结束的状态 */
+@property (readonly, getter=isEndingRefresh) BOOL endingRefresh;
 
 /**
  *  文字

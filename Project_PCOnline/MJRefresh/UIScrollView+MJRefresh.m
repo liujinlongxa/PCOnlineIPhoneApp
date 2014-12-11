@@ -6,10 +6,6 @@
 //  Copyright (c) 2014年 itcast. All rights reserved.
 //
 
-// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com
-
 #import "UIScrollView+MJRefresh.h"
 #import "MJRefreshHeaderView.h"
 #import "MJRefreshFooterView.h"
@@ -59,6 +55,11 @@ static char MJRefreshFooterViewKey;
  */
 - (void)addHeaderWithCallback:(void (^)())callback
 {
+    [self addHeaderWithCallback:callback dateKey:nil];
+}
+
+- (void)addHeaderWithCallback:(void (^)())callback dateKey:(NSString*)dateKey
+{
     // 1.创建新的header
     if (!self.header) {
         MJRefreshHeaderView *header = [MJRefreshHeaderView header];
@@ -68,6 +69,9 @@ static char MJRefreshFooterViewKey;
     
     // 2.设置block回调
     self.header.beginRefreshingCallback = callback;
+    
+    // 3.设置存储刷新时间的key
+    self.header.dateKey = dateKey;
 }
 
 /**
@@ -77,6 +81,11 @@ static char MJRefreshFooterViewKey;
  *  @param action 回调方法
  */
 - (void)addHeaderWithTarget:(id)target action:(SEL)action
+{
+    [self addHeaderWithTarget:target action:action dateKey:nil];
+}
+
+- (void)addHeaderWithTarget:(id)target action:(SEL)action dateKey:(NSString*)dateKey
 {
     // 1.创建新的header
     if (!self.header) {
@@ -88,6 +97,9 @@ static char MJRefreshFooterViewKey;
     // 2.设置目标和回调方法
     self.header.beginRefreshingTaget = target;
     self.header.beginRefreshingAction = action;
+    
+    // 3.设置存储刷新时间的key
+    self.header.dateKey = dateKey;
 }
 
 /**
@@ -130,7 +142,7 @@ static char MJRefreshFooterViewKey;
 
 - (BOOL)isHeaderRefreshing
 {
-    return self.header.state == MJRefreshStateRefreshing;
+    return self.header.isRefreshing;
 }
 
 #pragma mark - 上拉刷新
@@ -212,7 +224,7 @@ static char MJRefreshFooterViewKey;
 
 - (BOOL)isFooterRefreshing
 {
-    return self.footer.state == MJRefreshStateRefreshing;
+    return self.footer.isRefreshing;
 }
 
 /**
