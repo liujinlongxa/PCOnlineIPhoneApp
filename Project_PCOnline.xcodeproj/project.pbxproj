@@ -38,6 +38,10 @@
 		044C29041A30436E00A48121 /* LJDetailPhotoTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044C29031A30436D00A48121 /* LJDetailPhotoTabView.xib */; };
 		044C29081A3056EA00A48121 /* LJPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044C29061A3056EA00A48121 /* LJPhotoCollectionViewCell.m */; };
 		044C29091A3056EA00A48121 /* LJPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044C29071A3056EA00A48121 /* LJPhotoCollectionViewCell.xib */; };
+		0458452F1A39298100B78001 /* LJChannelSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0458452E1A39298100B78001 /* LJChannelSelectViewController.m */; };
+		045845321A393F0C00B78001 /* LJDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 045845311A393F0C00B78001 /* LJDataManager.m */; };
+		045845351A3957BD00B78001 /* LJChannelItemBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 045845341A3957BD00B78001 /* LJChannelItemBtn.m */; };
+		045845381A396ADB00B78001 /* LJChannelItemBtnsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045845371A396ADB00B78001 /* LJChannelItemBtnsView.m */; };
 		046E75CB1A2BF700000FE777 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 046E75CA1A2BF700000FE777 /* main.m */; };
 		046E75CE1A2BF700000FE777 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 046E75CD1A2BF700000FE777 /* AppDelegate.m */; };
 		046E75D41A2BF700000FE777 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 046E75D21A2BF700000FE777 /* Main.storyboard */; };
@@ -266,6 +270,14 @@
 		044C29051A3056EA00A48121 /* LJPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJPhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		044C29061A3056EA00A48121 /* LJPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		044C29071A3056EA00A48121 /* LJPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		0458452D1A39298100B78001 /* LJChannelSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJChannelSelectViewController.h; sourceTree = "<group>"; };
+		0458452E1A39298100B78001 /* LJChannelSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJChannelSelectViewController.m; sourceTree = "<group>"; };
+		045845301A393F0C00B78001 /* LJDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJDataManager.h; sourceTree = "<group>"; };
+		045845311A393F0C00B78001 /* LJDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJDataManager.m; sourceTree = "<group>"; };
+		045845331A3957BD00B78001 /* LJChannelItemBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJChannelItemBtn.h; sourceTree = "<group>"; };
+		045845341A3957BD00B78001 /* LJChannelItemBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJChannelItemBtn.m; sourceTree = "<group>"; };
+		045845361A396ADB00B78001 /* LJChannelItemBtnsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJChannelItemBtnsView.h; sourceTree = "<group>"; };
+		045845371A396ADB00B78001 /* LJChannelItemBtnsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJChannelItemBtnsView.m; sourceTree = "<group>"; };
 		046E75C51A2BF700000FE777 /* Project_PCOnline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project_PCOnline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046E75C91A2BF700000FE777 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		046E75CA1A2BF700000FE777 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -896,6 +908,8 @@
 				047D6A941A2C837E00EB3B64 /* LJNetWorking.m */,
 				04D0CD311A36ED7A0060CD9D /* LJQueryJson.h */,
 				04D0CD321A36ED7A0060CD9D /* LJQueryJson.m */,
+				045845301A393F0C00B78001 /* LJDataManager.h */,
+				045845311A393F0C00B78001 /* LJDataManager.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -1056,6 +1070,8 @@
 				046E767C1A2C1AC6000FE777 /* LJNewsViewController.m */,
 				04C711FA1A2D646D009705DF /* LJNewsDetailController.h */,
 				04C711FB1A2D646D009705DF /* LJNewsDetailController.m */,
+				0458452D1A39298100B78001 /* LJChannelSelectViewController.h */,
+				0458452E1A39298100B78001 /* LJChannelSelectViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1189,6 +1205,10 @@
 				8894F90F1A2CE7460058C76A /* NewsCell */,
 				047D6A861A2C66C700EB3B64 /* LJSubjectView.h */,
 				047D6A871A2C66C700EB3B64 /* LJSubjectView.m */,
+				045845331A3957BD00B78001 /* LJChannelItemBtn.h */,
+				045845341A3957BD00B78001 /* LJChannelItemBtn.m */,
+				045845361A396ADB00B78001 /* LJChannelItemBtnsView.h */,
+				045845371A396ADB00B78001 /* LJChannelItemBtnsView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1927,6 +1947,7 @@
 				044C28E51A2F358C00A48121 /* LJInfiniteScrollView.m in Sources */,
 				046E76631A2C0A37000FE777 /* FMDatabasePool.m in Sources */,
 				88B7FC571A34CA4A00F31E9C /* SDWebImageDecoder.m in Sources */,
+				045845321A393F0C00B78001 /* LJDataManager.m in Sources */,
 				8852FF1B1A3831D700DD4625 /* LJProductSearchResultCell.m in Sources */,
 				8857A33A1A33215A008265FC /* LJTopicFrame.m in Sources */,
 				0415157A1A3722CF00F91833 /* LJSearchViewController.m in Sources */,
@@ -1959,6 +1980,7 @@
 				8857A3421A3321FB008265FC /* LJBaseTopicFrame.m in Sources */,
 				04E161BC1A353B9800D5F4F4 /* LJProductInformationTVC.m in Sources */,
 				041515761A37154800F91833 /* LJSearchBarSelectButtonsView.m in Sources */,
+				045845351A3957BD00B78001 /* LJChannelItemBtn.m in Sources */,
 				04E161C61A35795900D5F4F4 /* LJProductCompareItemView.m in Sources */,
 				88B7FC5F1A34CA4A00F31E9C /* UIImage+WebP.m in Sources */,
 				88B7FC621A34CA4A00F31E9C /* UIView+WebCacheOperation.m in Sources */,
@@ -1995,6 +2017,7 @@
 				044C29021A30427400A48121 /* LJDetailPhotoViewController.m in Sources */,
 				04C712101A2DA8B9009705DF /* LJBBSRecentViewController.m in Sources */,
 				04C7121F1A2DE0F9009705DF /* LJHotTopic.m in Sources */,
+				045845381A396ADB00B78001 /* LJChannelItemBtnsView.m in Sources */,
 				04E161C31A3578B200D5F4F4 /* LJProductCompareVC.m in Sources */,
 				04C7120A1A2DA877009705DF /* LJBBSSquareViewController.m in Sources */,
 				88CC0B7F1A3292D3001169ED /* LJContentView.m in Sources */,
@@ -2023,6 +2046,7 @@
 				88CAED1E1A2E1E6200262896 /* LJHotForum.m in Sources */,
 				04D0CD281A369C200060CD9D /* LJProductFilterItemGroup.m in Sources */,
 				046E76641A2C0A37000FE777 /* FMDatabaseQueue.m in Sources */,
+				0458452F1A39298100B78001 /* LJChannelSelectViewController.m in Sources */,
 				04C712071A2D984C009705DF /* LJBBSButtonView.m in Sources */,
 				8848666E1A38B2B80038C7F1 /* LJMoreNewsSearchResultTVC.m in Sources */,
 				046E766A1A2C121E000FE777 /* LJTabBarController.m in Sources */,

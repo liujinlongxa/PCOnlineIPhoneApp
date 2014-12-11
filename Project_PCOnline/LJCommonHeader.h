@@ -53,4 +53,6 @@
 //帖子cell
 #define LJTopicCellIdentifier @"TopicCellIdentifier"
 
+#define kCountOfBtnInOneLine 4.0
+
 #endif

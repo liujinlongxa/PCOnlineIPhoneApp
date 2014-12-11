@@ -17,7 +17,7 @@
 
 @optional
 - (void)subjectView:(LJSubjectView *)subjectView didSelectButton:(LJSelectButton *)subject;
-
+- (void)subjectView:(LJSubjectView *)subjectView didSelectMoreButton:(UIButton *)moreBtn;
 @end
 
 //频道选择视图

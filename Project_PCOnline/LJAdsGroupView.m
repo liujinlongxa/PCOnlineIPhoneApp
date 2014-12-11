@@ -126,4 +126,10 @@
     }
 }
 
+- (void)dealloc
+{
+    //销毁时一定要把代理置空，否则会发生内存泄露
+    self.scrollView.delegate = nil;
+}
+
 @end

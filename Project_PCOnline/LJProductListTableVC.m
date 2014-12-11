@@ -83,6 +83,8 @@ typedef enum : NSUInteger {
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pccommon_navbar_primary_64"] forBarMetrics:UIBarMetricsDefault];
     //设置导航栏
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
@@ -196,6 +198,7 @@ static BOOL isShowSortView = NO;
             [self.navigationItem.rightBarButtonItem setTitle:@"按日期"];
             break;
         default:
+            type = -1;
             break;
     }
     if (self.curSortType != type) {

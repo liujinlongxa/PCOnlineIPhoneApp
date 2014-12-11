@@ -17,5 +17,5 @@
 @property (nonatomic, copy) NSString * ID;
 
 + (instancetype)subjectWithArray:(NSArray *)arr;
-
++ (instancetype)subjectWithDict:(NSDictionary *)dict;
 @end

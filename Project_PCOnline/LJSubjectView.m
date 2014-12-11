@@ -56,11 +56,20 @@
     [self addSubview:moreSubjectBtn];
     self.moreSubjectBtn = moreSubjectBtn;
     [self.moreSubjectBtn setImage:[UIImage imageNamed:@"btn_to_subscribe"] forState:UIControlStateNormal];
+    [self.moreSubjectBtn addTarget:self action:@selector(moreBtnClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)setSubjects:(NSArray *)subjects
 {
     CGFloat btnH = CGRectGetHeight(self.scrollView.frame);
+    
+    //删除未知的自动添加的子控件
+    if (self.scrollView.subviews.count != 0) {
+        for (UIView * view in self.scrollView.subviews) {
+            [view removeFromSuperview];
+        }
+    }
+    
     for (int i = 0; i < subjects.count; i++) {
         LJSubject * subject = subjects[i];
         //设置按钮，动态计算文字宽度
@@ -111,7 +120,14 @@
         retOffsetX = btn.frame.origin.x - (scrollW - CGRectGetWidth(btn.frame));
         self.scrollView.contentOffset = CGPointMake(retOffsetX, 0);
     }
-    
+}
+
+//点击more button
+- (void)moreBtnClick:(UIButton *)sender
+{
+    if ([self.delegate respondsToSelector:@selector(subjectView:didSelectMoreButton:)]) {
+        [self.delegate subjectView:self didSelectMoreButton:sender];
+    }
 }
 
 @end

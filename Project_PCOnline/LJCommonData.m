@@ -10,8 +10,12 @@
 #import "LJNetWorking.h"
 #import "LJArea.h"
 #import "LJSubject.h"
+#import "LJDataManager.h"
 
 #define kSubjectAndAreaDataFileName @"pconline_v4_cms_iphone_channel_tree4inch.json"
+
+#define KCurShowSubjectKey @"CurShowSubject"
+#define kCurHideSubjectKey @"CurHideSubject"
 
 @interface LJCommonData ()
 
@@ -21,6 +25,9 @@
 @end
 
 @implementation LJCommonData
+
+@synthesize curShowSubjectsData = _curShowSubjectsData;
+@synthesize curHideSubjectsData = _curHideSubjectsData;
 
 - (NSMutableDictionary *)channelAndArea
 {
@@ -72,21 +79,6 @@
     }];
 }
 
-//频道数据
-- (NSArray *)SubjectsData
-{
-    if (!_SubjectsData) {
-        
-        NSMutableArray * arr = [NSMutableArray array];
-        for (NSArray * subArr in self.channelAndArea[@"news"]) {
-            LJSubject * subject = [LJSubject subjectWithArray:subArr];
-            [arr addObject:subject];
-        }
-        _SubjectsData = [arr copy];
-    }
-    return _SubjectsData;
-}
-
 //地区数据
 - (NSArray *)AreaData
 {
@@ -109,6 +101,67 @@
 - (id)loadObjcForKey:(NSString *)key
 {
     return [[NSUserDefaults standardUserDefaults] objectForKey:key];
+}
+
+#pragma mark - 频道数据
+//所有频道
+- (NSArray *)SubjectsData
+{
+    if (!_SubjectsData) {
+        
+        NSMutableArray * arr = [NSMutableArray array];
+        for (NSArray * subArr in self.channelAndArea[@"news"]) {
+            LJSubject * subject = [LJSubject subjectWithArray:subArr];
+            [arr addObject:subject];
+        }
+        _SubjectsData = [arr copy];
+    }
+    return _SubjectsData;
+}
+//显示的频道
+- (NSArray *)curShowSubjectsData
+{
+    if (!_curShowSubjectsData) {
+        NSArray * subjectDicts = [[LJDataManager manager] loadObjectsForKey:KCurShowSubjectKey];
+        NSMutableArray * arr = [NSMutableArray array];
+        for (NSDictionary * dict in subjectDicts) {
+            LJSubject * subject = [LJSubject subjectWithDict:dict];
+            [arr addObject:subject];
+        }
+        _curShowSubjectsData = [arr copy];
+    }
+    if (_curShowSubjectsData.count < 1) {
+        _curShowSubjectsData = self.SubjectsData;
+    }
+    assert(_curShowSubjectsData.count >= 1);
+    return _curShowSubjectsData;
+}
+
+- (void)setCurShowSubjectsData:(NSArray *)curShowSubjectsData
+{
+    _curShowSubjectsData = curShowSubjectsData;
+    [[LJDataManager manager] saveDictionaryWithObjects:curShowSubjectsData andPropertyNames:@[@"index", @"title", @"ID"] forKey:KCurShowSubjectKey];
+}
+
+//隐藏的频道
+- (NSArray *)curHideSubjectsData
+{
+    if (!_curHideSubjectsData) {
+        NSArray * subjectDicts = [[LJDataManager manager] loadObjectsForKey:kCurHideSubjectKey];
+        NSMutableArray * arr = [NSMutableArray array];
+        for (NSDictionary * dict in subjectDicts) {
+            LJSubject * subject = [LJSubject subjectWithDict:dict];
+            [arr addObject:subject];
+        }
+        _curHideSubjectsData = [arr copy];
+    }
+    return _curHideSubjectsData;
+}
+
+- (void)setCurHideSubjectsData:(NSArray *)curHideSubjectsData
+{
+    _curHideSubjectsData = curHideSubjectsData;
+    [[LJDataManager manager] saveDictionaryWithObjects:curHideSubjectsData andPropertyNames:@[@"index", @"title", @"ID"] forKey:kCurHideSubjectKey];
 }
 
 @end

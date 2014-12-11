@@ -13,7 +13,11 @@
 
 + (instancetype)shareCommonData;
 
+//频道数据
 @property (nonatomic, strong) NSArray * SubjectsData;
+@property (nonatomic, strong) NSArray * curShowSubjectsData;//当前显示的频道
+@property (nonatomic, strong) NSArray * curHideSubjectsData;//当前隐藏的频道
+
 @property (nonatomic, strong) NSArray * BBSListData;
 @property (nonatomic, strong) NSArray * AreaData;
 

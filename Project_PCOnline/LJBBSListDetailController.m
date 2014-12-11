@@ -37,6 +37,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self setupNavBar];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
