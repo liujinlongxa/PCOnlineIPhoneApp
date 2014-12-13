@@ -10,7 +10,7 @@
 #import "LJCommonHeader.h"
 #import "LJUrlHeader.h"
 
-@interface LJProductDetailWebVC ()
+@interface LJProductDetailWebVC ()<UIWebViewDelegate>
 
 @property (nonatomic, weak) UIWebView * webView;
 @property (nonatomic, assign) LJProductWebVCType type;
@@ -39,6 +39,7 @@
     UIWebView * webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScrW, kScrH - kNavBarH * 2 - kStatusBarH)];
     [self.view addSubview:webView];
     self.webView = webView;
+    self.webView.delegate = self;
 }
 
 #pragma mark - 加载网页
@@ -81,6 +82,12 @@
             break;
     }
     return urlStr;
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSLog(@"%@", request);
+    return YES;
 }
 
 @end

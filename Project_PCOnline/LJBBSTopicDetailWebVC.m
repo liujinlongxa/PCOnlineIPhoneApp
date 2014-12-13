@@ -10,16 +10,14 @@
 #import "UIImage+MyImage.h"
 #import "LJCommonHeader.h"
 #import "LJTopicSearchResultItem.h"
+#import "LJNetWorking.h"
 
-@interface LJBBSTopicDetailWebVC ()
-
-@property (nonatomic, copy) NSString * urlStr;
-
-@property (nonatomic, weak) UIWebView * webView;
-
+@interface LJBBSTopicDetailWebVC ()<UIWebViewDelegate>
+@property (nonatomic, copy) NSString * baseUrl;
 @end
 
 @implementation LJBBSTopicDetailWebVC
+@synthesize curPage = _curPage;
 
 - (instancetype)init
 {
@@ -30,58 +28,52 @@
     return self;
 }
 
-- (instancetype)initBBSTopicDetailWebVCWithUrlStr:(NSString *)urlStr
+- (instancetype)initBBSTopicDetailWebVCWithBaseUrlStr:(NSString *)urlStr andTopicId:(NSNumber *)topicId
 {
     if (self = [super init]) {
         self.hidesBottomBarWhenPushed = YES;
-        self.urlStr = urlStr;
+        self.topicId = topicId;
+        self.baseUrl = urlStr;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupWebView];
-    
+    self.urlStr = [self setupUrlStr];
 }
 
-- (void)setupWebView
+//设置URl
+- (NSString *)setupUrlStr
 {
-    UIWebView * webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScrW, kScrH - kNavBarH - kStatusBarH)];
-    [self.view addSubview:webView];
-    self.webView = webView;
-    
     NSString * urlStr = nil;
     
-    if (self.urlStr != nil) {
-        urlStr = self.urlStr;
+    if (self.baseUrl != nil) {
+        //点击广告时
+        urlStr = [NSString stringWithFormat:self.baseUrl, self.topicId.integerValue, self.curPage + 1];
     }
     else if(self.bbsItem != nil && self.topic != nil)
     {
         if (self.bbsItem.ID.integerValue < 0) {
-            urlStr = [NSString stringWithFormat:kZuiBBSTopicDetailUrl, self.topic.topicId.integerValue];
+            urlStr = [NSString stringWithFormat:kZuiBBSTopicDetailUrl, self.topic.topicId.integerValue, self.curPage + 1];
         }
         else
         {
-            urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.topic.topicId.integerValue];
+            urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.topic.topicId.integerValue, self.curPage + 1];
         }
     }
     else
     {
         if (self.searchResutItem.forumId.integerValue < 0) {
-            urlStr = [NSString stringWithFormat:kZuiBBSTopicDetailUrl, self.searchResutItem.topicId.integerValue];
+            urlStr = [NSString stringWithFormat:kZuiBBSTopicDetailUrl, self.searchResutItem.topicId.integerValue, self.curPage + 1];
         }
         else
         {
-            urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.searchResutItem.topicId.integerValue];
+            urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.searchResutItem.topicId.integerValue, self.curPage + 1];
         }
     }
-    
     assert(urlStr != nil);
-    LJLog(@"web:%@", urlStr);
-    NSURL * url = [NSURL URLWithString:urlStr];
-    NSURLRequest * req = [NSURLRequest requestWithURL:url];
-    [self.webView loadRequest:req];
+    return urlStr;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -95,6 +87,12 @@
 {
     [super viewWillDisappear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+}
+
+- (void)setCurPage:(NSInteger)curPage
+{
+    _curPage = curPage;
+    self.urlStr = [self setupUrlStr];
 }
 
 - (void)setupNavBar

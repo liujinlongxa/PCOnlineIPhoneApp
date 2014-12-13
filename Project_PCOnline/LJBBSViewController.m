@@ -103,7 +103,8 @@
 {
     id ads = notify.userInfo[LJAdsViewTapNotifyAdsKey];
     if ([ads isKindOfClass:[LJBBSAds class]]) {
-        LJBBSTopicDetailWebVC * topicDetailWeb = [[LJBBSTopicDetailWebVC alloc] initBBSTopicDetailWebVCWithUrlStr:((LJBBSAds *)ads).url];
+        LJBBSAds * bbsAds = (LJBBSAds *)ads;
+        LJBBSTopicDetailWebVC * topicDetailWeb = [[LJBBSTopicDetailWebVC alloc] initBBSTopicDetailWebVCWithBaseUrlStr:bbsAds.url andTopicId:@(bbsAds.topicId.integerValue)];
         [self.navigationController pushViewController:topicDetailWeb animated:YES];
     }
 }
@@ -111,8 +112,8 @@
 #pragma mark - 点击热帖
 - (void)BBSSquareViewController:(LJBBSSquareViewController *)controller didSelectHotTopic:(LJBaseTopic *)topic
 {
-    NSString * urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, topic.topicId.integerValue];
-    LJBBSTopicDetailWebVC * webVC = [[LJBBSTopicDetailWebVC alloc] initBBSTopicDetailWebVCWithUrlStr:urlStr];
+    LJBBSTopicDetailWebVC * webVC = [[LJBBSTopicDetailWebVC alloc] initBBSTopicDetailWebVCWithBaseUrlStr:kBBSTopicDetailUrl andTopicId:topic.topicId];
+    
     [self.navigationController pushViewController:webVC animated:YES];
 }
 

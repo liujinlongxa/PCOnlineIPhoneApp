@@ -55,4 +55,8 @@
 
 #define kCountOfBtnInOneLine 4.0
 
+//获取html中的json数据使用的头和尾标志字符
+#define kLJPageJsonHeader @"/*@_HTML_META_START_"
+#define kLJPageJsonFooter @"_HTML_META_END_@*/"
+
 #endif

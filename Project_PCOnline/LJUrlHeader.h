@@ -11,7 +11,7 @@
 
 //资讯
 #define kNewsUrl @"http://mrobot.pconline.com.cn/v2/cms/channels/%@?pageNo=%d&pageSize=20"
-#define kNewsDetailUrl @"http://mrobot.pconline.com.cn/v3/cms/articles/%@?articleTemplate=3.6.0&size=18&picRule=2&app=pconlinebrowser&template=(null)&channelId=0&serialId=0"
+#define kNewsDetailUrl @"http://mrobot.pconline.com.cn/v3/cms/articles/%@?articleTemplate=3.6.0&size=18&picRule=2&app=pconlinebrowser&pageNo=%d&template=(null)&channelId=0&serialId=0"
 
 //频道和区域列表
 #define kChannelAndAreaUrl @"http://mrobot.pconline.com.cn/configs/pconline_v4_cms_iphone_channel_tree"
@@ -34,9 +34,9 @@
 //4.3 家电论坛
 #define kAppliancesBBSDetailUrl @"http://mrobot.pconline.com.cn/v3/itbbs/newForums/%d?orderby=replyat&pageNo=1&pageSize=20"
 //5.1 帖子详情
-#define kBBSTopicDetailUrl @"http://mrobot.pconline.com.cn/v2/itbbs/topics/%d?pageNo=1&picRule=2&authorId=0&topicTemplate=3.6.0&app=pconlinebrowser&appVersion=3.10.0&size=18"
+#define kBBSTopicDetailUrl @"http://mrobot.pconline.com.cn/v2/itbbs/topics/%d?pageNo=%d&picRule=2&authorId=0&topicTemplate=3.6.0&app=pconlinebrowser&appVersion=3.10.0&size=18"
 //5.2 最数码论坛帖子详情
-#define kZuiBBSTopicDetailUrl @"http://mrobot.pconline.com.cn/v2/piebbs/topics/%d?pageNo=1&picRule=2&authorId=0&topicTemplate=3.6.0&app=pconlinebrowser&appVersion=3.10.0&size=18"
+#define kZuiBBSTopicDetailUrl @"http://mrobot.pconline.com.cn/v2/piebbs/topics/%d?pageNo=%d&picRule=2&authorId=0&topicTemplate=3.6.0&app=pconlinebrowser&appVersion=3.10.0&size=18"
 //6 快速论坛
 //6.1 快速论坛列表
 #define kFastForumDetailUrl @"http://itbbs.pconline.com.cn/mobile/topics.ajax?type=hot_week&forums=%@&singleForum=false&noForums=&ie=utf-8&count=20&showImage=true"

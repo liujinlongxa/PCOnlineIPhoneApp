@@ -22,7 +22,7 @@
 {
     if (!_url) {
         if ([self.from isEqualToString:@"itbbs"]) {
-            _url = [NSString stringWithFormat:kBBSTopicDetailUrl, self.topicId.integerValue];
+            _url = kBBSTopicDetailUrl;
         }
     }
     return _url;

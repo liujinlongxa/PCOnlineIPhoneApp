@@ -151,6 +151,12 @@
 		8857A3421A3321FB008265FC /* LJBaseTopicFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8857A3411A3321FB008265FC /* LJBaseTopicFrame.m */; };
 		8857A3451A332EBB008265FC /* LJUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8857A3441A332EBB008265FC /* LJUser.m */; };
 		8857A3481A333BCC008265FC /* NSDate+MyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8857A3471A333BCC008265FC /* NSDate+MyDate.m */; };
+		886ADBF81A3A7DB500044ECC /* PCViewController.json in Resources */ = {isa = PBXBuildFile; fileRef = 886ADBF71A3A7DB500044ECC /* PCViewController.json */; };
+		886ADBFB1A3AB98F00044ECC /* LJCommentBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 886ADBFA1A3AB98F00044ECC /* LJCommentBar.m */; };
+		886ADBFE1A3ABEAD00044ECC /* LJCommentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 886ADBFD1A3ABEAD00044ECC /* LJCommentPage.m */; };
+		886ADC041A3ACEA600044ECC /* LJWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886ADC031A3ACEA600044ECC /* LJWebViewController.m */; };
+		886ADC071A3AE2D700044ECC /* LJPageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 886ADC061A3AE2D700044ECC /* LJPageButton.m */; };
+		886ADC0A1A3AF10A00044ECC /* LJPageTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 886ADC091A3AF10A00044ECC /* LJPageTableCell.m */; };
 		8894F9081A2CD4190058C76A /* LJSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894F9071A2CD4190058C76A /* LJSelectButton.m */; };
 		8894F90E1A2CDF890058C76A /* NSString+MyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894F90D1A2CDF890058C76A /* NSString+MyString.m */; };
 		8894F9121A2CE77F0058C76A /* LJNewsNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8894F9111A2CE77F0058C76A /* LJNewsNormalCell.m */; };
@@ -483,6 +489,17 @@
 		8857A3441A332EBB008265FC /* LJUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJUser.m; sourceTree = "<group>"; };
 		8857A3461A333BCC008265FC /* NSDate+MyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+MyDate.h"; sourceTree = "<group>"; };
 		8857A3471A333BCC008265FC /* NSDate+MyDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MyDate.m"; sourceTree = "<group>"; };
+		886ADBF71A3A7DB500044ECC /* PCViewController.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PCViewController.json; sourceTree = "<group>"; };
+		886ADBF91A3AB98F00044ECC /* LJCommentBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJCommentBar.h; sourceTree = "<group>"; };
+		886ADBFA1A3AB98F00044ECC /* LJCommentBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJCommentBar.m; sourceTree = "<group>"; };
+		886ADBFC1A3ABEAD00044ECC /* LJCommentPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJCommentPage.h; sourceTree = "<group>"; };
+		886ADBFD1A3ABEAD00044ECC /* LJCommentPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJCommentPage.m; sourceTree = "<group>"; };
+		886ADC021A3ACEA600044ECC /* LJWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJWebViewController.h; sourceTree = "<group>"; };
+		886ADC031A3ACEA600044ECC /* LJWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJWebViewController.m; sourceTree = "<group>"; };
+		886ADC051A3AE2D700044ECC /* LJPageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJPageButton.h; sourceTree = "<group>"; };
+		886ADC061A3AE2D700044ECC /* LJPageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJPageButton.m; sourceTree = "<group>"; };
+		886ADC081A3AF10A00044ECC /* LJPageTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJPageTableCell.h; sourceTree = "<group>"; };
+		886ADC091A3AF10A00044ECC /* LJPageTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJPageTableCell.m; sourceTree = "<group>"; };
 		8894F9061A2CD4190058C76A /* LJSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSelectButton.h; sourceTree = "<group>"; };
 		8894F9071A2CD4190058C76A /* LJSelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSelectButton.m; sourceTree = "<group>"; };
 		8894F90C1A2CDF890058C76A /* NSString+MyString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MyString.h"; sourceTree = "<group>"; };
@@ -697,6 +714,8 @@
 				8894F9071A2CD4190058C76A /* LJSelectButton.m */,
 				046E76711A2C131C000FE777 /* LJTabButton.h */,
 				046E76721A2C131C000FE777 /* LJTabButton.m */,
+				886ADC051A3AE2D700044ECC /* LJPageButton.h */,
+				886ADC061A3AE2D700044ECC /* LJPageButton.m */,
 			);
 			name = Button;
 			sourceTree = "<group>";
@@ -719,6 +738,8 @@
 			children = (
 				046E766B1A2C1251000FE777 /* LJTabBar.h */,
 				046E766C1A2C1251000FE777 /* LJTabBar.m */,
+				886ADBF91A3AB98F00044ECC /* LJCommentBar.h */,
+				886ADBFA1A3AB98F00044ECC /* LJCommentBar.m */,
 			);
 			name = Bar;
 			sourceTree = "<group>";
@@ -838,6 +859,7 @@
 		046E75EE1A2BF717000FE777 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				886ADBF71A3A7DB500044ECC /* PCViewController.json */,
 				046E768B1A2C25EE000FE777 /* 4inchconfigs */,
 				046E76901A2C25EE000FE777 /* configs */,
 				046E75D21A2BF700000FE777 /* Main.storyboard */,
@@ -981,6 +1003,8 @@
 				044C28CF1A2EDCAA00A48121 /* Button */,
 				88CC0B7D1A3292D3001169ED /* LJContentView.h */,
 				88CC0B7E1A3292D3001169ED /* LJContentView.m */,
+				886ADC081A3AF10A00044ECC /* LJPageTableCell.h */,
+				886ADC091A3AF10A00044ECC /* LJPageTableCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -990,6 +1014,8 @@
 			children = (
 				04C712151A2DB421009705DF /* LJBaseAds.h */,
 				04C712161A2DB421009705DF /* LJBaseAds.m */,
+				886ADBFC1A3ABEAD00044ECC /* LJCommentPage.h */,
+				886ADBFD1A3ABEAD00044ECC /* LJCommentPage.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1001,6 +1027,8 @@
 				047D6A7D1A2C4D8B00EB3B64 /* ViewController */,
 				047D6A751A2C2CB500EB3B64 /* TabBarController */,
 				046E769D1A2C26DA000FE777 /* NavController */,
+				886ADC021A3ACEA600044ECC /* LJWebViewController.h */,
+				886ADC031A3ACEA600044ECC /* LJWebViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1864,6 +1892,7 @@
 				044C28CB1A2EB99200A48121 /* LJPhotoCell.xib in Resources */,
 				046E75D41A2BF700000FE777 /* Main.storyboard in Resources */,
 				046E75D91A2BF700000FE777 /* LaunchScreen.xib in Resources */,
+				886ADBF81A3A7DB500044ECC /* PCViewController.json in Resources */,
 				880780B61A30B9D3005876A2 /* LJPhotoNavView.xib in Resources */,
 				8894F9141A2CE7A90058C76A /* LJNewsNormalCell.xib in Resources */,
 				046E769B1A2C25EE000FE777 /* pconline_v4_square_fast_forum.json in Resources */,
@@ -1933,6 +1962,7 @@
 				8852FF281A3861E700DD4625 /* LJNewsSearchItemView.m in Sources */,
 				8857A32D1A329CF8008265FC /* LJHotTopicFrame.m in Sources */,
 				047D6A8F1A2C71A500EB3B64 /* LJNews.m in Sources */,
+				886ADBFE1A3ABEAD00044ECC /* LJCommentPage.m in Sources */,
 				88B7FC2D1A347BF400F31E9C /* LJBrandButton.m in Sources */,
 				047D6A831A2C548F00EB3B64 /* UIImage+MyImage.m in Sources */,
 				046E76651A2C0A37000FE777 /* FMResultSet.m in Sources */,
@@ -1941,6 +1971,7 @@
 				88B7FC5B1A34CA4A00F31E9C /* SDWebImagePrefetcher.m in Sources */,
 				04C712141A2DB04D009705DF /* LJBBSAds.m in Sources */,
 				04B0C5241A37F3DF00B3B9B4 /* LJTopicSearchResultVC.m in Sources */,
+				886ADC041A3ACEA600044ECC /* LJWebViewController.m in Sources */,
 				04B30DA61A314D46007AF4B9 /* LJBBSHotTopicTableVC.m in Sources */,
 				046E767D1A2C1AC6000FE777 /* LJNewsViewController.m in Sources */,
 				889552401A34CF6700E7D864 /* AFURLResponseSerialization.m in Sources */,
@@ -1950,6 +1981,7 @@
 				045845321A393F0C00B78001 /* LJDataManager.m in Sources */,
 				8852FF1B1A3831D700DD4625 /* LJProductSearchResultCell.m in Sources */,
 				8857A33A1A33215A008265FC /* LJTopicFrame.m in Sources */,
+				886ADBFB1A3AB98F00044ECC /* LJCommentBar.m in Sources */,
 				0415157A1A3722CF00F91833 /* LJSearchViewController.m in Sources */,
 				880780C41A30C9C3005876A2 /* LJScrollTabButtonsView.m in Sources */,
 				046E76731A2C131C000FE777 /* LJTabButton.m in Sources */,
@@ -2035,6 +2067,7 @@
 				047D6A881A2C66C700EB3B64 /* LJSubjectView.m in Sources */,
 				88FD80FE1A39FBBA001F9E82 /* UIScrollView+MJExtension.m in Sources */,
 				046E768A1A2C1B1B000FE777 /* LJSpecialViewController.m in Sources */,
+				886ADC0A1A3AF10A00044ECC /* LJPageTableCell.m in Sources */,
 				88B7FC591A34CA4A00F31E9C /* SDWebImageDownloaderOperation.m in Sources */,
 				047D6A741A2C2B6A00EB3B64 /* PPRevealSideViewController.m in Sources */,
 				88B7FC551A34CA4A00F31E9C /* SDImageCache.m in Sources */,
@@ -2070,6 +2103,7 @@
 				04D0CD211A3698D80060CD9D /* LJProductFilterSelectItemListTVC.m in Sources */,
 				88B7FC561A34CA4A00F31E9C /* SDWebImageCompat.m in Sources */,
 				88CAED2B1A2E317200262896 /* LJBBSList.m in Sources */,
+				886ADC071A3AE2D700044ECC /* LJPageButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

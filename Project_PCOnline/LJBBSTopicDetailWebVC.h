@@ -10,14 +10,15 @@
 #import "LJBaseTopic.h"
 #import "LJUrlHeader.h"
 #import "LJBBSListItem.h"
+#import "LJWebViewController.h"
 @class LJTopicSearchResultItem;
 
-@interface LJBBSTopicDetailWebVC : UIViewController
+@interface LJBBSTopicDetailWebVC : LJWebViewController
 
 @property (nonatomic, strong) LJBaseTopic * topic;
 @property (nonatomic, strong) LJBBSListItem * bbsItem;
 @property (nonatomic, strong) LJTopicSearchResultItem * searchResutItem;
-
-- (instancetype)initBBSTopicDetailWebVCWithUrlStr:(NSString *)urlStr;
+@property (nonatomic, copy) NSNumber * topicId;
+- (instancetype)initBBSTopicDetailWebVCWithBaseUrlStr:(NSString *)urlStr andTopicId:(NSNumber *)topicId;
 
 @end
