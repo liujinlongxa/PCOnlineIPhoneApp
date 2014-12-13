@@ -10,9 +10,8 @@
 #import "LJCommonHeader.h"
 #import "LJUrlHeader.h"
 
-@interface LJProductDetailWebVC ()<UIWebViewDelegate>
+@interface LJProductDetailWebVC ()
 
-@property (nonatomic, weak) UIWebView * webView;
 @property (nonatomic, assign) LJProductWebVCType type;
 @end
 
@@ -84,10 +83,12 @@
     return urlStr;
 }
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+#pragma mark - 重写父类方法，点击购买，跳转到新的页面
+- (void)handleHTTPFullScreenWebLinkWithUrlString:(NSString *)urlStr
 {
-    NSLog(@"%@", request);
-    return YES;
+    if ([self.delegate respondsToSelector:@selector(productDetailWebVC:didClickHttpLink:)]) {
+        [self.delegate productDetailWebVC:self didClickHttpLink:urlStr];
+    }
 }
 
 @end

@@ -25,4 +25,11 @@
     return product;
 }
 
++ (instancetype)productWithID:(NSNumber *)ID
+{
+    LJProduct * product = [[self alloc] init];
+    product.ID = ID;
+    return product;
+}
+
 @end

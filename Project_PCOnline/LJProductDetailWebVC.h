@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LJProductDetailScrollTabVC.h"
-
+#import "LJBaseWebViewController.h"
 typedef enum : NSUInteger {
     LJProductWebVCTypeSummary,
     LJProductWebVCTypeDetail,
@@ -16,10 +16,21 @@ typedef enum : NSUInteger {
     LJProductWebVCTypeComment
 } LJProductWebVCType;
 
-@interface LJProductDetailWebVC : UIViewController
+@class LJProductDetailWebVC;
+
+@protocol LJProductDetailWebVCCDelegate <NSObject>
+
+@optional
+- (void)productDetailWebVC:(LJProductDetailWebVC *)webVC didClickHttpLink:(NSString *)urlStr;
+
+@end
+
+@interface LJProductDetailWebVC : LJBaseWebViewController
 
 @property (nonatomic, strong) LJProduct * product;
 @property (nonatomic, copy) NSString * productID;
+@property (nonatomic, weak) id<LJProductDetailWebVCCDelegate> delegate;
+
 - (instancetype)initWithType:(LJProductWebVCType)type;
 
 @end

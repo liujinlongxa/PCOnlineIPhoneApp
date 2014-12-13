@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LJBaseWebViewController.h"
 
-@interface LJWebViewController : UIViewController
+@interface LJWebViewController : LJBaseWebViewController
 
 @property (nonatomic, copy) NSString * urlStr;
 @property (nonatomic, assign) NSInteger curPage;

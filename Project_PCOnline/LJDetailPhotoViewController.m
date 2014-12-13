@@ -82,6 +82,8 @@
     self.collectionView.delegate = self;
     self.collectionView.pagingEnabled = YES;
     [self.collectionView registerNib:[UINib nibWithNibName:@"LJPhotoCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:kLJPhotoCollectionViewCellIndeifier];
+    //方法
+    self.collectionView.maximumZoomScale = 2.0;
 }
 
 - (void)setupTabView

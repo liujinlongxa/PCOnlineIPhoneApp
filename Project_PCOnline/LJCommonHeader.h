@@ -59,4 +59,32 @@
 #define kLJPageJsonHeader @"/*@_HTML_META_START_"
 #define kLJPageJsonFooter @"_HTML_META_END_@*/"
 
+//webView链接跳转头
+//1.LJNewsDetailController 点击跳转
+#define LJWebViewClickToNewsFullScreen @"pcxadx"   //使用全屏web view打开
+#define LJWebViewClickToNewsDetail @"pconlinebrowser://information-article/"  //跳转到咨询文章详情
+#define LJWebViewClickToProductDetail @"pconlinebrowser://product-detail/"     //跳转到产品详情
+#define LJWebViewClickToBigPhoto @"pcaction://big-photo?data="  //跳转到图片浏览器（不带缩略图)
+//2.LJBBSTopicDetailWebVC 点击跳转
+#define LJWebViewClickToTopicList @"pconlinebrowser://bbs-topics/"
+#define LJWebViewClickToReply @"pcaction://reply?"
+//3.LJProductDetailWebVC 点击跳转
+#define LJWebViewClickToPhoto @"pcaction://pconline-product-album/" //直接跳转到图赏模块
+#define LJWebViewClickToForum @"pcaction://webview_bbs/"
+#define LJWebViewClickToProductDetailTab @"pcaction://pconline-product-nav-tab-detail/"
+#define LJWebViewClickToProductArticleTab @"pcaction://pconline-product-nav-tab-article/"
+#define LJWebViewClickToProductCommentTab @"pcaction://pconline-product-nav-tab-comment/"
+#define LJWebViewClickToProductPriceTab @"pcaction://pconline-product-nav-tab-price/"
+#define LJWebViewClickToProductScore @"pcaction://postComment/"
+
+#define LJWebViewClickToHTTPFullScreen @"http://"
+
+
+
+
+
+
+
+
+
 #endif

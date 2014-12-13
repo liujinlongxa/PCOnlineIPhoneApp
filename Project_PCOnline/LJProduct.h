@@ -23,5 +23,5 @@
 @property (nonatomic, strong) NSNumber * type;
 
 + (instancetype)productWithDict:(NSDictionary *)dict;
-
++ (instancetype)productWithID:(NSNumber *)ID;
 @end

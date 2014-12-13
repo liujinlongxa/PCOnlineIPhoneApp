@@ -10,6 +10,7 @@
 #import "LJProductInformationTVC.h"
 #import "LJProductInformation.h"
 #import "LJProduct.h"
+#import "LJProductDetailWebVC.h"
 @class LJProductSearchResultItem;
 
 @interface LJProductDetailScrollTabVC : LJScrollTabViewController

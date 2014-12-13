@@ -12,15 +12,20 @@
 #import "LJCommentPage.h"
 #import "LJNetWorking.h"
 #import "LJPageTableCell.h"
+#import "LJWebImages.h"
+#import "MBProgressHUD.h"
 
-#import "LJNewsDetailController.h"
+//#import "LJNewsDetailController.h"
+//#import "LJProductDetailScrollTabVC.h"
+//#import "LJWebImageViewerController.h"
+//#import "LJFullScreenWebViewerVC.h"
 
 #define kPageTableH 200
 #define kShadowAlpha 0.7
 #define kCommentBarPageTabelCellIdentifier @"CommentBarPageTabelCell"
 @interface LJWebViewController ()<UIWebViewDelegate, LJCommentBarDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, weak) UIWebView * webView;
+//@property (nonatomic, weak) UIWebView * webView;
 @property (nonatomic, weak) LJCommentBar * commentBar;
 @property (nonatomic, weak) UITableView * pageTable;
 @property (nonatomic, weak) UIView * shadowView;
@@ -67,6 +72,13 @@
     [self.view addSubview:bar];
     self.commentBar = bar;
     self.commentBar.delegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+    [UIApplication sharedApplication].statusBarHidden = NO;
 }
 
 #pragma mark - load web
@@ -184,29 +196,76 @@
     }];
 }
 
-#pragma mark - webview delegate method
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    NSString * urlStr = request.URL.absoluteString;
-    if ([urlStr hasPrefix:@"pcxadx"])
-    {
-        
-    }
-    else if([urlStr hasPrefix:@"pconlinebrowser://information-article/"])
-    {
-        [self handleNewsLinkWithUrlString:urlStr];
-    }
-    return YES;
-}
-
-- (void)handleNewsLinkWithUrlString:(NSString *)urlStr
-{
-    NSRange urlStrRange = [urlStr rangeOfString:@"pconlinebrowser://information-article/"];
-    NSString * ID = [urlStr substringFromIndex:urlStrRange.location + urlStrRange.length];
-    
-    LJNewsDetailController * newDetailController = [[LJNewsDetailController alloc] init];
-    newDetailController.ID = ID;
-    [self.navigationController pushViewController:newDetailController animated:YES];
-}
+//#pragma mark - 网页内容点击跳转
+//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+//{
+//    NSString * urlStr = request.URL.absoluteString;
+//    if ([urlStr hasPrefix:LJWebViewClickToNewsFullScreen])
+//    {
+//        [self handleNewsLinkWithUrlString:urlStr];
+//    }
+//    else if([urlStr hasPrefix:LJWebViewClickToNewsDetail])
+//    {
+//        [self handleNewsLinkWithUrlString:urlStr];
+//    }
+//    else if([urlStr hasPrefix:LJWebViewClickToProductDetail])
+//    {
+//        [self handleProductLinkWithUrlString:urlStr];
+//    }
+//    else if([urlStr hasPrefix:LJWebViewClickToBigPhoto])
+//    {
+//        [self handleBigPhotoLinkWithUrlString:urlStr];
+//    }
+//    return YES;
+//}
+//
+//- (void)handleFullScreenWebLinkWithUrlString:(NSString *)urlStr
+//{
+//    NSRange urlStrRange = [urlStr rangeOfString:LJWebViewClickToNewsFullScreen];
+//    assert(urlStrRange.location != NSNotFound);
+//    NSString * url = [urlStr substringFromIndex:urlStrRange.location + urlStrRange.length];
+//    
+//    LJFullScreenWebViewerVC * webVC = [[LJFullScreenWebViewerVC alloc] init];
+//    webVC.urlStr = url;
+//    
+//    [self presentViewController:webVC animated:YES completion:nil];
+//}
+//
+//- (void)handleNewsLinkWithUrlString:(NSString *)urlStr
+//{
+//    NSRange urlStrRange = [urlStr rangeOfString:LJWebViewClickToNewsDetail];
+//    assert(urlStrRange.location != NSNotFound);
+//    NSString * ID = [urlStr substringFromIndex:urlStrRange.location + urlStrRange.length];
+//    
+//    LJNewsDetailController * newDetailController = [[LJNewsDetailController alloc] init];
+//    newDetailController.ID = ID;
+//    [self.navigationController pushViewController:newDetailController animated:YES];
+//}
+//
+//- (void)handleProductLinkWithUrlString:(NSString *)urlStr
+//{
+//    NSRange urlStrRange = [urlStr rangeOfString:LJWebViewClickToProductDetail];
+//    assert(urlStrRange.location != NSNotFound);
+//    NSString * ID = [urlStr substringFromIndex:urlStrRange.location + urlStrRange.length];
+//    
+//    LJProductDetailScrollTabVC * detailScrollTVC = [LJProductDetailScrollTabVC productDetailScrollTabVCWithDefautControllers];
+//    LJProduct * product = [LJProduct productWithID:@(ID.integerValue)];
+//    detailScrollTVC.product = product;
+//    [self.navigationController pushViewController:detailScrollTVC animated:YES];
+//}
+//
+//- (void)handleBigPhotoLinkWithUrlString:(NSString *)urlStr
+//{
+//    NSRange urlStrRange = [urlStr rangeOfString:LJWebViewClickToBigPhoto];
+//    assert(urlStrRange.location != NSNotFound);
+//    NSString * webImageStr = [[urlStr substringFromIndex:urlStrRange.location + urlStrRange.length] stringByRemovingPercentEncoding];
+//    NSData * jsonData = [webImageStr dataUsingEncoding:NSUTF8StringEncoding];
+//    NSDictionary * webImageDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
+//    LJWebImages * webImages = [LJWebImages webImages:webImageDict];
+//    
+//    LJWebImageViewerController * viewer = [[LJWebImageViewerController alloc] init];
+//    viewer.webImages = webImages;
+//    [self.navigationController pushViewController:viewer animated:YES];
+//}
 
 @end

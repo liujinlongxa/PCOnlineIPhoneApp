@@ -13,9 +13,10 @@
 #import "LJProductCompareManager.h"
 #import "LJProductSearchResultItem.h"
 //标准子控制器
-#import "LJProductDetailWebVC.h"
 
-@interface LJProductDetailScrollTabVC ()<LJProductInformationTVCDelegate>
+#import "LJFullScreenWebViewerVC.h"
+
+@interface LJProductDetailScrollTabVC ()<LJProductInformationTVCDelegate, LJProductDetailWebVCCDelegate>
 
 @end
 
@@ -31,6 +32,10 @@
     
     LJProductDetailScrollTabVC * scrollTVC = [[super class] scrollTabViewControllerWithController:@[productSummaryVC, productDetailVC, productPriceVC, productInformationTVC, productCommentVC] andTitles:@[@"概述", @"详情", @"报价", @"资讯", @"点评"]];
     productInformationTVC.delegate = scrollTVC;
+    productSummaryVC.delegate = scrollTVC;
+    productDetailVC.delegate = scrollTVC;
+    productCommentVC.delegate = scrollTVC;
+    productPriceVC.delegate = scrollTVC;
     return scrollTVC;
 }
 
@@ -85,6 +90,15 @@
     LJNewsDetailController * detailVC = [[LJNewsDetailController alloc] init];
     detailVC.ID = info.ID;
     [self.navigationController pushViewController:detailVC animated:YES];
+}
+
+#pragma mark - 点击购买代理方法
+- (void)productDetailWebVC:(LJProductDetailWebVC *)webVC didClickHttpLink:(NSString *)urlStr
+{
+    LJFullScreenWebViewerVC * fuWebVC = [[LJFullScreenWebViewerVC alloc] init];
+    fuWebVC.urlStr = urlStr;
+    
+    [self presentViewController:fuWebVC animated:YES completion:nil];
 }
 
 #pragma mark - 导航栏按钮点击

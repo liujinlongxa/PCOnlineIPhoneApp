@@ -282,6 +282,10 @@ static BOOL isShowSortView = NO;
     productScrollTabVC.product = product;
     //设置代理
     productInformationTVC.delegate = productScrollTabVC;
+    productSummaryVC.delegate = productScrollTabVC;
+    productDetailVC.delegate = productScrollTabVC;
+    productCommentVC.delegate = productScrollTabVC;
+    productPriceVC.delegate = productScrollTabVC;
     [self.navigationController pushViewController:productScrollTabVC animated:YES];
     
 
