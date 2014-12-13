@@ -21,4 +21,11 @@
     return item;
 }
 
++ (instancetype)bbsListItemWithID:(NSNumber *)ID
+{
+    LJBBSListItem * item = [[self alloc] init];
+    item.ID = ID;
+    return item;
+}
+
 @end

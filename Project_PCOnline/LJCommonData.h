@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "LJUrlHeader.h"
 
+@class LJBBSListItem;
+
 @interface LJCommonData : NSObject
 
 + (instancetype)shareCommonData;
@@ -23,5 +25,5 @@
 
 - (void)saveObjc:(id)object forKey:(NSString *)key;
 - (id)loadObjcForKey:(NSString *)key;
-
+- (LJBBSListItem *)findBBSItemByID:(NSNumber *)ID inBBSLists:(NSArray *)bbsLists;
 @end

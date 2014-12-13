@@ -9,11 +9,13 @@
 #import "LJBaseWebViewController.h"
 #import "MBProgressHUD.h"
 #import "LJCommonHeader.h"
+#import "LJCommonData.h"
 
 #import "LJNewsDetailController.h"
 #import "LJProductDetailScrollTabVC.h"
 #import "LJWebImageViewerController.h"
 #import "LJFullScreenWebViewerVC.h"
+#import "LJBBSSubForumTVC.h"
 
 @interface LJBaseWebViewController ()
 
@@ -46,8 +48,6 @@
 #pragma mark - 网页内容点击跳转
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    if (navigationType != UIWebViewNavigationTypeLinkClicked) return YES;
-    
     NSString * urlStr = request.URL.absoluteString;
     if ([urlStr hasPrefix:LJWebViewClickToNewsFullScreen])
     {
@@ -55,8 +55,8 @@
     }
     else if([urlStr hasPrefix:LJWebViewClickToHTTPFullScreen])
     {
+        if (navigationType != UIWebViewNavigationTypeLinkClicked) return YES; //处理普通的页面跳转
         [self handleHTTPFullScreenWebLinkWithUrlString:urlStr];
-        return NO;
     }
     else if([urlStr hasPrefix:LJWebViewClickToNewsDetail])
     {
@@ -70,7 +70,23 @@
     {
         [self handleBigPhotoLinkWithUrlString:urlStr];
     }
-    return YES;
+    else if([urlStr hasPrefix:LJWebViewClickToTopicList])
+    {
+        [self handleTopicListLinkWithUrlString:urlStr];
+    }
+    else if([urlStr hasPrefix:LJWebViewClickToForum])
+    {
+        [self handleTopicListLinkWithUrlString:urlStr];
+    }
+    else if([urlStr hasPrefix:LJWebViewClickToPhoto])
+    {
+        [self handleProductPhotoWihtUrlString:urlStr];
+    }
+    else
+    {
+        return YES;
+    }
+    return NO;
 }
 
 //网页链接（新闻咨询），跳往LJFullScreenWebViewerVC
@@ -136,6 +152,25 @@
     LJWebImageViewerController * viewer = [[LJWebImageViewerController alloc] init];
     viewer.webImages = webImages;
     [self.navigationController pushViewController:viewer animated:YES];
+}
+
+//论坛链接，跳往LJBBSSubForumTVC
+- (void)handleTopicListLinkWithUrlString:(NSString *)urlStr
+{
+    NSRange urlStrRange = [urlStr rangeOfString:LJWebViewClickToTopicList];
+    assert(urlStrRange.location != NSNotFound);
+    NSString * ID = [urlStr substringFromIndex:urlStrRange.location + urlStrRange.length];
+    
+    LJBBSSubForumTVC * forumTVC = [[LJBBSSubForumTVC alloc] init];
+    LJBBSListItem * item = [[LJCommonData shareCommonData] findBBSItemByID:@(ID.integerValue) inBBSLists:nil];
+    forumTVC.bbsItem = item;
+    [self.navigationController pushViewController:forumTVC animated:YES];
+}
+
+//产品图片链接，跳往图赏模块
+- (void)handleProductPhotoWihtUrlString:(NSString *)urlStr
+{
+    
 }
 
 @end

@@ -27,6 +27,8 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
 @property (nonatomic, copy) NSString * curOrderBy;
 
 @property (nonatomic, weak) LJPullingBar * pullBar;
+
+@property (nonatomic, weak) UILabel * backLab;
 @end
 
 @implementation LJBBSSubForumTVC
@@ -85,6 +87,7 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
     UILabel * backLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
     backLab.text = self.bbsItem.title;
     backLab.font = NavBarTitleFont;
+    self.backLab = backLab;
     UIBarButtonItem * backLabItem = [[UIBarButtonItem alloc] initWithCustomView:backLab];
     self.navigationItem.leftBarButtonItems = @[space, backItem, space, space, backLabItem];
     
@@ -156,6 +159,10 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
     LJLog(@"url:%@", urlStr);
     [LJNetWorking GET:urlStr parameters:self success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+        //设置论坛属性
+        self.bbsItem.title = dict[@"forum"][@"name"];
+        self.backLab.text = self.bbsItem.title;
+        
         NSMutableArray * topicArr = [NSMutableArray array];
         for (NSDictionary * topicDict in dict[@"topicList"]) {
             LJTopic * topic = [LJTopic topciWithDict:topicDict];

@@ -12,6 +12,9 @@
 #import "LJProductCompareVC.h"
 #import "LJProductCompareManager.h"
 #import "LJProductSearchResultItem.h"
+#import "LJBBSListItem.h"
+#import "LJBBSSubForumTVC.h"
+#import "LJCommonData.h"
 //标准子控制器
 
 #import "LJFullScreenWebViewerVC.h"
@@ -92,13 +95,32 @@
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
-#pragma mark - 点击购买代理方法
-- (void)productDetailWebVC:(LJProductDetailWebVC *)webVC didClickHttpLink:(NSString *)urlStr
+#pragma mark - 点击webview的代理方法
+- (void)productDetailWebVC:(LJProductDetailWebVC *)webVC didClickBuyProductLink:(NSString *)urlStr
 {
     LJFullScreenWebViewerVC * fuWebVC = [[LJFullScreenWebViewerVC alloc] init];
     fuWebVC.urlStr = urlStr;
     
     [self presentViewController:fuWebVC animated:YES completion:nil];
+}
+
+- (void)productDetailWebVC:(LJProductDetailWebVC *)webVC didClickForumLink:(NSString *)urlStr
+{
+    NSRange urlStrRange = [urlStr rangeOfString:LJWebViewClickToForum];
+    assert(urlStrRange.location != NSNotFound);
+    NSString * ID = [urlStr substringFromIndex:urlStrRange.location + urlStrRange.length];
+    assert(ID != nil);
+    
+    
+    LJBBSSubForumTVC * forumTVC = [[LJBBSSubForumTVC alloc] init];
+    LJBBSListItem * item = [[LJCommonData shareCommonData] findBBSItemByID:@(ID.integerValue) inBBSLists:nil];
+    forumTVC.bbsItem = item;
+    [self.navigationController pushViewController:forumTVC animated:YES];
+}
+
+- (void)productDetailWebVC:(LJProductDetailWebVC *)webVC didClickProductPhotoLink:(NSString *)urlStr
+{
+    
 }
 
 #pragma mark - 导航栏按钮点击

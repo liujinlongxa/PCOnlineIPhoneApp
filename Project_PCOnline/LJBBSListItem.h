@@ -15,5 +15,5 @@
 @property (nonatomic, copy) NSString * imageUrl;
 
 + (instancetype)bbsListItemWithArr:(NSArray *)arr;
-
++ (instancetype)bbsListItemWithID:(NSNumber *)ID;
 @end

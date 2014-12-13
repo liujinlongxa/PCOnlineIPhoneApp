@@ -21,8 +21,9 @@ typedef enum : NSUInteger {
 @protocol LJProductDetailWebVCCDelegate <NSObject>
 
 @optional
-- (void)productDetailWebVC:(LJProductDetailWebVC *)webVC didClickHttpLink:(NSString *)urlStr;
-
+- (void)productDetailWebVC:(LJProductDetailWebVC *)webVC didClickBuyProductLink:(NSString *)urlStr;
+- (void)productDetailWebVC:(LJProductDetailWebVC *)webVC didClickForumLink:(NSString *)urlStr;
+- (void)productDetailWebVC:(LJProductDetailWebVC *)webVC didClickProductPhotoLink:(NSString *)urlStr;
 @end
 
 @interface LJProductDetailWebVC : LJBaseWebViewController

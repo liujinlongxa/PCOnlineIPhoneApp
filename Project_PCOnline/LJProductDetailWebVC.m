@@ -86,8 +86,22 @@
 #pragma mark - 重写父类方法，点击购买，跳转到新的页面
 - (void)handleHTTPFullScreenWebLinkWithUrlString:(NSString *)urlStr
 {
-    if ([self.delegate respondsToSelector:@selector(productDetailWebVC:didClickHttpLink:)]) {
-        [self.delegate productDetailWebVC:self didClickHttpLink:urlStr];
+    if ([self.delegate respondsToSelector:@selector(productDetailWebVC:didClickBuyProductLink:)]) {
+        [self.delegate productDetailWebVC:self didClickBuyProductLink:urlStr];
+    }
+}
+
+- (void)handleTopicListLinkWithUrlString:(NSString *)urlStr
+{
+    if ([self.delegate respondsToSelector:@selector(productDetailWebVC:didClickForumLink:)]) {
+        [self.delegate productDetailWebVC:self didClickForumLink:urlStr];
+    }
+}
+
+- (void)handleProductPhotoWihtUrlString:(NSString *)urlStr
+{
+    if ([self.delegate respondsToSelector:@selector(productDetailWebVC:didClickProductPhotoLink:)]) {
+        [self.delegate productDetailWebVC:self didClickProductPhotoLink:urlStr];
     }
 }
 

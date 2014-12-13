@@ -11,8 +11,11 @@
 #import "LJArea.h"
 #import "LJSubject.h"
 #import "LJDataManager.h"
+#import "LJBBSListItem.h"
+#import "LJBBSList.h"
 
 #define kSubjectAndAreaDataFileName @"pconline_v4_cms_iphone_channel_tree4inch.json"
+#define kBBSListDataFileName @"pconline_v4_bbs_forum_tree4inch.json"
 
 #define KCurShowSubjectKey @"CurShowSubject"
 #define kCurHideSubjectKey @"CurHideSubject"
@@ -29,6 +32,16 @@
 @synthesize curShowSubjectsData = _curShowSubjectsData;
 @synthesize curHideSubjectsData = _curHideSubjectsData;
 
++ (instancetype)shareCommonData
+{
+    static LJCommonData * commonData = nil;
+    if (commonData == nil) {
+        commonData = [[LJCommonData alloc] init];
+    }
+    return commonData;
+}
+
+#pragma mark - 频道及地区编码数据
 - (NSMutableDictionary *)channelAndArea
 {
     if (!_channelAndArea) {
@@ -39,15 +52,6 @@
         
     }
     return _channelAndArea;
-}
-
-+ (instancetype)shareCommonData
-{
-    static LJCommonData * commonData = nil;
-    if (commonData == nil) {
-        commonData = [[LJCommonData alloc] init];
-    }
-    return commonData;
 }
 
 //获取文件路径
@@ -103,7 +107,7 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:key];
 }
 
-#pragma mark - 频道数据
+#pragma mark - 显示及隐藏的频道数据
 //所有频道
 - (NSArray *)SubjectsData
 {
@@ -162,6 +166,67 @@
 {
     _curHideSubjectsData = curHideSubjectsData;
     [[LJDataManager manager] saveDictionaryWithObjects:curHideSubjectsData andPropertyNames:@[@"index", @"title", @"ID"] forKey:kCurHideSubjectKey];
+}
+
+#pragma mark - BBS列表数据
+
+//数据加载
+- (NSArray *)BBSListData
+{
+    if (!_BBSListData)
+    {
+        [self loadBBSListData];
+    }
+    return _BBSListData;
+}
+
+- (void)loadBBSListData
+{
+    //先加载本地的
+    NSString * path = [[NSBundle mainBundle] pathForResource:kBBSListDataFileName ofType:nil];
+    NSData * bbsListJsonData = [NSData dataWithContentsOfFile:path];
+    NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:bbsListJsonData options:NSJSONReadingMutableLeaves error:nil];
+    NSMutableArray * arr = [NSMutableArray array];
+    for (NSDictionary * bbsListDict in dict[@"children"]) {
+        LJBBSList * list = [LJBBSList bbsListWithDict:bbsListDict];
+        [arr addObject:list];
+    }
+    _BBSListData = [arr copy];
+    
+    //然后加载远程的，并更新本地的数据
+//    [LJNetWorking GET:kBBSListUrl parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+//        NSString * jsonString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+//        [jsonString writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+//        
+//    } failure:^(NSHTTPURLResponse *response, NSError *error) {
+//        NSLog(@"%@", error);
+//    }];
+}
+
+//按照ID查找item
+- (LJBBSListItem *)findBBSItemByID:(NSNumber *)ID inBBSLists:(NSArray *)bbsLists
+{
+    if (!bbsLists)
+    {
+        bbsLists = self.BBSListData;
+    }
+    
+    for (LJBBSList * list in bbsLists) {
+        if ([list.listItem.ID isEqualToNumber:ID])
+        {
+            return list.listItem;
+        }
+        else
+        {
+            if (list.children == nil)
+            {
+                continue;
+            }
+            LJBBSListItem * ret = [self findBBSItemByID:ID inBBSLists:list.children];
+            if(ret != nil) return ret;
+        }
+    }
+    return [LJBBSListItem bbsListItemWithID:ID];
 }
 
 @end

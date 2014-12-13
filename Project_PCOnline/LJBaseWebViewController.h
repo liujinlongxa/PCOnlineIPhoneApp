@@ -14,5 +14,6 @@
 
 //供子类重写
 - (void)handleHTTPFullScreenWebLinkWithUrlString:(NSString *)urlStr;
-
+- (void)handleTopicListLinkWithUrlString:(NSString *)urlStr;
+- (void)handleProductPhotoWihtUrlString:(NSString *)urlStr;
 @end

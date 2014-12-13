@@ -9,7 +9,8 @@
 #import "LJFullScreenWebViewerVC.h"
 #import "LJCommonHeader.h"
 #import "UIImage+MyImage.h"
-@interface LJFullScreenWebViewerVC ()
+#import "MBProgressHUD.h"
+@interface LJFullScreenWebViewerVC ()<UIWebViewDelegate>
 
 @property (nonatomic, weak) UIWebView * webView;
 @property (nonatomic, weak) UIToolbar * toolBar;
@@ -44,6 +45,7 @@
     UIWebView * webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, kStatusBarH, kScrW, kScrH - kStatusBarH - kTabBarH)];
     [self.view addSubview:webView];
     self.webView  = webView;
+    self.webView.delegate = self;
 }
 
 - (void)setupToolBar
@@ -54,8 +56,8 @@
     
     //butttons
     //go back
-    UIBarButtonItem * goBack = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"common_fullscreen_back"] style:UIBarButtonItemStylePlain target:self.webView action:@selector(goBackWebPage)];
-    UIBarButtonItem * goForward = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"common_fullscreen_forward"] style:UIBarButtonItemStylePlain target:self.webView action:@selector(goFowardWebPage)];
+    UIBarButtonItem * goBack = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"common_fullscreen_back"] style:UIBarButtonItemStylePlain target:self action:@selector(goBackWebPage)];
+    UIBarButtonItem * goForward = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"common_fullscreen_forward"] style:UIBarButtonItemStylePlain target:self action:@selector(goFowardWebPage)];
     self.goBack = goBack;
     self.goFoward = goForward;
     
@@ -74,19 +76,29 @@
 - (void)goBackWebPage
 {
     [self.webView goBack];
-    [self setupBackAndForward];
 }
 
 - (void)goFowardWebPage
 {
     [self.webView goForward];
-    [self setupBackAndForward];
 }
 
-- (void)setupBackAndForward
+#pragma mark - 指示器
+- (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    self.goBack.enabled = self.webView.canGoBack;
-    self.goFoward.enabled = self.webView.canGoForward;
+    [MBProgressHUD showHUDAddedTo:self.webView animated:YES];
 }
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [MBProgressHUD hideAllHUDsForView:self.webView animated:YES];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    NSLog(@"%@", error);
+    [MBProgressHUD hideAllHUDsForView:self.webView animated:YES];
+}
+
 
 @end
