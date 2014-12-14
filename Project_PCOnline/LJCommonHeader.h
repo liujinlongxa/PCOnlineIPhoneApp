@@ -79,12 +79,14 @@
 
 #define LJWebViewClickToHTTPFullScreen @"http://"
 
-
-
-
-
-
-
+//产品详情Tab 枚举
+typedef enum : NSUInteger {
+    LJProductTabSummary,
+    LJProductTabDetail,
+    LJProductTabPrice,
+    LJProductTabArticle,
+    LJProductTabComment
+} LJProductTab;
 
 
 #endif

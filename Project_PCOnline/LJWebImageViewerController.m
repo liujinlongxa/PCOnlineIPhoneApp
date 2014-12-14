@@ -9,6 +9,8 @@
 #import "LJWebImageViewerController.h"
 #import "LJCommonHeader.h"
 #import "UIImageView+WebCache.h"
+#import "SDWebImageManager.h"
+#import "MBProgressHUD+LJProgressHUD.h"
 
 @interface LJWebImageViewerController () <UIScrollViewDelegate>
 
@@ -136,7 +138,18 @@
 
 - (void)downloadImage:(id)sender
 {
-    
+    NSString * urlStr = self.webImages.photos[self.curIndex];
+    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:urlStr] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        if (image)
+        {
+            UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+        }
+    }];
+}
+
+- (void)image:(UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo
+{
+    [MBProgressHUD showNotificationMessage:@"保存成功" InView:self.scrollView];
 }
 
 #pragma mark - set image

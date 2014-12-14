@@ -130,6 +130,11 @@
     [self.navigationController pushViewController:webImageVC animated:YES];
 }
 
+- (void)productDetailWebVC:(LJProductDetailWebVC *)webVC didClickProductTabWith:(NSString *)urlStr andTab:(LJProductTab)tab
+{
+    [self selectTabAtIndex:tab];
+}
+
 #pragma mark - 导航栏按钮点击
 - (void)navBackBtnClick:(id)sender
 {

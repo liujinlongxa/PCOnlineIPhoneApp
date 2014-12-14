@@ -7,8 +7,7 @@
 //
 
 #import "LJBaseWebViewController.h"
-#import "MBProgressHUD.h"
-#import "LJCommonHeader.h"
+#import "MBProgressHUD+LJProgressHUD.h"
 #import "LJCommonData.h"
 
 #import "LJNewsDetailController.h"
@@ -31,18 +30,19 @@
 #pragma mark - 指示器
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    [MBProgressHUD showHUDAddedTo:self.webView animated:YES];
+    [MBProgressHUD showLoadingHUDInView:self.webView];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [MBProgressHUD hideAllHUDsForView:self.webView animated:YES];
+    [MBProgressHUD hideLoadingHUDInView:self.webView];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     NSLog(@"%@", error);
     [MBProgressHUD hideAllHUDsForView:self.webView animated:YES];
+    [MBProgressHUD showNotificationMessage:@"加载失败" InView:self.webView];
 }
 
 #pragma mark - 网页内容点击跳转
@@ -80,7 +80,23 @@
     }
     else if([urlStr hasPrefix:LJWebViewClickToPhoto])
     {
-        [self handleProductPhotoWihtUrlString:urlStr];
+        [self handleProductPhotoWithUrlString:urlStr];
+    }
+    else if([urlStr hasPrefix:LJWebViewClickToProductDetailTab])
+    {
+        [self handleProductTabWithUrlString:urlStr andTab:LJProductTabDetail];
+    }
+    else if([urlStr hasPrefix:LJWebViewClickToProductArticleTab])
+    {
+        [self handleProductTabWithUrlString:urlStr andTab:LJProductTabArticle];
+    }
+    else if([urlStr hasPrefix:LJWebViewClickToProductCommentTab])
+    {
+        [self handleProductTabWithUrlString:urlStr andTab:LJProductTabComment];
+    }
+    else if([urlStr hasPrefix:LJWebViewClickToProductPriceTab])
+    {
+        [self handleProductTabWithUrlString:urlStr andTab:LJProductTabPrice];
     }
     else
     {
@@ -168,9 +184,15 @@
 }
 
 //产品图片链接，跳往图赏模块
-- (void)handleProductPhotoWihtUrlString:(NSString *)urlStr
+- (void)handleProductPhotoWithUrlString:(NSString *)urlStr
 {
-    
+    //子类实现
+}
+
+//产品详情Tab跳转
+- (void)handleProductTabWithUrlString:(NSString *)urlStr andTab:(LJProductTab)tab
+{
+    //子类实现
 }
 
 @end

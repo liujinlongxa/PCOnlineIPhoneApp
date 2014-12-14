@@ -20,6 +20,12 @@
 #define kBBSListUrl @"http://mrobot.pconline.com.cn/configs/pconline_v4_bbs_forum_tree"
 
 //论坛
+
+//普通论坛flag
+#define kBBSFlag @"itbbs"
+//最数码论他flag
+#define kZuiBBSFlag @"piebbs"
+
 //1.广告
 #define kBBSAdsUrl @"http://www.pconline.com.cn/app/bbs/focus/"
 //2.每日热帖

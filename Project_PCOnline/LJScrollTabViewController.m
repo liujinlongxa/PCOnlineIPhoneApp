@@ -68,6 +68,12 @@
     self.scrollView.contentSize = CGSizeMake(self.lj_viewControllers.count * CGRectGetWidth(self.scrollView.frame), 0);
 }
 
+- (void)selectTabAtIndex:(NSInteger)index
+{
+    [self.scrollView setContentOffset:CGPointMake(kScrW * index, 0) animated:YES];
+    [self.buttonsView selectButtonAtIndex:index];
+}
+
 #pragma mark - 代理方法
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {

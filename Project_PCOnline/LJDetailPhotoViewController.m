@@ -12,7 +12,9 @@
 #import "LJPhotoCollectionViewCell.h"
 #import "UIImage+MyImage.h"
 #import "UIImageView+WebCache.h"
+#import "SDWebImageManager.h"
 #import "LJPhotoThumbShowView.h"
+#import "MBProgressHUD+LJProgressHUD.h"
 
 #define kLJPhotoCollectionViewCellIndeifier @"LJPhotoCollectionViewCell"
 
@@ -217,6 +219,21 @@
 
 #pragma mark - button点击
 - (IBAction)downLoadClick:(id)sender {
+    
+    LJPhotoCollectionViewCell * cell = [self.collectionView.visibleCells firstObject];
+    NSIndexPath * indexPath = [self.collectionView indexPathForCell:cell];
+    LJPhoto * photo = self.photosData[indexPath.item];
+    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:photo.url] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        if (image)
+        {
+            UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+        }
+    }];
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    [MBProgressHUD showNotificationMessage:@"保存成功" InView:self.collectionView];
 }
 
 - (IBAction)showBtnClick:(id)sender {

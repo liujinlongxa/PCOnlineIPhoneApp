@@ -19,6 +19,8 @@
 @interface LJScrollTabViewController : UIViewController
 @property (nonatomic, strong, readonly) NSArray * lj_viewControllers;
 @property (nonatomic, strong, readonly) NSArray * lj_tabTitles;
+
+- (void)selectTabAtIndex:(NSInteger)index;
 + (instancetype)scrollTabViewControllerWithController:(NSArray *)controllers andTitles:(NSArray *)titles;
 
 @end

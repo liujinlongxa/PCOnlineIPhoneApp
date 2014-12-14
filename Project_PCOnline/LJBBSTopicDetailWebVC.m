@@ -11,6 +11,7 @@
 #import "LJCommonHeader.h"
 #import "LJTopicSearchResultItem.h"
 #import "LJNetWorking.h"
+#import "LJHotTopic.h"
 
 @interface LJBBSTopicDetailWebVC ()<UIWebViewDelegate>
 @property (nonatomic, copy) NSString * baseUrl;
@@ -62,7 +63,7 @@
             urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.topic.topicId.integerValue, self.curPage + 1];
         }
     }
-    else
+    else if(self.searchResutItem != nil)
     {
         if (self.searchResutItem.forumId.integerValue < 0) {
             urlStr = [NSString stringWithFormat:kZuiBBSTopicDetailUrl, self.searchResutItem.topicId.integerValue, self.curPage + 1];
@@ -70,6 +71,21 @@
         else
         {
             urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.searchResutItem.topicId.integerValue, self.curPage + 1];
+        }
+    }
+    else if(self.topic != nil)
+    {
+        if ([self.topic isKindOfClass:[LJHotTopic class]])
+        {
+            LJHotTopic * hotTopic = (LJHotTopic *)self.topic;
+            if ([hotTopic.userUrl containsString:kZuiBBSFlag])
+            {
+                urlStr = [NSString stringWithFormat:kZuiBBSTopicDetailUrl, self.topic.topicId.integerValue, self.curPage + 1];
+            }
+            else
+            {
+                urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.topic.topicId.integerValue, self.curPage + 1];
+            }
         }
     }
     assert(urlStr != nil);

@@ -7,7 +7,6 @@
 //
 
 #import "LJProductDetailWebVC.h"
-#import "LJCommonHeader.h"
 #import "LJUrlHeader.h"
 
 @interface LJProductDetailWebVC ()
@@ -98,10 +97,18 @@
     }
 }
 
-- (void)handleProductPhotoWihtUrlString:(NSString *)urlStr
+- (void)handleProductPhotoWithUrlString:(NSString *)urlStr
 {
     if ([self.delegate respondsToSelector:@selector(productDetailWebVC:didClickProductPhotoLink:)]) {
         [self.delegate productDetailWebVC:self didClickProductPhotoLink:urlStr];
+    }
+}
+
+- (void)handleProductTabWithUrlString:(NSString *)urlStr andTab:(LJProductTab)tab
+{
+    if ([self.delegate respondsToSelector:@selector(productDetailWebVC:didClickProductTabWith:andTab:)])
+    {
+        [self.delegate productDetailWebVC:self didClickProductTabWith:urlStr andTab:tab];
     }
 }
 

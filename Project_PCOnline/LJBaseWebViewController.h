@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LJCommonHeader.h"
 
 @interface LJBaseWebViewController : UIViewController<UIWebViewDelegate>
 
@@ -15,5 +16,6 @@
 //供子类重写
 - (void)handleHTTPFullScreenWebLinkWithUrlString:(NSString *)urlStr;
 - (void)handleTopicListLinkWithUrlString:(NSString *)urlStr;
-- (void)handleProductPhotoWihtUrlString:(NSString *)urlStr;
+- (void)handleProductPhotoWithUrlString:(NSString *)urlStr;
+- (void)handleProductTabWithUrlString:(NSString *)urlStr andTab:(LJProductTab)tab;
 @end
