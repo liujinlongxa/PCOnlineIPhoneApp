@@ -44,7 +44,10 @@
 {
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     [UIApplication sharedApplication].statusBarHidden = YES;
-    self.scrollView.contentOffset = CGPointMake(self.webImages.currentIndex.integerValue * kScrW, 0);
+    if (self.curIndex > 0)
+    {
+        self.scrollView.contentOffset = CGPointMake(kScrW, 0);
+    }
 }
 
 #pragma mark - init UI
@@ -114,7 +117,7 @@
     //page lab
     CGFloat padding = 10;
     CGFloat labH = kTabBarH - 2 * padding;
-    CGFloat labW = 50;
+    CGFloat labW = 100;
     UILabel * pageLab = [[UILabel alloc] initWithFrame:CGRectMake(padding, padding, labW, labH)];
     [self.toolBarView addSubview:pageLab];
     self.pageLab = pageLab;
@@ -142,13 +145,23 @@
 {
     _webImages = webImages;
     [self setupImageViews];
-    for (int i = 0; i < self.imageCount; i++) {
-        UIImageView * imageView = self.imageViews[i];
+    
+    self.curIndex = self.webImages.currentIndex.integerValue;
+    if (self.curIndex != 0)
+    {
+        self.preLocation = 1;
+    }
+    else
+    {
+        self.preLocation = 0;
+    }
+    
+    NSInteger startIndex = self.curIndex > 0 ? self.curIndex - 1 : 0;
+    for (int i = startIndex; i < self.imageCount + startIndex; i++) {
+        UIImageView * imageView = self.imageViews[i - startIndex];
         [imageView sd_setImageWithURL:[NSURL URLWithString:self.webImages.photos[i]] placeholderImage:[UIImage imageNamed:@"common_default_320x480"]];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
     }
-    self.curIndex = 0;
-    self.preLocation = 0;
 }
 
 #pragma mark - scrollView代理方法

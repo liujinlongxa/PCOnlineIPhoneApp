@@ -8,6 +8,8 @@
 
 #import "LJNewsDetailController.h"
 #import "UIImage+MyImage.h"
+#import "LJCommentTableVC.h"
+
 @interface LJNewsDetailController ()<UIWebViewDelegate>
 
 @property (nonatomic, weak) UIWebView * webView;
@@ -59,6 +61,16 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"btn_common_black_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClick:)];
     //设置状态栏
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    
+    NSString * commentCount = self.news != nil ? [NSString stringWithFormat:@"%d评论", self.news.cmtCount.integerValue] : @"评论";
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:BlueTextColor} forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:commentCount style:UIBarButtonItemStylePlain target:self action:@selector(commentBtnClick:)];
+}
+
+- (void)commentBtnClick:(id)sender
+{
+    LJCommentTableVC * commentTVC = [[LJCommentTableVC alloc] init];
+    [self.navigationController pushViewController:commentTVC animated:YES];
 }
 
 

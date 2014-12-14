@@ -15,5 +15,7 @@
 @property (nonatomic, strong) NSArray * photos;
 
 + (instancetype)webImages:(NSDictionary *)dict;
++ (instancetype)webImagesWithImageItems:(NSArray *)items andCurIndex:(NSInteger)index;
+
 
 @end

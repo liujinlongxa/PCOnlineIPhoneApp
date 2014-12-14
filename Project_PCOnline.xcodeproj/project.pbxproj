@@ -137,6 +137,11 @@
 		8848666E1A38B2B80038C7F1 /* LJMoreNewsSearchResultTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848666D1A38B2B80038C7F1 /* LJMoreNewsSearchResultTVC.m */; };
 		884866721A38B3CA0038C7F1 /* LJNewsSearchResltCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 884866701A38B3CA0038C7F1 /* LJNewsSearchResltCell.m */; };
 		884866731A38B3CA0038C7F1 /* LJNewsSearchResltCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 884866711A38B3CA0038C7F1 /* LJNewsSearchResltCell.xib */; };
+		8850183D1A3D73FB000887B2 /* LJWebImageGridViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8850183C1A3D73FB000887B2 /* LJWebImageGridViewerController.m */; };
+		885018401A3D751E000887B2 /* LJWebImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8850183F1A3D751E000887B2 /* LJWebImageItem.m */; };
+		885018441A3D795A000887B2 /* LJWebImageGridViewerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 885018421A3D795A000887B2 /* LJWebImageGridViewerCell.m */; };
+		885018451A3D795A000887B2 /* LJWebImageGridViewerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 885018431A3D795A000887B2 /* LJWebImageGridViewerCell.xib */; };
+		885018481A3D89EC000887B2 /* LJCommentTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 885018471A3D89EC000887B2 /* LJCommentTableVC.m */; };
 		8852FF141A381F8600DD4625 /* LJBBSSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8852FF131A381F8600DD4625 /* LJBBSSearchResultCell.m */; };
 		8852FF171A382E5100DD4625 /* LJProductSearchResultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8852FF161A382E5100DD4625 /* LJProductSearchResultItem.m */; };
 		8852FF1B1A3831D700DD4625 /* LJProductSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8852FF191A3831D700DD4625 /* LJProductSearchResultCell.m */; };
@@ -467,6 +472,15 @@
 		8848666F1A38B3CA0038C7F1 /* LJNewsSearchResltCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJNewsSearchResltCell.h; sourceTree = "<group>"; };
 		884866701A38B3CA0038C7F1 /* LJNewsSearchResltCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJNewsSearchResltCell.m; sourceTree = "<group>"; };
 		884866711A38B3CA0038C7F1 /* LJNewsSearchResltCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJNewsSearchResltCell.xib; sourceTree = "<group>"; };
+		8850183B1A3D73FB000887B2 /* LJWebImageGridViewerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJWebImageGridViewerController.h; sourceTree = "<group>"; };
+		8850183C1A3D73FB000887B2 /* LJWebImageGridViewerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJWebImageGridViewerController.m; sourceTree = "<group>"; };
+		8850183E1A3D751E000887B2 /* LJWebImageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJWebImageItem.h; sourceTree = "<group>"; };
+		8850183F1A3D751E000887B2 /* LJWebImageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJWebImageItem.m; sourceTree = "<group>"; };
+		885018411A3D795A000887B2 /* LJWebImageGridViewerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJWebImageGridViewerCell.h; sourceTree = "<group>"; };
+		885018421A3D795A000887B2 /* LJWebImageGridViewerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJWebImageGridViewerCell.m; sourceTree = "<group>"; };
+		885018431A3D795A000887B2 /* LJWebImageGridViewerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJWebImageGridViewerCell.xib; sourceTree = "<group>"; };
+		885018461A3D89EC000887B2 /* LJCommentTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJCommentTableVC.h; sourceTree = "<group>"; };
+		885018471A3D89EC000887B2 /* LJCommentTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJCommentTableVC.m; sourceTree = "<group>"; };
 		8852FF121A381F8600DD4625 /* LJBBSSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBBSSearchResultCell.h; sourceTree = "<group>"; };
 		8852FF131A381F8600DD4625 /* LJBBSSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBBSSearchResultCell.m; sourceTree = "<group>"; };
 		8852FF151A382E5100DD4625 /* LJProductSearchResultItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJProductSearchResultItem.h; sourceTree = "<group>"; };
@@ -1082,6 +1096,7 @@
 		046E76751A2C1A63000FE777 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				885018491A3D8AF4000887B2 /* Comment */,
 				046E767B1A2C1AC6000FE777 /* LJNewsViewController.h */,
 				046E767C1A2C1AC6000FE777 /* LJNewsViewController.m */,
 				04C711FA1A2D646D009705DF /* LJNewsDetailController.h */,
@@ -1580,6 +1595,13 @@
 				8841E2501A3C451E00815B82 /* LJWebImageViewerController.m */,
 				8841E2551A3C4F0600815B82 /* LJWebImages.h */,
 				8841E2561A3C4F0600815B82 /* LJWebImages.m */,
+				8850183B1A3D73FB000887B2 /* LJWebImageGridViewerController.h */,
+				8850183C1A3D73FB000887B2 /* LJWebImageGridViewerController.m */,
+				8850183E1A3D751E000887B2 /* LJWebImageItem.h */,
+				8850183F1A3D751E000887B2 /* LJWebImageItem.m */,
+				885018411A3D795A000887B2 /* LJWebImageGridViewerCell.h */,
+				885018421A3D795A000887B2 /* LJWebImageGridViewerCell.m */,
+				885018431A3D795A000887B2 /* LJWebImageGridViewerCell.xib */,
 			);
 			name = WebImageViewer;
 			sourceTree = "<group>";
@@ -1591,6 +1613,15 @@
 				8841E25A1A3C680700815B82 /* LJFullScreenWebViewerVC.m */,
 			);
 			name = FullScreenWebViewer;
+			sourceTree = "<group>";
+		};
+		885018491A3D8AF4000887B2 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				885018461A3D89EC000887B2 /* LJCommentTableVC.h */,
+				885018471A3D89EC000887B2 /* LJCommentTableVC.m */,
+			);
+			name = Comment;
 			sourceTree = "<group>";
 		};
 		8852FF111A381F4F00DD4625 /* TableviewCell */ = {
@@ -1958,6 +1989,7 @@
 				046E76971A2C25EE000FE777 /* pconline_v4_square_fast_forum4inch.json in Resources */,
 				046E76961A2C25EE000FE777 /* pconline_v4_cms_iphone_channel_tree4inch.json in Resources */,
 				044C28C11A2EAFE100A48121 /* LJProductCategoryCell.xib in Resources */,
+				885018451A3D795A000887B2 /* LJWebImageGridViewerCell.xib in Resources */,
 				046E76991A2C25EE000FE777 /* pconline_v4_bbs_forum_tree.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2035,9 +2067,11 @@
 				8857A33E1A3321E8008265FC /* LJBaseTopic.m in Sources */,
 				88CAED211A2E224D00262896 /* LJHotForumButton.m in Sources */,
 				880780BF1A30C6BC005876A2 /* LJScrollTabViewController.m in Sources */,
+				885018401A3D751E000887B2 /* LJWebImageItem.m in Sources */,
 				046E75CE1A2BF700000FE777 /* AppDelegate.m in Sources */,
 				8852FF221A38448900DD4625 /* LJTopicSearchResultCell.m in Sources */,
 				041E14CE1A35C47F008BB770 /* LJProductSortView.m in Sources */,
+				885018481A3D89EC000887B2 /* LJCommentTableVC.m in Sources */,
 				04D0CD331A36ED7A0060CD9D /* LJQueryJson.m in Sources */,
 				04C712171A2DB421009705DF /* LJBaseAds.m in Sources */,
 				04B0C5211A37F3CD00B3B9B4 /* LJProductSearchResultVC.m in Sources */,
@@ -2108,6 +2142,7 @@
 				046E76621A2C0A37000FE777 /* FMDatabaseAdditions.m in Sources */,
 				047D6A701A2C291000EB3B64 /* LJNavController.m in Sources */,
 				88CC0B7C1A3288F9001169ED /* LJFastForumHeaderView.m in Sources */,
+				885018441A3D795A000887B2 /* LJWebImageGridViewerCell.m in Sources */,
 				04C712011A2D9108009705DF /* LJAdsGroupView.m in Sources */,
 				88E1EC951A36053B004BEB4C /* LJPullingBar.m in Sources */,
 				88CAED2E1A2E31AA00262896 /* LJBBSListItem.m in Sources */,
@@ -2138,6 +2173,7 @@
 				882774FA1A2F729700304E57 /* LJFullScreenBrandVC.m in Sources */,
 				044C28CA1A2EB99200A48121 /* LJPhotoCell.m in Sources */,
 				88FD81001A39FBBA001F9E82 /* UIView+MJExtension.m in Sources */,
+				8850183D1A3D73FB000887B2 /* LJWebImageGridViewerController.m in Sources */,
 				04B0C5271A37F3F000B3B9B4 /* LJBBSSearchResultVC.m in Sources */,
 				8895523F1A34CF6700E7D864 /* AFURLRequestSerialization.m in Sources */,
 				8895523C1A34CF6700E7D864 /* AFNetworkReachabilityManager.m in Sources */,

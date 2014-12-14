@@ -65,6 +65,8 @@
 #define kProductDetailDetailUrl @"http://mrobot.pconline.com.cn/v3/product/detail/%d"
 //4.2概述Tab
 #define kProductDetailSummaryUrl @"http://mrobot.pconline.com.cn/v3/product/summary/%d"
+//4.2.1 概述页面图集点击
+#define kProductPhotosUrl @"http://mrobot.pconline.com.cn/v2/product/pictures?modelId=%d&fmt=json&pageSize=999&typeId=1"
 //4.3报价Tab
 #define kProductDetailPriceUrl @"http://mrobot.pconline.com.cn/v3/product/comparePrice/%d"
 //4.4资讯Tab

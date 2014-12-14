@@ -172,6 +172,7 @@
         LJNews * news = (LJNews *)object;
         LJNewsDetailController * detailVC = [[LJNewsDetailController alloc] init];
         detailVC.ID = news.ID;
+        detailVC.news = news;
         [self.navigationController pushViewController:detailVC animated:YES];
     }
 }

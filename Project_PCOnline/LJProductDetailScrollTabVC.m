@@ -16,8 +16,8 @@
 #import "LJBBSSubForumTVC.h"
 #import "LJCommonData.h"
 //标准子控制器
-
 #import "LJFullScreenWebViewerVC.h"
+#import "LJWebImageGridViewerController.h"
 
 @interface LJProductDetailScrollTabVC ()<LJProductInformationTVCDelegate, LJProductDetailWebVCCDelegate>
 
@@ -120,7 +120,14 @@
 
 - (void)productDetailWebVC:(LJProductDetailWebVC *)webVC didClickProductPhotoLink:(NSString *)urlStr
 {
+    NSRange urlStrRange = [urlStr rangeOfString:LJWebViewClickToPhoto];
+    assert(urlStrRange.location != NSNotFound);
+    NSString * ID = [urlStr substringFromIndex:urlStrRange.location + urlStrRange.length];
+    assert(ID != nil);
     
+    LJWebImageGridViewerController * webImageVC = [[LJWebImageGridViewerController alloc] init];
+    webImageVC.ID = ID;
+    [self.navigationController pushViewController:webImageVC animated:YES];
 }
 
 #pragma mark - 导航栏按钮点击
