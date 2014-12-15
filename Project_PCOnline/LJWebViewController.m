@@ -9,7 +9,6 @@
 #import "LJWebViewController.h"
 #import "LJCommentBar.h"
 #import "LJCommonHeader.h"
-#import "LJCommentPage.h"
 #import "LJNetWorking.h"
 #import "LJPageTableCell.h"
 #import "LJWebImages.h"
@@ -25,7 +24,7 @@
 @property (nonatomic, weak) UIView * shadowView;
 
 @property (nonatomic, assign, getter=isShowPage) BOOL showPage;
-@property (nonatomic, strong) LJCommentPage * pageInfo;
+
 @end
 
 @implementation LJWebViewController
@@ -103,10 +102,10 @@
     //解析json
     NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:[pageJsonStr dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves error:nil];
     assert(dict != nil);
-    self.pageInfo = [LJCommentPage commentPageWithDict:dict];
+    self.pageInfo = [LJCommentPageInfo commentPageWithDict:dict];
 }
 
-- (void)setPageInfo:(LJCommentPage *)pageInfo
+- (void)setPageInfo:(LJCommentPageInfo *)pageInfo
 {
     _pageInfo = pageInfo;
     [self.pageTable reloadData];

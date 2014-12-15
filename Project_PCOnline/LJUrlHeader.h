@@ -10,8 +10,17 @@
 #define Project_PCOnline_LJUrlHeader_h
 
 //资讯
+//1.获取资讯列表
 #define kNewsUrl @"http://mrobot.pconline.com.cn/v2/cms/channels/%@?pageNo=%d&pageSize=20"
+//2.获取资讯详情(web view)
 #define kNewsDetailUrl @"http://mrobot.pconline.com.cn/v3/cms/articles/%@?articleTemplate=3.6.0&size=18&picRule=2&app=pconlinebrowser&pageNo=%d&template=(null)&channelId=0&serialId=0"
+//3.评论
+//3.1 获取评论信息（个数，ID，url等）
+#define kCommentInfoUrl @"http://mrobot.pconline.com.cn/v3/cmt/get_newest_floor?url=%@"
+//3.2 获取具体评论信息
+#define kCommentDetailUrl @"http://mrobot.pconline.com.cn/v3/cmt/new_topics/%d?articleId=%d&pageSize=20&pageNo=1&reverse=0"
+//3.3 获取顶踩信息
+#define kCommentSupportInfoUrl @"http://bip.pconline.com.cn/intf/article.jsp?act=getArticleCount&siteId=1&articleId=%d"
 
 //频道和区域列表
 #define kChannelAndAreaUrl @"http://mrobot.pconline.com.cn/configs/pconline_v4_cms_iphone_channel_tree"

@@ -89,7 +89,7 @@
     
 }
 
-- (void)setPage:(LJCommentPage *)page
+- (void)setPage:(LJCommentPageInfo *)page
 {
     _page = page;
 //    self.curPage = 0;

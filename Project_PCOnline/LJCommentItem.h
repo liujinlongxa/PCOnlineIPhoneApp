@@ -18,4 +18,8 @@
 @property (nonatomic, copy) NSString * time;
 @property (nonatomic, copy) NSString * userId;
 
+@property (nonatomic, assign) NSInteger level;
+
++ (instancetype)commentItemWithDict:(NSDictionary *)dict;
+
 @end

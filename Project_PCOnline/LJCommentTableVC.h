@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LJCommentInfo.h"
+#import "LJNews.h"
+#import "LJCommentPageInfo.h"
 
 @interface LJCommentTableVC : UIViewController
 
+@property (nonatomic, strong) LJCommentInfo * commentInfo;
+@property (nonatomic, strong) NSString * ID;
+@property (nonatomic, strong) LJCommentPageInfo * pageInfo;
+@property (nonatomic, assign, getter=isShowHeader) BOOL showHeader;
 @end

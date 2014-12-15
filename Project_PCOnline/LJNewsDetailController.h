@@ -11,10 +11,11 @@
 #import "LJCommonHeader.h"
 #import "LJWebViewController.h"
 #import "LJNews.h"
+#import "LJAds.h"
 
 @interface LJNewsDetailController : LJWebViewController
 
-@property (nonatomic, copy) NSString * ID;
 @property (nonatomic, strong) LJNews * news;
+@property (nonatomic, strong) LJAds * ads;
 
 @end

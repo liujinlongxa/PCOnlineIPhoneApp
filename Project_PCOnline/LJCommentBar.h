@@ -7,7 +7,7 @@
 //  评论条
 
 #import <UIKit/UIKit.h>
-#import "LJCommentPage.h"
+#import "LJCommentPageInfo.h"
 
 #define kBarH 60
 
@@ -23,7 +23,7 @@
 
 @interface LJCommentBar : UIView
 
-@property (nonatomic, strong) LJCommentPage * page;
+@property (nonatomic, strong) LJCommentPageInfo * page;
 @property (nonatomic, assign) NSInteger curPage;
 @property (nonatomic, weak) id<LJCommentBarDelegate> delegate;
 

@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 com.qianfeng. All rights reserved.
 //
 
-#import "LJCommentPage.h"
+#import "LJCommentPageInfo.h"
 
-@implementation LJCommentPage
+@implementation LJCommentPageInfo
 
 + (instancetype)commentPageWithDict:(NSDictionary *)dict
 {
-    LJCommentPage * page = [[self alloc] init];
+    LJCommentPageInfo * page = [[self alloc] init];
     [page setValuesForKeysWithDictionary:dict];
     return page;
 }

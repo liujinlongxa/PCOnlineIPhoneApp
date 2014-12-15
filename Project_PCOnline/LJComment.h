@@ -7,12 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LJCommentItem.h"
 
 @interface LJComment : NSObject
 
-@property (nonatomic, strong) NSArray * commentItems;
+@property (nonatomic, strong) LJCommentItem * myCommentItem;
+@property (nonatomic, strong) NSArray * replyCommentItems;
 @property (nonatomic, copy) NSString * current;
 @property (nonatomic, assign) BOOL expand;
 @property (nonatomic, copy) NSString * support;
+
++ (instancetype)commentWithDict:(NSDictionary *)dict;
 
 @end

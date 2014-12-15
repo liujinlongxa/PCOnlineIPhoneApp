@@ -18,8 +18,6 @@
 @property (nonatomic, strong) NSMutableArray * showChannelSubjects;
 @property (nonatomic, strong) NSMutableArray * hideChannelSubjects;
 
-
-
 @end
 
 @implementation LJChannelSelectViewController

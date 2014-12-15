@@ -171,7 +171,6 @@
     if ([object isKindOfClass:[LJNews class]]) {
         LJNews * news = (LJNews *)object;
         LJNewsDetailController * detailVC = [[LJNewsDetailController alloc] init];
-        detailVC.ID = news.ID;
         detailVC.news = news;
         [self.navigationController pushViewController:detailVC animated:YES];
     }
@@ -188,14 +187,14 @@
     self.curSubject = self.subjects[index];
 }
 
-#pragma mark - 广告点击s
+#pragma mark - 广告点击
 - (void)adsClikc:(NSNotification *)notify
 {
     id ad = notify.userInfo[LJAdsViewTapNotifyAdsKey];
     if ([ad isKindOfClass:[LJAds class]]) {
         LJAds * newsAd = (LJAds *)ad;
         LJNewsDetailController * detailVC = [[LJNewsDetailController alloc] init];
-        detailVC.ID = newsAd.ID;
+        detailVC.ads = newsAd;
         [self.navigationController pushViewController:detailVC animated:YES];
     }
 }

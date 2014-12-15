@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "LJBaseWebViewController.h"
+#import "LJCommentPageInfo.h"
 
 @interface LJWebViewController : LJBaseWebViewController
 
+@property (nonatomic, strong) LJCommentPageInfo * pageInfo;
 @property (nonatomic, copy) NSString * urlStr;
 @property (nonatomic, assign) NSInteger curPage;
 

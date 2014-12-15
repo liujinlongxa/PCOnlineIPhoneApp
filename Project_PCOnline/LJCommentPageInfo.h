@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LJCommentPage : NSObject
+@interface LJCommentPageInfo : NSObject
 
 @property (nonatomic, copy) NSString * author;
 @property (nonatomic, copy) NSString * firstPic;
