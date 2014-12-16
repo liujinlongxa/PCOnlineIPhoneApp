@@ -10,9 +10,21 @@
 #import "LJCommentPageInfo.h"
 #import "LJCommentSupportInfo.h"
 
+@class LJCommentTableHeaderView;
+
+@protocol LJCommentTableHeaderViewDelegate <NSObject>
+
+- (void)commentTableHeaderView:(LJCommentTableHeaderView *)header didChangeSupport:(LJCommentSupportType)type;
+
+@end
+
 @interface LJCommentTableHeaderView : UIView
 
 @property (nonatomic, strong) LJCommentSupportInfo * supprotInfo;
 @property (nonatomic, strong) LJCommentPageInfo * pageInfo;
+@property (nonatomic, weak) id<LJCommentTableHeaderViewDelegate> delegate;
+
+- (void)addAgree;
+- (void)addDisagree;
 
 @end

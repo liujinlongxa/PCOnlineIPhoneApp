@@ -88,5 +88,7 @@ typedef enum : NSUInteger {
     LJProductTabComment
 } LJProductTab;
 
+//通知
+#define kLJPriceTableLocationButtonClickNotification @"PriceTableLocationButtonClickNotification"
 
 #endif

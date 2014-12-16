@@ -113,12 +113,12 @@
  */
 @property (copy, nonatomic) NSString *footerPullToRefreshText; // 默认:@"上拉可以加载更多数据"
 @property (copy, nonatomic) NSString *footerReleaseToRefreshText; // 默认:@"松开立即加载更多数据"
-@property (copy, nonatomic) NSString *footerRefreshingText; // 默认:@"MJ哥正在帮你加载数据..."
+@property (copy, nonatomic) NSString *footerRefreshingText; // 默认:@"正在加载数据..."
 
 /**
  *  设置头部控件的文字
  */
 @property (copy, nonatomic) NSString *headerPullToRefreshText; // 默认:@"下拉可以刷新"
 @property (copy, nonatomic) NSString *headerReleaseToRefreshText; // 默认:@"松开立即刷新"
-@property (copy, nonatomic) NSString *headerRefreshingText; // 默认:@"MJ哥正在帮你刷新..."
+@property (copy, nonatomic) NSString *headerRefreshingText; // 默认:@"正在刷新..."
 @end

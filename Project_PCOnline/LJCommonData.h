@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LJUrlHeader.h"
+#import "LJArea.h"
 
 @class LJBBSListItem;
 
@@ -22,6 +23,7 @@
 
 @property (nonatomic, strong) NSArray * BBSListData;
 @property (nonatomic, strong) NSArray * AreaData;
+@property (nonatomic, strong) LJArea * curArea;
 
 - (void)saveObjc:(id)object forKey:(NSString *)key;
 - (id)loadObjcForKey:(NSString *)key;

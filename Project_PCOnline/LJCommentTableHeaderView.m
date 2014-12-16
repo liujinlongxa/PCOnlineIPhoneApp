@@ -13,6 +13,9 @@
 #define TitleFont [UIFont systemFontOfSize:17]
 #define SmallFont [UIFont systemFontOfSize:13]
 
+#define AgreeKeyPath @"supprotInfo.agreeCount"
+#define AgainstKeyPath @"supprotInfo.againstCount"
+
 @interface LJCommentTableHeaderView ()
 
 @property (nonatomic, weak) UILabel * titleLab;
@@ -93,6 +96,7 @@
         self.addOne.hidden = YES;
         self.addOne.font = [UIFont systemFontOfSize:17];
         self.addOne.textAlignment = NSTextAlignmentCenter;
+        
     }
     return self;
 }
@@ -168,17 +172,19 @@
 - (void)agreeAddOne:(UITapGestureRecognizer *)tap
 {
     self.addOne.center = self.agreeImage.center;
-    self.addOne.hidden = NO;
-
-    [self startAnimation];
+    if ([self.delegate respondsToSelector:@selector(commentTableHeaderView:didChangeSupport:)])
+    {
+        [self.delegate commentTableHeaderView:self didChangeSupport:LJCommentSupportTypeAgree];
+    }
 }
 
 - (void)disagreeAddOne:(UITapGestureRecognizer *)tap
 {
-    self.addOne.center = self.disagreeImage.center;
-    self.addOne.hidden = NO;
-    
-    [self startAnimation];
+    self.addOne.center = self.disagreeImage.center;    
+    if ([self.delegate respondsToSelector:@selector(commentTableHeaderView:didChangeSupport:)])
+    {
+        [self.delegate commentTableHeaderView:self didChangeSupport:LJCommentSupportTypeAgainst];
+    }
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
@@ -188,6 +194,8 @@
 
 - (void)startAnimation
 {
+    self.addOne.hidden = NO;
+    
     CAAnimationGroup * group = [CAAnimationGroup animation];
     group.delegate = self;
     CABasicAnimation * anim1 = [CABasicAnimation animation];
@@ -203,5 +211,21 @@
     
     [self.addOne.layer addAnimation:group forKey:nil];
 }
+
+#pragma mark - change support
+- (void)addAgree
+{
+    [self startAnimation];
+    self.agreeLabel.text = [NSString stringWithFormat:@"%d赞", self.supprotInfo.agreeCount.integerValue];
+    self.agreeLabel.textColor = [UIColor redColor];
+}
+
+- (void)addDisagree
+{
+    [self startAnimation];
+    self.disagreeLabel.text = [NSString stringWithFormat:@"%d踩", self.supprotInfo.againstCount.integerValue];
+    self.disagreeLabel.textColor = [UIColor redColor];
+}
+
 
 @end

@@ -15,14 +15,21 @@
 #import "LJCommentSupportInfo.h"
 #import "LJCommentTableHeaderView.h"
 #import "UIImage+MyImage.h"
+#import "MBProgressHUD+LJProgressHUD.h"
 
 #define kCommentTableViewCellIdentifier @"CommentTableViewCell"
 
-@interface LJCommentTableVC ()<UITableViewDelegate, UITableViewDataSource>
+typedef enum : NSUInteger {
+    LJCommentSupportResultSuccess,
+    LJCommentSupportResultFailed,
+} LJCommentSupportResult;
+
+@interface LJCommentTableVC ()<UITableViewDelegate, UITableViewDataSource, LJCommentTableHeaderViewDelegate>
 
 @property (nonatomic, weak) UITableView * tableView;
 @property (nonatomic, strong) NSMutableArray * commentData;
 @property (nonatomic, strong) LJCommentSupportInfo * supportInfo;
+@property (nonatomic, weak) LJCommentTableHeaderView * header;
 
 @end
 
@@ -78,7 +85,9 @@
     LJCommentTableHeaderView * header = [[LJCommentTableHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScrW, 180)];
     header.supprotInfo = supportInfo;
     header.pageInfo = self.pageInfo;
+    header.delegate = self;
     self.tableView.tableHeaderView = header;
+    self.header = header;
 }
 
 - (void)setPageInfo:(LJCommentPageInfo *)pageInfo
@@ -176,5 +185,42 @@
     }
     return header;
 }
+
+#pragma mark - header view delegate
+- (void)commentTableHeaderView:(LJCommentTableHeaderView *)header didChangeSupport:(LJCommentSupportType)type
+{
+    NSString * urlString = [NSString stringWithFormat:kCommentChangeSupportUrl, self.ID.integerValue, type];
+
+    [LJNetWorking GET:urlString parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+#warning 注意这里必须使用GBK转码，并且去除字符串前的12个\n
+        NSStringEncoding encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        NSString * newStr = [[NSString alloc] initWithData:responseObject encoding:encode];
+        NSString * jsonStr = [newStr substringFromIndex:12];
+        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:[jsonStr dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves | NSJSONReadingAllowFragments error:nil];
+        assert(dict != nil);
+        if ([dict[@"code"] integerValue] == LJCommentSupportResultSuccess)
+        {
+            if (type == LJCommentSupportTypeAgree)
+            {
+                self.supportInfo.agreeCount = @(self.supportInfo.agreeCount.integerValue + 1);
+                [self.header addAgree];
+            }
+            else
+            {
+                self.supportInfo.againstCount = @(self.supportInfo.againstCount.integerValue + 1);
+                [self.header addDisagree];
+            }
+        }
+        else
+        {
+            [MBProgressHUD showNotificationMessage:@"您已经顶踩过了" InView:self.tableView];
+        }
+        
+    } failure:^(NSHTTPURLResponse *response, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+
 
 @end

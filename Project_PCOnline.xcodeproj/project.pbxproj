@@ -152,6 +152,10 @@
 		8850184F1A3D90ED000887B2 /* LJComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8850184E1A3D90ED000887B2 /* LJComment.m */; };
 		885018521A3D9109000887B2 /* LJCommentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 885018511A3D9109000887B2 /* LJCommentItem.m */; };
 		885018551A3DF028000887B2 /* MBProgressHUD+LJProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 885018541A3DF028000887B2 /* MBProgressHUD+LJProgressHUD.m */; };
+		88510CA11A4001A70068EC31 /* LJPriceTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88510CA01A4001A70068EC31 /* LJPriceTableHeaderView.m */; };
+		88510CA51A400D720068EC31 /* LJAreaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88510CA41A400D720068EC31 /* LJAreaTableViewController.m */; };
+		88510CA91A4016330068EC31 /* LJAreaManualSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88510CA81A4016330068EC31 /* LJAreaManualSelectCell.m */; };
+		88510CAC1A4016770068EC31 /* LJAreaAutoSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88510CAB1A4016770068EC31 /* LJAreaAutoSelectCell.m */; };
 		8852FF141A381F8600DD4625 /* LJBBSSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8852FF131A381F8600DD4625 /* LJBBSSearchResultCell.m */; };
 		8852FF171A382E5100DD4625 /* LJProductSearchResultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8852FF161A382E5100DD4625 /* LJProductSearchResultItem.m */; };
 		8852FF1B1A3831D700DD4625 /* LJProductSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8852FF191A3831D700DD4625 /* LJProductSearchResultCell.m */; };
@@ -511,6 +515,14 @@
 		885018511A3D9109000887B2 /* LJCommentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJCommentItem.m; sourceTree = "<group>"; };
 		885018531A3DF028000887B2 /* MBProgressHUD+LJProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+LJProgressHUD.h"; sourceTree = "<group>"; };
 		885018541A3DF028000887B2 /* MBProgressHUD+LJProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+LJProgressHUD.m"; sourceTree = "<group>"; };
+		88510C9F1A4001A70068EC31 /* LJPriceTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJPriceTableHeaderView.h; sourceTree = "<group>"; };
+		88510CA01A4001A70068EC31 /* LJPriceTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJPriceTableHeaderView.m; sourceTree = "<group>"; };
+		88510CA31A400D720068EC31 /* LJAreaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJAreaTableViewController.h; sourceTree = "<group>"; };
+		88510CA41A400D720068EC31 /* LJAreaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJAreaTableViewController.m; sourceTree = "<group>"; };
+		88510CA71A4016330068EC31 /* LJAreaManualSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJAreaManualSelectCell.h; sourceTree = "<group>"; };
+		88510CA81A4016330068EC31 /* LJAreaManualSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJAreaManualSelectCell.m; sourceTree = "<group>"; };
+		88510CAA1A4016770068EC31 /* LJAreaAutoSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJAreaAutoSelectCell.h; sourceTree = "<group>"; };
+		88510CAB1A4016770068EC31 /* LJAreaAutoSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJAreaAutoSelectCell.m; sourceTree = "<group>"; };
 		8852FF121A381F8600DD4625 /* LJBBSSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBBSSearchResultCell.h; sourceTree = "<group>"; };
 		8852FF131A381F8600DD4625 /* LJBBSSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBBSSearchResultCell.m; sourceTree = "<group>"; };
 		8852FF151A382E5100DD4625 /* LJProductSearchResultItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJProductSearchResultItem.h; sourceTree = "<group>"; };
@@ -806,6 +818,8 @@
 				044C28E21A2EEEA100A48121 /* SubTableview */,
 				044C28DF1A2EEE9C00A48121 /* LJBaseCustomTableView.h */,
 				044C28E01A2EEE9C00A48121 /* LJBaseCustomTableView.m */,
+				88510C9F1A4001A70068EC31 /* LJPriceTableHeaderView.h */,
+				88510CA01A4001A70068EC31 /* LJPriceTableHeaderView.m */,
 			);
 			name = TableView;
 			sourceTree = "<group>";
@@ -1128,13 +1142,12 @@
 		046E76751A2C1A63000FE777 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				88510CA21A400D3C0068EC31 /* News */,
 				885018491A3D8AF4000887B2 /* Comment */,
-				046E767B1A2C1AC6000FE777 /* LJNewsViewController.h */,
-				046E767C1A2C1AC6000FE777 /* LJNewsViewController.m */,
-				04C711FA1A2D646D009705DF /* LJNewsDetailController.h */,
-				04C711FB1A2D646D009705DF /* LJNewsDetailController.m */,
 				0458452D1A39298100B78001 /* LJChannelSelectViewController.h */,
 				0458452E1A39298100B78001 /* LJChannelSelectViewController.m */,
+				88510CA31A400D720068EC31 /* LJAreaTableViewController.h */,
+				88510CA41A400D720068EC31 /* LJAreaTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1264,6 +1277,7 @@
 		047D6A841A2C654300EB3B64 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				88510CA61A4013EE0068EC31 /* LocationCell */,
 				8850184C1A3D9011000887B2 /* ChannelSelect */,
 				8850184B1A3D9000000887B2 /* Comment */,
 				044C28D21A2EE20C00A48121 /* TableView */,
@@ -1698,6 +1712,28 @@
 			name = ChannelSelect;
 			sourceTree = "<group>";
 		};
+		88510CA21A400D3C0068EC31 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				046E767B1A2C1AC6000FE777 /* LJNewsViewController.h */,
+				046E767C1A2C1AC6000FE777 /* LJNewsViewController.m */,
+				04C711FA1A2D646D009705DF /* LJNewsDetailController.h */,
+				04C711FB1A2D646D009705DF /* LJNewsDetailController.m */,
+			);
+			name = News;
+			sourceTree = "<group>";
+		};
+		88510CA61A4013EE0068EC31 /* LocationCell */ = {
+			isa = PBXGroup;
+			children = (
+				88510CA71A4016330068EC31 /* LJAreaManualSelectCell.h */,
+				88510CA81A4016330068EC31 /* LJAreaManualSelectCell.m */,
+				88510CAA1A4016770068EC31 /* LJAreaAutoSelectCell.h */,
+				88510CAB1A4016770068EC31 /* LJAreaAutoSelectCell.m */,
+			);
+			name = LocationCell;
+			sourceTree = "<group>";
+		};
 		8852FF111A381F4F00DD4625 /* TableviewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2091,6 +2127,7 @@
 				88B7FC541A34CA4A00F31E9C /* NSData+ImageContentType.m in Sources */,
 				044C28D51A2EE23800A48121 /* LJTopNewsTableView.m in Sources */,
 				885018521A3D9109000887B2 /* LJCommentItem.m in Sources */,
+				88510CA11A4001A70068EC31 /* LJPriceTableHeaderView.m in Sources */,
 				044C28C61A2EB96B00A48121 /* LJPhoto.m in Sources */,
 				044C28C01A2EAFE100A48121 /* LJProductCategoryCell.m in Sources */,
 				88FD80FD1A39FBBA001F9E82 /* MJRefreshHeaderView.m in Sources */,
@@ -2125,9 +2162,11 @@
 				04C712141A2DB04D009705DF /* LJBBSAds.m in Sources */,
 				04B0C5241A37F3DF00B3B9B4 /* LJTopicSearchResultVC.m in Sources */,
 				886ADC041A3ACEA600044ECC /* LJWebViewController.m in Sources */,
+				88510CA51A400D720068EC31 /* LJAreaTableViewController.m in Sources */,
 				04B30DA61A314D46007AF4B9 /* LJBBSHotTopicTableVC.m in Sources */,
 				046E767D1A2C1AC6000FE777 /* LJNewsViewController.m in Sources */,
 				889552401A34CF6700E7D864 /* AFURLResponseSerialization.m in Sources */,
+				88510CA91A4016330068EC31 /* LJAreaManualSelectCell.m in Sources */,
 				044C28E51A2F358C00A48121 /* LJInfiniteScrollView.m in Sources */,
 				046E76631A2C0A37000FE777 /* FMDatabasePool.m in Sources */,
 				884904381A3E73A3008B8015 /* LJCommentTableViewCell.m in Sources */,
@@ -2166,6 +2205,7 @@
 				8894F90E1A2CDF890058C76A /* NSString+MyString.m in Sources */,
 				04B30DAB1A3159EA007AF4B9 /* LJHotTopicCell.m in Sources */,
 				8852FF1F1A38429700DD4625 /* LJTopicSearchResultItem.m in Sources */,
+				88510CAC1A4016770068EC31 /* LJAreaAutoSelectCell.m in Sources */,
 				04B30DB91A31D822007AF4B9 /* LJFastForumButton.m in Sources */,
 				044C28E11A2EEE9C00A48121 /* LJBaseCustomTableView.m in Sources */,
 				8857A3421A3321FB008265FC /* LJBaseTopicFrame.m in Sources */,

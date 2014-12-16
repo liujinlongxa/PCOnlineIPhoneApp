@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    LJCommentSupportTypeAgree = 1,
+    LJCommentSupportTypeAgainst,
+} LJCommentSupportType;
+
 @interface LJCommentSupportInfo : NSObject
 
 @property (nonatomic, strong) NSNumber * addAgainst;

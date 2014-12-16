@@ -15,7 +15,11 @@
 {
     LJBBSAds * ads = [[self alloc] init];
     [ads setValuesForKeysWithDictionary:dict];
-    return ads;
+    if (ads.topicId.integerValue != 0)
+    {
+        return ads;
+    }
+    return nil;
 }
 
 - (NSString *)url

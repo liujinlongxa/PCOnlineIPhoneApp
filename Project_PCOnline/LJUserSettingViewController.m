@@ -19,7 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     //添加背景图片
 //    self.view.backgroundColor = [UIColor redColor];

@@ -8,7 +8,6 @@
 
 #import "LJCommonData.h"
 #import "LJNetWorking.h"
-#import "LJArea.h"
 #import "LJSubject.h"
 #import "LJDataManager.h"
 #import "LJBBSListItem.h"
@@ -19,6 +18,8 @@
 
 #define KCurShowSubjectKey @"CurShowSubject"
 #define kCurHideSubjectKey @"CurHideSubject"
+
+#define kCurLocationKey @"CurLocation"
 
 @interface LJCommonData ()
 
@@ -31,6 +32,7 @@
 
 @synthesize curShowSubjectsData = _curShowSubjectsData;
 @synthesize curHideSubjectsData = _curHideSubjectsData;
+@synthesize curArea = _curArea;
 
 + (instancetype)shareCommonData
 {
@@ -81,6 +83,36 @@
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
         NSLog(@"%@", error);
     }];
+}
+
+//获取当前的位置数据
+- (LJArea *)curArea
+{
+    if (!_curArea)
+    {
+        NSString * ID = [[NSUserDefaults standardUserDefaults] objectForKey:kCurLocationKey];
+        if (!ID)
+        {
+            _curArea = self.AreaData[0];
+        }
+        else
+        {
+            for (LJArea * area in self.AreaData) {
+                if ([area.ID isEqualToString:ID])
+                {
+                    _curArea = area;
+                    break;
+                }
+            }
+        }
+    }
+    return _curArea;
+}
+
+- (void)setCurArea:(LJArea *)curArea
+{
+    _curArea = curArea;
+    [[NSUserDefaults standardUserDefaults] setObject:curArea.ID forKey:kCurLocationKey];
 }
 
 //地区数据

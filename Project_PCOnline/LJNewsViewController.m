@@ -27,7 +27,7 @@
 #import "LJBaseCustomTableView.h"
 
 #import "LJChannelSelectViewController.h"
-
+#import "LJAreaTableViewController.h"
 
 
 @interface LJNewsViewController ()< LJSubjectViewDelegate, LJCustomTableViewDelegate, UIScrollViewDelegate, LJChannelSelectViewControllerDelegate>
@@ -70,6 +70,9 @@
     
     //注册广告点击通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(adsClikc:) name:LJAdsViewTapNotify object:nil];
+    
+    //定位按钮点击
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loctionSelect:) name:kLJPriceTableLocationButtonClickNotification object:nil];
 
     [self setupShadowLabel];
 }
@@ -320,7 +323,12 @@
     
 }
 
-
+#pragma mark - 定位
+- (void)loctionSelect:(NSNotification *)notify
+{
+    LJAreaTableViewController * areaVC = [[LJAreaTableViewController alloc] init];
+    [self.navigationController pushViewController:areaVC animated:YES];
+}
 
 
 

@@ -7,9 +7,19 @@
 //
 
 #import "LJPriceTableView.h"
+#import "LJPriceTableHeaderView.h"
 
 @implementation LJPriceTableView
 
-
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+        LJPriceTableHeaderView * header = [[LJPriceTableHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScrW, 50)];
+        self.tableHeaderView = header;
+    }
+    return self;
+}
 
 @end

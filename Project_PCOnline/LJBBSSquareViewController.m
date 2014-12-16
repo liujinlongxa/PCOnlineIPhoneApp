@@ -239,7 +239,10 @@
         NSMutableArray * adsArr = [NSMutableArray array];
         for (NSDictionary * adsDict in dict[kBBSAdsKey]) {
             LJBBSAds * ads = [LJBBSAds BBSAdsWithDict:adsDict];
-            [adsArr addObject:ads];
+            if (ads)
+            {
+                [adsArr addObject:ads];
+            }
         }
         _adsData = adsArr;
         [self reloadAdsData];
