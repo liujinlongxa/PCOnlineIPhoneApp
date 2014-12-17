@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LJArea.h"
 
 @interface LJAreaAutoSelectCell : UITableViewCell
+
+@property (nonatomic, strong) LJArea * area;
+
+- (void)startLocation;
+- (void)failedLocation;
 
 @end

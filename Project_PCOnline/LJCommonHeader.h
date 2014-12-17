@@ -9,6 +9,9 @@
 #ifndef Project_PCOnline_LJCommonHeader_h
 #define Project_PCOnline_LJCommonHeader_h
 
+//适配
+#define IOS8 ([UIDevice currentDevice].systemVersion.floatValue >= 8.0)
+
 //调试
 #ifdef DEBUG
 #define LJLog(...) NSLog(__VA_ARGS__)

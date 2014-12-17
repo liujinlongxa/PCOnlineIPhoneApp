@@ -523,6 +523,8 @@
 		88510CA81A4016330068EC31 /* LJAreaManualSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJAreaManualSelectCell.m; sourceTree = "<group>"; };
 		88510CAA1A4016770068EC31 /* LJAreaAutoSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJAreaAutoSelectCell.h; sourceTree = "<group>"; };
 		88510CAB1A4016770068EC31 /* LJAreaAutoSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJAreaAutoSelectCell.m; sourceTree = "<group>"; };
+		88514DB51A412B340000137E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		88514DB61A412B360000137E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		8852FF121A381F8600DD4625 /* LJBBSSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBBSSearchResultCell.h; sourceTree = "<group>"; };
 		8852FF131A381F8600DD4625 /* LJBBSSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBBSSearchResultCell.m; sourceTree = "<group>"; };
 		8852FF151A382E5100DD4625 /* LJProductSearchResultItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJProductSearchResultItem.h; sourceTree = "<group>"; };
@@ -2338,6 +2340,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				046E75D31A2BF700000FE777 /* Base */,
+				88514DB51A412B340000137E /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -2346,6 +2349,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				046E75D81A2BF700000FE777 /* Base */,
+				88514DB61A412B360000137E /* zh-Hans */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";

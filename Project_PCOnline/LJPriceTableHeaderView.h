@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LJArea.h"
 
 @class LJPriceTableHeaderView;
 
 
 @interface LJPriceTableHeaderView : UIView
 
+@property (nonatomic, strong) LJArea * curArea;
 
 @end

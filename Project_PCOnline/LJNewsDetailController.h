@@ -17,5 +17,6 @@
 
 @property (nonatomic, strong) LJNews * news;
 @property (nonatomic, strong) LJAds * ads;
+@property (nonatomic, copy) NSString * ID;
 
 @end

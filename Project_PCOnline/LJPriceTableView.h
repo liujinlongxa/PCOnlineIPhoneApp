@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "LJBaseCustomTableView.h"
 #import "LJNormalTableView.h"
-
+#import "LJArea.h"
 @interface LJPriceTableView : LJNormalTableView
+
+@property (nonatomic, strong) LJArea * curArea;
 
 @end

@@ -12,6 +12,7 @@
 #import "LJNews.h"
 #import "LJNewsNormalCell.h"
 #import "LJAds.h"
+#import "LJCommonData.h"
 
 
 #define kNewsKey @"articleList" //新闻key
@@ -56,10 +57,22 @@
     return _newsData;
 }
 
+- (NSString *)setupUrlStr
+{
+    NSString * ursStr = nil;
+    if ([self.subject.title isEqualToString:@"行情"]) {
+        ursStr = [NSString stringWithFormat:kNewsUrl, [LJCommonData shareCommonData].curArea.index, self.curPage];
+    }
+    else
+    {
+        ursStr = [NSString stringWithFormat:kNewsUrl, self.subject.index, self.curPage];
+    }
+    return ursStr;
+}
+
 - (void)loadNewsData
 {
-    NSString * urlStr = [NSString stringWithFormat:kNewsUrl, self.subject.index, self.curPage];
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorking GET:[self setupUrlStr] parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         //解析数据
         NSMutableArray * newsArr = [NSMutableArray array];

@@ -16,7 +16,6 @@
 
 @property (nonatomic, weak) UILabel * titleLab;
 @property (nonatomic, weak) UIButton * locationButton;
-@property (nonatomic, strong) LJArea * curArea;
 
 @end
 
@@ -52,7 +51,7 @@
                                   
 - (void)layoutSubviews
 {
-    CGFloat padding = 10;
+    CGFloat padding = 5;
     CGFloat viewW = CGRectGetWidth(self.frame);
     CGFloat viewH = CGRectGetHeight(self.frame);
     
@@ -66,6 +65,12 @@
 - (void)localButtonClick:(id)sender
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:kLJPriceTableLocationButtonClickNotification object:self];
+}
+
+- (void)setCurArea:(LJArea *)curArea
+{
+    _curArea = curArea;
+    [self.locationButton setTitle:curArea.title forState:UIControlStateNormal];
 }
 
 @end

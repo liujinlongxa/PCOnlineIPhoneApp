@@ -16,7 +16,6 @@
 @property (nonatomic, weak) UIWebView * webView;
 @property (nonatomic, strong) LJCommentInfo * info;
 @property (nonatomic, weak) UIBarButtonItem * commentBtn;
-@property (nonatomic, copy) NSString * ID;
 
 @end
 
@@ -144,7 +143,6 @@
         NSLog(@"%@", error);
     }];
 }
-
 
 
 

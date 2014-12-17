@@ -90,15 +90,15 @@
 {
     if (!_curArea)
     {
-        NSString * ID = [[NSUserDefaults standardUserDefaults] objectForKey:kCurLocationKey];
-        if (!ID)
+        NSString * index = [[NSUserDefaults standardUserDefaults] objectForKey:kCurLocationKey];
+        if (!index)
         {
             _curArea = self.AreaData[0];
         }
         else
         {
             for (LJArea * area in self.AreaData) {
-                if ([area.ID isEqualToString:ID])
+                if ([area.index isEqualToString:index])
                 {
                     _curArea = area;
                     break;
@@ -112,7 +112,7 @@
 - (void)setCurArea:(LJArea *)curArea
 {
     _curArea = curArea;
-    [[NSUserDefaults standardUserDefaults] setObject:curArea.ID forKey:kCurLocationKey];
+    [[NSUserDefaults standardUserDefaults] setObject:curArea.index forKey:kCurLocationKey];
 }
 
 //地区数据

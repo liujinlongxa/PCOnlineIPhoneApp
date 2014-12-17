@@ -30,13 +30,15 @@
 #import "LJAreaTableViewController.h"
 
 
-@interface LJNewsViewController ()< LJSubjectViewDelegate, LJCustomTableViewDelegate, UIScrollViewDelegate, LJChannelSelectViewControllerDelegate>
+@interface LJNewsViewController ()< LJSubjectViewDelegate, LJCustomTableViewDelegate, UIScrollViewDelegate, LJChannelSelectViewControllerDelegate, LJAreaTableViewControllerDelegate>
 
 @property (nonatomic, weak) UIScrollView * scrollView;
 
 @property (nonatomic, strong) LJSubject * curSubject;
 @property (nonatomic, strong) NSArray * subjects;
 @property (nonatomic, weak) LJSubjectView * subjectView;
+
+@property (nonatomic, weak) LJPriceTableView * priceTableView;
 
 //频道选择
 @property (nonatomic, strong) LJChannelSelectViewController * channelSelectVC;//频道选择控制器
@@ -116,21 +118,25 @@
 //初始化表格视图
 - (void)setupTableView
 {
-    NSDictionary * subjectsTableView = @{@"头条":@"LJTopNewsTableView",@"行情":@"LJPriceTableView"};
-                            //@"直播":@"LJLiveTableView",
                             
     CGFloat tabH = CGRectGetHeight(self.scrollView.frame);
     CGFloat tabW = CGRectGetWidth(self.scrollView.frame);
     for (int i = 0; i < self.subjects.count; i++) {
         LJBaseCustomTableView * table = nil;
         LJSubject * subject = self.subjects[i];
-        NSString * tableViewStr = subjectsTableView[subject.title];
-        if (tableViewStr == nil) {
-            table= [[LJNormalTableView alloc] init];
+        
+        if ([subject.title isEqualToString:@"头条"])
+        {
+            table = [[LJTopNewsTableView alloc] init];
+        }
+        else if([subject.title isEqualToString:@"行情"])
+        {
+            table = [[LJPriceTableView alloc] init];
+            self.priceTableView = (LJPriceTableView *)table;
         }
         else
         {
-            table = [[NSClassFromString(tableViewStr) alloc] init];
+            table = [[LJNormalTableView alloc] init];
         }
         ((LJNormalTableView *)table).subject = subject;
         table.frame = CGRectMake(i * tabW, 0, tabW, tabH);
@@ -327,9 +333,15 @@
 - (void)loctionSelect:(NSNotification *)notify
 {
     LJAreaTableViewController * areaVC = [[LJAreaTableViewController alloc] init];
+    areaVC.delegate = self;
     [self.navigationController pushViewController:areaVC animated:YES];
 }
 
-
+- (void)areaTableViewController:(LJAreaTableViewController *)controller didSelectArea:(LJArea *)area
+{
+    self.priceTableView.curArea = area;
+    [self.priceTableView beginRefresh];
+    [self.priceTableView showData];
+}
 
 @end
