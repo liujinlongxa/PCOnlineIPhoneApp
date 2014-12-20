@@ -12,6 +12,7 @@
 #import "LJUserSettingViewController.h"
 #import <ShareSDK/ShareSDK.h>
 #import "WeiboSDK.h"
+#import "LJNetWorking.h"
 
 @interface AppDelegate ()
 
@@ -29,7 +30,7 @@
     self.window.rootViewController = revealVC;
     
     application.statusBarStyle = UIStatusBarStyleLightContent;
-    
+    [[LJNetWorking shareNetwork] startMonitorNetwork];
     
     //share sdk
     [ShareSDK registerApp:@"4cc5b89481e3"];//字符串api20为您的ShareSDK的AppKey

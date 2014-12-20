@@ -8,7 +8,8 @@
 
 #import "LJNetWorking.h"
 #import "Reachability.h"
-
+#import "LJCommonHeader.h"
+#import "MBProgressHUD+LJProgressHUD.h"
 
 static LJNetWorking * instance;
 
@@ -22,7 +23,7 @@ static LJNetWorking * instance;
 
 
 #pragma mark - moniter network
-- (instancetype)shareNetwork
++ (instancetype)shareNetwork
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -36,6 +37,18 @@ static LJNetWorking * instance;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChange:) name:kReachabilityChangedNotification object:nil];
     
     self.networkReachability = [Reachability reachabilityForInternetConnection];
+    if (self.networkReachability.currentReachabilityStatus == NotReachable)
+    {
+        LJLog(@"Change network status not reaceh");
+        self.canReachInternet = NO;
+    }
+    else
+    {
+        LJLog(@"Change network status reaceh");
+        self.canReachInternet = YES;
+    }
+    
+    //开始监听
     [self.networkReachability startNotifier];
     
 }
@@ -52,36 +65,49 @@ static LJNetWorking * instance;
     NetworkStatus status = reach.currentReachabilityStatus;
     if (status == NotReachable)
     {
+        LJLog(@"Change network status not reaceh : %d", status);
         self.canReachInternet = NO;
     }
     else
     {
+        LJLog(@"Change network status reaceh : %d", status);
         self.canReachInternet = YES;
     }
 }
 
-#pragma mark - http method GET,POST
-+ (void)GET:(NSString *)URLString parameters:(id)parameters success:(void (^)(NSHTTPURLResponse *, id))success failure:(void (^)(NSHTTPURLResponse *, NSError *))failure
+#pragma mark - url cache
+- (void)cleanCache
 {
-    
-    NSURLCache * urlCache = [NSURLCache sharedURLCache];
-    [urlCache setMemoryCapacity:1 * 2048 * 2048];
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+}
+
+- (NSUInteger)currnetCacheSize
+{
+    return [[NSURLCache sharedURLCache] currentDiskUsage];
+}
+
+#pragma mark - http method GET,POST
++ (void)GET:(NSString *)URLString parameters:(id)parameters success:(void (^)(NSHTTPURLResponse *, id))success failure:(void (^)(NSHTTPURLResponse *, NSError *))failure andView:(UIView *)view
+{
     NSURL * url = [NSURL URLWithString:URLString];
     NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f];
     
     //没有联网的情况下使用缓存
     if (!instance.isCanReachInternet)
     {
-        NSCachedURLResponse * cacheResponse = [urlCache cachedResponseForRequest:req];
+        NSCachedURLResponse * cacheResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:req];
         if (cacheResponse != nil) {
+            //有缓存，加载缓存数据
             success((NSHTTPURLResponse *)cacheResponse.response, cacheResponse.data);
-            return;
         }
         else
         {
             //没有联网，也没有缓存
             failure(nil, nil);
+            [MBProgressHUD hideAllHUDsForView:view animated:YES];
+            [MBProgressHUD showNotificationMessage:@"加载失败" InView:view];
         }
+        return;
     }
 
     [NSURLConnection sendAsynchronousRequest:req queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -98,6 +124,41 @@ static LJNetWorking * instance;
 //    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 //        failure(operation.response, error);
 //    }];
+    
+    
+}
+
++ (void)GET:(NSString *)URLString parameters:(id)parameters success:(void (^)(NSHTTPURLResponse *, id))success failure:(void (^)(NSHTTPURLResponse *, NSError *))failure
+{
+    NSURL * url = [NSURL URLWithString:URLString];
+    NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f];
+    
+    //没有联网的情况下使用缓存
+    if (!instance.isCanReachInternet)
+    {
+        NSCachedURLResponse * cacheResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:req];
+        if (cacheResponse != nil) {
+            //有缓存，加载缓存数据
+            success((NSHTTPURLResponse *)cacheResponse.response, cacheResponse.data);
+        }
+        else
+        {
+            //没有联网，也没有缓存
+            failure(nil, nil);
+        }
+        return;
+    }
+    
+    [NSURLConnection sendAsynchronousRequest:req queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (connectionError)
+        {
+            failure((NSHTTPURLResponse *)response, connectionError);
+        }
+        else
+        {
+            success((NSHTTPURLResponse *)response, data);
+        }
+    }];
     
     
 }

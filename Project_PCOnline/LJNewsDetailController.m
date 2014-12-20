@@ -13,7 +13,7 @@
 #import "LJNetWorking.h"
 @interface LJNewsDetailController ()<UIWebViewDelegate>
 
-@property (nonatomic, weak) UIWebView * webView;
+//@property (nonatomic, weak) UIWebView * webView;
 @property (nonatomic, strong) LJCommentInfo * info;
 @property (nonatomic, weak) UIBarButtonItem * commentBtn;
 
@@ -127,7 +127,6 @@
 - (void)loadCommentInfo
 {
     NSString * urlStr  = [self setupUrlStr];
-    LJLog(@"%@", urlStr);
     [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         if ([dict[@"error"] isEqualToString:@"topic not found"])

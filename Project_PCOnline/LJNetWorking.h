@@ -21,13 +21,19 @@
             success:(void (^)(NSHTTPURLResponse *response, id responseObject))success
             failure:(void (^)(NSHTTPURLResponse *response, NSError *error))failure;
 
++ (void)GET:(NSString *)URLString
+    parameters:(id)parameters
+    success:(void (^)(NSHTTPURLResponse *, id))success
+    failure:(void (^)(NSHTTPURLResponse *, NSError *))failure
+    andView:(UIView *)view;
+
 //- (AFHTTPRequestOperation *)POST:(NSString *)URLString
 //    parameters:(id)parameters
 //    constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block
 //    success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
 //    failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
-- (instancetype)shareNetwork;
++ (instancetype)shareNetwork;
 
 //监测网络状态
 - (void)startMonitorNetwork;

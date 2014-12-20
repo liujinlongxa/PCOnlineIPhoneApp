@@ -13,6 +13,7 @@
 #import "LJHotForumsView.h"
 #import "LJInfiniteScrollView.h"
 #import "LJBBSHotTopicTableVC.h"
+#import "MJRefresh/MJRefresh.h"
 //View
 #import "LJFastForumButton.h"
 #import "LJFastSubForumButton.h"
@@ -46,6 +47,9 @@
 @property (nonatomic, strong) LJInfiniteScrollView * hotTopicScrollView;
 //热门板块
 @property (nonatomic, strong) LJHotForumsView * hotForumView;
+
+//刷新
+@property (nonatomic, assign, getter=isRefresh) BOOL refresh;
 @end
 
 @implementation LJBBSSquareViewController
@@ -93,8 +97,24 @@
     UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
-    
     self.scrollView.backgroundColor = RGBColor(230, 230, 230);
+    [self.scrollView addHeaderWithCallback:^{
+        
+        [self loadAdsData];
+        [self loadHotTopicData];
+        [self loadHotForumsData];
+        
+    }];
+}
+
+- (void)endRefresh
+{
+    if (self.hotTopicData &&
+        self.hotForumsData &&
+        self.adsData)
+    {
+        [self.scrollView headerEndRefreshing];
+    }
 }
 
 //设置广告
@@ -233,6 +253,7 @@
 - (void)loadAdsData
 {
     NSString * urlStr = kBBSAdsUrl;
+    _adsData = nil;
     [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         //解析数据
@@ -254,6 +275,7 @@
 - (void)reloadAdsData
 {
     [self.adsView reloadViewWithAds:self.adsData];
+    [self endRefresh];
 }
 
 //每日热帖数据
@@ -268,6 +290,7 @@
 
 - (void)loadHotTopicData
 {
+    _hotTopicData = nil;
     NSString * urlStr = [NSString stringWithFormat:kBBSHotTopicUrl, 1];//数量一个
     [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
@@ -316,6 +339,7 @@
     }
     self.hotTopicScrollView.contentSize = CGSizeMake((self.hotTopicData.count + 2) * CGRectGetWidth(self.hotTopicScrollView.frame), 0);
     [self.hotTopicScrollView startInfiniteScrollView];
+    [self endRefresh];//停止刷新
 }
 
 //热门板块数据
@@ -330,6 +354,7 @@
 #pragma mark - 重新加载数据
 - (void)loadHotForumsData
 {
+    _hotForumsData = nil;
     NSString * urlStr = kBBSHotForumsUrl;
     [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
@@ -350,6 +375,7 @@
 {
     self.hotForumView.forumsData = self.hotForumsData;
     self.scrollView.contentSize = CGSizeMake(0, CGRectGetMaxY(self.hotForumView.frame) + kTabBarH + kNavBarH * 2 + kStatusBarH);
+    [self endRefresh];//停止刷新
 }
 
 #pragma mark - 滚动视图代理

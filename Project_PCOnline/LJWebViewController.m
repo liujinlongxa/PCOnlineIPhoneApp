@@ -28,11 +28,13 @@
 @end
 
 @implementation LJWebViewController
+@synthesize webView = _webView;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //web view
+    //webview
     UIWebView * webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScrW, kScrH - kBarH)];
     [self.view addSubview:webView];
     self.webView = webView;
@@ -89,7 +91,7 @@
         [self setupPageDataWithHtmlStr:htmlStr];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
         NSLog(@"%@", error);
-    }];
+    } andView:self.webView];
 }
 
 #pragma mark - load page data
