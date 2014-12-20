@@ -105,28 +105,23 @@ static LJNetWorking * instance;
             //没有联网，也没有缓存
             failure(nil, nil);
             [MBProgressHUD hideAllHUDsForView:view animated:YES];
-            [MBProgressHUD showNotificationMessage:@"加载失败" InView:view];
+            [MBProgressHUD showNotificationMessage:@"加载失败,请检查网络连接" InView:view];
         }
         return;
     }
 
     [NSURLConnection sendAsynchronousRequest:req queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        success((NSHTTPURLResponse *)response, data);
+        if (connectionError)
+        {
+            failure((NSHTTPURLResponse *)response, connectionError);
+        }
+        else
+        {
+            success((NSHTTPURLResponse *)response, data);
+        }
     }];
-    
-    
-    
-//    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
-//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    
-//    [manager GET:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        success(operation.response, responseObject);
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        failure(operation.response, error);
-//    }];
-    
-    
 }
+
 
 + (void)GET:(NSString *)URLString parameters:(id)parameters success:(void (^)(NSHTTPURLResponse *, id))success failure:(void (^)(NSHTTPURLResponse *, NSError *))failure
 {

@@ -159,9 +159,6 @@
                                                   url:nil
                                           description:nil
                                             mediaType:SSPublishContentMediaTypeNews];
-    //创建弹出菜单容器
-//    id<ISSContainer> container = [ShareSDK container];
-//    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
     
     //显示编辑框
     [ShareSDK showShareViewWithType:ShareTypeSinaWeibo

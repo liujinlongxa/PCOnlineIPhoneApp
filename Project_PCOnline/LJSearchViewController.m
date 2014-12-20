@@ -87,6 +87,30 @@
     [self.view addSubview:bar];
     bar.delegate = self;
     self.searchBar = bar;
+    
+//    //添加手势，隐藏键盘
+//    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)]];
+}
+
+//- (void)hideKeyboard:(UITapGestureRecognizer *)tap
+//{
+//    
+//    else
+//    {
+//
+//    }
+//}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (self.searchBar.textField.isFirstResponder)
+    {
+        [self.searchBar.textField resignFirstResponder];
+    }
+    else
+    {
+        [super touchesBegan:touches withEvent:event];
+    }
 }
 
 - (void)setupBtnView //下拉菜单

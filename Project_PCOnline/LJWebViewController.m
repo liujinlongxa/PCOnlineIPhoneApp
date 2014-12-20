@@ -90,8 +90,7 @@
         [self.webView loadHTMLString:htmlStr baseURL:nil];
         [self setupPageDataWithHtmlStr:htmlStr];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
-    } andView:self.webView];
+    } andView:self.view];
 }
 
 #pragma mark - load page data
