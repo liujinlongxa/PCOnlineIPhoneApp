@@ -10,7 +10,7 @@
 #import "LJSearchBarSelectButtonsView.h"
 #import "LJCommonHeader.h"
 
-@interface LJSearchBar ()
+@interface LJSearchBar ()<UITextFieldDelegate>
 
 @property (nonatomic, weak) LJSearchBarSelectButtonsView * selectButtonView;
 
@@ -56,7 +56,11 @@
         text.backgroundColor = [UIColor whiteColor];
         [self.inputView addSubview:text];
         self.textField = text;
-        self.textField.text = @"苹果";
+        self.textField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 50)];
+        self.textField.leftViewMode = UITextFieldViewModeAlways;
+        self.textField.returnKeyType = UIReturnKeySearch;
+        self.textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        self.textField.delegate = self;
         
         //button
         UIButton * selectBtn = [[UIButton alloc] init];
@@ -138,7 +142,16 @@
 {
     if ([self.delegate respondsToSelector:@selector(searchBar:didClickSearchBtn:)]) {
         [self.delegate searchBar:self didClickSearchBtn:sender];
+        [self.textField resignFirstResponder];
     }
+}
+
+#pragma mark - textfield delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self searchButtonClick:self.searchButton];
+    return YES;
 }
 
 @end
