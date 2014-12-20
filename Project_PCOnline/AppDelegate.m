@@ -11,10 +11,6 @@
 #import "LJTabBarController.h"
 #import "LJUserSettingViewController.h"
 #import <ShareSDK/ShareSDK.h>
-#import <TencentOpenAPI/QQApiInterface.h>
-#import <TencentOpenAPI/TencentOAuth.h>
-#import "WXApi.h"
-#import "WeiboApi.h"
 #import "WeiboSDK.h"
 
 @interface AppDelegate ()
