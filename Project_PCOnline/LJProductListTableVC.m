@@ -36,9 +36,9 @@ typedef enum : NSUInteger {
 @property (nonatomic, weak) UITableView * tableView;
 
 //排序
-@property (nonatomic, weak) LJProductSortView * sortView;
-@property (nonatomic, weak) UIView * shadowView;
-@property (nonatomic, weak) UIView * bigContentView;
+@property (nonatomic, strong) LJProductSortView * sortView;
+@property (nonatomic, strong) UIView * shadowView;
+@property (nonatomic, strong) UIView * bigContentView;
 @end
 
 @implementation LJProductListTableVC
@@ -101,6 +101,11 @@ typedef enum : NSUInteger {
 }
 
 #pragma mark - 排序
+//- (void)setupSortViews
+//{
+//    
+//}
+
 - (LJProductSortView *)sortView
 {
     if (!_sortView) {
@@ -118,7 +123,6 @@ typedef enum : NSUInteger {
     if (!_shadowView) {
         //阴影
         UIView * shadowView = [[UIView alloc] initWithFrame:CGRectMake(0, kStatusBarH + kNavBarH, kScrW, kScrH)];
-        NSLog(@"%@", NSStringFromCGRect(shadowView.frame));
         shadowView.backgroundColor = [UIColor blackColor];
         shadowView.hidden = YES;
         shadowView.alpha = 0;

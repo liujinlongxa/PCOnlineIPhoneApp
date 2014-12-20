@@ -13,7 +13,7 @@
 #import "LJProductDetailWebVC.h"
 @class LJProductSearchResultItem;
 
-@interface LJProductDetailScrollTabVC : LJScrollTabViewController
+@interface LJProductDetailScrollTabVC : LJScrollTabViewController<LJProductInformationTVCDelegate, LJProductDetailWebVCCDelegate>
 
 @property (nonatomic, strong) LJProduct * product;
 @property (nonatomic, strong) LJProductSearchResultItem * item;

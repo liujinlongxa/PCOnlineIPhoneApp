@@ -27,4 +27,8 @@
 //    success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
 //    failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
+- (instancetype)shareNetwork;
+
+//监测网络状态
+- (void)startMonitorNetwork;
 @end

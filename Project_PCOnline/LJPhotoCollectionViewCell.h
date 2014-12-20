@@ -12,5 +12,5 @@
 @interface LJPhotoCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) LJPhoto * photo;
-
+@property (weak, nonatomic) IBOutlet UIImageView *photoImage;
 @end

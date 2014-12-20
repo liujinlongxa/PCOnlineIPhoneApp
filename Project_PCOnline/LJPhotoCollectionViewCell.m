@@ -10,7 +10,7 @@
 #import "UIImageView+WebCache.h"
 
 @interface LJPhotoCollectionViewCell ()
-@property (weak, nonatomic) IBOutlet UIImageView *photoImage;
+
 
 @end
 

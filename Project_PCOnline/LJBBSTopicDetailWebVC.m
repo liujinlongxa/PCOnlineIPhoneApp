@@ -12,6 +12,8 @@
 #import "LJTopicSearchResultItem.h"
 #import "LJNetWorking.h"
 #import "LJHotTopic.h"
+#import <ShareSDK/ShareSDK.h>
+#import "MBProgressHUD+LJProgressHUD.h"
 
 @interface LJBBSTopicDetailWebVC ()<UIWebViewDelegate>
 @property (nonatomic, copy) NSString * baseUrl;
@@ -136,7 +138,53 @@
 
 - (void)shareBtnClick:(id)sender
 {
+    NSString * content = nil;
+    if (self.topic != nil) {
+        content = self.topic.title;
+    }
+    else if(self.bbsItem != nil)
+    {
+        content = self.bbsItem.title;
+    }
+    else
+    {
+        content = self.searchResutItem.title;
+    }
     
+    //构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:content
+                                       defaultContent:nil
+                                                image:nil
+                                                title:nil
+                                                  url:nil
+                                          description:nil
+                                            mediaType:SSPublishContentMediaTypeNews];
+    //创建弹出菜单容器
+//    id<ISSContainer> container = [ShareSDK container];
+//    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    //显示编辑框
+    [ShareSDK showShareViewWithType:ShareTypeSinaWeibo
+                  container:nil
+                    content:publishContent
+              statusBarTips:YES
+                authOptions:nil
+               shareOptions:nil
+                     result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                         
+                         if (state == SSPublishContentStateSuccess)
+                         {
+                             [MBProgressHUD showNotificationMessage:@"分享成功" InView:self.view];
+                         }
+                         else if (state == SSPublishContentStateFail)
+                         {
+                             NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"发布失败!error code == %d, error code == %@"), [error errorCode], [error errorDescription]);
+                         }
+                         else
+                         {
+                             NSLog(@"other");
+                         }
+                     }];
 }
 
 - (void)collectBtnClick:(id)sender

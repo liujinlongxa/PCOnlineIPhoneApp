@@ -10,6 +10,12 @@
 #import "PPRevealSideViewController.h"
 #import "LJTabBarController.h"
 #import "LJUserSettingViewController.h"
+#import <ShareSDK/ShareSDK.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import "WXApi.h"
+#import "WeiboApi.h"
+#import "WeiboSDK.h"
 
 @interface AppDelegate ()
 
@@ -27,6 +33,15 @@
     self.window.rootViewController = revealVC;
     
     application.statusBarStyle = UIStatusBarStyleLightContent;
+    
+    
+    //share sdk
+    [ShareSDK registerApp:@"4cc5b89481e3"];//字符串api20为您的ShareSDK的AppKey
+    
+    //添加新浪微博应用 注册网址 http://open.weibo.com
+    [ShareSDK connectSinaWeiboWithAppKey:@"946021150"
+                               appSecret:@"17cd7a606c8a55dadd9715ffd6a55c95"
+                             redirectUri:@"http://www.baidu.com"];
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -53,5 +68,24 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (BOOL)application:(UIApplication *)application
+      handleOpenURL:(NSURL *)url
+{
+    return [ShareSDK handleOpenURL:url
+                        wxDelegate:self];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return [ShareSDK handleOpenURL:url
+                 sourceApplication:sourceApplication
+                        annotation:annotation
+                        wxDelegate:self];
+}
+
 
 @end

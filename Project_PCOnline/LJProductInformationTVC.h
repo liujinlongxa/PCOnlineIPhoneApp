@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LJProductDetailScrollTabVC.h"
+//#import "LJProductDetailScrollTabVC.h"
 #import "LJProductInformation.h"
 #import "LJProduct.h"
 @class LJProductInformationTVC;

@@ -232,7 +232,6 @@
     CLLocation * location = [locations firstObject];
     CLGeocoder * coder = [[CLGeocoder alloc] init];
     
-    NSLog(@"%@", location);
     [coder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         if (!error) {
             CLPlacemark * place = [placemarks firstObject];

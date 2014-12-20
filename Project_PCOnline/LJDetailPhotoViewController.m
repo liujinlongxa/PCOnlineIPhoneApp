@@ -15,6 +15,7 @@
 #import "SDWebImageManager.h"
 #import "LJPhotoThumbShowView.h"
 #import "MBProgressHUD+LJProgressHUD.h"
+#import "ShareSDK/ShareSDK.h"
 
 #define kLJPhotoCollectionViewCellIndeifier @"LJPhotoCollectionViewCell"
 
@@ -257,6 +258,46 @@
 }
 
 - (IBAction)shareBtnClick:(id)sender {
+    
+    LJPhotoCollectionViewCell * cell = [self.collectionView.visibleCells firstObject];
+    LJPhoto * photo = cell.photo;
+    NSLog(@"%@", cell.photoImage.sd_imageURL);
+    
+    //构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:photo.name
+                                       defaultContent:nil
+                                                image:[ShareSDK imageWithUrl:cell.photoImage.sd_imageURL.absoluteString]
+                                                title:nil
+                                                  url:nil
+                                          description:nil
+                                            mediaType:SSPublishContentMediaTypeNews];
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    //显示编辑框
+    [ShareSDK showShareViewWithType:ShareTypeSinaWeibo
+              container:nil
+                content:publishContent
+          statusBarTips:YES
+            authOptions:nil
+           shareOptions:nil
+                 result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                     
+                     if (state == SSPublishContentStateSuccess)
+                     {
+                         NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"发表成功"));
+                     }
+                     else if (state == SSPublishContentStateFail)
+                     {
+                         NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"发布失败!error code == %d, error code == %@"), [error errorCode], [error errorDescription]);
+                         NSLog(@"发布失败!error code == %d, error code == %@", [error errorCode], [error errorDescription]);
+                     }
+                     else
+                     {
+                         NSLog(@"other");
+                     }
+                 }];
 }
 
 - (IBAction)backBtnClick:(id)sender {

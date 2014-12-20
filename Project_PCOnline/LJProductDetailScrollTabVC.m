@@ -19,7 +19,7 @@
 #import "LJFullScreenWebViewerVC.h"
 #import "LJWebImageGridViewerController.h"
 
-@interface LJProductDetailScrollTabVC ()<LJProductInformationTVCDelegate, LJProductDetailWebVCCDelegate>
+@interface LJProductDetailScrollTabVC ()
 
 @end
 
