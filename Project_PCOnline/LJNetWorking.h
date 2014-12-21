@@ -35,6 +35,20 @@
 
 + (instancetype)shareNetwork;
 
-//监测网络状态
+/**
+ *  开始检测网络状态
+ */
 - (void)startMonitorNetwork;
+
+/**
+ *  清空缓存
+ */
+- (void)cleanCache;
+/**
+ *  获取当前缓存
+ *
+ *  @return <#return value description#>
+ */
+- (NSUInteger)currnetCacheSize;
+
 @end

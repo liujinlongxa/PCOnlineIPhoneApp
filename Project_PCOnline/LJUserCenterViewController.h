@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LJUserSettingViewController : UIViewController
+@interface LJUserCenterViewController : UIViewController
+
+
 
 @end

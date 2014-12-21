@@ -73,7 +73,7 @@
 		046E769C1A2C25EE000FE777 /* PCOnlineProductDatas.json in Resources */ = {isa = PBXBuildFile; fileRef = 046E76941A2C25EE000FE777 /* PCOnlineProductDatas.json */; };
 		047D6A701A2C291000EB3B64 /* LJNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D6A6F1A2C291000EB3B64 /* LJNavController.m */; };
 		047D6A741A2C2B6A00EB3B64 /* PPRevealSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D6A731A2C2B6A00EB3B64 /* PPRevealSideViewController.m */; };
-		047D6A781A2C2F2500EB3B64 /* LJUserSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D6A771A2C2F2500EB3B64 /* LJUserSettingViewController.m */; };
+		047D6A781A2C2F2500EB3B64 /* LJUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D6A771A2C2F2500EB3B64 /* LJUserCenterViewController.m */; };
 		047D6A801A2C4DA600EB3B64 /* LJBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D6A7F1A2C4DA600EB3B64 /* LJBaseViewController.m */; };
 		047D6A831A2C548F00EB3B64 /* UIImage+MyImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D6A821A2C548F00EB3B64 /* UIImage+MyImage.m */; };
 		047D6A881A2C66C700EB3B64 /* LJSubjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D6A871A2C66C700EB3B64 /* LJSubjectView.m */; };
@@ -167,6 +167,23 @@
 		8852FF281A3861E700DD4625 /* LJNewsSearchItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8852FF271A3861E700DD4625 /* LJNewsSearchItemView.m */; };
 		8852FF2B1A38620100DD4625 /* LJNewsSearchGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8852FF2A1A38620100DD4625 /* LJNewsSearchGroupView.m */; };
 		8852FF2E1A38623800DD4625 /* LJNewsSearchResultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8852FF2D1A38623800DD4625 /* LJNewsSearchResultItem.m */; };
+		8853BD291A46CB0E006D6FC6 /* LJUserSettingTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8853BD281A46CB0E006D6FC6 /* LJUserSettingTVC.m */; };
+		8853BD2D1A46CB97006D6FC6 /* LJBaseSettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8853BD2C1A46CB97006D6FC6 /* LJBaseSettingItem.m */; };
+		8853BD301A46CE60006D6FC6 /* LJSettingSwitchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8853BD2F1A46CE60006D6FC6 /* LJSettingSwitchItem.m */; };
+		8853BD331A46CE7D006D6FC6 /* LJSettingChildSelectItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8853BD321A46CE7D006D6FC6 /* LJSettingChildSelectItem.m */; };
+		8853BD361A46CE8E006D6FC6 /* LJSettingSubtitleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8853BD351A46CE8E006D6FC6 /* LJSettingSubtitleItem.m */; };
+		8853BD391A46CE9E006D6FC6 /* LJSettingActionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8853BD381A46CE9E006D6FC6 /* LJSettingActionItem.m */; };
+		8853BD3C1A46CEB0006D6FC6 /* LJSettingTwoImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8853BD3B1A46CEB0006D6FC6 /* LJSettingTwoImageItem.m */; };
+		8853BD411A46D94F006D6FC6 /* LJSettingTwoImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8853BD3F1A46D94F006D6FC6 /* LJSettingTwoImageCell.m */; };
+		8853BD421A46D94F006D6FC6 /* LJSettingTwoImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8853BD401A46D94F006D6FC6 /* LJSettingTwoImageCell.xib */; };
+		8853BD461A46D973006D6FC6 /* LJSettingChildSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8853BD441A46D973006D6FC6 /* LJSettingChildSelectCell.m */; };
+		8853BD471A46D973006D6FC6 /* LJSettingChildSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8853BD451A46D973006D6FC6 /* LJSettingChildSelectCell.xib */; };
+		8853BD4D1A46D99F006D6FC6 /* LJSettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8853BD4B1A46D99F006D6FC6 /* LJSettingSwitchCell.m */; };
+		8853BD4E1A46D99F006D6FC6 /* LJSettingSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8853BD4C1A46D99F006D6FC6 /* LJSettingSwitchCell.xib */; };
+		8853BD521A46D9B7006D6FC6 /* LJSettingSubtitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8853BD501A46D9B7006D6FC6 /* LJSettingSubtitleCell.m */; };
+		8853BD531A46D9B7006D6FC6 /* LJSettingSubtitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8853BD511A46D9B7006D6FC6 /* LJSettingSubtitleCell.xib */; };
+		8853BD571A46DB44006D6FC6 /* LJSettingActionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8853BD551A46DB44006D6FC6 /* LJSettingActionCell.m */; };
+		8853BD581A46DB44006D6FC6 /* LJSettingActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8853BD561A46DB44006D6FC6 /* LJSettingActionCell.xib */; };
 		8857A32D1A329CF8008265FC /* LJHotTopicFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8857A32C1A329CF8008265FC /* LJHotTopicFrame.m */; };
 		8857A3311A331ED8008265FC /* LJBBSSubForumTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8857A3301A331ED8008265FC /* LJBBSSubForumTVC.m */; };
 		8857A3371A332149008265FC /* LJTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8857A3361A332149008265FC /* LJTopic.m */; };
@@ -175,12 +192,14 @@
 		8857A3421A3321FB008265FC /* LJBaseTopicFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8857A3411A3321FB008265FC /* LJBaseTopicFrame.m */; };
 		8857A3451A332EBB008265FC /* LJUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8857A3441A332EBB008265FC /* LJUser.m */; };
 		8857A3481A333BCC008265FC /* NSDate+MyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8857A3471A333BCC008265FC /* NSDate+MyDate.m */; };
-		886ADBF81A3A7DB500044ECC /* PCViewController.json in Resources */ = {isa = PBXBuildFile; fileRef = 886ADBF71A3A7DB500044ECC /* PCViewController.json */; };
 		886ADBFB1A3AB98F00044ECC /* LJCommentBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 886ADBFA1A3AB98F00044ECC /* LJCommentBar.m */; };
 		886ADBFE1A3ABEAD00044ECC /* LJCommentPageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 886ADBFD1A3ABEAD00044ECC /* LJCommentPageInfo.m */; };
 		886ADC041A3ACEA600044ECC /* LJWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886ADC031A3ACEA600044ECC /* LJWebViewController.m */; };
 		886ADC071A3AE2D700044ECC /* LJPageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 886ADC061A3AE2D700044ECC /* LJPageButton.m */; };
 		886ADC0A1A3AF10A00044ECC /* LJPageTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 886ADC091A3AF10A00044ECC /* LJPageTableCell.m */; };
+		8877250F1A467D4000CD673A /* LJBigSettingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8877250E1A467D4000CD673A /* LJBigSettingButton.m */; };
+		887725121A467E5A00CD673A /* LJLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 887725111A467E5A00CD673A /* LJLoginButton.m */; };
+		887725151A4693DC00CD673A /* LJSmallSettingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 887725141A4693DC00CD673A /* LJSmallSettingButton.m */; };
 		888D9C0D1A43B8BF001BA598 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 888D9C0C1A43B8BF001BA598 /* SystemConfiguration.framework */; };
 		888D9C0F1A43B8D3001BA598 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 888D9C0E1A43B8D3001BA598 /* QuartzCore.framework */; };
 		888D9C111A43B8E2001BA598 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 888D9C101A43B8E2001BA598 /* CoreTelephony.framework */; };
@@ -395,8 +414,8 @@
 		047D6A6F1A2C291000EB3B64 /* LJNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJNavController.m; sourceTree = "<group>"; };
 		047D6A721A2C2B6A00EB3B64 /* PPRevealSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRevealSideViewController.h; sourceTree = "<group>"; };
 		047D6A731A2C2B6A00EB3B64 /* PPRevealSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRevealSideViewController.m; sourceTree = "<group>"; };
-		047D6A761A2C2F2500EB3B64 /* LJUserSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJUserSettingViewController.h; sourceTree = "<group>"; };
-		047D6A771A2C2F2500EB3B64 /* LJUserSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJUserSettingViewController.m; sourceTree = "<group>"; };
+		047D6A761A2C2F2500EB3B64 /* LJUserCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJUserCenterViewController.h; sourceTree = "<group>"; };
+		047D6A771A2C2F2500EB3B64 /* LJUserCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJUserCenterViewController.m; sourceTree = "<group>"; };
 		047D6A7E1A2C4DA600EB3B64 /* LJBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBaseViewController.h; sourceTree = "<group>"; };
 		047D6A7F1A2C4DA600EB3B64 /* LJBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBaseViewController.m; sourceTree = "<group>"; };
 		047D6A811A2C548F00EB3B64 /* UIImage+MyImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MyImage.h"; sourceTree = "<group>"; };
@@ -579,6 +598,35 @@
 		8852FF2A1A38620100DD4625 /* LJNewsSearchGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJNewsSearchGroupView.m; sourceTree = "<group>"; };
 		8852FF2C1A38623800DD4625 /* LJNewsSearchResultItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJNewsSearchResultItem.h; sourceTree = "<group>"; };
 		8852FF2D1A38623800DD4625 /* LJNewsSearchResultItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJNewsSearchResultItem.m; sourceTree = "<group>"; };
+		8853BD271A46CB0E006D6FC6 /* LJUserSettingTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJUserSettingTVC.h; sourceTree = "<group>"; };
+		8853BD281A46CB0E006D6FC6 /* LJUserSettingTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJUserSettingTVC.m; sourceTree = "<group>"; };
+		8853BD2B1A46CB97006D6FC6 /* LJBaseSettingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBaseSettingItem.h; sourceTree = "<group>"; };
+		8853BD2C1A46CB97006D6FC6 /* LJBaseSettingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBaseSettingItem.m; sourceTree = "<group>"; };
+		8853BD2E1A46CE60006D6FC6 /* LJSettingSwitchItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSettingSwitchItem.h; sourceTree = "<group>"; };
+		8853BD2F1A46CE60006D6FC6 /* LJSettingSwitchItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSettingSwitchItem.m; sourceTree = "<group>"; };
+		8853BD311A46CE7D006D6FC6 /* LJSettingChildSelectItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSettingChildSelectItem.h; sourceTree = "<group>"; };
+		8853BD321A46CE7D006D6FC6 /* LJSettingChildSelectItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSettingChildSelectItem.m; sourceTree = "<group>"; };
+		8853BD341A46CE8E006D6FC6 /* LJSettingSubtitleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSettingSubtitleItem.h; sourceTree = "<group>"; };
+		8853BD351A46CE8E006D6FC6 /* LJSettingSubtitleItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSettingSubtitleItem.m; sourceTree = "<group>"; };
+		8853BD371A46CE9E006D6FC6 /* LJSettingActionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSettingActionItem.h; sourceTree = "<group>"; };
+		8853BD381A46CE9E006D6FC6 /* LJSettingActionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSettingActionItem.m; sourceTree = "<group>"; };
+		8853BD3A1A46CEB0006D6FC6 /* LJSettingTwoImageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSettingTwoImageItem.h; sourceTree = "<group>"; };
+		8853BD3B1A46CEB0006D6FC6 /* LJSettingTwoImageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSettingTwoImageItem.m; sourceTree = "<group>"; };
+		8853BD3E1A46D94F006D6FC6 /* LJSettingTwoImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSettingTwoImageCell.h; sourceTree = "<group>"; };
+		8853BD3F1A46D94F006D6FC6 /* LJSettingTwoImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSettingTwoImageCell.m; sourceTree = "<group>"; };
+		8853BD401A46D94F006D6FC6 /* LJSettingTwoImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJSettingTwoImageCell.xib; sourceTree = "<group>"; };
+		8853BD431A46D973006D6FC6 /* LJSettingChildSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSettingChildSelectCell.h; sourceTree = "<group>"; };
+		8853BD441A46D973006D6FC6 /* LJSettingChildSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSettingChildSelectCell.m; sourceTree = "<group>"; };
+		8853BD451A46D973006D6FC6 /* LJSettingChildSelectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJSettingChildSelectCell.xib; sourceTree = "<group>"; };
+		8853BD4A1A46D99F006D6FC6 /* LJSettingSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSettingSwitchCell.h; sourceTree = "<group>"; };
+		8853BD4B1A46D99F006D6FC6 /* LJSettingSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSettingSwitchCell.m; sourceTree = "<group>"; };
+		8853BD4C1A46D99F006D6FC6 /* LJSettingSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJSettingSwitchCell.xib; sourceTree = "<group>"; };
+		8853BD4F1A46D9B7006D6FC6 /* LJSettingSubtitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSettingSubtitleCell.h; sourceTree = "<group>"; };
+		8853BD501A46D9B7006D6FC6 /* LJSettingSubtitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSettingSubtitleCell.m; sourceTree = "<group>"; };
+		8853BD511A46D9B7006D6FC6 /* LJSettingSubtitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJSettingSubtitleCell.xib; sourceTree = "<group>"; };
+		8853BD541A46DB44006D6FC6 /* LJSettingActionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSettingActionCell.h; sourceTree = "<group>"; };
+		8853BD551A46DB44006D6FC6 /* LJSettingActionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSettingActionCell.m; sourceTree = "<group>"; };
+		8853BD561A46DB44006D6FC6 /* LJSettingActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJSettingActionCell.xib; sourceTree = "<group>"; };
 		8857A32B1A329CF8008265FC /* LJHotTopicFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJHotTopicFrame.h; sourceTree = "<group>"; };
 		8857A32C1A329CF8008265FC /* LJHotTopicFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJHotTopicFrame.m; sourceTree = "<group>"; };
 		8857A32F1A331ED8008265FC /* LJBBSSubForumTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBBSSubForumTVC.h; sourceTree = "<group>"; };
@@ -595,7 +643,6 @@
 		8857A3441A332EBB008265FC /* LJUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJUser.m; sourceTree = "<group>"; };
 		8857A3461A333BCC008265FC /* NSDate+MyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+MyDate.h"; sourceTree = "<group>"; };
 		8857A3471A333BCC008265FC /* NSDate+MyDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MyDate.m"; sourceTree = "<group>"; };
-		886ADBF71A3A7DB500044ECC /* PCViewController.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PCViewController.json; sourceTree = "<group>"; };
 		886ADBF91A3AB98F00044ECC /* LJCommentBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJCommentBar.h; sourceTree = "<group>"; };
 		886ADBFA1A3AB98F00044ECC /* LJCommentBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJCommentBar.m; sourceTree = "<group>"; };
 		886ADBFC1A3ABEAD00044ECC /* LJCommentPageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJCommentPageInfo.h; sourceTree = "<group>"; };
@@ -606,6 +653,12 @@
 		886ADC061A3AE2D700044ECC /* LJPageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJPageButton.m; sourceTree = "<group>"; };
 		886ADC081A3AF10A00044ECC /* LJPageTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJPageTableCell.h; sourceTree = "<group>"; };
 		886ADC091A3AF10A00044ECC /* LJPageTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJPageTableCell.m; sourceTree = "<group>"; };
+		8877250D1A467D4000CD673A /* LJBigSettingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBigSettingButton.h; sourceTree = "<group>"; };
+		8877250E1A467D4000CD673A /* LJBigSettingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBigSettingButton.m; sourceTree = "<group>"; };
+		887725101A467E5A00CD673A /* LJLoginButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJLoginButton.h; sourceTree = "<group>"; };
+		887725111A467E5A00CD673A /* LJLoginButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJLoginButton.m; sourceTree = "<group>"; };
+		887725131A4693DC00CD673A /* LJSmallSettingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSmallSettingButton.h; sourceTree = "<group>"; };
+		887725141A4693DC00CD673A /* LJSmallSettingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSmallSettingButton.m; sourceTree = "<group>"; };
 		888D9C0C1A43B8BF001BA598 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		888D9C0E1A43B8D3001BA598 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		888D9C101A43B8E2001BA598 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -1026,7 +1079,6 @@
 		046E75EE1A2BF717000FE777 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				886ADBF71A3A7DB500044ECC /* PCViewController.json */,
 				046E768B1A2C25EE000FE777 /* 4inchconfigs */,
 				046E76901A2C25EE000FE777 /* configs */,
 				046E75D21A2BF700000FE777 /* Main.storyboard */,
@@ -1216,6 +1268,8 @@
 		046E76501A2C09E0000FE777 /* User(用户设置) */ = {
 			isa = PBXGroup;
 			children = (
+				8877250C1A467CE600CD673A /* Model */,
+				8877250B1A467CDC00CD673A /* View */,
 				046E767A1A2C1A96000FE777 /* Controller */,
 			);
 			name = "User(用户设置)";
@@ -1308,8 +1362,10 @@
 		046E767A1A2C1A96000FE777 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				047D6A761A2C2F2500EB3B64 /* LJUserSettingViewController.h */,
-				047D6A771A2C2F2500EB3B64 /* LJUserSettingViewController.m */,
+				047D6A761A2C2F2500EB3B64 /* LJUserCenterViewController.h */,
+				047D6A771A2C2F2500EB3B64 /* LJUserCenterViewController.m */,
+				8853BD271A46CB0E006D6FC6 /* LJUserSettingTVC.h */,
+				8853BD281A46CB0E006D6FC6 /* LJUserSettingTVC.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1883,6 +1939,47 @@
 			name = News;
 			sourceTree = "<group>";
 		};
+		8853BD2A1A46CB75006D6FC6 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				8853BD2B1A46CB97006D6FC6 /* LJBaseSettingItem.h */,
+				8853BD2C1A46CB97006D6FC6 /* LJBaseSettingItem.m */,
+				8853BD2E1A46CE60006D6FC6 /* LJSettingSwitchItem.h */,
+				8853BD2F1A46CE60006D6FC6 /* LJSettingSwitchItem.m */,
+				8853BD311A46CE7D006D6FC6 /* LJSettingChildSelectItem.h */,
+				8853BD321A46CE7D006D6FC6 /* LJSettingChildSelectItem.m */,
+				8853BD341A46CE8E006D6FC6 /* LJSettingSubtitleItem.h */,
+				8853BD351A46CE8E006D6FC6 /* LJSettingSubtitleItem.m */,
+				8853BD371A46CE9E006D6FC6 /* LJSettingActionItem.h */,
+				8853BD381A46CE9E006D6FC6 /* LJSettingActionItem.m */,
+				8853BD3A1A46CEB0006D6FC6 /* LJSettingTwoImageItem.h */,
+				8853BD3B1A46CEB0006D6FC6 /* LJSettingTwoImageItem.m */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		8853BD3D1A46D8ED006D6FC6 /* SettingCell */ = {
+			isa = PBXGroup;
+			children = (
+				8853BD3E1A46D94F006D6FC6 /* LJSettingTwoImageCell.h */,
+				8853BD3F1A46D94F006D6FC6 /* LJSettingTwoImageCell.m */,
+				8853BD401A46D94F006D6FC6 /* LJSettingTwoImageCell.xib */,
+				8853BD431A46D973006D6FC6 /* LJSettingChildSelectCell.h */,
+				8853BD441A46D973006D6FC6 /* LJSettingChildSelectCell.m */,
+				8853BD451A46D973006D6FC6 /* LJSettingChildSelectCell.xib */,
+				8853BD4A1A46D99F006D6FC6 /* LJSettingSwitchCell.h */,
+				8853BD4B1A46D99F006D6FC6 /* LJSettingSwitchCell.m */,
+				8853BD4C1A46D99F006D6FC6 /* LJSettingSwitchCell.xib */,
+				8853BD4F1A46D9B7006D6FC6 /* LJSettingSubtitleCell.h */,
+				8853BD501A46D9B7006D6FC6 /* LJSettingSubtitleCell.m */,
+				8853BD511A46D9B7006D6FC6 /* LJSettingSubtitleCell.xib */,
+				8853BD541A46DB44006D6FC6 /* LJSettingActionCell.h */,
+				8853BD551A46DB44006D6FC6 /* LJSettingActionCell.m */,
+				8853BD561A46DB44006D6FC6 /* LJSettingActionCell.xib */,
+			);
+			name = SettingCell;
+			sourceTree = "<group>";
+		};
 		8857A3271A329CAB008265FC /* Ads */ = {
 			isa = PBXGroup;
 			children = (
@@ -1964,6 +2061,28 @@
 				8857A3411A3321FB008265FC /* LJBaseTopicFrame.m */,
 			);
 			name = BaseTopicModel;
+			sourceTree = "<group>";
+		};
+		8877250B1A467CDC00CD673A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8853BD3D1A46D8ED006D6FC6 /* SettingCell */,
+				8877250D1A467D4000CD673A /* LJBigSettingButton.h */,
+				8877250E1A467D4000CD673A /* LJBigSettingButton.m */,
+				887725101A467E5A00CD673A /* LJLoginButton.h */,
+				887725111A467E5A00CD673A /* LJLoginButton.m */,
+				887725131A4693DC00CD673A /* LJSmallSettingButton.h */,
+				887725141A4693DC00CD673A /* LJSmallSettingButton.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		8877250C1A467CE600CD673A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8853BD2A1A46CB75006D6FC6 /* Setting */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		888D9C221A44222E001BA598 /* ShareSDK */ = {
@@ -2287,12 +2406,12 @@
 				046E75D41A2BF700000FE777 /* Main.storyboard in Resources */,
 				888D9CB51A44222F001BA598 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				046E75D91A2BF700000FE777 /* LaunchScreen.xib in Resources */,
-				886ADBF81A3A7DB500044ECC /* PCViewController.json in Resources */,
 				888D9CB81A44222F001BA598 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				880780B61A30B9D3005876A2 /* LJPhotoNavView.xib in Resources */,
 				8894F9141A2CE7A90058C76A /* LJNewsNormalCell.xib in Resources */,
 				046E769B1A2C25EE000FE777 /* pconline_v4_square_fast_forum.json in Resources */,
 				046E76981A2C25EE000FE777 /* PCOnlineProductDatas4inch.json in Resources */,
+				8853BD581A46DB44006D6FC6 /* LJSettingActionCell.xib in Resources */,
 				888D9CA01A44222F001BA598 /* Resource.bundle in Resources */,
 				04C7121C1A2DDD30009705DF /* LJHotTopicView.xib in Resources */,
 				046E75D61A2BF700000FE777 /* Images.xcassets in Resources */,
@@ -2307,17 +2426,21 @@
 				044C29041A30436E00A48121 /* LJDetailPhotoTabView.xib in Resources */,
 				888D9CB11A44222F001BA598 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				044C29091A3056EA00A48121 /* LJPhotoCollectionViewCell.xib in Resources */,
+				8853BD471A46D973006D6FC6 /* LJSettingChildSelectCell.xib in Resources */,
 				046E769A1A2C25EE000FE777 /* pconline_v4_cms_iphone_channel_tree.json in Resources */,
 				88FD80F91A39FBBA001F9E82 /* MJRefresh.bundle in Resources */,
 				044C28FB1A30092C00A48121 /* LJProductListCell.xib in Resources */,
+				8853BD531A46D9B7006D6FC6 /* LJSettingSubtitleCell.xib in Resources */,
 				884866731A38B3CA0038C7F1 /* LJNewsSearchResltCell.xib in Resources */,
 				046E76971A2C25EE000FE777 /* pconline_v4_square_fast_forum4inch.json in Resources */,
 				046E76961A2C25EE000FE777 /* pconline_v4_cms_iphone_channel_tree4inch.json in Resources */,
 				044C28C11A2EAFE100A48121 /* LJProductCategoryCell.xib in Resources */,
 				885018451A3D795A000887B2 /* LJWebImageGridViewerCell.xib in Resources */,
 				888D9CAC1A44222F001BA598 /* WeiboSDK.bundle in Resources */,
+				8853BD4E1A46D99F006D6FC6 /* LJSettingSwitchCell.xib in Resources */,
 				046E76991A2C25EE000FE777 /* pconline_v4_bbs_forum_tree.json in Resources */,
 				888D9CA61A44222F001BA598 /* PinterestSDKResources.bundle in Resources */,
+				8853BD421A46D94F006D6FC6 /* LJSettingTwoImageCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2357,17 +2480,21 @@
 				04D0CD301A36A1910060CD9D /* LJProductFilterItemCell.m in Sources */,
 				044C28BC1A2EA4FC00A48121 /* LJProductSubCategory.m in Sources */,
 				88B7FC2A1A347B9C00F31E9C /* LJFullScreenBrandCell.m in Sources */,
+				8853BD4D1A46D99F006D6FC6 /* LJSettingSwitchCell.m in Sources */,
+				8853BD301A46CE60006D6FC6 /* LJSettingSwitchItem.m in Sources */,
 				8857A3311A331ED8008265FC /* LJBBSSubForumTVC.m in Sources */,
 				8894F9081A2CD4190058C76A /* LJSelectButton.m in Sources */,
 				04E161CA1A3593AC00D5F4F4 /* LJProductCompareManager.m in Sources */,
 				044C28F61A30090900A48121 /* LJProductListTableVC.m in Sources */,
 				046E76871A2C1B02000FE777 /* LJProductViewController.m in Sources */,
 				04C712041A2D9318009705DF /* LJAdView.m in Sources */,
+				8853BD461A46D973006D6FC6 /* LJSettingChildSelectCell.m in Sources */,
 				046E76611A2C0A37000FE777 /* FMDatabase.m in Sources */,
 				8852FF281A3861E700DD4625 /* LJNewsSearchItemView.m in Sources */,
 				8857A32D1A329CF8008265FC /* LJHotTopicFrame.m in Sources */,
 				047D6A8F1A2C71A500EB3B64 /* LJNews.m in Sources */,
 				886ADBFE1A3ABEAD00044ECC /* LJCommentPageInfo.m in Sources */,
+				8877250F1A467D4000CD673A /* LJBigSettingButton.m in Sources */,
 				88B7FC2D1A347BF400F31E9C /* LJBrandButton.m in Sources */,
 				047D6A831A2C548F00EB3B64 /* UIImage+MyImage.m in Sources */,
 				8849043E1A3EAF26008B8015 /* LJCommentItemFrame.m in Sources */,
@@ -2391,7 +2518,9 @@
 				88B7FC571A34CA4A00F31E9C /* SDWebImageDecoder.m in Sources */,
 				045845321A393F0C00B78001 /* LJDataManager.m in Sources */,
 				8852FF1B1A3831D700DD4625 /* LJProductSearchResultCell.m in Sources */,
+				8853BD571A46DB44006D6FC6 /* LJSettingActionCell.m in Sources */,
 				8857A33A1A33215A008265FC /* LJTopicFrame.m in Sources */,
+				887725121A467E5A00CD673A /* LJLoginButton.m in Sources */,
 				886ADBFB1A3AB98F00044ECC /* LJCommentBar.m in Sources */,
 				0415157A1A3722CF00F91833 /* LJSearchViewController.m in Sources */,
 				880780C41A30C9C3005876A2 /* LJScrollTabButtonsView.m in Sources */,
@@ -2401,6 +2530,7 @@
 				8857A33E1A3321E8008265FC /* LJBaseTopic.m in Sources */,
 				88CAED211A2E224D00262896 /* LJHotForumButton.m in Sources */,
 				880780BF1A30C6BC005876A2 /* LJScrollTabViewController.m in Sources */,
+				8853BD391A46CE9E006D6FC6 /* LJSettingActionItem.m in Sources */,
 				885018401A3D751E000887B2 /* LJWebImageItem.m in Sources */,
 				046E75CE1A2BF700000FE777 /* AppDelegate.m in Sources */,
 				8849043B1A3E7B11008B8015 /* LJReplyCommentView.m in Sources */,
@@ -2411,6 +2541,7 @@
 				04C712171A2DB421009705DF /* LJBaseAds.m in Sources */,
 				8826EBED1A3F0B5400918EEC /* LJCommentSupportInfo.m in Sources */,
 				04B0C5211A37F3CD00B3B9B4 /* LJProductSearchResultVC.m in Sources */,
+				8853BD3C1A46CEB0006D6FC6 /* LJSettingTwoImageItem.m in Sources */,
 				04C711FC1A2D646D009705DF /* LJNewsDetailController.m in Sources */,
 				882774F41A2F71BF00304E57 /* LJSubProductCategoryTableVC.m in Sources */,
 				047D6A951A2C837E00EB3B64 /* LJNetWorking.m in Sources */,
@@ -2421,6 +2552,7 @@
 				88FD80FA1A39FBBA001F9E82 /* MJRefreshBaseView.m in Sources */,
 				8894F90E1A2CDF890058C76A /* NSString+MyString.m in Sources */,
 				04B30DAB1A3159EA007AF4B9 /* LJHotTopicCell.m in Sources */,
+				8853BD291A46CB0E006D6FC6 /* LJUserSettingTVC.m in Sources */,
 				8852FF1F1A38429700DD4625 /* LJTopicSearchResultItem.m in Sources */,
 				88510CAC1A4016770068EC31 /* LJAreaAutoSelectCell.m in Sources */,
 				04B30DB91A31D822007AF4B9 /* LJFastForumButton.m in Sources */,
@@ -2448,7 +2580,7 @@
 				04D0CD2D1A36A1720060CD9D /* LJProductFilterGroupCell.m in Sources */,
 				88B7FC5E1A34CA4A00F31E9C /* UIImage+MultiFormat.m in Sources */,
 				889552411A34CF6700E7D864 /* AFURLSessionManager.m in Sources */,
-				047D6A781A2C2F2500EB3B64 /* LJUserSettingViewController.m in Sources */,
+				047D6A781A2C2F2500EB3B64 /* LJUserCenterViewController.m in Sources */,
 				88B7FC301A34B2D200F31E9C /* LJPhotoThumbShowView.m in Sources */,
 				8857A3371A332149008265FC /* LJTopic.m in Sources */,
 				044C28E91A2FF52E00A48121 /* LJBrand.m in Sources */,
@@ -2473,6 +2605,7 @@
 				8850184F1A3D90ED000887B2 /* LJComment.m in Sources */,
 				04E161C31A3578B200D5F4F4 /* LJProductCompareVC.m in Sources */,
 				04C7120A1A2DA877009705DF /* LJBBSSquareViewController.m in Sources */,
+				8853BD331A46CE7D006D6FC6 /* LJSettingChildSelectItem.m in Sources */,
 				88CC0B7F1A3292D3001169ED /* LJContentView.m in Sources */,
 				04D0CD241A369BFE0060CD9D /* LJProductFilterItem.m in Sources */,
 				047D6A981A2C933500EB3B64 /* LJArea.m in Sources */,
@@ -2481,6 +2614,7 @@
 				046E76621A2C0A37000FE777 /* FMDatabaseAdditions.m in Sources */,
 				047D6A701A2C291000EB3B64 /* LJNavController.m in Sources */,
 				88CC0B7C1A3288F9001169ED /* LJFastForumHeaderView.m in Sources */,
+				887725151A4693DC00CD673A /* LJSmallSettingButton.m in Sources */,
 				885018441A3D795A000887B2 /* LJWebImageGridViewerCell.m in Sources */,
 				04C712011A2D9108009705DF /* LJAdsGroupView.m in Sources */,
 				88E1EC951A36053B004BEB4C /* LJPullingBar.m in Sources */,
@@ -2488,6 +2622,7 @@
 				8895523B1A34CF6700E7D864 /* AFHTTPSessionManager.m in Sources */,
 				047D6A881A2C66C700EB3B64 /* LJSubjectView.m in Sources */,
 				88FD80FE1A39FBBA001F9E82 /* UIScrollView+MJExtension.m in Sources */,
+				8853BD361A46CE8E006D6FC6 /* LJSettingSubtitleItem.m in Sources */,
 				046E768A1A2C1B1B000FE777 /* LJSpecialViewController.m in Sources */,
 				886ADC0A1A3AF10A00044ECC /* LJPageTableCell.m in Sources */,
 				88B7FC591A34CA4A00F31E9C /* SDWebImageDownloaderOperation.m in Sources */,
@@ -2495,6 +2630,7 @@
 				88B7FC551A34CA4A00F31E9C /* SDImageCache.m in Sources */,
 				044C28FA1A30092C00A48121 /* LJProductListCell.m in Sources */,
 				8857A3481A333BCC008265FC /* NSDate+MyDate.m in Sources */,
+				8853BD2D1A46CB97006D6FC6 /* LJBaseSettingItem.m in Sources */,
 				8895523D1A34CF6700E7D864 /* AFSecurityPolicy.m in Sources */,
 				046E76801A2C1ADF000FE777 /* LJBBSViewController.m in Sources */,
 				8895523A1A34CF6700E7D864 /* AFHTTPRequestOperationManager.m in Sources */,
@@ -2504,6 +2640,7 @@
 				046E76641A2C0A37000FE777 /* FMDatabaseQueue.m in Sources */,
 				0458452F1A39298100B78001 /* LJChannelSelectViewController.m in Sources */,
 				04C712071A2D984C009705DF /* LJBBSButtonView.m in Sources */,
+				8853BD411A46D94F006D6FC6 /* LJSettingTwoImageCell.m in Sources */,
 				880605451A454E6D00AB2C60 /* Reachability.m in Sources */,
 				8848666E1A38B2B80038C7F1 /* LJMoreNewsSearchResultTVC.m in Sources */,
 				046E766A1A2C121E000FE777 /* LJTabBarController.m in Sources */,
@@ -2527,6 +2664,7 @@
 				88B7FC5D1A34CA4A00F31E9C /* UIImage+GIF.m in Sources */,
 				8857A3451A332EBB008265FC /* LJUser.m in Sources */,
 				04D0CD211A3698D80060CD9D /* LJProductFilterSelectItemListTVC.m in Sources */,
+				8853BD521A46D9B7006D6FC6 /* LJSettingSubtitleCell.m in Sources */,
 				88B7FC561A34CA4A00F31E9C /* SDWebImageCompat.m in Sources */,
 				88CAED2B1A2E317200262896 /* LJBBSList.m in Sources */,
 				886ADC071A3AE2D700044ECC /* LJPageButton.m in Sources */,

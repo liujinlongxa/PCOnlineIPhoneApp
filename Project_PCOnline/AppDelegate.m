@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "PPRevealSideViewController.h"
 #import "LJTabBarController.h"
-#import "LJUserSettingViewController.h"
+#import "LJUserCenterViewController.h"
 #import <ShareSDK/ShareSDK.h>
 #import "WeiboSDK.h"
 #import "LJNetWorking.h"
@@ -25,8 +25,6 @@
     LJTabBarController * tabVC = [[LJTabBarController alloc] init];
     
     PPRevealSideViewController * revealVC = [[PPRevealSideViewController alloc] initWithRootViewController:tabVC];
-//    revealVC.options = PPRevealSideOptionsiOS7StatusBarMoving;
-    
     self.window.rootViewController = revealVC;
     
     application.statusBarStyle = UIStatusBarStyleLightContent;

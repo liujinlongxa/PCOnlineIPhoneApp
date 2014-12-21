@@ -42,7 +42,7 @@
             [btn setTitle:titles[i] forState:UIControlStateNormal];
             [btn setBackgroundColor:[UIColor whiteColor]];
             btn.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-            btn.layer.borderWidth = 1;
+            btn.layer.borderWidth = 0.5;
             [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [self addSubview:btn];
             [self.buttons addObject:btn];

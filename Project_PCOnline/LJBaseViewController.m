@@ -8,7 +8,7 @@
 
 #import "LJBaseViewController.h"
 #import "UIImage+MyImage.h"
-#import "LJUserSettingViewController.h"
+#import "LJUserCenterViewController.h"
 #import "PPRevealSideViewController.h"
 #import "LJSearchViewController.h"
 
@@ -23,8 +23,7 @@
 
 - (void)userCenterClick
 {
-    LJUserSettingViewController * settingVC = [[LJUserSettingViewController alloc] init];
-    
+    LJUserCenterViewController * settingVC = [[LJUserCenterViewController alloc] init];
     [self.revealSideViewController pushViewController:settingVC onDirection:PPRevealSideDirectionRight animated:YES];
 }
 

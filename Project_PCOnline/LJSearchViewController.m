@@ -87,29 +87,19 @@
     [self.view addSubview:bar];
     bar.delegate = self;
     self.searchBar = bar;
-    
-//    //添加手势，隐藏键盘
-//    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)]];
 }
 
-//- (void)hideKeyboard:(UITapGestureRecognizer *)tap
-//{
-//    
-//    else
-//    {
-//
-//    }
-//}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self hideKeyboard];
+}
+
+- (void)hideKeyboard
 {
     if (self.searchBar.textField.isFirstResponder)
     {
         [self.searchBar.textField resignFirstResponder];
-    }
-    else
-    {
-        [super touchesBegan:touches withEvent:event];
     }
 }
 
@@ -161,6 +151,7 @@
                 LJBBSSubForumTVC * subFormTVC = [[LJBBSSubForumTVC alloc] init];
                 subFormTVC.bbsItem = item;
                 [self.navigationController pushViewController:subFormTVC animated:YES];
+                [self hideKeyboard];
             }];
             [[self.showResultView.subviews firstObject] removeFromSuperview];
             [self.showResultView addSubview:resultVC.view];
@@ -174,6 +165,7 @@
                 LJBBSTopicDetailWebVC * topicWebVC = [[LJBBSTopicDetailWebVC alloc] init];
                 topicWebVC.searchResutItem = item;
                 [self.navigationController pushViewController:topicWebVC animated:YES];
+                [self hideKeyboard];
             }];
             [[self.showResultView.subviews firstObject] removeFromSuperview];
             [self.showResultView addSubview:resultVC.view];
@@ -187,6 +179,7 @@
                 LJProductDetailScrollTabVC * productDetailSTVC = [LJProductDetailScrollTabVC productDetailScrollTabVCWithDefautControllers];
                 productDetailSTVC.item = item;
                 [self.navigationController pushViewController:productDetailSTVC animated:YES];
+                [self hideKeyboard];
             }];
             [[self.showResultView.subviews firstObject] removeFromSuperview];
             [self.showResultView addSubview:resultVC.view];
@@ -204,6 +197,8 @@
     self.btnView.hidden = NO;
 }
 
+
+
 #pragma mark - newsSearch 代理方法
 - (void)newsSearchResultVC:(LJNewsSearchResultVC *)controller didSelectWithObject:(id)obj
 {
@@ -220,6 +215,7 @@
         detailVC.ID = item.ID;
         [self.navigationController pushViewController:detailVC animated:YES];
     }
+    [self hideKeyboard];
 }
 
 @end

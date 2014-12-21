@@ -13,6 +13,14 @@
 #import "LJBBSListItem.h"
 #import "LJBBSList.h"
 
+//setting
+#import "LJBaseSettingItem.h"
+#import "LJSettingSwitchItem.h"
+#import "LJSettingActionItem.h"
+#import "LJSettingSubtitleItem.h"
+#import "LJSettingTwoImageItem.h"
+#import "LJSettingChildSelectItem.h"
+
 #define kSubjectAndAreaDataFileName @"pconline_v4_cms_iphone_channel_tree4inch.json"
 #define kBBSListDataFileName @"pconline_v4_bbs_forum_tree4inch.json"
 
@@ -259,6 +267,78 @@
         }
     }
     return [LJBBSListItem bbsListItemWithID:ID];
+}
+
+#pragma mark - 设置数据
+- (NSArray *)settingData
+{
+    if (!_settingData) {
+        [self setupSettingData];
+    }
+    return _settingData;
+}
+
+- (void)setupSettingData
+{
+    NSMutableArray * settingData = [NSMutableArray array];
+    
+    //section 1
+    NSMutableArray * settingDataSection1 = [NSMutableArray array];
+    LJSettingTwoImageItem * item11 = [[LJSettingTwoImageItem alloc] initWithTitle:@"绑定分享平台" andType:LJSettingItemTypeTwoImage andAction:nil];
+    item11.image1 = [UIImage imageNamed:@"btn_setting_sina_weibo_nologin"];
+    item11.image2 = [UIImage imageNamed:@"btn_setting_qq_nologin"];
+    [settingDataSection1 addObject:item11];
+    [settingData addObject:settingDataSection1];
+    
+    //section 2
+    NSMutableArray * settingDataSection2 = [NSMutableArray array];
+    //item 21
+    LJSettingChildSelectItem * item21 = [[LJSettingChildSelectItem alloc] initWithTitle:@"文章字号大小" andType:LJSettingItemTypeChildSelect andAction:nil];
+    item21.childItems = @[@"小字体", @"中字体", @"大字体"];
+    item21.selectIndex = 0;
+    [settingDataSection2 addObject:item21];
+    //item 22
+    LJSettingChildSelectItem * item22 = [[LJSettingChildSelectItem alloc] initWithTitle:@"非wifi下显示" andType:LJSettingItemTypeChildSelect andAction:nil];
+    item22.childItems = @[@"无图", @"小图", @"大图"];
+    item22.selectIndex = 0;
+    item22.message = @"流量控制：选择小图或无图能够帮您更加省流量";
+    [settingDataSection2 addObject:item22];
+    //item 23
+    LJSettingChildSelectItem * item23 = [[LJSettingChildSelectItem alloc] initWithTitle:@"离线阅读管理" andType:LJSettingItemTypeChildSelect andAction:nil];
+    item23.childItems = @[@"手动下载", @"wifi网络下自动下载"];
+    item23.message = @"离线阅读：下载内容到手机，没有网络照样看";
+    item23.selectIndex = 0;
+    [settingDataSection2 addObject:item23];
+    [settingData addObject:settingDataSection2];
+    
+    //section 3
+    NSMutableArray * settingDataSection3 = [NSMutableArray array];
+    LJSettingSwitchItem * item31 = [[LJSettingSwitchItem alloc] initWithTitle:@"推送开关" andType:LJSettingItemTypeSwitch andAction:nil];
+    [settingDataSection3 addObject:item31];
+    [settingData addObject:settingDataSection3];
+    
+    //section 4
+    NSMutableArray * settingDataSection4 = [NSMutableArray array];
+    //item 41
+    LJSettingSubtitleItem * item41 = [[LJSettingSubtitleItem alloc] initWithTitle:@"清理缓存" andType:LJSettingItemTypeSubtitle andAction:nil];
+    NSUInteger curCache = [LJNetWorking shareNetwork].currnetCacheSize / 2048.0 / 2048.0;
+    item41.subtitle = [NSString stringWithFormat:@"%dM", curCache];
+    [settingDataSection4 addObject:item41];
+    //item42
+    LJSettingActionItem * item42 = [[LJSettingActionItem alloc] initWithTitle:@"关于我们" andType:LJSettingItemTypeWithAction andAction:nil];
+    [settingDataSection4 addObject:item42];
+    //item43
+    LJSettingActionItem * item43 = [[LJSettingActionItem alloc] initWithTitle:@"给个评价" andType:LJSettingItemTypeWithAction andAction:nil];
+    [settingDataSection4 addObject:item43];
+    //item44
+    LJSettingActionItem * item44 = [[LJSettingActionItem alloc] initWithTitle:@"用户体验计划" andType:LJSettingItemTypeWithAction andAction:nil];
+    [settingDataSection4 addObject:item44];
+    //item45
+    LJSettingActionItem * item45 = [[LJSettingActionItem alloc] initWithTitle:@"精品应用推荐" andType:LJSettingItemTypeWithAction andAction:nil];
+    [settingDataSection4 addObject:item45];
+    [settingData addObject:settingDataSection4];
+    
+    _settingData = [settingData copy];
 }
 
 @end

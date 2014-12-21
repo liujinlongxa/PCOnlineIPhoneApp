@@ -38,6 +38,11 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = YES;
+}
+
 - (void)setupControllers
 {
     //资讯
