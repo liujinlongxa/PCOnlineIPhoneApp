@@ -16,6 +16,7 @@
 #import "UIImage+MyImage.h"
 #import "LJBBSTopicDetailWebVC.h"
 #import "LJPullingBar.h"
+#import "MJRefresh/MJRefresh.h"
 
 static NSString * const LJTopicOrderByLastReply = @"replyat";
 static NSString * const LJTopicOrderByPostTime = @"postat";
@@ -23,12 +24,26 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
 @interface LJBBSSubForumTVC ()<UITableViewDataSource, UITableViewDelegate, LJPullingBarDelegate>
 
 @property (nonatomic, weak) UITableView * tableView;
+/**
+ *  帖子数据
+ */
 @property (nonatomic, strong) NSMutableArray * topicFramesData;
+/**
+ *  排序方法
+ */
 @property (nonatomic, copy) NSString * curOrderBy;
-
+/**
+ *  pull bar (最新回复，最近发表，精华帖）
+ */
 @property (nonatomic, weak) LJPullingBar * pullBar;
-
+/**
+ *  导航栏文字
+ */
 @property (nonatomic, weak) UILabel * backLab;
+/**
+ *  当前分页数
+ */
+@property (nonatomic, assign) NSInteger curPage;
 @end
 
 @implementation LJBBSSubForumTVC
@@ -49,6 +64,7 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
     [self setupTableView];
     
     self.curOrderBy = LJTopicOrderByLastReply;
+    self.curPage = 1;
     [self setupPullingBar];
 }
 
@@ -65,13 +81,23 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
 - (void)setupTableView
 {
     CGFloat offset = 10;
-    UITableView * tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 10, kScrW, kScrH - offset) style:UITableViewStylePlain];
+    UITableView * tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, offset, kScrW, kScrH - offset - kNavBarH - kStatusBarH) style:UITableViewStylePlain];
     [self.view addSubview:tableView];
     self.tableView = tableView;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor = LightGrayBGColor;
     [self.tableView registerClass:[LJHotTopicCell class] forCellReuseIdentifier:LJTopicCellIdentifier];
+    //添加上拉刷新和下拉加载更多
+    [self.tableView addHeaderWithCallback:^{
+        self.curPage = 1;
+        [self loadTopicFrameData];
+    }];
+    [self.tableView addFooterWithCallback:^{
+        self.curPage++;
+        [self loadTopicFrameData];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -96,6 +122,9 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
     UIBarButtonItem * sendItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"btn_topic_list_send_topic"] style:UIBarButtonItemStylePlain target:self action:@selector(sendBtnClick:)];
     self.navigationItem.rightBarButtonItems = @[sendItem, space, collectItem];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    
+    //begin refresh
+    [self.tableView headerBeginRefreshing];
 }
 
 #pragma mark - tableview 数据源
@@ -118,7 +147,7 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
     if (!_topicFramesData)
     {
         _topicFramesData = [NSMutableArray array];
-        [self loadTopicFrameData];
+//        [self loadTopicFrameData];
     }
     return _topicFramesData;
 }
@@ -131,22 +160,22 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
     if (self.curOrderBy == nil) {
         if (forumID < 0)
         {
-            urlStr = [NSString stringWithFormat:kZuiEssenceTopicListUrl, -forumID];
+            urlStr = [NSString stringWithFormat:kZuiEssenceTopicListUrl, -forumID, self.curPage];
         }
         else
         {
-            urlStr = [NSString stringWithFormat:kEssenceTopicListUrl, forumID];
+            urlStr = [NSString stringWithFormat:kEssenceTopicListUrl, forumID, self.curPage];
         }
     }
     else
     {
         if (forumID < 0)
         {
-            urlStr = [NSString stringWithFormat:kZuiSunForumTopicListUrl, -forumID, self.curOrderBy];
+            urlStr = [NSString stringWithFormat:kZuiSunForumTopicListUrl, -forumID, self.curPage, self.curOrderBy];
         }
         else
         {
-            urlStr = [NSString stringWithFormat:kSubForumTopicListUrl, forumID, self.curOrderBy];
+            urlStr = [NSString stringWithFormat:kSubForumTopicListUrl, forumID, self.curPage, self.curOrderBy];
         }
     }
 
@@ -160,8 +189,7 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
     [LJNetWorking GET:urlStr parameters:self success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         //设置论坛属性
-        self.bbsItem.title = dict[@"forum"][@"name"];
-        self.backLab.text = self.bbsItem.title;
+        self.backLab.text = dict[@"forum"][@"name"];
         
         NSMutableArray * topicArr = [NSMutableArray array];
         for (NSDictionary * topicDict in dict[@"topicList"]) {
@@ -169,8 +197,22 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
             LJTopicFrame * topicFrame = [LJTopicFrame topicFrameWithTopic:topic];
             [topicArr addObject:topicFrame];
         }
-        self.topicFramesData = topicArr;
+        
+        if (self.curPage == 1)
+        {
+            self.topicFramesData = topicArr;
+        }
+        else
+        {
+            //加载更多
+            [self.topicFramesData addObjectsFromArray:topicArr];
+        }
+        
         [self.tableView reloadData];
+        
+        //end refresh
+        [self.tableView footerEndRefreshing];
+        [self.tableView headerEndRefreshing];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
         NSLog(@"%@", error);
     }];

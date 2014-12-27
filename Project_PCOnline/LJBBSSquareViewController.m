@@ -417,7 +417,7 @@
 {
     if ([self.delegate respondsToSelector:@selector(BBSSquareViewController:didSelectMoreHotTopic:)])
     {
-        [self.delegate BBSSquareViewController:self didSelectMoreHotTopic:[NSString stringWithFormat:kBBSHotTopicUrl, 20]];
+        [self.delegate BBSSquareViewController:self didSelectMoreHotTopic:[NSString stringWithFormat:kBBSHotTopicUrl, 100]];
     }
 }
 

@@ -54,26 +54,11 @@
 
 - (void)loadData
 {
-    NSString * urlStr = kBBSListUrl;
     //如果已经加载，就不再加载了
     if ([LJCommonData shareCommonData].BBSListData != nil) {
         _bbsListData = [LJCommonData shareCommonData].BBSListData;
         return;
     }
-    //重新从远程加载
-//    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
-//        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
-//        NSMutableArray * arr = [NSMutableArray array];
-//        for (NSDictionary * bbsListDict in dict[@"children"]) {
-//            LJBBSList * list = [LJBBSList bbsListWithDict:bbsListDict];
-//            [arr addObject:list];
-//        }
-//        _bbsListData = [arr copy];
-//        [self.tableView reloadData];
-//        [LJCommonData shareCommonData].BBSListData = arr;
-//    } failure:^(NSHTTPURLResponse *response, NSError *error) {
-//        NSLog(@"%@", error);
-//    }];
 }
 
 #pragma mark - tableview代理方法

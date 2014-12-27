@@ -11,14 +11,22 @@
 #import "LJNetWorking.h"
 #import "LJBBSTopicDetailWebVC.h"
 #import "LJBBSTopicDetailWebVC.h"
+#import "MJRefresh/MJRefresh.h"
 //模型
 #import "LJHotTopicFrame.h"
 #import "UIImage+MyImage.h"
 
 #define kHotTopicKey @"hot-topics"
+#define kTopicPerPage 20
 @interface LJBBSHotTopicTableVC ()
-
+/**
+ *  热门帖子数据
+ */
 @property (nonatomic, strong) NSMutableArray * hotTopicsData;
+/**
+ *  当前分页
+ */
+@property (nonatomic, assign) NSInteger curPage;
 @end
 
 @implementation LJBBSHotTopicTableVC
@@ -26,6 +34,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    //设置tableview 偏移
+    NSInteger offset = self.urlStr == nil ? kNavBarH + 40 : 0;
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, offset, 0);
+    self.tableView.backgroundColor = LightGrayBGColor;
+    //添加上拉刷新和下拉加载更多
+    __weak typeof(self) weakSelf = self;
+    [self.tableView addHeaderWithCallback:^{
+        weakSelf.curPage = 1;
+        [weakSelf loadHotTopicsData];
+    }];
+    [self.tableView addFooterWithCallback:^{
+        weakSelf.curPage++;
+        [weakSelf.tableView reloadData];
+        [weakSelf.tableView footerEndRefreshing];
+    }];
     [self.tableView registerClass:[LJHotTopicCell class] forCellReuseIdentifier:LJTopicCellIdentifier];
 }
 
@@ -39,6 +63,7 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor], NSFontAttributeName:NavBarTitleFont}];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
+
 //导航栏返回
 - (void)backButtonClick:(id)sender
 {
@@ -57,14 +82,15 @@
 - (void)setBbsList:(LJBBSList *)bbsList
 {
     _bbsList = bbsList;
-    [self loadHotTopicsData];
-    
+    //开始刷新数据
+    [self.tableView headerBeginRefreshing];
 }
 
 - (void)setUrlStr:(NSString *)urlStr
 {
     _urlStr = urlStr;
-    [self loadHotTopicsData];
+    //开始刷新数据
+    [self.tableView headerBeginRefreshing];
 }
 
 - (void)loadHotTopicsData
@@ -81,11 +107,16 @@
         }
         self.hotTopicsData = hotTopicArr;
         [self.tableView reloadData];
+        [self.tableView headerEndRefreshing];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
         NSLog(@"%@", error);
     }];
 }
-
+/**
+ *  设置Url
+ *
+ *  @return 返回设置好的Url
+ */
 - (NSString *)setupUrlStr
 {
     NSString * urlStr = nil;
@@ -107,7 +138,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.hotTopicsData.count;
+    return MIN(kTopicPerPage * self.curPage, self.hotTopicsData.count);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

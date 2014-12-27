@@ -61,13 +61,13 @@
 #define kZuiFastForumDetaiUrl @"http://piebbs.pconline.com.cn/mobile/topics.ajax?singleForum=false&ie=utf-8&count=20&showImage=true&type=hot_week&forums=%@&noForums=22"
 //7 论坛子版块
 //7.1 获取子版块帖子列表
-#define kSubForumTopicListUrl @"http://mrobot.pconline.com.cn/v3/itbbs/newForums/%d?&pageNo=1&pageSize=20&orderby=%@"
+#define kSubForumTopicListUrl @"http://mrobot.pconline.com.cn/v3/itbbs/newForums/%d?&pageNo=%d&pageSize=20&orderby=%@"
 //7.2 最数码子版块帖子列表
-#define kZuiSunForumTopicListUrl @"http://mrobot.pconline.com.cn/v2/piebbs/forums/%d?&pageNo=1&pageSize=20&orderby=%@"
+#define kZuiSunForumTopicListUrl @"http://mrobot.pconline.com.cn/v2/piebbs/forums/%d?&pageNo=%d&pageSize=20&orderby=%@"
 //7.3 精华帖子列表
-#define kEssenceTopicListUrl @"http://mrobot.pconline.com.cn/v3/itbbs/newForums/%d?filter=pick&pageNo=1&pageSize=20"
+#define kEssenceTopicListUrl @"http://mrobot.pconline.com.cn/v3/itbbs/newForums/%d?filter=pick&pageNo=%d&pageSize=20"
 //7.4 最数码精华帖子列表
-#define kZuiEssenceTopicListUrl @"http://mrobot.pconline.com.cn/v2/piebbs/forums/%d?pageNo=1&filter=pick&pageSize=20"
+#define kZuiEssenceTopicListUrl @"http://mrobot.pconline.com.cn/v2/piebbs/forums/%d?pageNo=%d&filter=pick&pageSize=20"
 
 
 //找产品
