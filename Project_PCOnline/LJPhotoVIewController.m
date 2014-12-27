@@ -12,15 +12,26 @@
 #import "LJPhotoGroup.h"
 #import "LJNetWorking.h"
 #import "LJDetailPhotoViewController.h"
+#import "MJRefresh/MJRefresh.h"
 
 #define kPhotoIdentifier @"kPhotoIdentifier"
 #define kPhotoUrlID @"41"
+#define kGroupPerPage 20
 
 @interface LJPhotoVIewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) UITableView * tableView;
-
 @property (nonatomic, strong) NSMutableArray * photoGroupData;
+
+/**
+ *  当前分页
+ */
+@property (nonatomic, assign) NSInteger curPage;
+
+/**
+ *  当前是否已经刷新
+ */
+@property (nonatomic, assign, getter=isRefresh) BOOL refresh;
 
 @end
 
@@ -29,10 +40,9 @@
 {
     [super viewDidLoad];
     self.navigationItem.title  = @"图赏";
-    
+    self.refresh = NO;
     //初始化tableView
     [self setupTableview];
-    
 }
 
 #pragma mark - 初始化
@@ -49,6 +59,18 @@
     edge.bottom = kTabBarH + kNavBarH + kStatusBarH;
     self.tableView.contentInset = edge;
     self.tableView.showsHorizontalScrollIndicator = NO;
+    
+    //添加下拉刷新
+    [self.tableView addHeaderWithCallback:^{
+        self.curPage = 1;
+        [self loadPhotoGroupData];
+    }];
+    //添加上拉加载更多
+    [self.tableView addFooterWithCallback:^{
+        self.curPage++;
+        [self.tableView reloadData];
+        [self.tableView footerEndRefreshing];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -59,6 +81,13 @@
     [self.navigationController setNavigationBarHidden:NO];
     [UIApplication sharedApplication].statusBarHidden = NO;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
+    //开始刷新
+    if (!self.isRefresh)
+    {
+        [self.tableView headerBeginRefreshing];
+        self.refresh = YES;
+    }
 }
 
 #pragma mark - 加载数据
@@ -81,17 +110,16 @@
             [self.photoGroupData addObject:group];
         }
         [self.tableView reloadData];
+        [self.tableView headerEndRefreshing];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
         
     }];
 }
 
-
-
 #pragma mark - tableview代理方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.photoGroupData.count;
+    return MIN(self.photoGroupData.count, self.curPage * kGroupPerPage);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

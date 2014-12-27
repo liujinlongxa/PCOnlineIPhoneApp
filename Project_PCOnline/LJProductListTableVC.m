@@ -12,6 +12,7 @@
 #import "LJProductListCell.h"
 #import "LJProductSortView.h"
 #import "LJCommonHeader.h"
+#import "MJRefresh/MJRefresh.h"
 //控制器
 #import "LJProductDetailScrollTabVC.h"
 #import "LJProductDetailWebVC.h"
@@ -70,6 +71,11 @@ typedef enum : NSUInteger {
         _tableView = tableView;
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        //添加上拉加载更多
+        [_tableView addFooterWithCallback:^{
+            self.curPage++;
+            [self loadProductListData];
+        }];
     }
     return _tableView;
 }
@@ -101,10 +107,6 @@ typedef enum : NSUInteger {
 }
 
 #pragma mark - 排序
-//- (void)setupSortViews
-//{
-//    
-//}
 
 - (LJProductSortView *)sortView
 {
@@ -118,6 +120,11 @@ typedef enum : NSUInteger {
     return _sortView;
 }
 
+/**
+ *  阴影
+ *
+ *  @return 返回阴影View
+ */
 - (UIView *)shadowView
 {
     if (!_shadowView) {
@@ -133,6 +140,9 @@ typedef enum : NSUInteger {
     return _shadowView;
 }
 
+/**
+ *  显示排序View
+ */
 - (void)showSortView
 {
     CGRect sortViewF = self.sortView.frame;
@@ -148,6 +158,9 @@ typedef enum : NSUInteger {
     
 }
 
+/**
+ *  隐藏排序View
+ */
 - (void)hideSortView
 {
     CGRect sortViewF = self.sortView.frame;
@@ -162,6 +175,9 @@ typedef enum : NSUInteger {
     }];
 }
 static BOOL isShowSortView = NO;
+/**
+ *  排序按钮事件处理
+ */
 - (void)filterButtonClick:(id)sender
 {
     
@@ -248,8 +264,25 @@ static BOOL isShowSortView = NO;
             product.type = self.brand.type;
             [arr addObject:product];
         }
-        self.productListData = arr;
+        if (self.curPage == 1)
+        {
+            self.productListData = arr;
+        }
+        else
+        {
+            //上拉加载更多
+            if (arr.count == 0)
+            {
+                self.curPage = 1; //已经没有更多数据了
+            }
+            else
+            {
+                [self.productListData addObjectsFromArray:arr];
+            }
+        }
+        
         [self.tableView reloadData];
+        [self.tableView footerEndRefreshing];//停止加载更多
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
         NSLog(@"%@", error);
     }];

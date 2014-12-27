@@ -186,6 +186,9 @@
 #pragma mark - 选中某个cell
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    static BOOL isAnimating = NO;
+    if (isAnimating) return;//如果正在动画，返回
+    
     //设置动画，隐藏navView和TabView
     CGFloat tabViewH = CGRectGetHeight(self.tabView.frame);
     __block CGRect tabViewF = self.tabView.frame;
@@ -197,14 +200,19 @@
         if (self.isThumbShow) {//设置thumb view
             thumbViewF.origin.x = kScrW;
             self.tuumbShow = !self.isThumbShow;
-            self.showBtn.selected = !self.showBtn.isSelected;
+            [self.showBtn setImage:[UIImage imageNamed:@"btn_photo_show_album"] forState:UIControlStateNormal];
         }
+        //执行动画
         [UIView animateWithDuration:1.0 animations:^{
+            isAnimating = YES;
             self.tabView.frame = tabViewF;
             self.navView.frame = navViewF;
             self.photoThumbView.frame = thumbViewF;
+        }completion:^(BOOL finished) {
+            isAnimating = NO;
+            self.show = NO;
         }];
-        self.show = NO;
+        
     }
     else
     {
@@ -218,7 +226,7 @@
     }
 }
 
-#pragma mark - button点击
+#pragma mark - 下载按钮点击
 - (IBAction)downLoadClick:(id)sender {
     
     LJPhotoCollectionViewCell * cell = [self.collectionView.visibleCells firstObject];
@@ -237,26 +245,37 @@
     [MBProgressHUD showNotificationMessage:@"保存成功" InView:self.collectionView];
 }
 
+#pragma mark - 缩略图视图
 - (IBAction)showBtnClick:(id)sender {
     
+    static BOOL isAnimating = NO;
+    //是否正在进行动画
+    if(isAnimating) return;
+    
     CGRect viewF = self.photoThumbView.frame;
-    self.showBtn.selected = !self.showBtn.selected;
-    if (self.isThumbShow) {
+    if (self.isThumbShow)
+    {
         viewF.origin.x = kScrW;
+        [self.showBtn setImage:[UIImage imageNamed:@"btn_photo_show_album"] forState:UIControlStateNormal];
     }
     else
     {
-        viewF.origin.x = kScrW - CGRectGetWidth(viewF);
+        viewF.origin.x = kScrW - CGRectGetWidth(viewF);;
+        [self.showBtn setImage:[UIImage imageNamed:@"btn_photo_hide_album"] forState:UIControlStateNormal];
     }
     
     
     [UIView animateWithDuration:1.0f animations:^{
+        isAnimating = YES;
         self.photoThumbView.frame = viewF;
     } completion:^(BOOL finished) {
         self.tuumbShow = !self.isThumbShow;
+        isAnimating = NO;
     }];
 }
 
+
+#pragma mark - 分享
 - (IBAction)shareBtnClick:(id)sender {
     
     LJPhotoCollectionViewCell * cell = [self.collectionView.visibleCells firstObject];
@@ -286,12 +305,11 @@
                      
                      if (state == SSPublishContentStateSuccess)
                      {
-                         NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"发表成功"));
+                         [MBProgressHUD showNotificationMessage:@"分享成功" InView:self.view];
                      }
                      else if (state == SSPublishContentStateFail)
                      {
-                         NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"发布失败!error code == %d, error code == %@"), [error errorCode], [error errorDescription]);
-                         NSLog(@"发布失败!error code == %d, error code == %@", [error errorCode], [error errorDescription]);
+                         [MBProgressHUD showNotificationMessage:@"分享失败" InView:self.view];
                      }
                      else
                      {

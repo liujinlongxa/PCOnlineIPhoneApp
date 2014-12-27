@@ -12,6 +12,7 @@
 #import "LJNewsSearchGroupView.h"
 #import "LJUrlHeader.h"
 #import "LJCommonHeader.h"
+#import "MBProgressHUD+LJProgressHUD.h"
 
 #define kBtnViewItemCount 3
 
@@ -53,7 +54,17 @@ static NSString * const YingyongArticle = @"应用文章";
     if (self.newsArticleData == nil ||
         self.pingceArticleData == nil ||
         self.daogouArticleData == nil ||
-        self.yingyongArticleData == nil) {
+        self.yingyongArticleData == nil)
+    {
+        return;
+    }
+    
+    if (self.newsArticleData.count == 0 &&
+        self.pingceArticleData.count == 0 &&
+        self.daogouArticleData.count == 0 &&
+        self.yingyongArticleData.count == 0)
+    {
+        [MBProgressHUD showNotificationMessage:@"未找到相关资讯" InView:self.view];
         return;
     }
     
@@ -72,6 +83,7 @@ static NSString * const YingyongArticle = @"应用文章";
     }];
     newsGroup.newsItems = self.newsArticleData;
     [self.scrollView addSubview:newsGroup];
+    
     //测评
     LJNewsSearchGroupView * cepingGroup = [[LJNewsSearchGroupView alloc] initWithFrame:CGRectMake(padding, padding + (padding * 2 + groupViewH), kScrW - 2 * padding, groupViewH) andClickActionBlock:^(NSInteger clickIndex) {
         if (clickIndex == kBtnViewItemCount)

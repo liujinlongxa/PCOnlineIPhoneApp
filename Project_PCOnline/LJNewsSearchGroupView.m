@@ -10,6 +10,7 @@
 #import "LJNewsSearchItemView.h"
 #import "LJNewsSearchResultItem.h"
 
+
 #define kNewsBtnCount 3
 
 @interface LJNewsSearchGroupView ()
