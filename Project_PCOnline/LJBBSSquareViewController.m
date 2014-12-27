@@ -99,7 +99,6 @@
     self.scrollView = scrollView;
     self.scrollView.backgroundColor = RGBColor(230, 230, 230);
     [self.scrollView addHeaderWithCallback:^{
-        
         [self loadAdsData];
         [self loadHotTopicData];
         [self loadHotForumsData];

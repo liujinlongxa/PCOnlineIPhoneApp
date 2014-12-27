@@ -55,6 +55,14 @@
     [self setupSmallButton];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+    [self.revealSideViewController changeOffset:DefaultOffset forDirection:PPRevealSideDirectionRight];
+    self.revealSideViewController.options |= PPRevealSideOptionsShowShadows;
+}
+
 #pragma mark - init UI
 
 /**
@@ -140,7 +148,9 @@
     self.downButton.titleLabel.font = titleFont;
 }
 
-
+/**
+ *  设置小按钮
+ */
 - (void)setupSmallButton
 {
     CGFloat imagWH = 22;
@@ -236,10 +246,10 @@
 - (void)settingButtonClick:(__unused id)sender
 {
     LJUserSettingTVC * settingTVC = [[LJUserSettingTVC alloc] initWithStyle:UITableViewStyleGrouped];
-    UINavigationController * settingNav = [[UINavigationController alloc] initWithRootViewController:settingTVC];
-    settingNav.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self.revealSideViewController presentViewController:settingNav animated:YES completion:NULL];
-//    [self.navigationController pushViewController:settingTVC animated:YES];
+//    UINavigationController * settingNav = [[UINavigationController alloc] initWithRootViewController:settingTVC];
+//    settingNav.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+//    [self presentViewController:settingTVC animated:YES completion:NULL];
+    [self.navigationController pushViewController:settingTVC animated:YES];
 }
 
 

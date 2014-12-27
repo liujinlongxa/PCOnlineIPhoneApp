@@ -41,14 +41,18 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    //setting nav bar
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_common_white_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClick:)];
     self.navigationItem.title = @"设置";
+    
+    [self.revealSideViewController changeOffset:0 forDirection:PPRevealSideDirectionRight];
+    self.revealSideViewController.options &= !PPRevealSideOptionsShowShadows;
 }
 
 - (void)backButtonClick:(__unused id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (NSArray *)settingData

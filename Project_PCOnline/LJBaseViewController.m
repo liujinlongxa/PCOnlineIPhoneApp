@@ -24,7 +24,8 @@
 - (void)userCenterClick
 {
     LJUserCenterViewController * settingVC = [[LJUserCenterViewController alloc] init];
-    [self.revealSideViewController pushViewController:settingVC onDirection:PPRevealSideDirectionRight animated:YES];
+    UINavigationController * settingNav = [[UINavigationController alloc] initWithRootViewController:settingVC];
+    [self.revealSideViewController pushViewController:settingNav onDirection:PPRevealSideDirectionRight animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated

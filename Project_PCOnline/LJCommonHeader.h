@@ -96,4 +96,7 @@ typedef enum : NSUInteger {
 //通知
 #define kLJPriceTableLocationButtonClickNotification @"PriceTableLocationButtonClickNotification"
 
+//侧滑offset
+#define DefaultOffset 70
+
 #endif

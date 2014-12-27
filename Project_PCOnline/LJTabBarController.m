@@ -18,7 +18,7 @@
 #import "LJSpecialViewController.h"
 
 @interface LJTabBarController ()<LJTabBarDelegate>
-
+@property (nonatomic, strong) UIViewController * selectViewController;
 @end
 
 @implementation LJTabBarController
@@ -36,11 +36,6 @@
     
     self.tabBar.translucent = NO;//设置不透明
     
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)setupControllers
@@ -71,7 +66,34 @@
 //选中button回调
 - (void)tabBar:(LJTabBar *)tabBar didselectButton:(LJTabButton *)button
 {
+    self.selectViewController = self.viewControllers[button.tag];
     self.selectedIndex = button.tag;
+}
+
+#pragma mark - fix "Unbalanced calls to begin/end appearance transitions for <LJNavController: 0x15da3140>." Bug
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+    [self.selectedViewController beginAppearanceTransition: YES animated: animated];
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.selectedViewController endAppearanceTransition];
+}
+
+-(void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.selectedViewController beginAppearanceTransition: NO animated: animated];
+}
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self.selectedViewController endAppearanceTransition];
 }
 
 @end
