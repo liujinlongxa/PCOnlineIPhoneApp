@@ -7,7 +7,7 @@
 //
 
 #import "LJDetailPhotoViewController.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJPhoto.h"
 #import "LJPhotoCollectionViewCell.h"
 #import "UIImage+MyImage.h"
@@ -146,7 +146,7 @@
 - (void)loadPhotosData
 {
     NSString * urlStr = self.group.url;
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         
         NSMutableArray * arr = [NSMutableArray array];

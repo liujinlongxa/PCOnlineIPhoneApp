@@ -10,12 +10,12 @@
 #import "LJProductFilterItemGroup.h"
 #import "LJProductFilterGroupCell.h"
 #import "LJUrlHeader.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJCommonHeader.h"
 #import "LJProductFilterSelectItemListTVC.h"
 #import "LJQueryJson.h"
 #import "LJProductListTableVC.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "MBProgressHUD.h"
 
 #define kProductFilterGroupCellIdentifier @"ProductFilterGroupCell"
@@ -88,7 +88,7 @@
 - (void)loadFilterItemGroupData
 {
     NSString * urlStr = [NSString stringWithFormat:kProductFilterItemListUrl, self.subCategory.sid.integerValue];
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         //解析数据
         NSMutableArray * arr = [NSMutableArray array];
@@ -164,7 +164,7 @@
     NSString * queryJsonEncodeStr = [self.subCategory.queryJson stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString * urlStr = [NSString stringWithFormat:kProductFilterGetResultCountUrl, self.subCategory.sid.integerValue, queryJsonEncodeStr];
     
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         NSInteger count = [dict[@"total"] integerValue];
         self.searchResultCount = count;

@@ -12,7 +12,7 @@
 #import "LJUrlHeader.h"
 #import "LJBBSList.h"
 #import "LJBBSListItem.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 
 
 #define kLJBBSSearchResultCellIdentifier @"BBSSearchResultCell"
@@ -73,7 +73,7 @@
         return;
     }
     //从远程加载
-    [LJNetWorking GET:kBBSListUrl parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:kBBSListUrl parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         NSMutableArray * arr = [NSMutableArray array];
         for (NSDictionary * bbsListDict in dict[@"children"]) {

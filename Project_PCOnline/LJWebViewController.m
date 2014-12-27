@@ -9,7 +9,7 @@
 #import "LJWebViewController.h"
 #import "LJCommentBar.h"
 #import "LJCommonHeader.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJPageTableCell.h"
 #import "LJWebImages.h"
 
@@ -85,7 +85,7 @@
 
 - (void)loadWebPage
 {
-    [LJNetWorking GET:self.urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:self.urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSString * htmlStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         [self.webView loadHTMLString:htmlStr baseURL:nil];
         [self setupPageDataWithHtmlStr:htmlStr];

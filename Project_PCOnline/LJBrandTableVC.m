@@ -7,7 +7,7 @@
 //
 
 #import "LJBrandTableVC.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJBrandGroup.h"
 #import "UIImageView+WebCache.h"
 #import "LJBrandCell.h"
@@ -55,7 +55,7 @@
 - (void)loadBrandData
 {
     NSString * urlStr = [NSString stringWithFormat:kBrandListUrl, self.subCategory.sid];
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         
         //解析数据

@@ -7,7 +7,7 @@
 //
 
 #import "LJCommonData.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJSubject.h"
 #import "LJDataManager.h"
 #import "LJBBSListItem.h"
@@ -83,7 +83,7 @@
 //加载远程数据并写入本地
 - (void)loadRemoteDataAndWrite
 {
-    [LJNetWorking GET:kChannelAndAreaUrl parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:kChannelAndAreaUrl parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         //重新创建文件
         [[NSFileManager defaultManager] removeItemAtPath:self.filePath error:nil];
         [[NSFileManager defaultManager] createFileAtPath:self.filePath contents:responseObject attributes:nil];
@@ -321,7 +321,7 @@
     NSMutableArray * settingDataSection4 = [NSMutableArray array];
     //item 41
     LJSettingSubtitleItem * item41 = [[LJSettingSubtitleItem alloc] initWithTitle:@"清理缓存" andType:LJSettingItemTypeSubtitle andAction:nil];
-    NSUInteger curCache = [LJNetWorking shareNetwork].currnetCacheSize / 2048.0 / 2048.0;
+    NSUInteger curCache = [LJNetWorkingTool shareNetwork].currnetCacheSize / 2048.0 / 2048.0;
     item41.subtitle = [NSString stringWithFormat:@"%dM", curCache];
     [settingDataSection4 addObject:item41];
     //item42

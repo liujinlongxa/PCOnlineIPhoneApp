@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 
-@interface LJNetWorking : NSObject
+@interface LJNetWorkingTool : NSObject
 
 + (void)GET:(NSString *)URLString
             parameters:(id)parameters

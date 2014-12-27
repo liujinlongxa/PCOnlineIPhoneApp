@@ -10,7 +10,7 @@
 #import "UIImage+MyImage.h"
 #import "LJCommonHeader.h"
 #import "LJTopicSearchResultItem.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJHotTopic.h"
 #import <ShareSDK/ShareSDK.h>
 #import "MBProgressHUD+LJProgressHUD.h"

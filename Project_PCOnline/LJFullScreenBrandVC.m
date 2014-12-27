@@ -9,7 +9,7 @@
 #import "LJFullScreenBrandVC.h"
 #import "LJBrandGroup.h"
 #import "LJBrand.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJCommonHeader.h"
 #import "LJUrlHeader.h"
 #import "LJFullScreenBrandCell.h"
@@ -104,7 +104,7 @@
 - (void)loadBrandData
 {
     NSString * urlStr = [NSString stringWithFormat:kBrandListUrl, self.cotegoryTypeID];
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         
         //正在进行产品比较，需要加载推荐品牌

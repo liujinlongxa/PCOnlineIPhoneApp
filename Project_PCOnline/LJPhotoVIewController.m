@@ -10,7 +10,7 @@
 #import "LJPhoto.h"
 #import "LJPhotoCell.h"
 #import "LJPhotoGroup.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJDetailPhotoViewController.h"
 #import "MJRefresh/MJRefresh.h"
 
@@ -103,7 +103,7 @@
 - (void)loadPhotoGroupData
 {
     NSString * urlStr = [NSString stringWithFormat:kPhotoUrl, kPhotoUrlID];
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         for (NSDictionary * groupDict in dict[@"groups"]) {
             LJPhotoGroup * group = [LJPhotoGroup photoGroupWithDict:groupDict];

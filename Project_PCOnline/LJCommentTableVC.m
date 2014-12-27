@@ -9,7 +9,7 @@
 #import "LJCommentTableVC.h"
 #import "LJCommonHeader.h"
 #import "LJUrlHeader.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJComment.h"
 #import "LJCommentTableViewCell.h"
 #import "LJCommentSupportInfo.h"
@@ -70,7 +70,7 @@ typedef enum : NSUInteger {
 - (void)loadSupportInfo
 {
     NSString * urlStr = [NSString stringWithFormat:kCommentSupportInfoUrl, self.ID.integerValue];
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         LJCommentSupportInfo * info = [LJCommentSupportInfo commentSupportWithDict:dict];
         self.supportInfo = info;
@@ -113,7 +113,7 @@ typedef enum : NSUInteger {
 - (void)loadCommentData
 {
     NSString * urlStr = [NSString stringWithFormat:kCommentDetailUrl, self.commentInfo.ID.integerValue, self.ID.integerValue];
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         assert(dict != nil);
         NSMutableArray * commentsArr = [NSMutableArray array];
@@ -193,7 +193,7 @@ typedef enum : NSUInteger {
 {
     NSString * urlString = [NSString stringWithFormat:kCommentChangeSupportUrl, self.ID.integerValue, type];
 
-    [LJNetWorking GET:urlString parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlString parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
 #warning 注意这里必须使用GBK转码，并且去除字符串前的12个\n
         NSStringEncoding encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
         NSString * newStr = [[NSString alloc] initWithData:responseObject encoding:encode];

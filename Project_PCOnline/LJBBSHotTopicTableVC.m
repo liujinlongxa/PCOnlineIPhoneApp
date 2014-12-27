@@ -8,7 +8,7 @@
 
 #import "LJBBSHotTopicTableVC.h"
 #import "LJHotTopicCell.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJBBSTopicDetailWebVC.h"
 #import "LJBBSTopicDetailWebVC.h"
 #import "MJRefresh/MJRefresh.h"
@@ -34,11 +34,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self setupTableView];
     
+}
+
+- (void)setupTableView
+{
     //设置tableview 偏移
     NSInteger offset = self.urlStr == nil ? kNavBarH + 40 : 0;
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, offset, 0);
     self.tableView.backgroundColor = LightGrayBGColor;
+    
     //添加上拉刷新和下拉加载更多
     __weak typeof(self) weakSelf = self;
     [self.tableView addHeaderWithCallback:^{
@@ -50,6 +56,7 @@
         [weakSelf.tableView reloadData];
         [weakSelf.tableView footerEndRefreshing];
     }];
+    
     [self.tableView registerClass:[LJHotTopicCell class] forCellReuseIdentifier:LJTopicCellIdentifier];
 }
 
@@ -96,7 +103,7 @@
 - (void)loadHotTopicsData
 {
     NSString * urlStr = [self setupUrlStr];
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         //解析数据
         NSMutableArray * hotTopicArr = [NSMutableArray array];

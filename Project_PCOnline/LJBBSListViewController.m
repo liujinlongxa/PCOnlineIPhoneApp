@@ -7,7 +7,7 @@
 //
 
 #import "LJBBSListViewController.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJBBSListItem.h"
 #import "LJBBSListCell.h"
 #import "LJCommonData.h"

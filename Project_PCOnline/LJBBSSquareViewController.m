@@ -8,7 +8,7 @@
 
 #import "LJBBSSquareViewController.h"
 #import "LJAdsGroupView.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJHotTopicView.h"
 #import "LJHotForumsView.h"
 #import "LJInfiniteScrollView.h"
@@ -253,7 +253,7 @@
 {
     NSString * urlStr = kBBSAdsUrl;
     _adsData = nil;
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         //解析数据
         NSMutableArray * adsArr = [NSMutableArray array];
@@ -291,7 +291,7 @@
 {
     _hotTopicData = nil;
     NSString * urlStr = [NSString stringWithFormat:kBBSHotTopicUrl, 1];//数量一个
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         //解析数据
         NSMutableArray * hotTopicArr = [NSMutableArray array];
@@ -355,7 +355,7 @@
 {
     _hotForumsData = nil;
     NSString * urlStr = kBBSHotForumsUrl;
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         //解析数据
         NSMutableArray * hotForumArr = [NSMutableArray array];

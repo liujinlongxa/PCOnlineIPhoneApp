@@ -9,7 +9,7 @@
 #import "LJWebImageGridViewerController.h"
 #import "LJUrlHeader.h"
 #import "LJCommonHeader.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJWebImageItem.h"
 #import "LJWebImageGridViewerCell.h"
 #import "UIImage+MyImage.h"
@@ -80,7 +80,7 @@
 - (void)loadPhotosData
 {
     NSString * urlStr = [NSString stringWithFormat:kProductPhotosUrl, self.ID.integerValue];
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         
         NSMutableArray * arr = [NSMutableArray array];

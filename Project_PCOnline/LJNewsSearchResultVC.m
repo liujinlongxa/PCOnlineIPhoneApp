@@ -7,7 +7,7 @@
 //
 
 #import "LJNewsSearchResultVC.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJNewsSearchResultItem.h"
 #import "LJNewsSearchGroupView.h"
 #import "LJUrlHeader.h"
@@ -157,7 +157,7 @@ static NSString * const YingyongArticle = @"应用文章";
 - (void)loadNewsArticleData
 {
     NSString * urlStr = [NSString stringWithFormat:kNewsSearchUrl, self.keyWord, [NewsArticle stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         NSMutableArray * arr = [NSMutableArray array];
         for (NSDictionary * articleDict in dict[@"articleList"]) {
@@ -175,7 +175,7 @@ static NSString * const YingyongArticle = @"应用文章";
 - (void)loadCepingArticleData
 {
     NSString * urlStr = [NSString stringWithFormat:kNewsSearchUrl, self.keyWord, [CepingArticle stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         NSMutableArray * arr = [NSMutableArray array];
         for (NSDictionary * articleDict in dict[@"articleList"]) {
@@ -192,7 +192,7 @@ static NSString * const YingyongArticle = @"应用文章";
 - (void)loadDaogouArticleData
 {
     NSString * urlStr = [NSString stringWithFormat:kNewsSearchUrl, self.keyWord, [DaogouArticle stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         NSMutableArray * arr = [NSMutableArray array];
         for (NSDictionary * articleDict in dict[@"articleList"]) {
@@ -209,7 +209,7 @@ static NSString * const YingyongArticle = @"应用文章";
 - (void)loadYingyongArticleData
 {
     NSString * urlStr = [NSString stringWithFormat:kNewsSearchUrl, self.keyWord, [YingyongArticle stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         NSMutableArray * arr = [NSMutableArray array];
         for (NSDictionary * articleDict in dict[@"articleList"]) {

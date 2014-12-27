@@ -6,20 +6,27 @@
 //  Copyright (c) 2014年 com.qianfeng. All rights reserved.
 //
 
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "Reachability.h"
 #import "LJCommonHeader.h"
 #import "MBProgressHUD+LJProgressHUD.h"
 
-static LJNetWorking * instance;
+static LJNetWorkingTool * instance;
 
-@interface LJNetWorking ()
+@interface LJNetWorkingTool ()
 
+/**
+ *  是否可以访问网络
+ */
 @property (nonatomic, assign, getter=isCanReachInternet) BOOL canReachInternet;
+
+/**
+ *  用于检测网络状态的第三方框架
+ */
 @property (nonatomic, strong) Reachability * networkReachability;
 @end
 
-@implementation LJNetWorking
+@implementation LJNetWorkingTool
 
 
 #pragma mark - moniter network
@@ -27,7 +34,7 @@ static LJNetWorking * instance;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance = [[LJNetWorking alloc] init];
+        instance = [[LJNetWorkingTool alloc] init];
     });
     return instance;
 }

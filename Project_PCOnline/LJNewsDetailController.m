@@ -10,7 +10,7 @@
 #import "UIImage+MyImage.h"
 #import "LJCommentTableVC.h"
 #import "LJCommentInfo.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 @interface LJNewsDetailController ()<UIWebViewDelegate>
 
 //@property (nonatomic, weak) UIWebView * webView;
@@ -128,7 +128,7 @@
 - (void)loadCommentInfo
 {
     NSString * urlStr  = [self setupUrlStr];
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         if ([dict[@"error"] isEqualToString:@"topic not found"])
         {

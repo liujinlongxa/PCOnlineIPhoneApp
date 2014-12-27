@@ -9,7 +9,7 @@
 #import "LJProductViewController.h"
 #import "LJProductSubCategory.h"
 #import "LJProductCategory.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJProductCategoryCell.h"
 #import "LJProductSortView.h"
 //控制器
@@ -116,7 +116,7 @@
 
 - (void)loadCategoryNameData
 {
-    [LJNetWorking GET:kProductCategoryNameUrl parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:kProductCategoryNameUrl parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         self.categoryNameData = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         [self loadCategoryData];
         [self.tableView reloadData];

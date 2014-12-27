@@ -8,7 +8,7 @@
 
 #import "LJProductListTableVC.h"
 #import "LJProduct.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJProductListCell.h"
 #import "LJProductSortView.h"
 #import "LJCommonHeader.h"
@@ -255,7 +255,7 @@ static BOOL isShowSortView = NO;
 
 - (void)loadProductListData
 {
-    [LJNetWorking GET:[self setupUrlStr] parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:[self setupUrlStr] parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         NSMutableArray * arr = [NSMutableArray array];

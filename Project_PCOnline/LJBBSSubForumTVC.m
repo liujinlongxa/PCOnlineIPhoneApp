@@ -12,7 +12,7 @@
 #import "LJHotTopicCell.h"
 #import "LJCommonHeader.h"
 #import "LJUrlHeader.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "UIImage+MyImage.h"
 #import "LJBBSTopicDetailWebVC.h"
 #import "LJPullingBar.h"
@@ -44,6 +44,10 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
  *  当前分页数
  */
 @property (nonatomic, assign) NSInteger curPage;
+/**
+ *  是否需要刷新
+ */
+@property (nonatomic, assign, getter=isRefresh) BOOL refresh;
 @end
 
 @implementation LJBBSSubForumTVC
@@ -89,6 +93,7 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = LightGrayBGColor;
     [self.tableView registerClass:[LJHotTopicCell class] forCellReuseIdentifier:LJTopicCellIdentifier];
+    
     //添加上拉刷新和下拉加载更多
     [self.tableView addHeaderWithCallback:^{
         self.curPage = 1;
@@ -98,6 +103,8 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
         self.curPage++;
         [self loadTopicFrameData];
     }];
+    
+    self.refresh = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -124,7 +131,11 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     
     //begin refresh
-    [self.tableView headerBeginRefreshing];
+    if (self.isRefresh) {
+        [self.tableView headerBeginRefreshing];
+        self.refresh = NO;
+    }
+    
 }
 
 #pragma mark - tableview 数据源
@@ -186,7 +197,7 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
 {
     NSString * urlStr = [self setupUrlStr];
     LJLog(@"url:%@", urlStr);
-    [LJNetWorking GET:urlStr parameters:self success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:self success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         //设置论坛属性
         self.backLab.text = dict[@"forum"][@"name"];
@@ -267,7 +278,7 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
         default:
             break;
     }
-    [self loadTopicFrameData];
+    [self.tableView headerBeginRefreshing];
 }
 
 @end

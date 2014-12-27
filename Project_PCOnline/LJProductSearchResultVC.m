@@ -10,7 +10,7 @@
 #import "LJUrlHeader.h"
 #import "LJCommonHeader.h"
 #import "LJProductSearchResultItem.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJProductSearchResultCell.h"
 
 #define kProductSearchResultCellIdentifier @"ProductSearchResultCell"
@@ -70,7 +70,7 @@
 - (void)search
 {
     NSString * urlStr = [NSString stringWithFormat:kProductSearchUrl, self.keyWord];
-    [LJNetWorking GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         //解析数据
         for (NSDictionary * itemDict in dict[@"resultList"]) {

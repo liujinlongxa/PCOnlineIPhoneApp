@@ -8,7 +8,7 @@
 
 #import "LJNormalTableView.h"
 #import "MJRefresh.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJNews.h"
 #import "LJNewsNormalCell.h"
 #import "LJAds.h"
@@ -72,7 +72,7 @@
 
 - (void)loadNewsData
 {
-    [LJNetWorking GET:[self setupUrlStr] parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:[self setupUrlStr] parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         //解析数据
         NSMutableArray * newsArr = [NSMutableArray array];

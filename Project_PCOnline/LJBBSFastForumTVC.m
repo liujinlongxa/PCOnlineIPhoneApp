@@ -9,16 +9,32 @@
 #import "LJBBSFastForumTVC.h"
 #import "UIImage+MyImage.h"
 #import "LJFastForumHeaderView.h"
-#import "LJNetWorking.h"
+#import "LJNetWorkingTool.h"
 #import "LJHotTopic.h"
 #import "LJHotTopicFrame.h"
 #import "LJHotTopicCell.h"
 #import "LJBBSTopicDetailWebVC.h"
 #import "LJBBSSubForumTVC.h"
+#import "MJRefresh/MJRefresh.h"
 
-@interface LJBBSFastForumTVC ()<LJFastForumHeaderViewDelegate>
+#define kTopicPerPage 20
 
+@interface LJBBSFastForumTVC ()<LJFastForumHeaderViewDelegate, UINavigationControllerDelegate>
+
+/**
+ *  热门帖子数据
+ */
 @property (nonatomic, strong) NSMutableArray * topicsData;
+
+/**
+ *  当前页
+ */
+@property (nonatomic, assign) NSInteger curPage;
+
+/**
+ *  是否需要刷新，第一次进入时需要刷新
+ */
+@property (nonatomic, assign, getter=isRefresh) BOOL refresh;
 
 @end
 
@@ -35,8 +51,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.curPage = 1;
+    self.refresh = YES;
+    [self setupTableView];
+}
+
+- (void)setupTableView
+{
     self.tableView.backgroundColor = LightGrayBGColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    //设置下拉刷新和上拉加载更多
+    __weak typeof(self) weakSelf = self;
+    [self.tableView addHeaderWithCallback:^{
+        weakSelf.curPage = 1;
+        [weakSelf loadTopicsData];
+    }];
+    [self.tableView addFooterWithCallback:^{
+        weakSelf.curPage++;
+        [weakSelf.tableView reloadData];
+    }];
+    
     //注册cell
     [self.tableView registerClass:[LJHotTopicCell class] forCellReuseIdentifier:LJTopicCellIdentifier];
 }
@@ -59,7 +94,12 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"btn_common_black_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClick:)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor], NSFontAttributeName:NavBarTitleFont}];
     
-    
+    //刷新数据
+    if (self.isRefresh)
+    {
+        [self.tableView headerBeginRefreshing];
+        self.refresh = NO;
+    }
 }
 
 - (void)backButtonClick:(id)sender
@@ -71,7 +111,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return self.topicsData.count;
+    return MIN(kTopicPerPage * self.curPage, self.topicsData.count);
 }
 
 - (UITableViewCell * )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -111,7 +151,7 @@
 {
     NSString * urlStr = [self setupUrlStr];
     LJLog(@"url:%@", urlStr);
-    [LJNetWorking GET:urlStr parameters:self success:^(NSHTTPURLResponse *response, id responseObject) {
+    [LJNetWorkingTool GET:urlStr parameters:self success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         NSMutableArray * topicArr = [NSMutableArray array];
         for (NSDictionary * topicDict in dict[@"hot-topics"]) {
@@ -120,7 +160,13 @@
             [topicArr addObject:topicFrame];
         }
         self.topicsData = topicArr;
+        
+        //重新加载数据
         [self.tableView reloadData];
+        
+        //停止刷新
+        [self.tableView headerEndRefreshing];
+        
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
         NSLog(@"%@", error);
     }];
