@@ -28,7 +28,7 @@
     self.window.rootViewController = revealVC;
     
     application.statusBarStyle = UIStatusBarStyleLightContent;
-    [[LJNetWorkingTool shareNetwork] startMonitorNetwork];
+    [[LJNetWorkingTool shareNetworkTool] startMonitorNetwork];
     
     //share sdk
     [ShareSDK registerApp:@"4cc5b89481e3"];//字符串api20为您的ShareSDK的AppKey

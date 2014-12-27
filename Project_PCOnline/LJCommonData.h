@@ -29,6 +29,4 @@
 - (id)loadObjcForKey:(NSString *)key;
 - (LJBBSListItem *)findBBSItemByID:(NSNumber *)ID inBBSLists:(NSArray *)bbsLists;
 
-//设置数据
-@property (nonatomic, strong) NSArray * settingData;
 @end

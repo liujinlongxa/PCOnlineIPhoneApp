@@ -33,7 +33,7 @@
 //    success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
 //    failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
-+ (instancetype)shareNetwork;
++ (instancetype)shareNetworkTool;
 
 /**
  *  开始检测网络状态

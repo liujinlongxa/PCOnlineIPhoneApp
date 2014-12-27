@@ -10,6 +10,7 @@
 #import "Reachability.h"
 #import "LJCommonHeader.h"
 #import "MBProgressHUD+LJProgressHUD.h"
+#import "AppDelegate.h"
 
 static LJNetWorkingTool * instance;
 
@@ -30,7 +31,10 @@ static LJNetWorkingTool * instance;
 
 
 #pragma mark - moniter network
-+ (instancetype)shareNetwork
+/**
+ *  单例对象
+ */
++ (instancetype)shareNetworkTool
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -39,6 +43,9 @@ static LJNetWorkingTool * instance;
     return instance;
 }
 
+/**
+ *  开始监听网络状态
+ */
 - (void)startMonitorNetwork
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChange:) name:kReachabilityChangedNotification object:nil];
@@ -60,6 +67,11 @@ static LJNetWorkingTool * instance;
     
 }
 
+/**
+ *  网络状态发生变化回调
+ *
+ *  @param notify 通知对象
+ */
 - (void)networkStatusChange:(NSNotification *)notify
 {
     Reachability * reach = notify.object;
@@ -67,12 +79,19 @@ static LJNetWorkingTool * instance;
     [self updateNetworkStatus:reach];
 }
 
+/**
+ *  更新网络状态
+ *
+ *  @param reach 新的网络状态
+ */
 - (void)updateNetworkStatus:(Reachability *)reach
 {
     NetworkStatus status = reach.currentReachabilityStatus;
     if (status == NotReachable)
     {
         LJLog(@"Change network status not reaceh : %d", status);
+        AppDelegate * dele = [UIApplication sharedApplication].delegate;
+        [MBProgressHUD showNotificationMessage:@"网络连接已断开" InView:dele.window];
         self.canReachInternet = NO;
     }
     else
@@ -83,11 +102,19 @@ static LJNetWorkingTool * instance;
 }
 
 #pragma mark - url cache
+/**
+ *  清空缓存
+ */
 - (void)cleanCache
 {
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
+/**
+ *  获取当前缓存大小
+ *
+ *  @return 当前缓存大小（byte）
+ */
 - (NSUInteger)currnetCacheSize
 {
     return [[NSURLCache sharedURLCache] currentDiskUsage];
@@ -97,11 +124,12 @@ static LJNetWorkingTool * instance;
 + (void)GET:(NSString *)URLString parameters:(id)parameters success:(void (^)(NSHTTPURLResponse *, id))success failure:(void (^)(NSHTTPURLResponse *, NSError *))failure andView:(UIView *)view
 {
     NSURL * url = [NSURL URLWithString:URLString];
-    NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f];
+    NSMutableURLRequest * req = nil;
     
     //没有联网的情况下使用缓存
     if (!instance.isCanReachInternet)
     {
+        req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataDontLoad timeoutInterval:10.0f];
         NSCachedURLResponse * cacheResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:req];
         if (cacheResponse != nil) {
             //有缓存，加载缓存数据
@@ -117,6 +145,7 @@ static LJNetWorkingTool * instance;
         return;
     }
 
+    req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0f];
     [NSURLConnection sendAsynchronousRequest:req queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (connectionError)
         {
@@ -133,11 +162,12 @@ static LJNetWorkingTool * instance;
 + (void)GET:(NSString *)URLString parameters:(id)parameters success:(void (^)(NSHTTPURLResponse *, id))success failure:(void (^)(NSHTTPURLResponse *, NSError *))failure
 {
     NSURL * url = [NSURL URLWithString:URLString];
-    NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f];
+    NSMutableURLRequest * req = nil;
     
     //没有联网的情况下使用缓存
     if (!instance.isCanReachInternet)
     {
+        req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataDontLoad timeoutInterval:10.0f];
         NSCachedURLResponse * cacheResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:req];
         if (cacheResponse != nil) {
             //有缓存，加载缓存数据
@@ -151,6 +181,7 @@ static LJNetWorkingTool * instance;
         return;
     }
     
+    req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0f];
     [NSURLConnection sendAsynchronousRequest:req queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (connectionError)
         {

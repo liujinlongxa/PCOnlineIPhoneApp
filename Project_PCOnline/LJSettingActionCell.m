@@ -19,6 +19,7 @@
 
 - (void)setItem:(LJSettingSubtitleItem *)item
 {
+    _item = item;
     self.title.text = item.title;
 }
 

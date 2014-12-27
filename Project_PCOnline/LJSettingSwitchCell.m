@@ -20,6 +20,7 @@
 
 - (void)setItem:(LJSettingSwitchItem *)item
 {
+    _item = item;
     self.title.text = item.title;
     self.sw.on = item.isOn;
 }

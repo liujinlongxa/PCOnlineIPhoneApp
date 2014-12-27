@@ -20,6 +20,7 @@
 
 - (void)setItem:(LJSettingChildSelectItem *)item
 {
+    _item = item;
     self.title.text = item.title;
     self.subtitle.text = item.childItems[item.selectIndex];
 }

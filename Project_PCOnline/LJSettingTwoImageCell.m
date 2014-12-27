@@ -21,6 +21,7 @@
 
 - (void)setItem:(LJSettingTwoImageItem *)item
 {
+    _item = item;
     self.title.text = item.title;
     self.image1.image = item.image1;
     self.image2.image = item.image2;
