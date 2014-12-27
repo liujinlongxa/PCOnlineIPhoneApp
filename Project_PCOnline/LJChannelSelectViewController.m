@@ -22,6 +22,7 @@
 
 @implementation LJChannelSelectViewController
 
+
 - (instancetype)init
 {
     self = [super init];

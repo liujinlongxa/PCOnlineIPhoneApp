@@ -9,8 +9,10 @@
 #ifndef Project_PCOnline_LJCommonHeader_h
 #define Project_PCOnline_LJCommonHeader_h
 
+
 //适配
-#define IOS8 ([UIDevice currentDevice].systemVersion.floatValue >= 8.0)
+#define CURENT_VERSION [UIDevice currentDevice].systemVersion.floatValue
+#define IOS8 CURENT_VERSION >= 8
 
 //调试
 #ifdef DEBUG

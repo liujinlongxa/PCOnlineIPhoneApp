@@ -1119,7 +1119,7 @@
 		046E75F11A2BF73B000FE777 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				880605421A454E3E00AB2C60 /* new */,
+				880605421A454E3E00AB2C60 /* Reachability */,
 				888D9C221A44222E001BA598 /* ShareSDK */,
 				888D9C201A43B98D001BA598 /* libstdc++.dylib */,
 				888D9C1E1A43B96E001BA598 /* MessageUI.framework */,
@@ -1718,13 +1718,13 @@
 			name = ProductCompare;
 			sourceTree = "<group>";
 		};
-		880605421A454E3E00AB2C60 /* new */ = {
+		880605421A454E3E00AB2C60 /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
 				880605431A454E6D00AB2C60 /* Reachability.h */,
 				880605441A454E6D00AB2C60 /* Reachability.m */,
 			);
-			name = new;
+			name = Reachability;
 			sourceTree = "<group>";
 		};
 		880780B71A30C431005876A2 /* List */ = {

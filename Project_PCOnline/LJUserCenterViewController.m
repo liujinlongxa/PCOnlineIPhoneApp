@@ -42,7 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.navigationController setNavigationBarHidden:YES];
+//    [self.navigationController setNavigationBarHidden:YES];
     
     self.imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     self.imageView.image = [UIImage imageNamed:@"bg_user_center"];

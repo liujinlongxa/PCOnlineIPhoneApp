@@ -80,7 +80,7 @@
         if ([self.topic isKindOfClass:[LJHotTopic class]])
         {
             LJHotTopic * hotTopic = (LJHotTopic *)self.topic;
-            if ([hotTopic.userUrl containsString:kZuiBBSFlag])
+            if ([hotTopic.userUrl rangeOfString:kZuiBBSFlag].location != NSNotFound)
             {
                 urlStr = [NSString stringWithFormat:kZuiBBSTopicDetailUrl, self.topic.topicId.integerValue, self.curPage + 1];
             }

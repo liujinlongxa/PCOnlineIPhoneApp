@@ -202,10 +202,10 @@
     }
     else if(locationStatus == kCLAuthorizationStatusNotDetermined)
     {
-        if (IOS8) {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 80000
             [self.locationManager requestAlwaysAuthorization];
             [self.locationManager requestWhenInUseAuthorization];
-        }
+#endif
     }
     
     if (![CLLocationManager locationServicesEnabled]) {
@@ -237,7 +237,7 @@
             CLPlacemark * place = [placemarks firstObject];
             NSString * cityName = place.locality;
             for (LJArea * area in [LJCommonData shareCommonData].AreaData) {
-                if ([cityName containsString:area.title]) {
+                if ([cityName rangeOfString:area.title].location != NSNotFound) {
                     self.autoLocationCell.area = area;
                     [self.locationManager stopUpdatingLocation];
                     break;
