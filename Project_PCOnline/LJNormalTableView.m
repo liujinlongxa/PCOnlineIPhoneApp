@@ -84,18 +84,18 @@
         }
         if (self.curPage == 1) {
             _newsData = newsArr;
+            //加载广告数据
+            for (NSDictionary * adsDict in dict[kAdsKey]) {
+                LJAds * ad = [LJAds adsWithDict:adsDict];
+                [adsArr addObject:ad];
+            }
+            self.adsData = adsArr;
         }
         else
         {
             //加载更多
             [_newsData addObjectsFromArray:newsArr];
         }
-        //加载广告数据
-        for (NSDictionary * adsDict in dict[kAdsKey]) {
-            LJAds * ad = [LJAds adsWithDict:adsDict];
-            [adsArr addObject:ad];
-        }
-        self.adsData = adsArr;
         
         [self reloadData];//刷新
         [self reloadHeaderView];

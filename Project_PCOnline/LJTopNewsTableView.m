@@ -42,9 +42,4 @@
     [self.groupView reloadViewWithAds:self.adsData];
 }
 
-- (void)dealloc
-{
-    LJLog(@"top news tvc dealloc");
-}
-
 @end
