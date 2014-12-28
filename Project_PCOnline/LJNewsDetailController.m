@@ -132,7 +132,7 @@
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         if ([dict[@"error"] isEqualToString:@"topic not found"])
         {
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"抢沙发" style:UIBarButtonItemStylePlain target:self action:@selector(commentBtnClick:)];
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"抢沙发" style:UIBarButtonItemStylePlain target:self action:nil];
         }
         else
         {
@@ -140,7 +140,7 @@
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[NSString stringWithFormat:@"%d评论", self.info.total.integerValue] style:UIBarButtonItemStylePlain target:self action:@selector(commentBtnClick:)];
         }
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        NetworkErrorNotify(self);
     }];
 }
 

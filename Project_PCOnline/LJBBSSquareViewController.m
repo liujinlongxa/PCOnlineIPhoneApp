@@ -89,7 +89,7 @@
     [self.hotTopicScrollView stopScroll];
 }
 
-#pragma mark - 初始化
+#pragma mark - 初始化UI
 //设置滚动视图
 - (void)setupScrollView
 {
@@ -267,7 +267,8 @@
         _adsData = adsArr;
         [self reloadAdsData];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        [self.scrollView headerEndRefreshing];
+        NetworkErrorNotify(self);
     }];
 }
 
@@ -302,7 +303,8 @@
         _hotTopicData = hotTopicArr;
         [self reloadHotTopciData];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        [self.scrollView headerEndRefreshing];
+        NetworkErrorNotify(self);
     }];
 }
 
@@ -366,7 +368,8 @@
         _hotForumsData = hotForumArr;
         [self reloadForumData];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        [self.scrollView headerEndRefreshing];
+        NetworkErrorNotify(self);
     }];
 }
 

@@ -75,7 +75,7 @@ typedef enum : NSUInteger {
         LJCommentSupportInfo * info = [LJCommentSupportInfo commentSupportWithDict:dict];
         self.supportInfo = info;
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        NetworkErrorNotify(self);
     }];
 }
 
@@ -135,7 +135,7 @@ typedef enum : NSUInteger {
         [_commentData addObjectsFromArray:@[hotCommentsArr, commentsArr]];
         [self.tableView reloadData];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        NetworkErrorNotify(self);
     }];
 }
 
@@ -219,7 +219,7 @@ typedef enum : NSUInteger {
         }
         
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        NetworkErrorNotify(self);
     }];
 }
 

@@ -128,7 +128,7 @@
         UIAlertView * cleanCacheAlert = [[UIAlertView alloc] initWithTitle:nil message:@"确认清除缓存" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         [cleanCacheAlert show];
     }];
-    float curCache = [LJNetWorkingTool shareNetworkTool].currnetCacheSize / 1024.0 / 1024.0;
+    float curCache = [LJNetWorkingTool shareNetworkTool].currnetCacheSize;
     item41.subtitle = [NSString stringWithFormat:@"%.1fM", curCache];
     self.cleanCacheItem = item41;
     [settingDataSection4 addObject:item41];
@@ -223,10 +223,10 @@
 {
     if(buttonIndex == 0) return;
     
-    NSLog(@"before real: %@", [NSString stringWithFormat:@"%.1fM", [[LJNetWorkingTool shareNetworkTool] currnetCacheSize] / 1024.0 / 1024.0]);
+    NSLog(@"before real: %@", [NSString stringWithFormat:@"%.1fM", [[LJNetWorkingTool shareNetworkTool] currnetCacheSize]]);
     [[LJNetWorkingTool shareNetworkTool] cleanCache];
     self.cleanCacheItem.subtitle = @"0.0M";
-    NSLog(@"after real: %@", [NSString stringWithFormat:@"%.1fM", [[LJNetWorkingTool shareNetworkTool] currnetCacheSize] / 1024.0 / 1024.0]);
+    NSLog(@"after real: %@", [NSString stringWithFormat:@"%.1fM", [[LJNetWorkingTool shareNetworkTool] currnetCacheSize]]);
     
     [MBProgressHUD showNotificationMessage:@"清除缓存成功" InView:self.view];
 }

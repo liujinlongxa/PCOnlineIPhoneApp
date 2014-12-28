@@ -168,7 +168,9 @@
         [self.tableView headerEndRefreshing];
         
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        NetworkErrorNotify(self);
+        //停止刷新
+        [self.tableView headerEndRefreshing];
     }];
 }
 

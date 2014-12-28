@@ -225,7 +225,9 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
         [self.tableView footerEndRefreshing];
         [self.tableView headerEndRefreshing];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        NetworkErrorNotify(self);
+        [self.tableView footerEndRefreshing];
+        [self.tableView headerEndRefreshing];
     }];
 }
 

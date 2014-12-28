@@ -91,7 +91,7 @@
         _photosData  = [arr copy];
         [self.collectionView reloadData];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        NetworkErrorNotify(self);
     }];
 }
 

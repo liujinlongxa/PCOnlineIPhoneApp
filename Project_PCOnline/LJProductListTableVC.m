@@ -284,7 +284,7 @@ static BOOL isShowSortView = NO;
         [self.tableView reloadData];
         [self.tableView footerEndRefreshing];//停止加载更多
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        NetworkErrorNotify(self);
     }];
 }
 

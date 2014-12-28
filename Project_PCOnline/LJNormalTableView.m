@@ -97,12 +97,16 @@
             [_newsData addObjectsFromArray:newsArr];
         }
         
-        [self reloadData];//刷新
+        [self reloadData];//刷新数据
         [self reloadHeaderView];
+        //停止下拉刷新和上拉加载更多
         [self footerEndRefreshing];
         [self headerEndRefreshing];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        NetworkErrorNotify(self);
+        //停止刷新
+        [self footerEndRefreshing];
+        [self headerEndRefreshing];
     }];
 }
 

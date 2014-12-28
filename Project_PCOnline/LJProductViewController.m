@@ -121,7 +121,7 @@
         [self loadCategoryData];
         [self.tableView reloadData];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        NetworkErrorNotify(self);
     }];
 }
 

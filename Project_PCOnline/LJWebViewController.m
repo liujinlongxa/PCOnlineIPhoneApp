@@ -77,12 +77,18 @@
 }
 
 #pragma mark - load web
+/**
+ *  设置Url字符串
+ */
 - (void)setUrlStr:(NSString *)urlStr
 {
     _urlStr = urlStr;
     [self loadWebPage];
 }
 
+/**
+ *  加载web页面
+ */
 - (void)loadWebPage
 {
     [LJNetWorkingTool GET:self.urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
@@ -90,7 +96,8 @@
         [self.webView loadHTMLString:htmlStr baseURL:nil];
         [self setupPageDataWithHtmlStr:htmlStr];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-    } andView:self.view];
+        NetworkErrorNotify(self);
+    }];
 }
 
 #pragma mark - load page data

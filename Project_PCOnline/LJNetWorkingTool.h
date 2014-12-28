@@ -11,28 +11,35 @@
 
 @interface LJNetWorkingTool : NSObject
 
+/**
+ *  GET请求
+ *
+ *  @param URLString  url地址
+ *  @param parameters 参数
+ *  @param success    成功回调
+ *  @param failure    失败回调
+ */
 + (void)GET:(NSString *)URLString
             parameters:(id)parameters
             success:(void (^)(NSHTTPURLResponse *response, id responseObject))success
             failure:(void (^)(NSHTTPURLResponse *response, NSError *error))failure;
 
+/**
+ *  Post请求
+ *
+ *  @param URLString  url地址
+ *  @param parameters 参数
+ *  @param success    成功回调
+ *  @param failure    失败回调
+ */
 + (void)POST:(NSString *)URLString
             parameters:(id)parameters
             success:(void (^)(NSHTTPURLResponse *response, id responseObject))success
             failure:(void (^)(NSHTTPURLResponse *response, NSError *error))failure;
 
-+ (void)GET:(NSString *)URLString
-    parameters:(id)parameters
-    success:(void (^)(NSHTTPURLResponse *, id))success
-    failure:(void (^)(NSHTTPURLResponse *, NSError *))failure
-    andView:(UIView *)view;
-
-//- (AFHTTPRequestOperation *)POST:(NSString *)URLString
-//    parameters:(id)parameters
-//    constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block
-//    success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-//    failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
-
+/**
+ *  返回NetworkTool单例对象
+ */
 + (instancetype)shareNetworkTool;
 
 /**
@@ -46,9 +53,11 @@
 - (void)cleanCache;
 /**
  *  获取当前缓存
- *
- *  @return <#return value description#>
  */
-- (NSUInteger)currnetCacheSize;
+- (float)currnetCacheSize;
 
+/**
+ *  开始监听网络连接错误
+ */
+- (void)startObserverNetworkError;
 @end

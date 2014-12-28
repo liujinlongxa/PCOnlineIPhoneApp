@@ -168,7 +168,7 @@ static NSString * const YingyongArticle = @"应用文章";
         self.newsArticleData = arr;
         [self setupGroupView];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        NetworkErrorNotify(self);
     }];
 }
 
@@ -186,7 +186,7 @@ static NSString * const YingyongArticle = @"应用文章";
         self.pingceArticleData = arr;
         [self setupGroupView];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        NetworkErrorNotify(self);
     }];
 }
 - (void)loadDaogouArticleData
@@ -203,7 +203,7 @@ static NSString * const YingyongArticle = @"应用文章";
         self.daogouArticleData = arr;
         [self setupGroupView];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        NetworkErrorNotify(self);
     }];
 }
 - (void)loadYingyongArticleData
@@ -220,7 +220,7 @@ static NSString * const YingyongArticle = @"应用文章";
         self.yingyongArticleData = arr;
         [self setupGroupView];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        NetworkErrorNotify(self);
     }];
 }
 

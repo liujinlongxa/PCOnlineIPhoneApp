@@ -112,7 +112,8 @@
         [self.tableView reloadData];
         [self.tableView headerEndRefreshing];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        
+        [self.tableView headerEndRefreshing];
+        NetworkErrorNotify(self);
     }];
 }
 

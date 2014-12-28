@@ -84,7 +84,7 @@
         [self search];
         [LJCommonData shareCommonData].BBSListData = arr;
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        NetworkErrorNotify(self);
     }];
 }
 

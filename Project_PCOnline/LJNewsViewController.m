@@ -10,7 +10,6 @@
 #import "UIImage+MyImage.h"
 #import "LJSubjectView.h"
 #import "LJCommonData.h"
-#import "LJNetWorkingTool.h"
 #import "LJNewsNormalCell.h"
 #import "MJRefresh.h"
 #import "LJNewsDetailController.h"

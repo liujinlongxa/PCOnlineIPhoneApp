@@ -27,11 +27,17 @@
     PPRevealSideViewController * revealVC = [[PPRevealSideViewController alloc] initWithRootViewController:tabVC];
     self.window.rootViewController = revealVC;
     
+    //更改状态栏式样
     application.statusBarStyle = UIStatusBarStyleLightContent;
+    
+    //开始监听网络状态
     [[LJNetWorkingTool shareNetworkTool] startMonitorNetwork];
     
+    //开始监听网络连接错误
+    [[LJNetWorkingTool shareNetworkTool] startObserverNetworkError];
+    
     //share sdk
-    [ShareSDK registerApp:@"4cc5b89481e3"];//字符串api20为您的ShareSDK的AppKey
+    [ShareSDK registerApp:@"4cc5b89481e3"];
     
     //添加新浪微博应用 注册网址 http://open.weibo.com
     [ShareSDK connectSinaWeiboWithAppKey:@"946021150"

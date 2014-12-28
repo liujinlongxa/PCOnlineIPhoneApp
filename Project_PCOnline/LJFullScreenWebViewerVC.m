@@ -96,8 +96,7 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    NSLog(@"%@", error);
-    [MBProgressHUD hideAllHUDsForView:self.webView animated:YES];
+    NetworkErrorNotify(self);
 }
 
 

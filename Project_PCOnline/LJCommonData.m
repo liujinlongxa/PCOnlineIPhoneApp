@@ -12,6 +12,7 @@
 #import "LJDataManager.h"
 #import "LJBBSListItem.h"
 #import "LJBBSList.h"
+#import "LJCommonHeader.h"
 
 #define kSubjectAndAreaDataFileName @"pconline_v4_cms_iphone_channel_tree4inch.json"
 #define kBBSListDataFileName @"pconline_v4_bbs_forum_tree4inch.json"
@@ -81,7 +82,7 @@
         [[NSFileManager defaultManager] createFileAtPath:self.filePath contents:responseObject attributes:nil];
         
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
-        NSLog(@"%@", error);
+        NetworkErrorNotify(self);
     }];
 }
 

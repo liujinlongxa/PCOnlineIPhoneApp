@@ -99,4 +99,9 @@ typedef enum : NSUInteger {
 //侧滑offset
 #define DefaultOffset 70
 
+//网络连接错误通知
+#define kNetworkErrorNotification @"NetworkErrorNotification"
+#define NetworkErrorNotify(obj) [[NSNotificationCenter defaultCenter] postNotificationName:kNetworkErrorNotification object:(obj)]
+
+
 #endif

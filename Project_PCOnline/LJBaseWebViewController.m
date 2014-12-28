@@ -40,9 +40,9 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    NSLog(@"%@", error);
-    [MBProgressHUD hideAllHUDsForView:self.webView animated:YES];
-    [MBProgressHUD showNotificationMessage:@"加载失败" InView:self.webView];
+    NetworkErrorNotify(self);
+//    [MBProgressHUD hideAllHUDsForView:self.webView animated:YES];
+//    [MBProgressHUD showNotificationMessage:@"加载失败" InView:self.webView];
 }
 
 #pragma mark - 网页内容点击跳转

@@ -32,7 +32,7 @@ static MBProgressHUD * labelHUD;
     labelHUD.labelText = message;
     [view addSubview:labelHUD];
     [labelHUD show:YES];
-    [labelHUD hide:YES afterDelay:1.0f];
+    [labelHUD hide:YES afterDelay:2.0f];
 }
 
 @end
