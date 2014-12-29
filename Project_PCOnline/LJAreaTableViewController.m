@@ -202,10 +202,12 @@
     }
     else if(locationStatus == kCLAuthorizationStatusNotDetermined)
     {
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 80000
+        if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
             [self.locationManager requestAlwaysAuthorization];
             [self.locationManager requestWhenInUseAuthorization];
 #endif
+        }
     }
     
     if (![CLLocationManager locationServicesEnabled]) {
