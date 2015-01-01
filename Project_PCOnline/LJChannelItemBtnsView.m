@@ -10,6 +10,7 @@
 #import "LJCommonHeader.h"
 
 #define kTitleLabH 30
+#define kShakeAnimationKey @"ShakeAnimationKey"
 
 @interface LJChannelItemBtnsView ()
 
@@ -31,6 +32,7 @@
     btnH = CGRectGetHeight([[buttons firstObject] frame]);
     btnW = CGRectGetWidth([[buttons firstObject] frame]);
     lineNum = ceil(buttons.count / kCountOfBtnInOneLine);
+    
     //view Frame
     CGFloat viewX = frame.origin.x;
     CGFloat viewY = frame.origin.y;
@@ -110,6 +112,9 @@
     }
 }
 
+/**
+ *  给Button添加手势
+ */
 - (void)addgestureToButton:(LJChannelItemBtn *)button
 {
     if(!self.isCanDragToMove) return;
@@ -119,6 +124,9 @@
     button.dragGesture = longPress;
 }
 
+/**
+ *  删除手势
+ */
 - (void)removeGestureFromButton:(LJChannelItemBtn *)button
 {
     if (button.dragGesture)
@@ -128,6 +136,9 @@
     }
 }
 
+/**
+ *  长按Button事件处理
+ */
 - (void)buttonLogPress:(UILongPressGestureRecognizer *)gesture
 {
     CGPoint p = [gesture locationInView:self];
@@ -146,14 +157,51 @@
         }
         [self updateButtonsLocationMovingWithPoint:p andMovingButton:btn];
     }
+    else if (gesture.state == UIGestureRecognizerStateBegan)
+    {
+        [self addShakeAnimationToButton:btn];
+    }
     else if (gesture.state == UIGestureRecognizerStateEnded)
     {
         //移动结束后，更新button的位置
         [self updateButtonsLocationMoveEndWithPoint:p andButton:btn];
+        [self remoreShakeAnimationToButton:btn];
     }
     
 }
 
+/**
+ *  为Button添加抖动动画
+ */
+- (void)addShakeAnimationToButton:(LJChannelItemBtn *)button
+{
+    CAKeyframeAnimation * animation = [CAKeyframeAnimation animation];
+    animation.repeatCount = MAXFLOAT;
+    animation.keyPath = @"transform.rotation";
+    animation.values = @[@(Angle2Radian(-2)), @(Angle2Radian(2)), @(Angle2Radian(-2))];
+    animation.duration = 0.25;
+    
+    // 保持动画执行完毕后的状态
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    
+    [button.layer addAnimation:animation forKey:kShakeAnimationKey];
+}
+
+/**
+ *  去除Button的抖动动画
+ */
+- (void)remoreShakeAnimationToButton:(LJChannelItemBtn *)button
+{
+    [button.layer removeAnimationForKey:kShakeAnimationKey];
+}
+
+/**
+ *  移动完成后更新所有按钮的位置
+ *
+ *  @param point  结束点的位置
+ *  @param button 移动的Button
+ */
 - (void)updateButtonsLocationMoveEndWithPoint:(CGPoint)point andButton:(LJChannelItemBtn *)button
 {
     CGFloat startY = padding + CGRectGetMaxY(self.titleLabel.frame);
@@ -171,6 +219,13 @@
     }];
 }
 
+
+/**
+ *  移动过程中更新所有按钮的位置
+ *
+ *  @param point  移动到的位置
+ *  @param button 移动的Button
+ */
 - (void)updateButtonsLocationMovingWithPoint:(CGPoint)point andMovingButton:(LJChannelItemBtn *)movingBtn
 {
     for (LJChannelItemBtn * btn in self.buttons) {
@@ -196,6 +251,9 @@
     }
 }
 
+/**
+ *  更新Buttons的位置
+ */
 - (void)updateLocationWithMovingBtn:(LJChannelItemBtn *)movingBtn
 {
     CGFloat startY = padding + CGRectGetMaxY(self.titleLabel.frame);

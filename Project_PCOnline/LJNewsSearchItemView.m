@@ -81,9 +81,4 @@
     self.dateLab.text = newsItem.pubDate;
 }
 
-//- (void)searchItemClick:(LJNewsSearchItemView *)sender
-//{
-//    self.clickActionBlock(sender.newsItem);
-//}
-
 @end

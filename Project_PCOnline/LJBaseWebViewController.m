@@ -41,8 +41,6 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     NetworkErrorNotify(self);
-//    [MBProgressHUD hideAllHUDsForView:self.webView animated:YES];
-//    [MBProgressHUD showNotificationMessage:@"加载失败" InView:self.webView];
 }
 
 #pragma mark - 网页内容点击跳转

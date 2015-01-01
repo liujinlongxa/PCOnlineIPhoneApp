@@ -67,7 +67,9 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
     //初始化tablview
     [self setupTableView];
     
+    //当前排序方法
     self.curOrderBy = LJTopicOrderByLastReply;
+    //当前页数
     self.curPage = 1;
     [self setupPullingBar];
 }

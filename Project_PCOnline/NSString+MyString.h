@@ -11,6 +11,14 @@
 
 @interface NSString (MyString)
 
+/**
+ *  返回文字端的返回大小
+ *
+ *  @param font    字体
+ *  @param maxSize 最大Size（限制再这之内）
+ *
+ *  @return 返回文字段大小
+ */
 - (CGSize)sizeOfStringInIOS7WithFont:(UIFont *)font andMaxSize:(CGSize)maxSize;
 
 @end

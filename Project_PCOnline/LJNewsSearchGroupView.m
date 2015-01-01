@@ -10,8 +10,8 @@
 #import "LJNewsSearchItemView.h"
 #import "LJNewsSearchResultItem.h"
 
-
-#define kNewsBtnCount 3
+#define kNewsButtonCount 3
+#define kMoreBtnH 40
 
 @interface LJNewsSearchGroupView ()
 
@@ -31,8 +31,15 @@
     return _newsBtns;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame andClickActionBlock:(void (^)(NSInteger clickIndex))actionBlock
+- (instancetype)initWithFrame:(CGRect)frame andItems:(NSArray *)items andClickActionBlock:(void (^)(NSInteger clickIndex))actionBlock
 {
+    //个数为0则返回nil
+    if (items.count == 0) return nil;
+    
+    NSInteger count = items.count > kNewsButtonCount ? kNewsButtonCount : items.count;
+    CGFloat BtnH = (frame.size.height - kMoreBtnH) / kNewsButtonCount;
+    frame.size.height = kMoreBtnH + count * BtnH;
+    
     self = [super initWithFrame:frame];
     if (self) {
         
@@ -44,30 +51,15 @@
         self.layer.borderWidth = 1;
         self.backgroundColor = [UIColor whiteColor];
         
-        //new btns
-        for (int i = 0; i < kNewsBtnCount; i++) {
-            LJNewsSearchItemView * btn = [[LJNewsSearchItemView alloc] initWithFrame:CGRectZero andActionBlock:nil];
-            [self addSubview:btn];
-            [self.newsBtns addObject:btn];
-            [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-            btn.tag = i;
-        }
-        
-        //more btn
-        
-        UIButton * moreBtn = [[UIButton alloc] init];
-//        NSAttributedString * attStr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"查看所有%@(%d)", item.type, self.newsItems.count]];
-#warning 如何给部分文字加颜色
-        moreBtn.tag = kNewsBtnCount;
-        [moreBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [self addSubview:moreBtn];
-        self.moreBtn = moreBtn;
-        [moreBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+        self.newsItems = items;
         
     }
     return self;
 }
 
+/**
+ *  按钮点击，回调Block
+ */
 - (void)btnClick:(UIControl *)sender
 {
     if (self.clickActionBlock)
@@ -76,38 +68,82 @@
     }
 }
 
-- (void)setNewsItems:(NSArray *)newsItems
-{
-    _newsItems = newsItems;
-    for (int i = 0; i < kNewsBtnCount; i++) {
-        LJNewsSearchItemView * item = self.newsBtns[i];
-        item.newsItem = self.newsItems[i];
-    }
-    LJNewsSearchResultItem * item = [self.newsItems firstObject];
-     [self.moreBtn setTitle:[NSString stringWithFormat:@"查看所有%@(%d)", item.type, self.newsItems.count] forState:UIControlStateNormal];
-}
-
-- (void)layoutSubviews
+/**
+ *  初始化UI
+ */
+- (void)setupSubViewsWithItems:(NSArray *)newsItems
 {
     CGFloat viewW = CGRectGetWidth(self.frame);
     CGFloat viewH = CGRectGetHeight(self.frame);
-    CGFloat moreH = 40;
+    NSInteger count = newsItems.count > kNewsButtonCount ? kNewsButtonCount : newsItems.count;
     
-    //btn
+    //根据搜索结果，初始化Button
     CGFloat newsBtnX = 0;
     CGFloat newsBtnW = viewW;
-    CGFloat newsBtnH = (viewH - moreH) / kNewsBtnCount;
-    for (int i = 0; i < kNewsBtnCount; i++) {
+    CGFloat newsBtnH = (viewH - kMoreBtnH) / count;
+    for (int i = 0; i < count; i++) {
         CGFloat newsBtnY = i * newsBtnH;
-        [self.newsBtns[i] setFrame:CGRectMake(newsBtnX, newsBtnY, newsBtnW, newsBtnH)];
+        LJNewsSearchItemView * btn = [[LJNewsSearchItemView alloc] initWithFrame:CGRectMake(newsBtnX, newsBtnY, newsBtnW, newsBtnH) andActionBlock:nil];
+        [self addSubview:btn];
+        [self.newsBtns addObject:btn];
+        [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+        btn.tag = i;
+        btn.newsItem = newsItems[i];
     }
     
     //more btn
     CGFloat moreBtnX = 0;
     CGFloat moreBtnY = CGRectGetMaxY([[self.newsBtns lastObject] frame]);
     CGFloat moreBtnW = viewW;
-    CGFloat moreBtnH = moreH;
-    self.moreBtn.frame = CGRectMake(moreBtnX, moreBtnY, moreBtnW, moreBtnH);
+    CGFloat moreBtnH = kMoreBtnH;
+    UIButton * moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(moreBtnX, moreBtnY, moreBtnW, moreBtnH)];
+    moreBtn.tag = count;
+    [moreBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self addSubview:moreBtn];
+    self.moreBtn = moreBtn;
+    [moreBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
 }
+
+/**
+ *  设置数据
+ */
+- (void)setNewsItems:(NSArray *)newsItems
+{
+    _newsItems = newsItems;
+    
+    //初始化UI，必须在获取数据后再初始化UI
+    [self setupSubViewsWithItems:newsItems];
+    
+    //设置更多Button上的文字
+    LJNewsSearchResultItem * item = [self.newsItems firstObject];
+     [self.moreBtn setTitle:[NSString stringWithFormat:@"查看所有%@(%d)", item.type, self.newsItems.count] forState:UIControlStateNormal];
+}
+
+/**
+ *  布局子控件
+ */
+//- (void)setupSubviewsLayoutWithCount:(NSInteger)count
+//{
+//    CGFloat viewW = CGRectGetWidth(self.frame);
+//    CGFloat viewH = CGRectGetHeight(self.frame);
+//    CGFloat moreH = 40;
+//    
+//    //btn
+//    CGFloat newsBtnX = 0;
+//    CGFloat newsBtnW = viewW;
+//    CGFloat newsBtnH = (viewH - moreH) / count;
+//    for (int i = 0; i < count; i++) {
+//        CGFloat newsBtnY = i * newsBtnH;
+//        [self.newsBtns[i] setFrame:CGRectMake(newsBtnX, newsBtnY, newsBtnW, newsBtnH)];
+//    }
+//    
+//    //more btn
+//    CGFloat moreBtnX = 0;
+//    CGFloat moreBtnY = CGRectGetMaxY([[self.newsBtns lastObject] frame]);
+//    CGFloat moreBtnW = viewW;
+//    CGFloat moreBtnH = moreH;
+//    self.moreBtn.frame = CGRectMake(moreBtnX, moreBtnY, moreBtnW, moreBtnH);
+//}
 
 @end

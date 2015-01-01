@@ -11,6 +11,7 @@
 #import "LJCommonHeader.h"
 #import "MBProgressHUD+LJProgressHUD.h"
 #import "AppDelegate.h"
+#import "SDWebImageManager.h"
 
 static LJNetWorkingTool * instance;
 
@@ -63,12 +64,10 @@ static LJNetWorkingTool * instance;
     self.networkReachability = [Reachability reachabilityForInternetConnection];
     if (self.networkReachability.currentReachabilityStatus == NotReachable)
     {
-        LJLog(@"Change network status not reaceh");
         self.canReachInternet = NO;
     }
     else
     {
-        LJLog(@"Change network status reaceh");
         self.canReachInternet = YES;
     }
     
@@ -99,14 +98,12 @@ static LJNetWorkingTool * instance;
     NetworkStatus status = reach.currentReachabilityStatus;
     if (status == NotReachable)
     {
-        LJLog(@"Change network status not reaceh : %d",  (int)status);
         AppDelegate * dele = [UIApplication sharedApplication].delegate;
         [MBProgressHUD showNotificationMessage:@"网络连接已断开" InView:dele.window];
         self.canReachInternet = NO;
     }
     else
     {
-        LJLog(@"Change network status reaceh : %d", (int)status);
         self.canReachInternet = YES;
     }
 }
@@ -160,7 +157,11 @@ static LJNetWorkingTool * instance;
  */
 - (void)cleanCache
 {
+    //删除网络请求缓存数据
     [[NSFileManager defaultManager] removeItemAtPath:self.cachePath error:nil];
+    
+    //删除图片缓存数据
+    [[SDWebImageManager sharedManager].imageCache clearDisk];
 }
 
 /**
@@ -170,8 +171,12 @@ static LJNetWorkingTool * instance;
  */
 - (float)currnetCacheSize
 {
-    /*判断缓存路径是否存在，存在则缓存路径整个文件夹的大小，否则返回0*/
-    return [self folderSizeAtPath:self.cachePath];
+    //获取SDWebImage缓存大小
+    SDImageCache * cache = [SDWebImageManager sharedManager].imageCache;
+    NSUInteger imageSize = [cache getSize] / 1024.0 / 1024.0;
+    
+    //判断缓存路径是否存在，存在则缓存路径整个文件夹的大小，否则返回0
+    return [self folderSizeAtPath:self.cachePath] + imageSize;
 }
                 
 /**
@@ -211,15 +216,22 @@ static LJNetWorkingTool * instance;
 }
 
 #pragma mark - http method GET,POST
+/**
+ *  http GET Method
+ *
+ *  @param URLString  url
+ *  @param parameters 参数
+ *  @param success    成功回调
+ *  @param failure    失败回调
+ */
 + (void)GET:(NSString *)URLString parameters:(id)parameters success:(void (^)(NSHTTPURLResponse *, id))success failure:(void (^)(NSHTTPURLResponse *, NSError *))failure
 {
     NSURL * url = [NSURL URLWithString:URLString];
-    NSMutableURLRequest * req = nil;
+    NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0f];
     
     //没有联网的情况下使用缓存
     if (!instance.isCanReachInternet)
     {
-        req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataDontLoad timeoutInterval:10.0f];
         NSCachedURLResponse * cacheResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:req];
         if (cacheResponse != nil) {
             //有缓存，加载缓存数据
@@ -233,7 +245,6 @@ static LJNetWorkingTool * instance;
         return;
     }
     
-    req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0f];
     [NSURLConnection sendAsynchronousRequest:req queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (connectionError)
         {
@@ -248,6 +259,14 @@ static LJNetWorkingTool * instance;
     
 }
 
+/**
+ *  http POST Method
+ *
+ *  @param URLString  url
+ *  @param parameters 参数
+ *  @param success    成功回调
+ *  @param failure    失败回调
+ */
 + (void)POST:(NSString *)URLString parameters:(id)parameters success:(void (^)(NSHTTPURLResponse *, id))success failure:(void (^)(NSHTTPURLResponse *, NSError *))failure
 {
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];

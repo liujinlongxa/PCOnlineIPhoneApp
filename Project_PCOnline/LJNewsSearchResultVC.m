@@ -71,8 +71,11 @@ static NSString * const YingyongArticle = @"应用文章";
     CGFloat padding = 10;
     CGFloat groupViewH = 290;
     //新闻
-    LJNewsSearchGroupView * newsGroup = [[LJNewsSearchGroupView alloc] initWithFrame:CGRectMake(padding, padding, kScrW - 2 * padding, groupViewH) andClickActionBlock:^(NSInteger clickIndex) {
-        if (clickIndex == kBtnViewItemCount)
+    LJNewsSearchGroupView * newsGroup = [[LJNewsSearchGroupView alloc]
+                 initWithFrame:CGRectMake(padding, padding, kScrW - 2 * padding, groupViewH)
+                 andItems:self.newsArticleData
+                 andClickActionBlock:^(NSInteger clickIndex) {
+        if (clickIndex == self.newsArticleData.count)
         {
             [self setupDelegateWithObject:self.newsArticleData];
         }
@@ -81,12 +84,14 @@ static NSString * const YingyongArticle = @"应用文章";
             [self setupDelegateWithObject:self.newsArticleData[clickIndex]];
         }
     }];
-    newsGroup.newsItems = self.newsArticleData;
     [self.scrollView addSubview:newsGroup];
     
     //测评
-    LJNewsSearchGroupView * cepingGroup = [[LJNewsSearchGroupView alloc] initWithFrame:CGRectMake(padding, padding + (padding * 2 + groupViewH), kScrW - 2 * padding, groupViewH) andClickActionBlock:^(NSInteger clickIndex) {
-        if (clickIndex == kBtnViewItemCount)
+    LJNewsSearchGroupView * cepingGroup = [[LJNewsSearchGroupView alloc]
+               initWithFrame:CGRectMake(padding, CGRectGetMaxY([[self.scrollView.subviews lastObject] frame]) + 2 * padding, kScrW - 2 * padding, groupViewH)
+               andItems:self.pingceArticleData
+               andClickActionBlock:^(NSInteger clickIndex) {
+        if (clickIndex == self.pingceArticleData.count)
         {
             [self setupDelegateWithObject:self.pingceArticleData];
         }
@@ -95,12 +100,14 @@ static NSString * const YingyongArticle = @"应用文章";
             [self setupDelegateWithObject:self.pingceArticleData[clickIndex]];
         }
     }];
-    cepingGroup.newsItems = self.pingceArticleData;
     [self.scrollView addSubview:cepingGroup];
     
     //导购
-    LJNewsSearchGroupView * daogouGroup = [[LJNewsSearchGroupView alloc] initWithFrame:CGRectMake(padding, padding +(padding * 2 + groupViewH) * 2, kScrW - 2 * padding, groupViewH) andClickActionBlock:^(NSInteger clickIndex) {
-        if (clickIndex == kBtnViewItemCount)
+    LJNewsSearchGroupView * daogouGroup = [[LJNewsSearchGroupView alloc]
+               initWithFrame:CGRectMake(padding, CGRectGetMaxY([[self.scrollView.subviews lastObject] frame]) + 2 * padding, kScrW - 2 * padding, groupViewH)
+               andItems:self.daogouArticleData
+               andClickActionBlock:^(NSInteger clickIndex) {
+        if (clickIndex == self.daogouArticleData.count)
         {
             [self setupDelegateWithObject:self.daogouArticleData];
         }
@@ -109,12 +116,14 @@ static NSString * const YingyongArticle = @"应用文章";
             [self setupDelegateWithObject:self.daogouArticleData[clickIndex]];
         }
     }];
-    daogouGroup.newsItems = self.daogouArticleData;
     [self.scrollView addSubview:daogouGroup];
     
     //应用
-    LJNewsSearchGroupView * yingyongGroup = [[LJNewsSearchGroupView alloc] initWithFrame:CGRectMake(padding, padding +(padding * 2 + groupViewH) * 3, kScrW - 2 * padding, groupViewH) andClickActionBlock:^(NSInteger clickIndex) {
-        if (clickIndex == kBtnViewItemCount)
+    LJNewsSearchGroupView * yingyongGroup = [[LJNewsSearchGroupView alloc]
+             initWithFrame:CGRectMake(padding, CGRectGetMaxY([[self.scrollView.subviews lastObject] frame]) + 2 * padding, kScrW - 2 * padding, groupViewH)
+             andItems:self.yingyongArticleData
+             andClickActionBlock:^(NSInteger clickIndex) {
+        if (clickIndex == self.yingyongArticleData.count)
         {
             [self setupDelegateWithObject:self.yingyongArticleData];
         }
@@ -123,10 +132,9 @@ static NSString * const YingyongArticle = @"应用文章";
             [self setupDelegateWithObject:self.yingyongArticleData[clickIndex]];
         }
     }];
-    yingyongGroup.newsItems = self.yingyongArticleData;
     [self.scrollView addSubview:yingyongGroup];
     
-    self.scrollView.contentSize = CGSizeMake(0,CGRectGetMaxY(yingyongGroup.frame) + padding);
+    self.scrollView.contentSize = CGSizeMake(0,CGRectGetMaxY([[self.scrollView.subviews lastObject] frame]) + padding);
     
 }
 

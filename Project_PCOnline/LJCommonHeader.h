@@ -38,16 +38,16 @@
 //颜色
 //1.蓝色文字颜色
 #define BlueTextColor [[UIColor alloc] initWithRed:31 / 255.0 green:137 / 255.0 blue:227 /255.0 alpha:1.0]
-//灰色背景颜色
+//2.灰色背景颜色
 #define LightGrayBGColor [[UIColor alloc] initWithRed:230 / 255.0 green:230 / 255.0 blue:230 /255.0 alpha:1.0]
-//cell选中背景颜色
+//3.cell选中背景颜色
 #define CellSelectBGColor [[UIColor alloc] initWithRed:200 / 255.0 green:200 / 255.0 blue:200 /255.0 alpha:1.0]
 
 //字体
 #define SubjectButtonFont [UIFont systemFontOfSize:20] //频道Button上的字体大小
 #define NavBarTitleFont [UIFont systemFontOfSize:20] //导航栏上的标题字体
 
-//颜色
+//自定义颜色
 #define RGBColor(r,g,b) ([[UIColor alloc] initWithRed:(r) / 255.0 green:(g) / 255.0 blue:(b) / 255.0 alpha:1.0])
 
 //通知
@@ -93,7 +93,7 @@ typedef enum : NSUInteger {
     LJProductTabComment
 } LJProductTab;
 
-//通知
+//点击定位按钮的通知
 #define kLJPriceTableLocationButtonClickNotification @"PriceTableLocationButtonClickNotification"
 
 //侧滑offset
@@ -102,6 +102,9 @@ typedef enum : NSUInteger {
 //网络连接错误通知
 #define kNetworkErrorNotification @"NetworkErrorNotification"
 #define NetworkErrorNotify(obj) [[NSNotificationCenter defaultCenter] postNotificationName:kNetworkErrorNotification object:(obj)]
+
+//将弧度转为角度
+#define Angle2Radian(angle) ((angle) / 180.0 * M_PI)
 
 
 #endif

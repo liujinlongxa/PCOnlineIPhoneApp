@@ -174,8 +174,7 @@ typedef enum : NSUInteger {
 {
     UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 82, 20)];
     UITableViewHeaderFooterView * header = [[UITableViewHeaderFooterView alloc] init];
-    header.tintColor = [UIColor clearColor];
-    header.contentView.backgroundColor = [UIColor clearColor];
+    header.contentView.backgroundColor = [UIColor whiteColor];
     [header.contentView addSubview:imageView];
     if (section == 0)
     {

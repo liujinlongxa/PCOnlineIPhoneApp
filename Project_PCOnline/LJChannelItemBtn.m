@@ -23,7 +23,7 @@
         [self setTitle:subject.title forState:UIControlStateNormal];
         self.backgroundColor = LightGrayBGColor;
         self.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-        self.layer.borderWidth = 1;
+        self.layer.borderWidth = 0.5;
         self.show = NO;
         self.subject = subject;
         [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

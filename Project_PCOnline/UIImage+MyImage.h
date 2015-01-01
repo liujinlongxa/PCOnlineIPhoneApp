@@ -10,7 +10,21 @@
 
 @interface UIImage (MyImage)
 
-//返回没有渲染的图盘
+/**
+ *  返回一张没有经过系统渲染的图片
+ *
+ *  @param imageName 图片名
+ *
+ *  @return 创建好的UIImage
+ */
 + (instancetype)imageWithNameNoRender:(NSString *)imageName;
-+(UIImage *)imageWithColor:(UIColor *)color;
+
+/**
+ *  使用UIColor创建一个纯色的UIImage
+ *
+ *  @param color 颜色
+ *
+ *  @return 创建好的UIImage
+ */
++ (instancetype)imageWithColor:(UIColor *)color;
 @end

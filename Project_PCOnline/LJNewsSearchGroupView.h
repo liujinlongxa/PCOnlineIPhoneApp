@@ -12,6 +12,6 @@
 
 @property (nonatomic, strong) NSArray * newsItems;
 
-- (instancetype)initWithFrame:(CGRect)frame andClickActionBlock:(void (^)(NSInteger clickIndex))actionBlock;
+- (instancetype)initWithFrame:(CGRect)frame andItems:(NSArray *)items andClickActionBlock:(void (^)(NSInteger clickIndex))actionBlock;
 
 @end

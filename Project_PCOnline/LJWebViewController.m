@@ -18,11 +18,24 @@
 #define kCommentBarPageTabelCellIdentifier @"CommentBarPageTabelCell"
 @interface LJWebViewController ()<UIWebViewDelegate, LJCommentBarDelegate, UITableViewDelegate, UITableViewDataSource>
 
-//@property (nonatomic, weak) UIWebView * webView;
+/**
+ *  评论Bar
+ */
 @property (nonatomic, weak) LJCommentBar * commentBar;
+
+/**
+ *  分页Tableview
+ */
 @property (nonatomic, weak) UITableView * pageTable;
+
+/**
+ *  打开分页时的阴影区域
+ */
 @property (nonatomic, weak) UIView * shadowView;
 
+/**
+ *  是否已经显示分页Tableview
+ */
 @property (nonatomic, assign, getter=isShowPage) BOOL showPage;
 
 @end
@@ -35,7 +48,7 @@
     [super viewDidLoad];
     
     //webview
-    UIWebView * webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScrW, kScrH - kBarH)];
+    UIWebView * webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScrW, kScrH - kBarH * 2)];
     [self.view addSubview:webView];
     self.webView = webView;
     self.webView.backgroundColor = LightGrayBGColor;
@@ -51,7 +64,7 @@
     [self.shadowView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidePageTable)]];
     
     //pageTable
-    CGFloat pageTabelY = CGRectGetHeight(self.webView.frame) - kBarH;
+    CGFloat pageTabelY = CGRectGetMaxY(self.webView.frame);
     UITableView * pageTable = [[UITableView alloc] initWithFrame:CGRectMake(0,  pageTabelY, kScrW, kPageTableH)];
     [self.view addSubview:pageTable];
     self.pageTable = pageTable;
@@ -67,6 +80,7 @@
     [self.view addSubview:bar];
     self.commentBar = bar;
     self.commentBar.delegate = self;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -93,6 +107,7 @@
 {
     [LJNetWorkingTool GET:self.urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSString * htmlStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        if (!self.view) {};//如果view还没有加载，加载view
         [self.webView loadHTMLString:htmlStr baseURL:nil];
         [self setupPageDataWithHtmlStr:htmlStr];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
@@ -171,7 +186,7 @@
 - (void)showPageTable
 {
     CGRect tableFrame = self.pageTable.frame;
-    tableFrame.origin.y = CGRectGetHeight(self.webView.frame) - kBarH - kPageTableH;
+    tableFrame.origin.y = CGRectGetHeight(self.webView.frame) - kPageTableH;
     self.pageTable.hidden = NO;
     [self.pageTable selectRowAtIndexPath:[NSIndexPath indexPathForRow:self.curPage inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
     self.shadowView.hidden = NO;
@@ -186,7 +201,7 @@
 - (void)hidePageTable
 {
     CGRect tableFrame = self.pageTable.frame;
-    tableFrame.origin.y = CGRectGetHeight(self.webView.frame) - kBarH;
+    tableFrame.origin.y = CGRectGetHeight(self.webView.frame);
     [UIView animateWithDuration:0.5 animations:^{
         self.shadowView.alpha = 0;
         self.pageTable.frame = tableFrame;

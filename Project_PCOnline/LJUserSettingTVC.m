@@ -223,10 +223,8 @@
 {
     if(buttonIndex == 0) return;
     
-    NSLog(@"before real: %@", [NSString stringWithFormat:@"%.1fM", [[LJNetWorkingTool shareNetworkTool] currnetCacheSize]]);
     [[LJNetWorkingTool shareNetworkTool] cleanCache];
     self.cleanCacheItem.subtitle = @"0.0M";
-    NSLog(@"after real: %@", [NSString stringWithFormat:@"%.1fM", [[LJNetWorkingTool shareNetworkTool] currnetCacheSize]]);
     
     [MBProgressHUD showNotificationMessage:@"清除缓存成功" InView:self.view];
 }

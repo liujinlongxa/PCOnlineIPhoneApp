@@ -39,9 +39,9 @@
 
 @property (nonatomic, weak) LJPriceTableView * priceTableView;
 
-//频道选择
-@property (nonatomic, strong) LJChannelSelectViewController * channelSelectVC;//频道选择控制器
-@property (nonatomic, assign, getter=isChannelSelect) BOOL channelSelect;//是否正在选择频道
+//频道定制
+@property (nonatomic, strong) LJChannelSelectViewController * channelSelectVC;//频道定制控制器
+@property (nonatomic, assign, getter=isChannelSelect) BOOL channelSelect;//是否正在定制频道
 @property (nonatomic, strong) UIView * shadowView; //引用
 @property (nonatomic, strong) UIView * channelSelectView;//显示频道选择视图的区域
 @property (nonatomic, strong) UILabel * shadowLabel;
@@ -207,18 +207,21 @@
     }
 }
 
-#pragma mark - 频道选择相关
+#pragma mark - 频道定制相关
 - (void)subjectView:(LJSubjectView *)subjectView didSelectMoreButton:(UIButton *)moreBtn
 {
-    if (self.isChannelSelect) {
-        [self.channelSelectVC saveChannelList];
-        [self updateSubjectView];
-        [self hideChannelSelectView];
-    }
-    else
-    {
-        [self showChannelSelectView];
-    }
+    //如果用户中心侧滑显示，则先隐藏侧滑，再显示频道定制
+    [self.revealSideViewController popViewControllerAnimated:YES completion:^{
+        if (self.isChannelSelect) {
+            [self.channelSelectVC saveChannelList];
+            [self updateSubjectView];
+            [self hideChannelSelectViewWithCompletion:nil];
+        }
+        else
+        {
+            [self showChannelSelectView];
+        }
+    }];
 }
 
 //更新频道设置
@@ -260,7 +263,7 @@
 }
 
 //隐藏频道选择view
-- (void)hideChannelSelectView
+- (void)hideChannelSelectViewWithCompletion:(void (^)())completionBlock
 {
     CGRect showViewF = self.channelSelectView.frame;
     showViewF.size.height = 0;
@@ -275,6 +278,8 @@
         self.channelSelectView = nil;
         self.channelSelect = NO;
         self.shadowLabel.hidden = YES;
+        //回调
+        if (completionBlock) completionBlock();
     }];
 }
 
@@ -326,6 +331,33 @@
         self.channelSelectView.frame = channelSelectViewFrame;
     }];
     
+}
+
+//重写导航栏按钮点击事件，在点击时先隐藏频道定制View
+- (void)searchBtnClick:(id)sender
+{
+    if (self.isChannelSelect) {
+        [self hideChannelSelectViewWithCompletion:^{
+            [super searchBtnClick:sender];
+        }];
+    }
+    else
+    {
+        [super searchBtnClick:sender];
+    }
+}
+
+- (void)userCenterClick:(id)sender
+{
+    if (self.isChannelSelect) {
+        [self hideChannelSelectViewWithCompletion:^{
+            [super userCenterClick:sender];
+        }];
+    }
+    else
+    {
+        [super userCenterClick:sender];
+    }
 }
 
 #pragma mark - 定位

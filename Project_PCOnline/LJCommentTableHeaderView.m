@@ -27,6 +27,7 @@
 @property (nonatomic, weak) UILabel * disagreeLabel;
 
 @property (nonatomic, weak) UILabel * addOne;
+@property (nonatomic, assign) CGRect addOneOriginFrame;
 
 @end
 
@@ -88,6 +89,7 @@
         
         //add one
         UILabel * addOne = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 40)];
+        self.addOneOriginFrame = addOne.frame;
         addOne.text = @"+1";
         addOne.textColor = [UIColor redColor];
         addOne.backgroundColor = [UIColor clearColor];
@@ -169,8 +171,14 @@
 }
 
 #pragma mark - click agree or disagree
+/**
+ *  点击顶
+ *
+ *  @param tap 手势
+ */
 - (void)agreeAddOne:(UITapGestureRecognizer *)tap
 {
+    self.addOne.frame = self.addOneOriginFrame;
     self.addOne.center = self.agreeImage.center;
     if ([self.delegate respondsToSelector:@selector(commentTableHeaderView:didChangeSupport:)])
     {
@@ -178,8 +186,14 @@
     }
 }
 
+/**
+ *  点击踩
+ *
+ *  @param tap 手势
+ */
 - (void)disagreeAddOne:(UITapGestureRecognizer *)tap
 {
+    self.addOne.frame = self.addOneOriginFrame;
     self.addOne.center = self.disagreeImage.center;    
     if ([self.delegate respondsToSelector:@selector(commentTableHeaderView:didChangeSupport:)])
     {
@@ -187,14 +201,21 @@
     }
 }
 
+/**
+ *  动画结束时的回调
+ */
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     self.addOne.hidden = YES;
 }
 
+/**
+ *  开始动画
+ */
 - (void)startAnimation
 {
     self.addOne.hidden = NO;
+    
     
     CAAnimationGroup * group = [CAAnimationGroup animation];
     group.delegate = self;
@@ -208,6 +229,10 @@
     
     group.duration = 1.0f;
     group.animations = @[anim1, anim2];
+    
+    //动画结束后，View不返回原位置
+    group.removedOnCompletion = NO;
+    group.fillMode = kCAFillModeForwards;
     
     [self.addOne.layer addAnimation:group forKey:nil];
 }
