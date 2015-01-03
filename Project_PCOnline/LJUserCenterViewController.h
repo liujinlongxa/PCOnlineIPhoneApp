@@ -10,6 +10,4 @@
 
 @interface LJUserCenterViewController : UIViewController
 
-
-
 @end

@@ -105,6 +105,7 @@
     if ([ads isKindOfClass:[LJBBSAds class]]) {
         LJBBSAds * bbsAds = (LJBBSAds *)ads;
         LJBBSTopicDetailWebVC * topicDetailWeb = [[LJBBSTopicDetailWebVC alloc] initBBSTopicDetailWebVCWithBaseUrlStr:bbsAds.url andTopicId:@(bbsAds.topicId.integerValue)];
+        topicDetailWeb.bbsAds = bbsAds;
         [self.navigationController pushViewController:topicDetailWeb animated:YES];
     }
 }
@@ -113,7 +114,7 @@
 - (void)BBSSquareViewController:(LJBBSSquareViewController *)controller didSelectHotTopic:(LJBaseTopic *)topic
 {
     LJBBSTopicDetailWebVC * webVC = [[LJBBSTopicDetailWebVC alloc] initBBSTopicDetailWebVCWithBaseUrlStr:kBBSTopicDetailUrl andTopicId:topic.topicId];
-    
+    webVC.topic = topic;
     [self.navigationController pushViewController:webVC animated:YES];
 }
 

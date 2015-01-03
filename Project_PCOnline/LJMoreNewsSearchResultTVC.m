@@ -61,6 +61,7 @@
 {
     LJNewsSearchResultItem * item = self.searchResultData[indexPath.row];
     LJNewsDetailController * detailVC = [[LJNewsDetailController alloc] init];
+    detailVC.resultItem = item;
     detailVC.ID = item.ID;
     [self.navigationController pushViewController:detailVC animated:YES];
 }

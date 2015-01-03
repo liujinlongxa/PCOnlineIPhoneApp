@@ -12,11 +12,22 @@
 #import "LJTopicSearchResultItem.h"
 #import "LJNetWorkingTool.h"
 #import "LJHotTopic.h"
+#import "LJCollectionButton.h"
 #import <ShareSDK/ShareSDK.h>
 #import "MBProgressHUD+LJProgressHUD.h"
+#import "LJTopicDao.h"
 
 @interface LJBBSTopicDetailWebVC ()<UIWebViewDelegate>
+
+/**
+ *  Url
+ */
 @property (nonatomic, copy) NSString * baseUrl;
+
+/**
+ *  数据持久化模型
+ */
+@property (nonatomic, strong) LJTopicDaoModel * topicDao;
 @end
 
 @implementation LJBBSTopicDetailWebVC
@@ -37,16 +48,26 @@
         self.hidesBottomBarWhenPushed = YES;
         self.topicId = topicId;
         self.baseUrl = urlStr;
+        //数据持久化
+        self.topicDao.topicId = topicId;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //设置评论Bar上的按钮类型为刷新
+    self.commentBar.commentBarBtnType = LJCommentBarButtonTypeRefresh;
+    
     self.urlStr = [self setupUrlStr];
 }
 
-//设置URl
+/**
+ *  设置Url
+ *
+ *  @return 返回设置好的Url
+ */
 - (NSString *)setupUrlStr
 {
     NSString * urlStr = nil;
@@ -54,39 +75,49 @@
     if (self.baseUrl != nil) {
         //点击广告时
         urlStr = [NSString stringWithFormat:self.baseUrl, self.topicId.integerValue, self.curPage + 1];
+        self.topicDao.baseUrl = self.baseUrl;
     }
     else if(self.bbsItem != nil && self.topic != nil)
     {
+        //正常点击某个帖子
         if (self.bbsItem.ID.integerValue < 0) {
             urlStr = [NSString stringWithFormat:kZuiBBSTopicDetailUrl, self.topic.topicId.integerValue, self.curPage + 1];
+            self.topicDao.baseUrl = kZuiBBSTopicDetailUrl;
         }
         else
         {
             urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.topic.topicId.integerValue, self.curPage + 1];
+            self.topicDao.baseUrl = kZuiBBSTopicDetailUrl;
         }
     }
     else if(self.searchResutItem != nil)
     {
+        //点击搜索结果
         if (self.searchResutItem.forumId.integerValue < 0) {
             urlStr = [NSString stringWithFormat:kZuiBBSTopicDetailUrl, self.searchResutItem.topicId.integerValue, self.curPage + 1];
+            self.topicDao.baseUrl = kZuiBBSTopicDetailUrl;
         }
         else
         {
             urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.searchResutItem.topicId.integerValue, self.curPage + 1];
+            self.topicDao.baseUrl = kZuiBBSTopicDetailUrl;
         }
     }
     else if(self.topic != nil)
     {
+        //点击热帖
         if ([self.topic isKindOfClass:[LJHotTopic class]])
         {
             LJHotTopic * hotTopic = (LJHotTopic *)self.topic;
             if ([hotTopic.userUrl rangeOfString:kZuiBBSFlag].location != NSNotFound)
             {
                 urlStr = [NSString stringWithFormat:kZuiBBSTopicDetailUrl, self.topic.topicId.integerValue, self.curPage + 1];
+                self.topicDao.baseUrl = kZuiBBSTopicDetailUrl;
             }
             else
             {
                 urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.topic.topicId.integerValue, self.curPage + 1];
+                self.topicDao.baseUrl = kZuiBBSTopicDetailUrl;
             }
         }
     }
@@ -121,11 +152,11 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"btn_common_black_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backBtnClick:)];
     //分享
     UIBarButtonItem * shareItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"btn_article_share"] style:UIBarButtonItemStylePlain target:self action:@selector(shareBtnClick:)];
+    
     //收藏
-    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    LJCollectionButton * btn = [[LJCollectionButton alloc] init];
     btn.frame = CGRectMake(0, 0, 50, 50);
-    [btn setImage:[UIImage imageWithNameNoRender:@"btn_common_toolbar_collect"] forState:UIControlStateNormal];
-    [btn setImage:[UIImage imageWithNameNoRender:@"btn_common_toolbar_collected"] forState:UIControlStateSelected];
+    [btn setSelected:[LJTopicDao selectWithExistItem:self.topicDao] withAnimation:NO];
     [btn addTarget:self action:@selector(collectBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * collectItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     self.navigationItem.rightBarButtonItems = @[shareItem, collectItem];
@@ -136,6 +167,11 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - 分享
+
+/**
+ *  点击分享button，触发事件
+ */
 - (void)shareBtnClick:(id)sender
 {
     NSString * content = nil;
@@ -184,9 +220,71 @@
                      }];
 }
 
-- (void)collectBtnClick:(id)sender
+#pragma mark - 收藏
+
+/**
+ *  点击收藏按钮，触发事件
+ */
+- (void)collectBtnClick:(LJCollectionButton *)sender
 {
+    if (sender.isSelected)
+    {
+        //从数据库中删除
+        [LJTopicDao removeTopicItemFromDB:self.topicDao];
+    }
+    else
+    {
+        //添加到数据库中
+        [LJTopicDao addTopicItemToDB:self.topicDao];
+    }
+    [sender setSelected:!sender.isSelected withAnimation:YES];
+}
+
+#pragma mark - 设置数据持久化模型topicDao
+
+- (LJTopicDaoModel *)topicDao
+{
+    if (!_topicDao)
+    {
+        _topicDao = [[LJTopicDaoModel alloc] init];
+    }
+    return _topicDao;
+}
+
+/**
+ *  初始化收藏按钮的状态
+ */
+//- (void)setupCollectionStatus
+//{
+//    if ([self.commentBar.middleButton isKindOfClass:[LJCollectionButton class]])
+//    {
+//        LJCollectionButton * collBtn = (LJCollectionButton *)self.commentBar.middleButton;
+//        [collBtn setSelected:[LJTopicDao selectWithExistItem:self.topicDao] withAnimation:NO];
+//    }
+//}
+
+- (void)setTopic:(LJBaseTopic *)topic
+{
+    _topic = topic;
+
+    self.topicDao.topicId = topic.topicId;
+    self.topicDao.title = topic.title;
+}
+
+- (void)setSearchResutItem:(LJTopicSearchResultItem *)searchResutItem
+{
+    _searchResutItem = searchResutItem;
     
+    self.topicDao.topicId = searchResutItem.topicId;
+    self.topicDao.title = searchResutItem.title;
+}
+
+- (void)setBbsAds:(LJBBSAds *)bbsAds
+{
+    _bbsAds = bbsAds;
+    
+    self.topicDao.topicId = @(bbsAds.topicId.integerValue);
+    self.topicDao.title = bbsAds.title;
 }
 
 @end

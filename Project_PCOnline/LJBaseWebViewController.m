@@ -177,7 +177,7 @@
     
     LJBBSSubForumTVC * forumTVC = [[LJBBSSubForumTVC alloc] init];
     LJBBSListItem * item = [[LJCommonData shareCommonData] findBBSItemByID:@(ID.integerValue) inBBSLists:nil];
-    forumTVC.bbsItem = item;
+    forumTVC.bbsItem = item == nil ? [LJBBSListItem bbsListItemWithID:@(ID.integerValue)] : item;
     [self.navigationController pushViewController:forumTVC animated:YES];
 }
 

@@ -46,9 +46,13 @@
 {
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     [UIApplication sharedApplication].statusBarHidden = YES;
-    if (self.curIndex > 0)
+    if (self.curIndex > 0 && self.curIndex != self.webImages.photos.count - 1)
     {
         self.scrollView.contentOffset = CGPointMake(kScrW, 0);
+    }
+    else if(self.curIndex == self.webImages.photos.count - 1)
+    {
+        self.scrollView.contentOffset = CGPointMake(kScrW * 2, 0);
     }
 }
 
@@ -160,16 +164,29 @@
     [self setupImageViews];
     
     self.curIndex = self.webImages.currentIndex.integerValue;
-    if (self.curIndex != 0)
+    if (self.curIndex != 0 && self.curIndex != self.webImages.photos.count - 1)
     {
         self.preLocation = 1;
     }
+    else if (self.curIndex == self.webImages.photos.count - 1)
+    {
+        //点击最后一张，上一次的位置应该为2
+        self.preLocation = 2;
+    }
     else
     {
+        //点击第一张上一次的位置应该为0
         self.preLocation = 0;
     }
     
     NSInteger startIndex = self.curIndex > 0 ? self.curIndex - 1 : 0;
+    
+    //点击最后一个
+    if (self.curIndex == self.webImages.photos.count - 1)
+    {
+        startIndex--;
+    }
+    
     for (int i = startIndex; i < self.imageCount + startIndex; i++) {
         UIImageView * imageView = self.imageViews[i - startIndex];
         [imageView sd_setImageWithURL:[NSURL URLWithString:self.webImages.photos[i]] placeholderImage:[UIImage imageNamed:@"common_default_320x480"]];

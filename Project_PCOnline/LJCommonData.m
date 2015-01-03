@@ -259,7 +259,7 @@
             if(ret != nil) return ret;
         }
     }
-    return [LJBBSListItem bbsListItemWithID:ID];
+    return nil;
 }
 
 @end

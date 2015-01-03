@@ -11,11 +11,27 @@
 #import "LJCommentTableVC.h"
 #import "LJCommentInfo.h"
 #import "LJNetWorkingTool.h"
+#import "LJArticleDao.h"
+#import "LJCollectionButton.h"
+
 @interface LJNewsDetailController ()<UIWebViewDelegate>
 
 //@property (nonatomic, weak) UIWebView * webView;
+
+/**
+ *  品论数据
+ */
 @property (nonatomic, strong) LJCommentInfo * info;
+
+/**
+ *  导航栏上的评论Button
+ */
 @property (nonatomic, weak) UIBarButtonItem * commentBtn;
+
+/**
+ *  文章信息持久化对象模型
+ */
+@property (nonatomic, strong) LJArticleDaoModel * articleDao;
 
 @end
 
@@ -34,6 +50,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //设置评论Bar上的按钮类型为收藏
+    self.commentBar.commentBarBtnType = LJCommentBarButtonTypeCollection;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -47,6 +65,8 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"btn_common_black_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClick:)];
     //设置状态栏
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    
+    [self setupCommentBarMidButtonStatus];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -61,6 +81,9 @@
     _ID = ID;
     NSString * urlStr = [NSString stringWithFormat:kNewsDetailUrl, self.ID, self.curPage + 1];
     self.urlStr = urlStr;
+    
+    //设置数据持久化模型
+    self.articleDao.articleId = @(ID.integerValue);
 }
 
 - (void)setCurPage:(NSInteger)curPage
@@ -74,12 +97,18 @@
 {
     _news = news;
     self.ID = news.ID;
+    
+    //设置数据持久化模型
+    self.articleDao.title = news.title;
 }
 
 - (void)setAds:(LJAds *)ads
 {
     _ads = ads;
     self.ID = ads.ID;
+    
+    //设置数据持久化模型
+    self.articleDao.title = ads.title;
 }
 
 #pragma mark - nav bar button click
@@ -144,13 +173,64 @@
     }];
 }
 
+#pragma mark - 收藏
+/**
+ *  重写收藏按钮点击事件
+ */
+- (void)commentBar:(LJCommentBar *)bar didSelectMidButton:(UIButton *)collectionBtn
+{
+    if (collectionBtn.isSelected)
+    {
+        [LJArticleDao removeArticleFromDB:self.articleDao];
+    }
+    else
+    {
+        [LJArticleDao addArticleToDB:self.articleDao];
+    }
+    
+    [super commentBar:bar didSelectMidButton:collectionBtn];
+}
 
 
+#pragma mark - 设置数据持久化对象模型articleDao
 
+- (LJArticleDaoModel *)articleDao
+{
+    if (!_articleDao)
+    {
+        _articleDao = [[LJArticleDaoModel alloc] init];
+    }
+    return _articleDao;
+}
 
+- (void)setResultItem:(LJNewsSearchResultItem *)resultItem
+{
+    _resultItem = resultItem;
+    
+    //设置数据持久化模型
+    self.articleDao.articleId = @(resultItem.ID.integerValue);
+    self.articleDao.title = resultItem.title;
+}
 
+- (void)setProInfo:(LJProductInformation *)proInfo
+{
+    _proInfo = proInfo;
+    
+    //设置数据持久化模型
+    self.articleDao.articleId = @(proInfo.ID.integerValue);
+    self.articleDao.title = proInfo.title;
+}
 
-
-
+/**
+ *  设置commentBar上的收藏按钮的状态
+ */
+- (void)setupCommentBarMidButtonStatus
+{
+    if ([self.commentBar.middleButton isKindOfClass:[LJCollectionButton class]])
+    {
+        LJCollectionButton * collBtn = (LJCollectionButton *)self.commentBar.middleButton;
+        [collBtn setSelected:[LJArticleDao selectWithExistItem:self.articleDao] withAnimation:NO];
+    }
+}
 
 @end

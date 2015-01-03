@@ -108,7 +108,7 @@ static LJNetWorkingTool * instance;
     }
 }
 
-#pragma mark - network error
+#pragma mark - network error notification
 /**
  *  开始监听网络连接错误
  */
@@ -158,7 +158,8 @@ static LJNetWorkingTool * instance;
 - (void)cleanCache
 {
     //删除网络请求缓存数据
-    [[NSFileManager defaultManager] removeItemAtPath:self.cachePath error:nil];
+//    [[NSFileManager defaultManager] removeItemAtPath:self.cachePath error:nil];
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
     
     //删除图片缓存数据
     [[SDWebImageManager sharedManager].imageCache clearDisk];

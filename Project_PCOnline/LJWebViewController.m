@@ -7,21 +7,16 @@
 //
 
 #import "LJWebViewController.h"
-#import "LJCommentBar.h"
 #import "LJCommonHeader.h"
 #import "LJNetWorkingTool.h"
 #import "LJPageTableCell.h"
 #import "LJWebImages.h"
+#import "LJCollectionButton.h"
 
 #define kPageTableH 200
 #define kShadowAlpha 0.7
 #define kCommentBarPageTabelCellIdentifier @"CommentBarPageTabelCell"
 @interface LJWebViewController ()<UIWebViewDelegate, LJCommentBarDelegate, UITableViewDelegate, UITableViewDataSource>
-
-/**
- *  评论Bar
- */
-@property (nonatomic, weak) LJCommentBar * commentBar;
 
 /**
  *  分页Tableview
@@ -108,7 +103,7 @@
     [LJNetWorkingTool GET:self.urlStr parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
         NSString * htmlStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         if (!self.view) {};//如果view还没有加载，加载view
-        [self.webView loadHTMLString:htmlStr baseURL:nil];
+        [self.webView loadHTMLString:htmlStr baseURL:[NSURL URLWithString:self.urlStr]];
         [self setupPageDataWithHtmlStr:htmlStr];
     } failure:^(NSHTTPURLResponse *response, NSError *error) {
         NetworkErrorNotify(self);
@@ -168,6 +163,9 @@
 }
 
 #pragma mark - comment bar delegate
+/**
+ *  点击commentBar上的分页按钮的代理方法
+ */
 - (void)commentBar:(LJCommentBar *)bar didSelectPageButton:(UIButton *)pageBtn
 {
     //如果只有1页，则不用显示page table
@@ -210,6 +208,22 @@
         self.pageTable.hidden = YES;
         self.showPage = NO;
     }];
+}
+
+/**
+ *  点击CommentBar上的中间的按钮（刷新/收藏)
+ */
+- (void)commentBar:(LJCommentBar *)bar didSelectMidButton:(UIButton *)collectionBtn
+{
+    if (bar.commentBarBtnType == LJCommentBarButtonTypeRefresh)
+    {
+        [self.webView reload];
+    }
+    else if(bar.commentBarBtnType == LJCommentBarButtonTypeCollection)
+    {
+        LJCollectionButton * collBtn = (LJCollectionButton *)collectionBtn;
+        [collBtn setSelected:!collBtn.isSelected withAnimation:YES];
+    }
 }
 
 @end

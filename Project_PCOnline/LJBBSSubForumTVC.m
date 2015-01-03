@@ -16,7 +16,9 @@
 #import "UIImage+MyImage.h"
 #import "LJBBSTopicDetailWebVC.h"
 #import "LJPullingBar.h"
+#import "LJCollectionButton.h"
 #import "MJRefresh/MJRefresh.h"
+#import "LJBBSListItemDao.h"
 
 static NSString * const LJTopicOrderByLastReply = @"replyat";
 static NSString * const LJTopicOrderByPostTime = @"postat";
@@ -112,6 +114,10 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    /**
+     *  设置导航栏
+     */
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pccommon_navbar_secondary_64"] forBarMetrics:UIBarMetricsDefault];
     //间距
     UIBarButtonItem * space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
@@ -127,7 +133,17 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
     self.navigationItem.leftBarButtonItems = @[space, backItem, space, space, backLabItem];
     
     //right items
-    UIBarButtonItem * collectItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"btn_common_toolbar_collect"] style:UIBarButtonItemStylePlain target:self action:@selector(collectBtnClick:)];
+    
+    //收藏
+    LJCollectionButton * btn = [[LJCollectionButton alloc] init];
+    NSCParameterAssert(self.bbsItem);
+    //在数据库中查询是否存在
+    [btn setSelected:[LJBBSListItemDao selectWithExistItem:self.bbsItem] withAnimation:NO];
+    btn.frame = CGRectMake(0, 0, 40, 40);
+    [btn addTarget:self action:@selector(collectBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem * collectItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+    //回复
     UIBarButtonItem * sendItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithNameNoRender:@"btn_topic_list_send_topic"] style:UIBarButtonItemStylePlain target:self action:@selector(sendBtnClick:)];
     self.navigationItem.rightBarButtonItems = @[sendItem, space, collectItem];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
@@ -160,7 +176,6 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
     if (!_topicFramesData)
     {
         _topicFramesData = [NSMutableArray array];
-//        [self loadTopicFrameData];
     }
     return _topicFramesData;
 }
@@ -241,9 +256,19 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
 }
 
 #pragma mark - 导航栏按钮事件
-- (void)collectBtnClick:(id)sender
+- (void)collectBtnClick:(LJCollectionButton *)sender
 {
-    
+    if (sender.isSelected)
+    {
+        //从数据库中删除
+        [LJBBSListItemDao removeBBSListItemFromDB:self.bbsItem];
+    }
+    else
+    {
+        //添加到数据库
+        [LJBBSListItemDao addBBSListItemToDB:self.bbsItem];
+    }
+    [sender setSelected:!sender.isSelected withAnimation:YES];
 }
 
 - (void)sendBtnClick:(id)sender

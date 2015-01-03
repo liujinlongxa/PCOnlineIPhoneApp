@@ -64,7 +64,7 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_common_white_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClick:)];
     self.navigationItem.title = @"设置";
     
-    [self.revealSideViewController changeOffset:0 forDirection:PPRevealSideDirectionRight];
+    [self.revealSideViewController changeOffset:0 forDirection:PPRevealSideDirectionRight animated:YES];
     self.revealSideViewController.options &= !PPRevealSideOptionsShowShadows;
 }
 

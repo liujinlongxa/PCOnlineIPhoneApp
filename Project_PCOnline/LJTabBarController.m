@@ -71,29 +71,29 @@
 }
 
 #pragma mark - fix "Unbalanced calls to begin/end appearance transitions for <LJNavController: 0x15da3140>." Bug
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
-    [self.selectedViewController beginAppearanceTransition: YES animated: animated];
-}
-
--(void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [self.selectedViewController endAppearanceTransition];
-}
-
--(void) viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self.selectedViewController beginAppearanceTransition: NO animated: animated];
-}
-
--(void) viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    [self.selectedViewController endAppearanceTransition];
-}
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    self.navigationController.navigationBarHidden = YES;
+//    [self.selectedViewController beginAppearanceTransition: YES animated: animated];
+//}
+//
+//-(void) viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//    [self.selectedViewController endAppearanceTransition];
+//}
+//
+//-(void) viewWillDisappear:(BOOL)animated
+//{
+//    [super viewWillDisappear:animated];
+//    [self.selectedViewController beginAppearanceTransition: NO animated: animated];
+//}
+//
+//-(void) viewDidDisappear:(BOOL)animated
+//{
+//    [super viewDidDisappear:animated];
+//    [self.selectedViewController endAppearanceTransition];
+//}
 
 @end

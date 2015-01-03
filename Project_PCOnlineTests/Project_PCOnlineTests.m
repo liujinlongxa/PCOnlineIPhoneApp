@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "NSDate+MyDate.h"
+#import "LJDataManager.h"
 
 @interface Project_PCOnlineTests : XCTestCase
 
@@ -43,5 +44,6 @@
     NSDate * date = [NSDate dateWithTimeIntervalSinceReferenceDate:1417668781958];
     [date dateStringToNow];
 }
+
 
 @end

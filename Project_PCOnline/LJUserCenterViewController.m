@@ -14,35 +14,39 @@
 #import "LJSmallSettingButton.h"
 #import "LJUserSettingTVC.h"
 
+//collection
+#import "LJCollectionViewController.h"
+#import "LJArticleCollectionTVC.h"
+#import "LJBBSCollectionTVC.h"
+#import "LJTopicCollectionTVC.h"
+
 #define Padding 10
 #define ViewOffsetX 80
 
 @interface LJUserCenterViewController ()
 
-//bg
+//background
 @property (nonatomic, strong) UIImageView * imageView;
 
 //ui
 @property (nonatomic, weak) LJLoginButton * loginButton; //登录
 @property (nonatomic, weak) UIButton * notifyButton; //通知
 
-@property (nonatomic, weak) LJBigSettingButton * myPostButton;
-@property (nonatomic, weak) LJBigSettingButton * myMsgButton;
-@property (nonatomic, weak) LJBigSettingButton * myCollButton;
-@property (nonatomic, weak) LJBigSettingButton * downButton;
+@property (nonatomic, weak) LJBigSettingButton * myPostButton;//我发表的
+@property (nonatomic, weak) LJBigSettingButton * myMsgButton;//我的消息
+@property (nonatomic, weak) LJBigSettingButton * myCollButton;//个人收藏
+@property (nonatomic, weak) LJBigSettingButton * downButton;//离线下载
 
-@property (nonatomic, weak) UIButton * settingButton;
-@property (nonatomic, weak) UIButton * connectButton;
-@property (nonatomic, weak) UISwitch * nightSwich;
-@property (nonatomic, weak) UILabel * versionLab;
+@property (nonatomic, weak) UIButton * settingButton;//设置
+@property (nonatomic, weak) UIButton * connectButton;//联系我们
+@property (nonatomic, weak) UISwitch * nightSwich;//夜晚模式
+@property (nonatomic, weak) UILabel * versionLab;//版本号
 @end
 
 @implementation LJUserCenterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    [self.navigationController setNavigationBarHidden:YES];
     
     self.imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     self.imageView.image = [UIImage imageNamed:@"bg_user_center"];
@@ -134,8 +138,9 @@
     [self.view addSubview:collButton];
     self.myCollButton = collButton;
     [self.myCollButton setImage:[UIImage imageNamed:@"btn_user_center_fav"] forState:UIControlStateNormal];
-    [self.myCollButton setTitle:@"我发表的" forState:UIControlStateNormal];
+    [self.myCollButton setTitle:@"个人收藏" forState:UIControlStateNormal];
     self.myCollButton.titleLabel.font = titleFont;
+    [self.myCollButton addTarget:self action:@selector(collectionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     //my msg
     CGFloat dlX = msgX;
@@ -243,13 +248,30 @@
 }
 
 #pragma mark - action
+
+/**
+ *  点击设置按钮触发事件
+ */
 - (void)settingButtonClick:(__unused id)sender
 {
     LJUserSettingTVC * settingTVC = [[LJUserSettingTVC alloc] initWithStyle:UITableViewStyleGrouped];
-//    UINavigationController * settingNav = [[UINavigationController alloc] initWithRootViewController:settingTVC];
-//    settingNav.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-//    [self presentViewController:settingTVC animated:YES completion:NULL];
     [self.navigationController pushViewController:settingTVC animated:YES];
+}
+
+/**
+ *  点击个人收藏按钮触发事件
+ */
+- (void)collectionButtonClick:(__unused id)sender
+{
+    LJArticleCollectionTVC * articleTVC = [[LJArticleCollectionTVC alloc] initWithStyle:UITableViewStylePlain];
+    LJBBSCollectionTVC * bbsTVC = [[LJBBSCollectionTVC alloc] initWithStyle:UITableViewStylePlain];
+    LJTopicCollectionTVC * topicTVC = [[LJTopicCollectionTVC alloc] initWithStyle:UITableViewStylePlain];
+    
+    LJCollectionViewController * collectionVC = [LJCollectionViewController collectionViewControllerWithControllers:@[articleTVC, bbsTVC, topicTVC] andTitles:@[@"文章", @"论坛", @"帖子"]];
+    articleTVC.delegate = collectionVC;
+    bbsTVC.delegate = collectionVC;
+    topicTVC.delegate = collectionVC;
+    [self.navigationController pushViewController:collectionVC animated:YES];
 }
 
 
