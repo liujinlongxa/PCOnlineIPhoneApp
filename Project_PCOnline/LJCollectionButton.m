@@ -8,6 +8,8 @@
 
 #import "LJCollectionButton.h"
 #import "MBProgressHUD+LJProgressHUD.h"
+#import "LJNetWorkingTool.h"
+#import "LJCommonHeader.h"
 
 #define kCollectionButtonAnimationKey @"CollectionButtonAnimationKey"
 
@@ -31,7 +33,18 @@
     [super setSelected:selected];
     
     //添加动画
-    if (animation) [self addAnimation];
+    if (animation)
+    {
+        [self addAnimation];
+        if (selected)
+        {
+            [MBProgressHUD showNotificationMessageInWindow:@"收藏成功"];
+        }
+        else
+        {
+            [MBProgressHUD showNotificationMessageInWindow:@"取消收藏"];
+        }
+    }
 }
 
 /**

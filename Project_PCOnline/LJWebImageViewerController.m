@@ -44,6 +44,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     [UIApplication sharedApplication].statusBarHidden = YES;
     if (self.curIndex > 0 && self.curIndex != self.webImages.photos.count - 1)

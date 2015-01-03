@@ -31,6 +31,15 @@
 
 @implementation LJBBSHotTopicTableVC
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.hidesBottomBarWhenPushed = YES;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

@@ -18,11 +18,6 @@ static LJNetWorkingTool * instance;
 @interface LJNetWorkingTool ()
 
 /**
- *  是否可以访问网络
- */
-@property (nonatomic, assign, getter=isCanReachInternet) BOOL canReachInternet;
-
-/**
  *  用于检测网络状态的第三方框架
  */
 @property (nonatomic, strong) Reachability * networkReachability;

@@ -186,6 +186,13 @@
  */
 - (void)commentBar:(LJCommentBar *)bar didSelectMidButton:(UIButton *)collectionBtn
 {
+    //没有网络时，点击收藏无效
+    if (!collectionBtn.isSelected && ![LJNetWorkingTool shareNetworkTool].isCanReachInternet)
+    {
+        NetworkErrorNotify(self);
+        return;
+    }
+    
     if (collectionBtn.isSelected)
     {
         [LJArticleDao removeArticleFromDB:self.articleDao];

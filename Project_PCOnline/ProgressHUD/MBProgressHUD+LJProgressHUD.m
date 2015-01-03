@@ -7,6 +7,7 @@
 //
 
 #import "MBProgressHUD+LJProgressHUD.h"
+#import "AppDelegate.h"
 
 //static MBProgressHUD * successHUD;
 //static MBProgressHUD * failedHUD;
@@ -32,7 +33,19 @@ static MBProgressHUD * labelHUD;
     labelHUD.labelText = message;
     [view addSubview:labelHUD];
     [labelHUD show:YES];
-    [labelHUD hide:YES afterDelay:2.0f];
+    [labelHUD hide:YES afterDelay:1.5f];
+}
+
++ (void)showNotificationMessageInWindow:(NSString *)message
+{
+    AppDelegate * appDele = [UIApplication sharedApplication].delegate;
+    labelHUD = [[MBProgressHUD alloc] initWithView:appDele.window];
+    labelHUD.removeFromSuperViewOnHide = YES;
+    labelHUD.mode = MBProgressHUDModeText;
+    labelHUD.labelText = message;
+    [appDele.window addSubview:labelHUD];
+    [labelHUD show:YES];
+    [labelHUD hide:YES afterDelay:1.5f];
 }
 
 @end

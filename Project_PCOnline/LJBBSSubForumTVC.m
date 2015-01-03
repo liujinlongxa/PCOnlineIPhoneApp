@@ -263,6 +263,13 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
 #pragma mark - 导航栏按钮事件
 - (void)collectBtnClick:(LJCollectionButton *)sender
 {
+    //没有网络时，点击收藏无效, 可以取消收藏，当不能添加收藏
+    if (!sender.isSelected && ![LJNetWorkingTool shareNetworkTool].isCanReachInternet)
+    {
+        NetworkErrorNotify(self);
+        return;
+    }
+    
     if (sender.isSelected)
     {
         //从数据库中删除

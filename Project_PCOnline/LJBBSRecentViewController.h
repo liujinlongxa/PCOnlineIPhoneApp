@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LJBBSRecentViewController : UIViewController
+@interface LJBBSRecentViewController : UITableViewController
 
 @end

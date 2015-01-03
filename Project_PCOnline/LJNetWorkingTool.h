@@ -60,4 +60,9 @@
  *  开始监听网络连接错误
  */
 - (void)startObserverNetworkError;
+
+/**
+ *  是否可以访问网络
+ */
+@property (nonatomic, assign, getter=isCanReachInternet) BOOL canReachInternet;
 @end
