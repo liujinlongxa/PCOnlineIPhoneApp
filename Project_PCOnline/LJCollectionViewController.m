@@ -8,6 +8,7 @@
 
 #import "LJCollectionViewController.h"
 #import "PPRevealSideviewController/PPRevealSideViewController.h"
+#import "LJCommonHeader.h"
 
 //vc
 #import "LJNewsDetailController.h"
@@ -39,7 +40,7 @@
     
     //setting nav bar
     self.navigationController.navigationBarHidden = NO;
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:NavBarTitleFont} forState:UIControlStateNormal];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pccommon_navbar_primary_64"] forBarMetrics:UIBarMetricsDefault];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"btn_common_white_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClick:)];

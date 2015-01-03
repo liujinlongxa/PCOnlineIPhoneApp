@@ -213,11 +213,16 @@ static NSString * const LJTopicOrderByPostTime = @"postat";
 - (void)loadTopicFrameData
 {
     NSString * urlStr = [self setupUrlStr];
-    LJLog(@"url:%@", urlStr);
     [LJNetWorkingTool GET:urlStr parameters:self success:^(NSHTTPURLResponse *response, id responseObject) {
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         //设置论坛属性
         self.backLab.text = dict[@"forum"][@"name"];
+        
+        //如果数据持久化模型中title为空，则设置title
+        if (!self.bbsItem.title)
+        {
+            self.bbsItem.title = dict[@"forum"][@"name"];
+        }
         
         NSMutableArray * topicArr = [NSMutableArray array];
         for (NSDictionary * topicDict in dict[@"topicList"]) {

@@ -7,6 +7,7 @@
 //
 
 #import "LJCollectionButton.h"
+#import "MBProgressHUD+LJProgressHUD.h"
 
 #define kCollectionButtonAnimationKey @"CollectionButtonAnimationKey"
 

@@ -87,7 +87,7 @@
         else
         {
             urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.topic.topicId.integerValue, self.curPage + 1];
-            self.topicDao.baseUrl = kZuiBBSTopicDetailUrl;
+            self.topicDao.baseUrl = kBBSTopicDetailUrl;
         }
     }
     else if(self.searchResutItem != nil)
@@ -100,7 +100,7 @@
         else
         {
             urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.searchResutItem.topicId.integerValue, self.curPage + 1];
-            self.topicDao.baseUrl = kZuiBBSTopicDetailUrl;
+            self.topicDao.baseUrl = kBBSTopicDetailUrl;
         }
     }
     else if(self.topic != nil)
@@ -117,7 +117,7 @@
             else
             {
                 urlStr = [NSString stringWithFormat:kBBSTopicDetailUrl, self.topic.topicId.integerValue, self.curPage + 1];
-                self.topicDao.baseUrl = kZuiBBSTopicDetailUrl;
+                self.topicDao.baseUrl = kBBSTopicDetailUrl;
             }
         }
     }
@@ -136,6 +136,16 @@
 {
     [super viewWillDisappear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [super webViewDidFinishLoad:webView];
+    //如果持久化模型中的title为空，则从pageInfo中取得Title
+    if (!self.topicDao.title)
+    {
+        self.topicDao.title = self.pageInfo.title;
+    }
 }
 
 - (void)setCurPage:(NSInteger)curPage
@@ -250,18 +260,6 @@
     }
     return _topicDao;
 }
-
-/**
- *  初始化收藏按钮的状态
- */
-//- (void)setupCollectionStatus
-//{
-//    if ([self.commentBar.middleButton isKindOfClass:[LJCollectionButton class]])
-//    {
-//        LJCollectionButton * collBtn = (LJCollectionButton *)self.commentBar.middleButton;
-//        [collBtn setSelected:[LJTopicDao selectWithExistItem:self.topicDao] withAnimation:NO];
-//    }
-//}
 
 - (void)setTopic:(LJBaseTopic *)topic
 {

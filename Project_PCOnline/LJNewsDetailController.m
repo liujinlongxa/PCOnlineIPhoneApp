@@ -72,6 +72,13 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [super webViewDidFinishLoad:webView];
+    
+    //如果持久化模型中的title为空，则从pageInfo中取得Title
+    if (!self.articleDao.title)
+    {
+        self.articleDao.title = self.pageInfo.title;
+    }
+    
     [self loadCommentInfo];
 }
 
