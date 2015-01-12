@@ -20,7 +20,9 @@
 
 @implementation AppDelegate
 
-
+/*
+ 这是test分支
+ */
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     LJTabBarController * tabVC = [[LJTabBarController alloc] init];
     
