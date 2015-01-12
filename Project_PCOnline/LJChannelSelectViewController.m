@@ -72,6 +72,7 @@
 }
 
 #pragma mark - channel btn click
+//添加注释，频道按钮点击
 - (void)channelBtnClick:(LJChannelItemBtn *)sender
 {
     if (sender.isShow) {
