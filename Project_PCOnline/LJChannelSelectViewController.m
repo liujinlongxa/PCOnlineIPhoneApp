@@ -95,6 +95,7 @@
     [self updateViewFrame];
 }
 
+//this is branch test1
 - (void)updateViewFrame
 {
     if ([self.delegate respondsToSelector:@selector(channelSelectViewControllerShowViewFrame:)]) {
