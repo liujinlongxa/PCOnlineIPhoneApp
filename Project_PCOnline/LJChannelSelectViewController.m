@@ -94,6 +94,7 @@
     [self updateViewFrame];
 }
 
+//调用代理方法
 - (void)updateViewFrame
 {
     if ([self.delegate respondsToSelector:@selector(channelSelectViewControllerShowViewFrame:)]) {
