@@ -53,6 +53,7 @@
     self.showChannelView = showBtnsView;
 }
 
+//添加注释，隐藏频道View
 - (void)setupHideChannelView
 {
     self.hideChannelSubjects = [[LJCommonData shareCommonData].curHideSubjectsData mutableCopy];
