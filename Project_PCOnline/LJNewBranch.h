@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 com.qianfeng. All rights reserved.
 //
 
-//这是新创建的类，修复Bug
+//这是新创建的类，修复Bug，再修复Bug
 
 #import <Foundation/Foundation.h>
 
