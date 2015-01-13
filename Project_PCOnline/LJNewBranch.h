@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSString * name;
 @property (nonatomic, assign) NSInteger age;
 @property (nonatomic, assign) NSInteger branchTest;
+@property (nonatomic, assign) NSInteger branchTest2;
 
 @end
