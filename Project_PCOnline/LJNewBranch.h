@@ -16,5 +16,6 @@
 @property (nonatomic, assign) NSInteger age;
 @property (nonatomic, assign) NSInteger branchTest;
 @property (nonatomic, assign) NSInteger branchTest2;
+@property (nonatomic, assign) NSInteger branchTest3;
 
 @end
