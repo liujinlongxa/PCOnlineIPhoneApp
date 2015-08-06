@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 com.qianfeng. All rights reserved.
 //
 
-//这是新创建的类，用来测试新的分支
+//这是新创建的类，修复Bug，再修复Bug
 
 #import <Foundation/Foundation.h>
 
@@ -16,5 +16,7 @@
 @property (nonatomic, assign) NSInteger age;
 @property (nonatomic, assign) NSInteger branchTest;
 @property (nonatomic, assign) NSInteger branchTest2;
+@property (nonatomic, assign) NSInteger branchTest3;
+@property (nonatomic, assign) NSInteger branchTest4;
 
 @end
