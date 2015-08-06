@@ -19,6 +19,7 @@
 @property (nonatomic, copy) NSString * preView;
 @property (nonatomic, copy) NSString * pubDate;
 @property (nonatomic, copy) NSString * summary;
+@property (nonatomic, strong) NSNumber * readonly;
 @property (nonatomic, copy) NSString * thumbPic;
 @property (nonatomic, copy) NSString * title;
 @property (nonatomic, copy) NSString * url;
