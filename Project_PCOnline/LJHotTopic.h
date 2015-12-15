@@ -24,7 +24,8 @@
 @property (nonatomic, copy) NSString * userName;
 @property (nonatomic, copy) NSString * userUrl;
 @property (nonatomic, strong) NSNumber * viewCount;
-
+@property (nonatomic, copy) NSString *userFace;
+@property (nonatomic, strong) NSArray *imgUrls;
 + (instancetype)hotTopicWithDict:(NSDictionary *)dict;
 
 @end

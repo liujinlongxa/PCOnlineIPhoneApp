@@ -30,6 +30,9 @@
 @property (nonatomic, copy) NSString * webUrl;
 @property (nonatomic, strong) NSNumber * userId;
 @property (nonatomic, copy) NSString * topicUrl;
+@property (nonatomic, assign) NSInteger androidResVer;
+@property (nonatomic, assign) NSInteger iphoneResVer;
+
 + (instancetype)commentPageWithDict:(NSDictionary *)dict;
 
 @end
