@@ -2493,6 +2493,7 @@
 				TargetAttributes = {
 					046E75C41A2BF700000FE777 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 6HU96XHEX2;
 					};
 					046E75DD1A2BF700000FE777 = {
 						CreatedOnToolsVersion = 6.1;
@@ -2936,6 +2937,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2949,7 +2954,7 @@
 					"$(PROJECT_DIR)/Project_PCOnline/ShareSDK/UI",
 				);
 				INFOPLIST_FILE = Project_PCOnline/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2958,7 +2963,9 @@
 					"$(PROJECT_DIR)/Project_PCOnline/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/Project_PCOnline/ShareSDK/Extend/YiXinSDK",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qianfeng-PCOnline";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -2966,6 +2973,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2979,7 +2990,7 @@
 					"$(PROJECT_DIR)/Project_PCOnline/ShareSDK/UI",
 				);
 				INFOPLIST_FILE = Project_PCOnline/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2988,7 +2999,9 @@
 					"$(PROJECT_DIR)/Project_PCOnline/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/Project_PCOnline/ShareSDK/Extend/YiXinSDK",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qianfeng-PCOnline";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

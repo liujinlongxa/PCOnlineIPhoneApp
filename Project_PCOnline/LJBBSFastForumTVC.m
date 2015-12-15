@@ -53,6 +53,7 @@
     [super viewDidLoad];
     self.curPage = 1;
     self.refresh = YES;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self setupTableView];
 }
 

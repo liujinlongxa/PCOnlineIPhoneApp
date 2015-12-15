@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 com.qianfeng. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "LJBaseViewController.h"
 #import "LJUrlHeader.h"
 #import "LJCommonHeader.h"
 #import "LJBBSList.h"
@@ -20,7 +20,7 @@
 - (void)BBSListViewController:(LJBBSListViewController *)controller didSelectedSubForum:(LJBBSListItem *)bbsItem;
 @end
 
-@interface LJBBSListViewController : UIViewController
+@interface LJBBSListViewController : LJBaseViewController
 
 @property (nonatomic, weak) id<LJBBSListViewControllerDelegate> delegate;
 

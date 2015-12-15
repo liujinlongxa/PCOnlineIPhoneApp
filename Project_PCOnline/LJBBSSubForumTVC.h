@@ -6,12 +6,12 @@
 //  Copyright (c) 2014年 com.qianfeng. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "LJBaseViewController.h"
 #import "LJBBSListItem.h"
 #import "LJHotForum.h"
 
 
-@interface LJBBSSubForumTVC : UIViewController
+@interface LJBBSSubForumTVC : LJBaseViewController
 
 @property (nonatomic, strong) LJBBSListItem * bbsItem;
 @end

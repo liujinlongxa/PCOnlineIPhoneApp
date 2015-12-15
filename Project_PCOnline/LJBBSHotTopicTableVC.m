@@ -43,6 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self setupTableView];
     
 }

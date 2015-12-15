@@ -49,6 +49,7 @@ typedef enum : NSUInteger {
     self.tableView.dataSource = self;
     self.tableView.separatorColor = [UIColor grayColor];
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self.tableView registerClass:[LJCommentTableViewCell class] forCellReuseIdentifier:kCommentTableViewCellIdentifier];
 }

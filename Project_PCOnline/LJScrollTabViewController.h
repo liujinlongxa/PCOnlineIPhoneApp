@@ -6,7 +6,8 @@
 //  Copyright (c) 2014年 com.qianfeng. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "LJBaseViewController.h"
+
 
 @class LJScrollTabViewController;
 
@@ -16,7 +17,7 @@
 
 @end
 
-@interface LJScrollTabViewController : UIViewController
+@interface LJScrollTabViewController : LJBaseViewController
 @property (nonatomic, strong, readonly) NSArray * lj_viewControllers;
 @property (nonatomic, strong, readonly) NSArray * lj_tabTitles;
 

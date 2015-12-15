@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 com.qianfeng. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "LJBaseViewController.h"
 
-@interface LJSearchViewController : UIViewController
+@interface LJSearchViewController : LJBaseViewController
 
 @end

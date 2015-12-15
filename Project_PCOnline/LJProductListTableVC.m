@@ -60,6 +60,7 @@ typedef enum : NSUInteger {
     [self changeNavButton];
     [self.tableView registerNib:[UINib nibWithNibName:@"LJProductListCell" bundle:nil] forCellReuseIdentifier:kProductListCellIdentifier];
     self.tableView.rowHeight = 100;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self changeNavButton];
 }
 

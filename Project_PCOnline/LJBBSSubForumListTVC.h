@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 com.qianfeng. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "LJBaseViewController.h"
 #import "LJBBSList.h"
 #import "LJCommonHeader.h"
 
@@ -18,7 +18,7 @@
 
 @end
 
-@interface LJBBSSubForumListTVC : UIViewController
+@interface LJBBSSubForumListTVC : LJBaseViewController
 @property (nonatomic, strong) LJBBSList * bbsList;
 @property (nonatomic, weak) id<LJBBSSubForumListTVCDelegate> delegate;
 @end

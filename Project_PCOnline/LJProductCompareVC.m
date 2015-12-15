@@ -50,6 +50,8 @@
     UIWebView * resultWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, viewH + padding, kScrW, kScrH - viewH - kStatusBarH - kNavBarH)];
     [self.view addSubview:resultWebView];
     self.compareResult = resultWebView;
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 - (void)viewWillAppear:(BOOL)animated

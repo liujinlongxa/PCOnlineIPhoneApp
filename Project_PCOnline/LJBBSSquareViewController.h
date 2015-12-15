@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 com.qianfeng. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "LJBaseViewController.h"
 #import "LJUrlHeader.h"
 #import "LJCommonHeader.h"
 #import "LJHotTopic.h"
@@ -26,7 +26,7 @@
 
 @end
 
-@interface LJBBSSquareViewController : UIViewController
+@interface LJBBSSquareViewController : LJBaseViewController
 
 @property (nonatomic, weak) id<LJBBSSquareViewControllerDelegate> delegate;
 
