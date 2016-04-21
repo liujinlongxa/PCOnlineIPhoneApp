@@ -22,7 +22,7 @@
 //3.3 获取顶踩信息
 #define kCommentSupportInfoUrl @"http://bip.pconline.com.cn/intf/article.jsp?act=getArticleCount&siteId=1&articleId=%d"
 //3.4 改变顶踩
-#define kCommentChangeSupportUrl @"http://bip.pconline.com.cn/intf/article.jsp?articleId=%d&isAgree=%d&act=addArtAgree&siteId=1"
+#define kCommentChangeSupportUrl @"http://bip.pconline.com.cn/intf/article.jsp?articleId=%ld&isAgree=%ld&act=addArtAgree&siteId=1"
 
 //频道和区域列表
 #define kChannelAndAreaUrl @"http://mrobot.pconline.com.cn/configs/pconline_v4_cms_iphone_channel_tree"

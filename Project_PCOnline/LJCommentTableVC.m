@@ -176,7 +176,12 @@ typedef enum : NSUInteger {
 {
     UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 82, 20)];
     UITableViewHeaderFooterView * header = [[UITableViewHeaderFooterView alloc] init];
-    header.contentView.backgroundColor = [UIColor whiteColor];
+    header.contentView.backgroundColor = [UIColor clearColor];
+    header.backgroundView = ({
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScrW, 20)];
+        view.backgroundColor = [UIColor clearColor];
+        view;
+    });
     [header.contentView addSubview:imageView];
     if (section == 0)
     {
@@ -192,12 +197,13 @@ typedef enum : NSUInteger {
 #pragma mark - header view delegate
 - (void)commentTableHeaderView:(LJCommentTableHeaderView *)header didChangeSupport:(LJCommentSupportType)type
 {
-    NSString * urlString = [NSString stringWithFormat:kCommentChangeSupportUrl, self.ID.integerValue, type];
+    NSString * urlString = [NSString stringWithFormat:kCommentChangeSupportUrl, (long)self.ID.integerValue, (long)type];
 
     [LJNetWorkingTool GET:urlString parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
 #warning 注意这里必须使用GBK转码，并且去除字符串前的12个\n
         NSStringEncoding encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
         NSString * newStr = [[NSString alloc] initWithData:responseObject encoding:encode];
+        
         NSString * jsonStr = [newStr substringFromIndex:12];
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:[jsonStr dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves | NSJSONReadingAllowFragments error:nil];
         assert(dict != nil);
