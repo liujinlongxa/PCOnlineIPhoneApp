@@ -1,0 +1,19 @@
+dependencies: \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJUserCenterViewController.m \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJUserCenterViewController.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/PPRevealSideviewController/PPRevealSideViewController.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJLoginButton.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommonHeader.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJBigSettingButton.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJSmallSettingButton.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJUserSettingTVC.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCollectionViewController.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJScrollTabViewController.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJBaseViewController.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJArticleCollectionTVC.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJArticleDaoModel.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJBBSCollectionTVC.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJBBSListItem.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJTopicCollectionTVC.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJTopicDao.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJTopicDaoModel.h

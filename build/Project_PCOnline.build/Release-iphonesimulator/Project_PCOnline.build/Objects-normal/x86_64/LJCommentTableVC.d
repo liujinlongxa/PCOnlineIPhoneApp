@@ -1,0 +1,28 @@
+dependencies: \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommentTableVC.m \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommentTableVC.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommentInfo.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJNews.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommentPageInfo.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommonHeader.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJUrlHeader.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJNetWorkingTool.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFNetworking.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFURLRequestSerialization.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFURLResponseSerialization.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFSecurityPolicy.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFNetworkReachabilityManager.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFURLConnectionOperation.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFHTTPRequestOperation.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFHTTPRequestOperationManager.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFURLSessionManager.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFHTTPSessionManager.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJComment.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommentItem.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommentTableViewCell.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommentFrame.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommentSupportInfo.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommentTableHeaderView.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/UIImage+MyImage.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/ProgressHUD/MBProgressHUD+LJProgressHUD.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/ProgressHUD/MBProgressHUD.h

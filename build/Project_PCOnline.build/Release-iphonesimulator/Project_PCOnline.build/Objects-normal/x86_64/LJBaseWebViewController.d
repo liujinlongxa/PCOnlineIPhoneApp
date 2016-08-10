@@ -1,0 +1,31 @@
+dependencies: \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJBaseWebViewController.m \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJBaseWebViewController.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommonHeader.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/ProgressHUD/MBProgressHUD+LJProgressHUD.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/ProgressHUD/MBProgressHUD.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommonData.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJUrlHeader.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJArea.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJNewsDetailController.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJWebViewController.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommentPageInfo.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommentBar.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJNews.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJAds.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJBaseAds.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJNewsSearchResultItem.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJProductInformation.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJProductDetailScrollTabVC.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJScrollTabViewController.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJBaseViewController.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/PPRevealSideviewController/PPRevealSideViewController.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJProductInformationTVC.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJProduct.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJProductDetailWebVC.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJWebImageViewerController.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJWebImages.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJFullScreenWebViewerVC.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJBBSSubForumTVC.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJBBSListItem.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJHotForum.h

@@ -1,0 +1,31 @@
+dependencies: \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJUserSettingTVC.m \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJUserSettingTVC.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommonData.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJUrlHeader.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJArea.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJNetWorkingTool.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFNetworking.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFURLRequestSerialization.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFURLResponseSerialization.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFSecurityPolicy.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFNetworkReachabilityManager.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFURLConnectionOperation.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFHTTPRequestOperation.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFHTTPRequestOperationManager.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFURLSessionManager.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFHTTPSessionManager.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/ProgressHUD/MBProgressHUD+LJProgressHUD.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/ProgressHUD/MBProgressHUD.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/PPRevealSideviewController/PPRevealSideViewController.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJSettingActionCell.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJSettingSubtitleItem.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJBaseSettingItem.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJSettingSwitchCell.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJSettingSwitchItem.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJSettingSubtitleCell.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJSettingTwoImageCell.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJSettingTwoImageItem.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJSettingChildSelectCell.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJSettingChildSelectItem.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJSettingActionItem.h

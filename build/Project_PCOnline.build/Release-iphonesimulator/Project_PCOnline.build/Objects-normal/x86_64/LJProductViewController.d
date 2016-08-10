@@ -1,0 +1,30 @@
+dependencies: \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJProductViewController.m \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJProductViewController.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJBaseViewController.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/PPRevealSideviewController/PPRevealSideViewController.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJUrlHeader.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommonHeader.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJProductSubCategory.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJProductCategory.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJNetWorkingTool.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFNetworking.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFURLRequestSerialization.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFURLResponseSerialization.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFSecurityPolicy.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFNetworkReachabilityManager.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFURLConnectionOperation.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFHTTPRequestOperation.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFHTTPRequestOperationManager.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFURLSessionManager.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/AFNetworking/AFHTTPSessionManager.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJProductCategoryCell.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJProductSortView.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJSubProductCategoryTableVC.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJBrandTableVC.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJCommonData.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJArea.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJBrand.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJProductListTableVC.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJFullScreenBrandVC.h \
+  /Users/liujinlong/Documents/Study/Technology/OpenSource/PCOnlineIPhoneApp/Project_PCOnline/LJProductFilterListTVC.h
