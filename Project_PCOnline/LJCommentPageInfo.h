@@ -24,6 +24,7 @@
 @property (nonatomic, copy) NSString * title;
 @property (nonatomic, copy) NSString * url;
 @property (nonatomic, copy) NSString * wap_url;
+@property (nonatomic, copy) NSString * uuid;
 
 //for bbs web view
 @property (nonatomic, copy) NSString * favoriteId;

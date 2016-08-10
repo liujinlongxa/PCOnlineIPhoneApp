@@ -187,6 +187,7 @@
     if (self.curIndex == self.webImages.photos.count - 1)
     {
         startIndex--;
+        startIndex = startIndex < 0 ? 0 : startIndex;
     }
     
     for (int i = startIndex; i < self.imageCount + startIndex; i++) {
