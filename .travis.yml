@@ -1,2 +1,6 @@
 language: objective-c
-script: xcodebuild -project Project_PCOnline.xcodeproj -target Project_PCOnline -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO
+osx_image: xcode7
+xcode_project: Project_PCOnline.xcodeproj
+xcode_scheme: Project_PCOnline
+script: 
+- xcodebuild -project Project_PCOnline.xcodeproj -target Project_PCOnline -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
