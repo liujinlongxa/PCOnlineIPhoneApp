@@ -6,5 +6,5 @@ Reveal.framework/
 *.xcuserstate
 project.xcworkspace/
 xcuserdata
-xcshareddata/
+#xcshareddata/
 
