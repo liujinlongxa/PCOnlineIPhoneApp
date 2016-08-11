@@ -39,10 +39,12 @@
     }];
 }
 
-- (void)testDate
-{
-    NSDate * date = [NSDate dateWithTimeIntervalSinceReferenceDate:1417668781958];
-    [date dateStringToNow];
+- (void)test1 {
+    XCTAssert(YES, @"Pass");
+}
+
+- (void)test2 {
+    XCTAssert(NO, @"Error");
 }
 
 
