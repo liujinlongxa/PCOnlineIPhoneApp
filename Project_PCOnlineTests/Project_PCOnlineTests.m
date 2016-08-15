@@ -43,9 +43,4 @@
     XCTAssert(YES, @"Pass");
 }
 
-- (void)test2 {
-    XCTAssert(NO, @"Error");
-}
-
-
 @end
